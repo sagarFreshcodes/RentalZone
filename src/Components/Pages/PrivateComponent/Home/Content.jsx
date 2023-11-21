@@ -6,8 +6,16 @@ import { toast } from "react-toastify";
 import { H4, H6, LI, P, UL, Image, H1, H3 } from "../../../../AbstractElements";
 import { CardHeader, Form, Input, Media } from "reactstrap";
 import { FileApi } from "../../../../api";
-import { FS10, FS3, FS4, FS6, FS8, FS9 } from "../../../../CommonElements/Font/FS";
+import {
+  FS10,
+  FS3,
+  FS4,
+  FS6,
+  FS8,
+  FS9,
+} from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import TrandingCard from "./TrandingCard";
 
 const Content = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -160,34 +168,44 @@ const Content = () => {
         <div className="TrendingsContainer">
           {TrandingList.map((item) => {
             return (
-              <div className="TBox" key={item.id}>
-                <div className="TCard">
-                  <div className="TImgBox ContentCenter">
-                    <img className="TIcon" src={item?.picture} alt="" />
-                  </div>
-                  <div className="TBox-right ContentCenter">
-                    <div className="d-flex">
-                      <div className="TR-info">
-                        <FS6 attr={{ className: "mb-0 BoldText" }}>
-                          {item?.title}
-                        </FS6>
-                        <FS4 attr={{ className: "mb-0 BoldText" }}>
-                          {item?.address1}
-                        </FS4>
-                        <FS3 attr={{ className: "mb-0" }}>{item?.address2}</FS3>
-                      </div>
-                      <div>🔖</div>
-                    </div>
+              // <div className="TBox" key={item.id}>
+              //   <div className="TCard">
+              //     <div className="TImgBox ContentCenter">
+              //       <img className="TIcon" src={item?.picture} alt="" />
+              //     </div>
+              //     <div className="TBox-right ContentCenter">
+              //       <div className="d-flex">
+              //         <div className="TR-info">
+              //           <FS6 attr={{ className: "mb-0 BoldText" }}>
+              //             {item?.title}
+              //           </FS6>
+              //           <FS4 attr={{ className: "mb-0 BoldText" }}>
+              //             {item?.address1}
+              //           </FS4>
+              //           <FS3 attr={{ className: "mb-0" }}>{item?.address2}</FS3>
+              //         </div>
+              //         <div>🔖</div>
+              //       </div>
 
-                    <div className="T-number">
-                      <div>📉 {item.static}</div>
-                      <div>❤️ {item.like}</div>
-                      <div>👁️ {item.view}</div>
-                      <div>📤 {item.share}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              //       <div className="T-number">
+              //         <div>📉 {item.static}</div>
+              //         <div>❤️ {item.like}</div>
+              //         <div>👁️ {item.view}</div>
+              //         <div>📤 {item.share}</div>
+              //       </div>
+              //     </div>
+              //   </div>
+              // </div>
+              <TrandingCard
+                title={item.title}
+                address1={item.address1}
+                address2={item.address2}
+                like={item.like}
+                statics={item.static}
+                view={item.view}
+                share={item.share}
+                picture={item.picture}
+              />
             );
           })}
         </div>

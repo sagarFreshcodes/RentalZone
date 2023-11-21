@@ -11,3 +11,7 @@ To run the project on local you need to run the below command:
 
 ### `npm run start-developer`
 
+
+
+setting > Developer option >  Personal access token >  Tokens > generate new token(classic)
+
