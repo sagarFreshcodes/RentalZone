@@ -1,0 +1,140 @@
+.cateIcon{
+  width: 3rem !important;
+  aspect-ratio: 1;
+}
+.cateIconBox{
+  padding: 1rem;
+  border: solid 1px #c3c3c3;
+  border-radius: 12px;
+}
+
+.cateIconBox:hover{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.catCard{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.catBox{
+  width: 5rem;
+  text-align: center;
+}
+
+
+.catContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start; 
+}
+
+
+.catImgBox{
+  width: 12rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cateIcon2{
+
+width: 90%; 
+}
+.catCard2{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.catBox2{
+  width: 10rem;
+}
+
+.catContainer2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  border: 1px solid#ccc;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.ContentCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.TrendingsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem; 
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.TIcon{
+  width: 8rem;
+}
+.TImgBox{
+
+}
+.TCard{
+  display: flex;
+}
+.TBox{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 5px 15px;
+  display: flex;justify-content: center;align-items: center;
+   
+}
+.TBox:hover{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.TBox-right{
+  display: flex;
+  flex-direction: column;
+}
+.TR-info{
+  display: flex;
+  flex-direction: column;
+}
+.BoldText{
+  font-weight: bold !important;
+}
+
+.T-number{
+  display: flex;
+  gap: 1rem;
+}
+
+.T-number div{
+  padding: 2px 10px;
+   border: solid 1px rgb(125, 118, 118);
+   font-size: 11px;
+}
+
+.footerLinkBox{
+
+}
+
+.linkBox{
+
+}
+
+.linksContainer{
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.footerComponentBox{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: start;
+}
