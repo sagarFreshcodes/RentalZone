@@ -31,8 +31,7 @@ const Signin = ({ selected }) => {
     setValue(man);
     setName("Emay Walter");
     if (email === "test@gmail.com" && password === "test123") {
-      localStorage.setItem("login", JSON.stringify(true));
-      // history(`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`);
+      localStorage.setItem("login", JSON.stringify(true)); 
       history(`${HOME_ROUTE}/${layoutURL}`);
       console.log("layoutURLlayoutURLlayoutURL",`${HOME_ROUTE}/${layoutURL}`); 
       

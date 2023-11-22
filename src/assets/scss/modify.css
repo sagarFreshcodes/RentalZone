@@ -1,8 +1,13 @@
+/* Header */
+.page-wrapper.advance-layout .page-header {
+  position: sticky !important;
+}
 .cateIcon{
-  width: 3rem !important;
+  width: 100% !important;
   aspect-ratio: 1;
 }
 .cateIconBox{
+  width: 100% !important;
   padding: 1rem;
   border: solid 1px #c3c3c3;
   border-radius: 12px;
@@ -19,7 +24,7 @@
     flex-direction: column;
 }
 .catBox{
-  width: 5rem;
+  width: 8rem;
   text-align: center;
 }
 
@@ -29,6 +34,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: start; 
+  gap: 2rem;
 }
 
 
@@ -136,8 +142,183 @@ width: 90%;
   align-items: start;
 }
 
+
 .cartoon img{
   width: 12rem;
   position: relative;
   bottom: 1rem;
 }
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+  background-color: #0c1b1b;
+}
+
+/* banner */
+.sliderImg{
+  width: 100%;
+}
+.footerContainer{
+  background-color: #edf8ff;
+    padding: 2rem;
+    border-radius: 15px;
+}
+.trandCardBox{ 
+}
+
+.trandImgBox{ 
+  width: 40%;
+}
+
+.trandImgBox img{ 
+  width: 100% !important;
+}
+
+.trandBody{
+  width: 60%;
+}
+.w-90{
+  width: 90% !important;
+}
+.top-courosel{
+  width: 40% !important;
+
+}
+.top-bar{
+  display: flex !important;
+  flex-wrap: wrap;
+}
+.top-img{
+  width: 60% !important;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;  
+}
+
+.top-img img{
+  width: 23%!important;
+}
+.top-img img,
+.top-courosel div,
+.top-courosel img{
+  border-radius: 1rem;
+}
+
+.custom-slider {
+  background-color: rgba(12, 27, 27, 0);
+}
+
+.rs-carousel{
+  height: auto !important
+}
+@media screen and (max-width:1200px) {
+
+  .top-courosel{
+    width: 100% !important;
+    padding-bottom: 1rem;
+  }
+ 
+  .top-img{
+    width: 100% !important; 
+  }
+  
+
+}
+
+.AutoCompleteBox{
+  position: relative;
+  width: 20rem;
+  display: flex;
+  border: solid 2px #958989;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.AutoCompleteBoxSearch{
+  position: relative;
+  width: 15rem;
+  display: flex;
+  border: solid 1px #958989;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.AutoCompleteBox .ant-select-selector{
+  /* height: 43px !important; */
+}
+.AutoCompleteBox .ant-select-selection-search{
+  display: flex;
+  align-items: center;
+} 
+.AutoCompleteBox .ant-select-selector{ 
+  border: none !important;
+  outline: none !important;    
+  border: none !important;
+}
+ .selectorIcon{
+  position: relative;
+  top: 8px;
+ }
+
+ .SearchIconBox{
+  position: absolute; 
+  bottom: -30px;
+  right: -8px;
+  background: #ff793b;
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+ }
+/* .ant-select:focus-visible{  
+  outline: none !important;    border: none !important;
+} 
+.ant-select-auto-complete:focus-visible{  
+  outline: none !important;    border: none !important;
+} 
+.css-dev-only-do-not-override-nllxry:focus-visible{  
+  outline: none !important;    border: none !important;
+} 
+.ant-select-single:focus-visible{  
+  outline: none !important;    border: none !important;
+} 
+.ant-select-show-search:focus-visible{  
+  outline: none !important;    border: none !important;
+}
+.AutoCompleteBox .ant-select-selection-search:focus-visible{  
+    outline: none !important;    border: none !important;
+}
+
+.AutoCompleteBox input{  
+  outline: none !important;  
+  border: none !important;
+} */
+.ant-select-selector {
+  box-shadow: none !important;
+}
+
+.react-icon-common{
+  color: black;
+    font-size: 20px;
+}
+.slick-active,.slick-current,
+.slick-track{
+  width: fit-content !important;
+}
+
+@media screen and (max-width:1430px) {
+  .nav-right{
+  margin-top: 2rem !important;
+  } 
+}
+
+@media screen and (max-width:700px) {
+  .top-img,
+  .top-courosel{
+    width: 100% !important;
+  }
+
+
+}
+ 
+ 

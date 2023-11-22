@@ -34,7 +34,7 @@ const Routers = () => {
           <Route path={"/"} element={<PrivateRoute />}>
             {login || authenticated ? (
               <>
-                <Route exact path={`${process.env.PUBLIC_URL}`} element={<Navigate to={`${HOME_ROUTE}/${layout}`} />} />
+                <Route exact element={<Navigate to={`${HOME_ROUTE}/${layout}`} />} />
                 <Route exact path={`/`} element={<Navigate to={`${HOME_ROUTE}/${layout}`} />} />
               </>
             ) : (

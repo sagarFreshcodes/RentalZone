@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { Image } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import NotificationSlider from "./NotificationSlider";
+import SearchBar from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
 
 const Leftbar = () => {
-  const { layoutURL, setToggleIcon, toggleSidebar } = useContext(CustomizerContext);
+  const { layoutURL, setToggleIcon, toggleSidebar } =
+    useContext(CustomizerContext);
   const [sidebartoggle, setSidebartoggle] = useState(true);
- 
+  const [searchBarShow, setSearchBarShow] = useState(false);
+
   const width = useWindowSize();
 
   function useWindowSize() {
@@ -38,20 +41,32 @@ const Leftbar = () => {
     } else {
       if (toggle) {
         toggleSidebar(!toggle);
-        document.querySelector(".sidebar-wrapper").className = "sidebar-wrapper close_icon ";
+        document.querySelector(".sidebar-wrapper").className =
+          "sidebar-wrapper close_icon ";
       } else {
         console.log("991 54 else", toggle);
         toggleSidebar(!toggle);
-        document.querySelector(".sidebar-wrapper").className = "sidebar-wrapper ";
+        document.querySelector(".sidebar-wrapper").className =
+          "sidebar-wrapper ";
       }
     }
   };
 
- 
+  // Event listener to detect scroll
+  window.addEventListener("scroll", function () {
+    // Get the current scroll position in the y-direction
+    var scrollY = window.scrollY || window.pageYOffset; 
+    // Use scrollY for whatever measurement or action you need
+    if (scrollY <= 80) {
+      setSearchBarShow(false);
+    } else {
+      setSearchBarShow(true);
+    }
+  });
   return (
-    <Fragment>
+    <Fragment className="RightBarBox">
       <Col className="header-logo-wrapper col-auto p-0" id="out_side_click">
-        <div className="logo-wrapper" >
+        <div className="logo-wrapper">
           <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}>
             <Image
               attrImage={{
@@ -69,13 +84,32 @@ const Leftbar = () => {
             />
           </Link>
         </div>
-        <div className="toggle-sidebar" onClick={() => responsive_openCloseSidebar(sidebartoggle)} style={window.innerWidth <= 991 ? { display: "block" } : { display: "none" }}>
-          <AlignCenter className="status_toggle middle sidebar-toggle" id="sidebar-toggle" />
+        <div
+          className="toggle-sidebar"
+          onClick={() => responsive_openCloseSidebar(sidebartoggle)}
+          style={
+            window.innerWidth <= 991
+              ? { display: "block" }
+              : { display: "none" }
+          }
+        >
+          <AlignCenter
+            className="status_toggle middle sidebar-toggle"
+            id="sidebar-toggle"
+          />
         </div>
       </Col>
       <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
         <NotificationSlider />
       </Col>
+
+      {searchBarShow ? (
+        <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
+          <SearchBar />
+        </Col>
+      ) : (
+        ""
+      )}
     </Fragment>
   );
 };

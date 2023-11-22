@@ -4,7 +4,8 @@ import "./index.scss";
 import App from "./App";
 import "./i18n";
 import reportWebVitals from "./reportWebVitals";
-
+import "./../node_modules/rsuite/dist/rsuite.min.css"
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 const Root = () => {
   return (
     <div className="App">

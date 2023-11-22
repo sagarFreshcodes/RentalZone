@@ -20,7 +20,6 @@ import TrandingCard from "./TrandingCard";
 import Slider from "./Slider";
 import CommonSelector from "../../../CommonSelector/CommonSelector";
 import { IoSearch, IoLocationOutline } from "react-icons/io5";
-import SearchBar from "./SearchBar";
 const SearchIcon = () => {
   return <p className="SearchIconBox"><IoSearch className="react-icon-common" /></p>;
 };
@@ -29,11 +28,10 @@ const LocationIcon = () => {
   return <IoLocationOutline className="react-icon-common" style={{fontSize:"25px"}} />;
 };
 
-const Content = () => {
+const ServiceCenter = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
-  const [searchBarShow, setSearchBarShow] = useState(true);
 
   useEffect(() => {
     axios.get(FileApi).then((response) => {
@@ -94,25 +92,33 @@ const Content = () => {
       toast.error("Plese Select at least one file !");
     }
   };
-
- // Event listener to detect scroll
-window.addEventListener('scroll', function() {
-  // Get the current scroll position in the y-direction
-  var scrollY = window.scrollY || window.pageYOffset;
-
-  // Use scrollY for whatever measurement or action you need
-  if (scrollY >= 100) {
-    setSearchBarShow(false) 
-  } else {
-    setSearchBarShow(true) 
-  }
-  
-});
-
   return (
     <Fragment>
-      <CardHeader> 
-      {searchBarShow? <SearchBar/> :""}
+      <CardHeader>
+        <Media>
+          <CommonSelector
+            placeholder="Location"
+            field={`status`}
+            setQuotation={{}}
+            quotation={{}}
+            postFieldName={`status`}
+            optionsArray={[]}
+            Icon={LocationIcon}
+            boxWidth = "15rem" 
+          />
+          &nbsp;&nbsp;&nbsp;
+          <CommonSelector
+            placeholder="Category, Listing, Product"
+            field={`status`}
+            setQuotation={{}}
+            quotation={{}}
+            postFieldName={`status`}
+            optionsArray={[]}
+            Icon={SearchIcon}
+            iconPose="end" 
+            
+          />
+        </Media>
       </CardHeader>
 
       <ContentBox className="">
@@ -248,7 +254,7 @@ window.addEventListener('scroll', function() {
     </Fragment>
   );
 };
-export default Content;
+export default ServiceCenter;
 
 const CategoryList = [
   {
