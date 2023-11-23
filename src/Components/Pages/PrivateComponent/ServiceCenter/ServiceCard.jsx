@@ -6,7 +6,7 @@ import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
 import { FS3, FS4 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
-const TrandingCard = ({
+const ServiceCard = ({
   title,
   address1,
   address2,
@@ -17,10 +17,15 @@ const TrandingCard = ({
   statics,
 }) => {
   return (
-    <Col className="col-xxl-3 col-md-4 col-sm-12 trandCardBox">
+    <Col className="col-xxl-12 col-md-12 col-sm-12  ">
       <Card className="profile-box">
         <CardBody className="d-flex">
-          <div className="trandBody">
+          <div className="serviceImgBox">
+            <Image
+              attrImage={{ src: LaptopPics, alt: "vector women with leptop" }}
+            />
+          </div>
+          <div className="serviceBody">
             <Media body>
               <div className="greeting-user">
                 <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
@@ -28,21 +33,16 @@ const TrandingCard = ({
                 <FS3 attr={{ className: "w-90" }}>{address2}</FS3>
 
                 <div className="T-number">
-                  <div>📉 {statics}</div>
-                  <div>❤️ {like}</div>
-                  <div>👁️ {view}</div>
-                  <div>📤 {share}</div>
-                </div> 
+                  <div>📉 Write Review</div>
+                  <div>❤️ Mumbai</div>
+                  <div>👁️ Call Now</div>
+                  <div>📤 Get Quotes</div>
+                </div>
               </div>
             </Media>
             <div>
               <div className="badge f-10 p-0" id="txt" />
             </div>
-          </div>
-          <div className="trandImgBox">
-            <Image
-              attrImage={{ src: LaptopPics, alt: "vector women with leptop" }}
-            />
           </div>
         </CardBody>
       </Card>
@@ -50,4 +50,4 @@ const TrandingCard = ({
   );
 };
 
-export default TrandingCard;
+export default ServiceCard;

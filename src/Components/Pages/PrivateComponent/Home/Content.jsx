@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { H4, H6, LI, P, UL, Image, H1, H3 } from "../../../../AbstractElements";
 import { CardHeader, Form, Input, Media } from "reactstrap";
 import { FileApi } from "../../../../api";
-import { FaBeer } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import {
   FS10,
   FS3,
@@ -18,15 +18,26 @@ import {
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import TrandingCard from "./TrandingCard";
 import Slider from "./Slider";
-import CommonSelector from "../../../CommonSelector/CommonSelector";
 import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import SearchBar from "./SearchBar";
+import { SERVICE_CENTER_ROUTE } from "../../../../Route/RouthPath";
+import Footer from "../../../../CommonElements/Footer/Footer";
+import NotificationSlider from "../../../../Layout/Header/Leftbar/NotificationSlider";
 const SearchIcon = () => {
-  return <p className="SearchIconBox"><IoSearch className="react-icon-common" /></p>;
+  return (
+    <p className="SearchIconBox">
+      <IoSearch className="react-icon-common" />
+    </p>
+  );
 };
 
 const LocationIcon = () => {
-  return <IoLocationOutline className="react-icon-common" style={{fontSize:"25px"}} />;
+  return (
+    <IoLocationOutline
+      className="react-icon-common"
+      style={{ fontSize: "25px" }}
+    />
+  );
 };
 
 const Content = () => {
@@ -95,25 +106,34 @@ const Content = () => {
     }
   };
 
- // Event listener to detect scroll
-window.addEventListener('scroll', function() {
-  // Get the current scroll position in the y-direction
-  var scrollY = window.scrollY || window.pageYOffset;
+  // Event listener to detect scroll
+  window.addEventListener("scroll", function () {
+    // Get the current scroll position in the y-direction
+    var scrollY = window.scrollY || window.pageYOffset;
 
-  // Use scrollY for whatever measurement or action you need
-  if (scrollY >= 100) {
-    setSearchBarShow(false) 
-  } else {
-    setSearchBarShow(true) 
-  }
-  
-});
+    // Use scrollY for whatever measurement or action you need
+
+    // if (scrollY >= 100) {
+    //   // setSearchBarShow(false);
+
+    // } else {
+    //   setSearchBarShow(true);
+    // }
+  });
 
   return (
-    <Fragment>
-      <CardHeader> 
-      {searchBarShow? <SearchBar/> :""}
-      </CardHeader>
+    <Fragment className="searchHeadFragment">
+ 
+        <div className="searchHeadBx">
+          <div className="searchHeadline">
+            <FS10 attr={{ className: "searchAcross" }}>Search across</FS10>
+            <div className="w-80">
+              {" "}
+              <NotificationSlider />
+            </div>
+          </div>
+          {<SearchBar />}
+        </div> 
 
       <ContentBox className="">
         <div className="top-bar">
@@ -133,18 +153,20 @@ window.addEventListener('scroll', function() {
         </div>
       </ContentBox>
       <ContentBox className="">
-        <H4 attrH4={{ className: "mb-3" }}>Rentalzone.in</H4>
+        {/* <H4 attrH4={{ className: "mb-3" }}>Rentalzone.in</H4> */}
         <div className="catContainer">
           {CategoryList2.map((item) => {
             return (
               <div className="catBox" key={item.id}>
-                <div className="catCard">
-                  <div className="cateIconBox">
-                    <img className="cateIcon" src={item?.picture} alt="" />
-                  </div>
+                <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
+                  <div className="catCard">
+                    <div className="cateIconBox">
+                      <img className="cateIcon" src={item?.picture} alt="" />
+                    </div>
 
-                  <span attrH6={{ className: "mb-0" }}>{item?.title}</span>
-                </div>
+                    <span attrH6={{ className: "mb-0" }}>{item?.title}</span>
+                  </div>
+                </Link>
               </div>
             );
           })}
@@ -185,66 +207,8 @@ window.addEventListener('scroll', function() {
       </ContentBox>
 
       <ContentBox className="">
-        <div className="footerContainer">
-          <div className="footerComponentBox">
-            <FS8 attrH4={{ className: "mb-3" }}>Rentalzone.in</FS8>
-            <FooterLinkBox
-              title={"Support & Help"}
-              linkTitleArray={[
-                "About Us",
-                "FAQ",
-                "Contact Us",
-                "Seller Register",
-                "Privacy Policy",
-              ]}
-              boxWidth={"20rem"}
-              linkBoxWidth={`50%`}
-            />
-            <FooterLinkBox
-              title={"Popular Services"}
-              linkTitleArray={[
-                "Computer Rental",
-                "IPad Rental",
-                "Printer Rental",
-                "Laptop Rental",
-              ]}
-              boxWidth={"20rem"}
-              linkBoxWidth={`50%`}
-            />
-            <FooterLinkBox
-              title={"Cities Covered"}
-              linkTitleArray={[
-                "AC Rental",
-                "Audio Rental",
-                "Badge Printing Kiosk",
-                "Badge Printing Kiosk",
-                "Car Rental",
-                "Display Rental",
-                "Digital Signage Standee",
-                "Furniture Rental",
-                "MacBook Rental",
-                "Projector Rental",
-                "Server Rental",
-                "UPS Rental",
-              ]}
-              boxWidth={"20rem"}
-              linkBoxWidth={`50%`}
-            />
-          </div>
-          <br />
-          <br />
-          <div>
-            <FooterLinkBox
-              title={"Mumbai Locations"}
-              linkTitleArray={bombayAreas}
-              boxWidth={"100%"}
-              linkBoxWidth={`10%`}
-            />
-          </div>
-        </div>
+        <Footer />
       </ContentBox>
-
-     
     </Fragment>
   );
 };
@@ -456,175 +420,4 @@ const TrandingList = [
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
-];
-
-const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
-  return (
-    <div className="footerLinkBox" style={{ width: boxWidth }}>
-      <FS8> {title}</FS8>
-      <br /> <br />
-      <div className="linksContainer">
-        {linkTitleArray?.map((i) => {
-          return (
-            <div
-              className="linkBox"
-              style={{ width: linkBoxWidth, minWidth: "8rem" }}
-            >
-              ✔️ {i}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const bombayAreas = [
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
 ];

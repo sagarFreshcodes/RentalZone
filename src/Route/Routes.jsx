@@ -180,11 +180,13 @@ import FormTouchspinContain from "../Components/Forms/FormWidget/FormTouchspin";
 import FormClipboardContain from "../Components/Forms/FormWidget/FormClipboard";
 import FAQContent from "../Components/FAQ";
 import Home from "../Components/Pages/PrivateComponent/Home";
-import { HOME_ROUTE } from "./RouthPath";
+import { HOME_ROUTE, SERVICE_CENTER_ROUTE } from "./RouthPath";
+import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
 
 export const routes = [
   // Private component
   { path: `${HOME_ROUTE}/:layout`, Component: <Home /> }, 
+  { path: `${SERVICE_CENTER_ROUTE}/:layout`, Component: <ServiceCenter /> }, 
   // dev options
   { path: `${process.env.PUBLIC_URL}/dashboard/default/:layout`, Component: <Default /> },
   { path: `${process.env.PUBLIC_URL}/dashboard/e-commerce/:layout`, Component: <Ecommerce /> },

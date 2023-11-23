@@ -21,7 +21,7 @@ const LocationIcon = () => {
 
 const SearchBar = () => {
   return (
-    <div className="SearchBar">
+    <Media>
       <CommonSelector
         placeholder="Location"
         field={`status`}
@@ -43,7 +43,7 @@ const SearchBar = () => {
         Icon={SearchIcon}
         iconPose="end"
       />
-    </div>
+    </Media>
   );
 };
 

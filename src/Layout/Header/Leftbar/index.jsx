@@ -57,7 +57,7 @@ const Leftbar = () => {
     // Get the current scroll position in the y-direction
     var scrollY = window.scrollY || window.pageYOffset; 
     // Use scrollY for whatever measurement or action you need
-    if (scrollY <= 80) {
+    if (scrollY <= 175) {
       setSearchBarShow(false);
     } else {
       setSearchBarShow(true);
@@ -99,9 +99,9 @@ const Leftbar = () => {
           />
         </div>
       </Col>
-      <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
+      {/* <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
         <NotificationSlider />
-      </Col>
+      </Col> */}
 
       {searchBarShow ? (
         <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">

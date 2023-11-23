@@ -1,25 +1,32 @@
-import React, { Fragment } from 'react';
-import { Breadcrumbs } from '../../../../AbstractElements'; 
-import { Card, Col, Container, Row } from 'reactstrap'; 
-import Content from './Content';
+import React, { Fragment } from "react";
+import { Breadcrumbs } from "../../../../AbstractElements";
+import { Card, Col, Container, Row } from "reactstrap";
+import Content from "./Content";
+import SideBar from "./SideBar";
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 
-const Home = () => {
+const ServiceCenter = () => {
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
       <Container fluid={true}>
-        <Row> 
-        {/* <FileSideBar /> */}
-          <Col xl='12' md='12' className='box-col-9'>
-            <div className='file-content'>
-              <Card>
-                < Content />
-              </Card>
-            </div>
-          </Col>
-        </Row>
+        <ContentBox className="">
+          
+            {/* <FileSideBar /> */}
+         
+              <div className="servicePage">
+                <div className="s_sidebar">
+                  <SideBar />
+                </div>
+              
+                <div className="s_content">
+                  <Content />
+                </div>
+              </div> 
+         
+        </ContentBox>
       </Container>
     </Fragment>
   );
 };
-export default Home;
+export default ServiceCenter;

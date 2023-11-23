@@ -2,7 +2,7 @@ import React from "react";
 
 const FS1 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "10px" }}>
+    <p {...props.attr} id="FS1"  >
       {props.children}
     </p>
   );
@@ -10,7 +10,7 @@ const FS1 = (props) => {
 
 const FS2 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "12px" }}>
+    <p {...props.attr} id="FS2" >
       {props.children}
     </p>
   );
@@ -18,7 +18,7 @@ const FS2 = (props) => {
 
 const FS3 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "14px" }}>
+    <p {...props.attr} id="FS3" >
       {props.children}
     </p>
   );
@@ -26,7 +26,7 @@ const FS3 = (props) => {
 
 const FS4 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "16px" }}>
+    <p {...props.attr} id="FS4" >
       {props.children}
     </p>
   );
@@ -34,7 +34,7 @@ const FS4 = (props) => {
 
 const FS5 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "18px" }}>
+    <p {...props.attr} id="FS5" >
       {props.children}
     </p>
   );
@@ -42,14 +42,14 @@ const FS5 = (props) => {
 
 const FS6 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "20px" }}>
+    <p {...props.attr}  id="FS6" >
       {props.children}
     </p>
   );
 };
 const FS7 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "22px" }}>
+    <p {...props.attr} id="FS7" >
       {props.children}
     </p>
   );
@@ -57,7 +57,7 @@ const FS7 = (props) => {
 
 const FS8 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "24px" }}>
+    <p {...props.attr} id="FS8" >
       {props.children}
     </p>
   );
@@ -65,14 +65,14 @@ const FS8 = (props) => {
 
 const FS9 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "26px" }}>
+    <p {...props.attr} id="FS9" >
       {props.children}
     </p>
   );
 };
 const FS10 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "28px" }}>
+    <p {...props.attr} id="FS10" >
       {props.children}
     </p>
   );
@@ -80,7 +80,7 @@ const FS10 = (props) => {
 
 const FS11 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "30px" }}>
+    <p {...props.attr} id="FS11" >
       {props.children}
     </p>
   );
@@ -88,7 +88,7 @@ const FS11 = (props) => {
 
 const FS12 = (props) => {
   return (
-    <p {...props.attr} style={{ fontSize: "32px" }}>
+    <p {...props.attr} id="FS12" >
       {props.children}
     </p>
   );

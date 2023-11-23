@@ -12,7 +12,8 @@ const Taptop = (props) => {
 
     const handleScroll = () => {
         if (window.scrollY > 600) {
-            setTapTopStyle('block');
+            // setTapTopStyle('block');
+            setTapTopStyle('none');
         } else {
             setTapTopStyle('none');
         }

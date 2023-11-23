@@ -1,3 +1,11 @@
+/* temp */
+.toggle-sidebar{
+  display: none !important;
+}
+#root{
+  max-width: 2000px !important;
+  margin: auto;
+}
 /* Header */
 .page-wrapper.advance-layout .page-header {
   position: sticky !important;
@@ -23,20 +31,18 @@
     align-items: center;
     flex-direction: column;
 }
-.catBox{
-  width: 8rem;
-  text-align: center;
-}
+
 
 
 .catContainer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: start; 
-  gap: 2rem;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 3rem;
 }
-
+.catBox{
+  width: 100%;
+  text-align: center;
+}
 
 .catImgBox{
   width: 12rem !important;
@@ -75,6 +81,15 @@ width: 90%;
 }
 
 .TrendingsContainer{
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr  1fr;
+  align-items: center;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+.SeviceContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -122,13 +137,9 @@ width: 90%;
    font-size: 13px;
 }
 
-.footerLinkBox{
-
-}
-
-.linkBox{
-
-}
+.curserPointer{
+  cursor: pointer;
+} 
 
 .linksContainer{
   display: flex;
@@ -162,9 +173,7 @@ width: 90%;
     padding: 2rem;
     border-radius: 15px;
 }
-.trandCardBox{ 
-}
-
+ 
 .trandImgBox{ 
   width: 40%;
 }
@@ -210,19 +219,7 @@ width: 90%;
 .rs-carousel{
   height: auto !important
 }
-@media screen and (max-width:1200px) {
 
-  .top-courosel{
-    width: 100% !important;
-    padding-bottom: 1rem;
-  }
- 
-  .top-img{
-    width: 100% !important; 
-  }
-  
-
-}
 
 .AutoCompleteBox{
   position: relative;
@@ -233,6 +230,7 @@ width: 90%;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  height: 2.5rem;
 }
 .AutoCompleteBoxSearch{
   position: relative;
@@ -306,19 +304,189 @@ width: 90%;
   width: fit-content !important;
 }
 
-@media screen and (max-width:1430px) {
-  .nav-right{
-  margin-top: 2rem !important;
-  } 
+/*  Servise */
+
+.serviceImgBox{ 
+  width: 25%;
 }
 
+.serviceImgBox img{ 
+  width: 100% !important;
+}
+
+.serviceBody{
+  width: 75%;
+}
+.servicePage{
+
+}
+.w-80{
+  width: 80% !important;
+}
+
+.w-20{
+  width: 20% !important;
+}
+.s_sidebar{ 
+  width: 20% !important;
+}
+.s_content{
+  width: 70% !important;
+
+}
+.h-2{
+ height: 2rem !important;
+
+} 
+
+.searchAcross{
+  position: relative;
+  bottom: 11px;
+  padding-right: 1rem;
+
+}
+
+#FS1{
+  font-size: 10px !important;
+}
+#FS2{
+  font-size: 12px !important;
+}
+#FS3{
+  font-size: 14px !important;
+}
+#FS4{
+  font-size: 16px !important;
+}
+#FS5{
+  font-size: 18px !important;
+}
+#FS6{
+  font-size: 20px !important;
+}
+#FS7{
+  font-size: 22px !important;
+}
+#FS8{
+  font-size: 24px !important;
+}
+#FS9{
+  font-size: 26px !important;
+}
+#FS10{
+  font-size: 28px !important;
+}
+#FS11{
+  font-size: 30px !important;
+}
+#FS12{
+  font-size: 32px !important;
+}
+.RentalzoneIn{
+  padding-right: 2rem;
+}
+.searchHeadline{
+
+  display: flex !important;
+}
+.SearchBar{
+  display: flex;
+  gap: 0.5rem;
+
+}
+
+.searchHeadBx{ 
+background-color: #ffffff;
+}
+@media screen and (max-width:1430px) {
+  /* .nav-right{
+  margin-top: 2rem !important;
+  }  */
+}
+
+ 
+@media screen and (max-width:1200px) {
+  .catContainer{ 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;   
+  } 
+  .top-courosel{
+    width: 100% !important;
+    padding-bottom: 1rem;
+  }
+ 
+  .top-img{
+    width: 100% !important; 
+  }
+
+  .TrendingsContainer{ 
+    grid-template-columns: 1fr 1fr; 
+  }
+  .top-bar{
+    display: none !important;
+  }
+  .catBox {
+    width: 100%; 
+  }
+  .searchHeadline{
+    display: none !important;
+  }
+  .AutoCompleteBox{
+    width: 16rem;
+  } 
+  }
+
+  @media screen and (max-width:800px) { 
+    .catContainer{ 
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;   
+      gap:1rem
+    } 
+    .card{
+      position: relative;
+    }
+    .searchHeadBx{ 
+      position: fixed !important;
+      width: -webkit-fill-available;
+      z-index: 10; 
+    }
+  }
+
 @media screen and (max-width:700px) {
+  .TrendingsContainer{ 
+    grid-template-columns: 1fr; 
+  }
   .top-img,
   .top-courosel{
     width: 100% !important;
+  } 
+
+  .SearchBar .AutoCompleteBox{
+  width: 45% !important;
+  }
+  .SearchBar{
+    flex-wrap: wrap;
+  
+  }
+  .trandBody {
+    width: 100%;
+}
+  .trandImgBox{
+    display: none !important;
+  }
+  .footerLinkBox{
+    width: 100% !important;
   }
 
-
+  .searchHeadBx{
+    padding: 0 20px !important
+  
+  
+  }
 }
  
- 
+@media screen and (max-width:700px) {   
+  .catContainer{ 
+    grid-template-columns: 1fr 1fr 1fr;   
+    gap:2rem
+  } 
+  
+}

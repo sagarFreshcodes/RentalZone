@@ -17,22 +17,22 @@ const TrandingCard = ({
   statics,
 }) => {
   return (
-    <Col className="col-xxl-3 col-md-4 col-sm-12 trandCardBox">
+    <div className="trandCardBox">
       <Card className="profile-box">
         <CardBody className="d-flex">
           <div className="trandBody">
             <Media body>
               <div className="greeting-user">
                 <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
-                <FS4 attr={{ className: "w-90" }}>{address1}</FS4>
-                <FS3 attr={{ className: "w-90" }}>{address2}</FS3>
+                <FS4 attr={{ className: "w-100" }}>{address1}</FS4>
+                <FS3 attr={{ className: "w-100" }}>{address2}</FS3>
 
                 <div className="T-number">
                   <div>📉 {statics}</div>
                   <div>❤️ {like}</div>
                   <div>👁️ {view}</div>
                   <div>📤 {share}</div>
-                </div> 
+                </div>
               </div>
             </Media>
             <div>
@@ -46,7 +46,7 @@ const TrandingCard = ({
           </div>
         </CardBody>
       </Card>
-    </Col>
+    </div>
   );
 };
 
