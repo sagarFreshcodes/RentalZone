@@ -79,6 +79,23 @@ const ServiceCard = ({
               </FS3>
             </button>{" "}
           </div>
+
+          <div className="leftside_right_bottom">
+            <FS2>
+              Respond in <span className="sc_since">2 Hours</span>&nbsp;&nbsp;&nbsp;
+            </FS2>
+            <div className="d-flex pb-4">
+            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
+              <FS2>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
+            </div>
+ 
+            <div className="Popular">
+              {" "}
+              <Image
+                attrImage={{ src: Popular || unlike, alt: "Popular" }}
+              />{" "}
+            </div>
+          </div>
         </div>
         <div className="sc_cardBoxRight">
           <div className="right_top">
@@ -89,11 +106,11 @@ const ServiceCard = ({
           </div>
           <div className="right_bottom">
             <FS2>
-              Respond in <span className="sc_since">2 Hours</span>
+              Respond in <span className="sc_since">2 Hours</span>&nbsp;&nbsp;&nbsp;
             </FS2>
             <div className="d-flex pb-4">
             <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
-              <FS2>42 People recently enquired</FS2>
+              <FS2>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
             </div>
  
             <div className="Popular">

@@ -5,6 +5,7 @@
 #root{
   max-width: 2000px !important;
   margin: auto;
+  font-family: Poppins;
 }
 .customizer-links{
   display: none;
@@ -316,6 +317,8 @@ width: 90%;
 .servicePage {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 .w-80{
   width: 80% !important;
@@ -463,6 +466,7 @@ padding-bottom: 5px;
 .sc-number{
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 .s_form{
   display: flex;
@@ -497,6 +501,7 @@ padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.5rem;
 
 }
 
@@ -576,7 +581,19 @@ padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: end;
  }
+
+ .right_bottom #F2{
+  padding-right:  1rem !important;
+ }
+
+
+ .leftside_right_bottom{
+  display: none;
+ }
+
+ 
 @media screen and (max-width:1430px) {
   /* .nav-right{
   margin-top: 2rem !important;
@@ -585,6 +602,8 @@ padding-bottom: 5px;
 
  
 @media screen and (max-width:1200px) {
+
+
   .catContainer{ 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;   
   } 
@@ -612,9 +631,28 @@ padding-bottom: 5px;
   .AutoCompleteBox{
     width: 16rem;
   } 
+
+  .leftside_right_bottom{
+    display: contents;
+   }
+  
+   .right_bottom{
+    display: none;
+   }
+.serviceImgBox{
+  width: 30%;
+}
+   .serviceBody{
+    width: 70%;
+   }
   }
 
-
+  @media screen and (max-width:900px) { 
+    .s_sidebar{ width: 100% !important;}
+    .s_content{
+      width: 100% !important;
+    }
+  }
   @media screen and (max-width:800px) { 
     .catContainer{ 
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;   
@@ -627,6 +665,12 @@ padding-bottom: 5px;
       position: fixed !important;
       width: -webkit-fill-available;
       z-index: 10; 
+    }
+    .serviceImgBox{
+      display: none;
+    }
+    .serviceBody{
+      width:100%
     }
   }
 
@@ -661,12 +705,10 @@ padding-bottom: 5px;
   
   
   }
-}
- 
-@media screen and (max-width:700px) {   
   .catContainer{ 
     grid-template-columns: 1fr 1fr 1fr;   
     gap:2rem
   } 
-  
 }
+ 
+ 

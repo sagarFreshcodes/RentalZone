@@ -19,6 +19,8 @@ import {
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer"; 
 import ServiceCard from "./ServiceCard";
+import { BreadCum } from "../../../Common/Component/helperFunction";
+import PaginationBar from "./Pagination";
  
 
 const Content = () => {
@@ -36,18 +38,21 @@ const Content = () => {
   
 
   return (
-    <Fragment>    
-
+    <Fragment >    
+      <ContentBox className=""> 
+        {BreadCum(["Shimla","Hotels in Shimla"])}
+      </ContentBox>
       <ContentBox className=""> 
         <FS4 attr={{ className: "mb-3" }}>
         Where can you provide rent a laptop in Mumbai ? Choose the laptop would like, add it to your cart, and inspect.& More...
         </FS4>
       </ContentBox>
-
+      <ContentBox className=""> 
+        <FS10 attr={{ className: "mb-3" }}>
+        Top Trendings For Your City </FS10>
+      </ContentBox>
       <ContentBox className="">
-        <div className="ContentCenter">
-          <FS10>Top Trendings For Your City</FS10>
-        </div>
+     
         <div className="SeviceContainer">
           {TrandingList.map((item) => {
             return (
