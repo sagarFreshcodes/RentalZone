@@ -66,9 +66,7 @@ const Content = () => {
         </div>
       </ContentBox>
 
-      <ContentBox className="">  
-        <Footer/>
-      </ContentBox>
+    
     </Fragment>
   );
 };

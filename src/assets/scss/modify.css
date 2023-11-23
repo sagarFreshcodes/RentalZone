@@ -6,7 +6,15 @@
   max-width: 2000px !important;
   margin: auto;
 }
+.customizer-links{
+  display: none;
+}
+
 /* Header */
+.page-body{
+  background-color: white !important;
+}
+
 .page-wrapper.advance-layout .page-header {
   position: sticky !important;
 }
@@ -304,21 +312,10 @@ width: 90%;
   width: fit-content !important;
 }
 
-/*  Servise */
 
-.serviceImgBox{ 
-  width: 25%;
-}
-
-.serviceImgBox img{ 
-  width: 100% !important;
-}
-
-.serviceBody{
-  width: 75%;
-}
-.servicePage{
-
+.servicePage {
+  display: flex;
+  justify-content: space-between;
 }
 .w-80{
   width: 80% !important;
@@ -331,7 +328,7 @@ width: 90%;
   width: 20% !important;
 }
 .s_content{
-  width: 70% !important;
+  width: 80% !important;
 
 }
 .h-2{
@@ -350,36 +347,49 @@ width: 90%;
   font-size: 10px !important;
 }
 #FS2{
+  padding: 0px !important;
+  margin: 0px !important;
   font-size: 12px !important;
 }
 #FS3{
   font-size: 14px !important;
+  padding: 0px !important;
+  margin: 0px !important;
 }
-#FS4{
+#FS4{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 16px !important;
 }
-#FS5{
+#FS5{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 18px !important;
 }
-#FS6{
+#FS6{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 20px !important;
 }
-#FS7{
+#FS7{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 22px !important;
 }
-#FS8{
+#FS8{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 24px !important;
 }
-#FS9{
+#FS9{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 26px !important;
 }
-#FS10{
+#FS10{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 28px !important;
 }
-#FS11{
+#FS11{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 30px !important;
 }
-#FS12{
+#FS12{  padding: 0px !important;
+  margin: 0px !important;
   font-size: 32px !important;
 }
 .RentalzoneIn{
@@ -398,6 +408,175 @@ width: 90%;
 .searchHeadBx{ 
 background-color: #ffffff;
 }
+/*  Servise */
+
+.serviceImgBox{ 
+  width: 20%;
+}
+
+.serviceImgBox img{ 
+  width: 100% !important;
+}
+
+.serviceBody{
+  width: 80%;
+  display: flex;
+  position: relative;
+  padding-left: 1rem;
+}
+.s_catTitle{
+  padding-bottom: 0.5rem;
+  color: #3A3A3A; 
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+font-weight: 600;
+}
+
+.s_cat{
+  color: #3A3A3A; 
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-bottom: 5px;
+}
+.s_catTitleBox{
+  border-radius: 1rem;
+  background-color: #efefef;
+  padding: 1rem;  
+}
+
+.all_category{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+
+}
+.cat-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sc-number{
+  display: flex;
+  gap: 16px;
+}
+.s_form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.s_form .input{
+  border: solid 1px #939393;
+  border-radius: 5px;
+  padding: 2px;
+}
+.s_form input{
+  border:  none;
+  width:100%
+}
+.s_form .btn {
+   background-color: #0085BE !important;
+}
+
+.sc_cardBox{
+  display: flex;
+  border: solid 1px #dddddd !important;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  width: 100%;
+
+}
+
+.sc_cardBoxLeft{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.sc_cardBoxRight{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.greenRateBox{
+  background-color: #058A07;
+  color: white;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+.rStar .media{
+  width: 24px !important;
+}
+.sp_category{
+  background-color: white;
+    border: 1px solid #ddd1d1;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 0 8px;
+    color: #443838;
+    margin-right:  2px;
+}
+.sp_card_box .btn{
+  padding: 1px 9px;
+  border-radius: 3px;
+}
+
+.sp_card_box .callNow{
+ background-color: #058A07 !important;
+}
+
+
+.sp_card_box .getQots{
+  background-color: #0085BE !important;
+ }
+ .sp_cat_list{
+  display: flex;
+  gap: 7px;
+ }
+
+
+ .sc_since{
+  color: #245801;
+
+ }
+ .likeUnlike{
+  width: fit-content;
+    padding: 5px 8px;
+    border: solid 1px #dad3d3;
+    border-radius: 4px;
+    background-color: white;    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+ }
+
+ .Popular img{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+ }
+ .chartBox{
+  position: relative;
+  bottom: 4px;
+ }
+
+ .chartBox img{
+  width: 20px;
+ }
+ .right_bottom{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+ }
 @media screen and (max-width:1430px) {
   /* .nav-right{
   margin-top: 2rem !important;
@@ -434,6 +613,7 @@ background-color: #ffffff;
     width: 16rem;
   } 
   }
+
 
   @media screen and (max-width:800px) { 
     .catContainer{ 
