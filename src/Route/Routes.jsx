@@ -180,15 +180,17 @@ import FormTouchspinContain from "../Components/Forms/FormWidget/FormTouchspin";
 import FormClipboardContain from "../Components/Forms/FormWidget/FormClipboard";
 import FAQContent from "../Components/FAQ";
 import Home from "../Components/Pages/PrivateComponent/Home";
-import { CATEGORY_DETAILS_ROUTE, HOME_ROUTE, SERVICE_CENTER_ROUTE } from "./RouthPath";
+import { CATEGORY_DETAILS_ROUTE, HOME_ROUTE, PRODUCT_DETAILS_ROUTE, SERVICE_CENTER_ROUTE } from "./RouthPath";
 import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
-import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetails";
+import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetails"; 
+import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails";
 
 export const routes = [
   // Private component
   { path: `${HOME_ROUTE}/:layout`, Component: <Home /> }, 
   { path: `${SERVICE_CENTER_ROUTE}/:layout`, Component: <ServiceCenter /> }, 
   { path: `${CATEGORY_DETAILS_ROUTE}/:layout`, Component: <CatagoryDetails /> }, 
+  { path: `${PRODUCT_DETAILS_ROUTE}/:layout`, Component: <ProductDetails /> }, 
   // dev options
   { path: `${process.env.PUBLIC_URL}/dashboard/default/:layout`, Component: <Default /> },
   { path: `${process.env.PUBLIC_URL}/dashboard/e-commerce/:layout`, Component: <Ecommerce /> },
