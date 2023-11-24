@@ -7,7 +7,7 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import PaginationBar from "./Pagination";
 
-const ServiceCenter = () => {
+const CatagoryDetails = () => {
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
@@ -21,10 +21,7 @@ const ServiceCenter = () => {
             <div className="s_sidebar">
               <SideBar />
             </div>
-          </div> 
-        <ContentBox className="">
-          <PaginationBar />
-        </ContentBox>
+          </div>  
         <ContentBox className="">
           <Footer />
         </ContentBox>
@@ -32,4 +29,4 @@ const ServiceCenter = () => {
     </Fragment>
   );
 };
-export default ServiceCenter;
+export default CatagoryDetails;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, CardBody, Col, Media } from "reactstrap";
 import { H4, P, Btn, Image } from "../../../../AbstractElements";
-import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant"; 
-import { useNavigate } from "react-router-dom";
+import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
+
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
 import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
@@ -16,8 +16,6 @@ import unlike from "../../../../assets/images/Essential/unlike.png";
 import chart from "../../../../assets/images/Essential/chart.png";
 import Popular from "../../../../assets/images/Essential/Popular.png";
 import TopSearch from "../../../../assets/images/Essential/TopSearch.png";
-import { CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
-
 const ServiceCard = ({
   title,
   address1,
@@ -28,10 +26,6 @@ const ServiceCard = ({
   picture,
   statics,
 }) => {
-  const Navigate = useNavigate();
-  const handleCatClick = () => {
-    Navigate(`${CATEGORY_DETAILS_ROUTE}/Dubai`);
-  };
   return (
     <div className="sc_cardBox">
       <div className="serviceImgBox">
@@ -40,7 +34,7 @@ const ServiceCard = ({
         />
       </div>
       <div className="serviceBody">
-        <div className="sc_cardBoxLeft" onClick={handleCatClick}>
+        <div className="sc_cardBoxLeft">
           <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
@@ -88,17 +82,13 @@ const ServiceCard = ({
 
           <div className="leftside_right_bottom">
             <FS2>
-              Respond in <span className="sc_since">2 Hours</span>
-              &nbsp;&nbsp;&nbsp;
+              Respond in <span className="sc_since">2 Hours</span>&nbsp;&nbsp;&nbsp;
             </FS2>
             <div className="d-flex pb-4">
-              <span className="chartBox">
-                {" "}
-                <Image attrImage={{ src: chart || unlike, alt: "like" }} />
-              </span>
+            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
               <FS2>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
             </div>
-
+ 
             <div className="Popular">
               {" "}
               <Image
@@ -115,21 +105,14 @@ const ServiceCard = ({
             </div>
           </div>
           <div className="right_bottom">
-            <FS2 attr={{ className: "BoldText" }}>
-              Respond in <span className="green_text">2 Hours</span>
-              &nbsp;&nbsp;&nbsp;
+            <FS2 attr={{className:"BoldText"}}>
+              Respond in <span className="green_text">2 Hours</span>&nbsp;&nbsp;&nbsp;
             </FS2>
             <div className="d-flex pb-4">
-              <span className="chartBox">
-                {" "}
-                <Image attrImage={{ src: chart || unlike, alt: "like" }} />
-              </span>
-              <FS2 attr={{ className: "BoldText" }}>
-                42 People recently enquired
-              </FS2>
-              &nbsp;&nbsp;&nbsp;
+            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
+              <FS2 attr={{className:"BoldText"}}>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
             </div>
-
+ 
             <div className="Popular">
               {" "}
               <Image
