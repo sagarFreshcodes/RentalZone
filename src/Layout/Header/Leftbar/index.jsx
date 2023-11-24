@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Image } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import NotificationSlider from "./NotificationSlider";
-import SearchBar from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
+import SearchBar, { SearchIcon } from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
 
 const Leftbar = () => {
   const { layoutURL, setToggleIcon, toggleSidebar } =
@@ -105,11 +105,14 @@ const Leftbar = () => {
 
       {searchBarShow ? (
         <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
-          <SearchBar />
+          <SearchBar /> 
         </Col>
       ) : (
         ""
       )}
+
+
+    
     </Fragment>
   );
 };

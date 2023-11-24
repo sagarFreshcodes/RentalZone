@@ -574,7 +574,7 @@ padding-bottom: 5px;
 
 
  .green_text{
-  color: #245801;
+  color: #058A07 ;
 
  }
  .likeUnlike{
@@ -620,6 +620,18 @@ padding-bottom: 5px;
   display: grid;
   grid-template-columns: 1fr ;
   gap: 2rem;
+ }
+
+ .nav-right .header-search{
+  display:none !important;
+}
+ .searchModelBox{
+  height: 100% !important;
+  max-width: 100% !important;
+ }
+
+ .searchModelBox .modal-content{
+  height: 100% !important;
  }
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
@@ -715,6 +727,15 @@ padding-bottom: 5px;
 
     .left-header .SearchBar{
       display: none;
+    }
+
+    .nav-right .header-search{
+      display:inline !important;
+    }
+
+
+    .card .searchHeadBx{
+      display: none !important;
     }
   }
 

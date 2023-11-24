@@ -2,7 +2,7 @@ import React from "react";
 import CommonSelector from "../../../CommonSelector/CommonSelector";
 import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import { CardHeader, Form, Input, Media } from "reactstrap";
-const SearchIcon = () => {
+export const SearchIcon = () => {
   return (
     <p className="SearchIconBox">
       <IoSearch className="react-icon-common" />

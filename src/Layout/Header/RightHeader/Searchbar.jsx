@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SvgIcon from '../../../Components/Common/Component/SvgIcon';
 
-const Searchbar = () => {
+const Searchbar = ({onSearch}) => {
   const [searchresponsive, setSearchresponsive] = useState(false);
   const SeacrhResposive = (searchresponsive) => {
     if (searchresponsive) {
@@ -15,9 +15,9 @@ const Searchbar = () => {
   };
 
   return (
-    <li>
+    <li onClick={onSearch}>
       <span className='header-search'>
-        <SvgIcon iconId='search' onClick={() => SeacrhResposive(searchresponsive)} />
+        <SvgIcon iconId='search'  />
       </span>
     </li>
   );
