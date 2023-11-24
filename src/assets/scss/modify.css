@@ -27,7 +27,12 @@
   width: 100% !important;
   padding: 1rem;
   border: solid 1px #c3c3c3;
-  border-radius: 12px;
+  border-radius: 12px;    aspect-ratio: 1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .cateIconBox:hover{
@@ -51,6 +56,7 @@
 .catBox{
   width: 100%;
   text-align: center;
+  
 }
 
 .catImgBox{
@@ -92,12 +98,11 @@ width: 90%;
 .TrendingsContainer{
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: 1fr 1fr  1fr;
+  grid-template-columns: 1fr 1fr  1fr 1fr;
   align-items: center;
   border-radius: 1rem;
   gap: 1rem;
-}
-
+} 
 .SeviceContainer{
   display: flex;
   flex-wrap: wrap;
@@ -182,17 +187,20 @@ width: 90%;
     padding: 2rem;
     border-radius: 15px;
 }
- 
+ .trandCardBox .card-body{
+  flex-direction: column;
+ }
 .trandImgBox{ 
-  width: 40%;
+  width: 100%;
 }
 
 .trandImgBox img{ 
-  width: 100% !important;
+  width: 50%;
+  min-width: 15rem !important;
 }
 
 .trandBody{
-  width: 60%;
+  width: 100%;
 }
 .w-90{
   width: 90% !important;
@@ -277,6 +285,10 @@ width: 90%;
   padding: 4px;
   display: flex;
  }
+
+ .propertyList{
+
+ }
 /* .ant-select:focus-visible{  
   outline: none !important;    border: none !important;
 } 
@@ -313,7 +325,14 @@ width: 90%;
   width: fit-content !important;
 }
 
-
+.productRate{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.productRate p{
+width: fit-content !important;
+}
 .servicePage {
   display: flex;
   justify-content: space-between;
@@ -715,12 +734,7 @@ padding-bottom: 5px;
     flex-wrap: wrap;
   
   }
-  .trandBody {
-    width: 100%;
-}
-  .trandImgBox{
-    display: none !important;
-  }
+ 
   .footerLinkBox{
     width: 100% !important;
   }
@@ -738,14 +752,25 @@ padding-bottom: 5px;
 
   .cateIconBox{ 
     padding: 0;
-    border: none; 
-  }
+    border: none;  
+}
+   
 
   .cateIcon{
     width: 70% !important;
   }
 }
+@media screen and (max-width:500px) {
+  .serviceBody .un{
+    display: none !important;
+  }
+  .sc_cardBoxLeft{width: 80% !important;} 
 
+  .sc_cardBoxRight{width: 10% !important;}
+  .serviceBody{
+    padding: 5px !important;
+  }
+}
 @media screen and (max-width:400px) {
  
   .sc_linkBox{ 

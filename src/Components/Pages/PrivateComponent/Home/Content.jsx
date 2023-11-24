@@ -123,17 +123,16 @@ const Content = () => {
 
   return (
     <Fragment className="searchHeadFragment">
- 
-        <div className="searchHeadBx">
-          <div className="searchHeadline">
-            <FS10 attr={{ className: "searchAcross" }}>Search across</FS10>
-            <div className="w-80">
-              {" "}
-              <NotificationSlider />
-            </div>
+      <div className="searchHeadBx">
+        <div className="searchHeadline">
+          <FS10 attr={{ className: "searchAcross" }}>Search across</FS10>
+          <div className="w-80">
+            {" "}
+            <NotificationSlider />
           </div>
-          {<SearchBar />}
-        </div> 
+        </div>
+        {<SearchBar />}
+      </div>
 
       <ContentBox className="">
         <div className="top-bar">
@@ -164,7 +163,7 @@ const Content = () => {
                       <img className="cateIcon" src={item?.picture} alt="" />
                     </div>
 
-                    <FS3  >{item?.title}</FS3>
+                    <FS3>{item?.title}</FS3>
                   </div>
                 </Link>
               </div>
@@ -200,6 +199,10 @@ const Content = () => {
                 view={item.view}
                 share={item.share}
                 picture={item.picture}
+                d1={item.d1}
+                d2={item.d2}
+                d3={item.d3}
+                d4={item.d4}
               />
             );
           })}
@@ -371,6 +374,10 @@ const TrandingList = [
     star: "5",
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
+    d1: "Intel Core i7 10 Gen",
+    d2: " 16GB/1TB SSD",
+    d3: " RTX 2060 6GB Graphics",
+    d4: "15.6 FHD 240Hz Display",
   },
   {
     title: "It Rental Solution",
@@ -381,6 +388,10 @@ const TrandingList = [
     view: "5522",
     share: "233",
     star: "5",
+    d1: "Intel Core i7 10 Gen",
+    d2: " 16GB/1TB SSD",
+    d3: " RTX 2060 6GB Graphics",
+    d4: "15.6 FHD 240Hz Display",
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
@@ -392,24 +403,21 @@ const TrandingList = [
     like: "98",
     view: "5522",
     share: "233",
+    d1: "Intel Core i7 10 Gen",
+    d2: " 16GB/1TB SSD",
+    d3: " RTX 2060 6GB Graphics",
+    d4: "15.6 FHD 240Hz Display",
     star: "5",
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
+   
   {
     title: "It Rental Solution",
-    address1: "Laptop ipad Rental Services in Mumbai",
-    address2: "Mira Road, Mumbai, Maharashtra, India.",
-    static: "89",
-    like: "98",
-    view: "5522",
-    share: "233",
-    star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
-  },
-  {
-    title: "It Rental Solution",
+    d1: "Intel Core i7 10 Gen",
+    d2: " 16GB/1TB SSD",
+    d3: " RTX 2060 6GB Graphics",
+    d4: "15.6 FHD 240Hz Display",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",

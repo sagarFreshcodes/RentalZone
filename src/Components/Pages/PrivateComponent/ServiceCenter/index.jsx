@@ -16,8 +16,7 @@ const ServiceCenter = () => {
           <div className="servicePage">
             <div className="s_content">
               <Content />
-            </div>
-
+            </div> 
             <div className="s_sidebar">
               <SideBar />
             </div>

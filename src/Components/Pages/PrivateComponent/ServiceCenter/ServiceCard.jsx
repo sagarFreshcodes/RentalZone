@@ -4,7 +4,7 @@ import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant"; 
 import { useNavigate } from "react-router-dom";
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
-import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
+import { FS2, FS3, FS4, FS6, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";
 import location from "../../../../assets/images/Essential/location.png";
@@ -41,7 +41,7 @@ const ServiceCard = ({
       </div>
       <div className="serviceBody">
         <div className="sc_cardBoxLeft" onClick={handleCatClick}>
-          <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
+          <FS6 attr={{ className: "f-w-600 lh-1.2" }}>{title}</FS6>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
             <div className="d-flex rStar">
@@ -50,13 +50,13 @@ const ServiceCard = ({
                 <Image attrImage={{ src: start, alt: "star" }} />
               ))}
             </div>
-            <div>1110 Rating</div>
-            <div className="verrify">
+            <div className="un">1110 Rating</div>
+            <div className="verrify un">
               {" "}
               <Image attrImage={{ src: verrify, alt: "verrify" }} />
             </div>
           </div>
-          <div className="sp_cat_list">
+          <div className="sp_cat_list un">
             {["cat1", "cat2", "cat3", "cat4"].map((c) => (
               <div className="sp_category">
                 {" "}
@@ -64,7 +64,7 @@ const ServiceCard = ({
               </div>
             ))}
           </div>
-          <FS3 attr={{ className: "w-90" }}>
+          <FS3 attr={{ className: "w-90 un" }}>
             {" "}
             <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
             Tutikandi, Shimla
@@ -86,7 +86,7 @@ const ServiceCard = ({
             </button>{" "}
           </div>
 
-          <div className="leftside_right_bottom">
+          <div className="leftside_right_bottom un">
             <FS2 attr={{className:"BoldText"}}>
               Respond in <span className="sc_since">2 Hours</span>
               &nbsp;&nbsp;&nbsp;
