@@ -11,8 +11,7 @@ const ServiceCenter = () => {
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-      <Container fluid={true}>
-        <ContentBox className="">
+      <Container fluid={true}> 
           {/* <FileSideBar /> */}
 
           <div className="servicePage">
@@ -23,8 +22,7 @@ const ServiceCenter = () => {
             <div className="s_sidebar">
               <SideBar />
             </div>
-          </div>
-        </ContentBox>
+          </div> 
         <ContentBox className="">
           <PaginationBar />
         </ContentBox>

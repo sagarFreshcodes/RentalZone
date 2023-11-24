@@ -40,15 +40,10 @@ const Content = () => {
   return (
     <Fragment >    
       <ContentBox className=""> 
-        {BreadCum(["Shimla","Hotels in Shimla"])}
-      </ContentBox>
+        <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla"])}</FS4>
+      </ContentBox> 
       <ContentBox className=""> 
-        <FS4 attr={{ className: "mb-3" }}>
-        Where can you provide rent a laptop in Mumbai ? Choose the laptop would like, add it to your cart, and inspect.& More...
-        </FS4>
-      </ContentBox>
-      <ContentBox className=""> 
-        <FS10 attr={{ className: "mb-3" }}>
+        <FS10  attr={{className:"lh-1"}}>
         Top Trendings For Your City </FS10>
       </ContentBox>
       <ContentBox className="">

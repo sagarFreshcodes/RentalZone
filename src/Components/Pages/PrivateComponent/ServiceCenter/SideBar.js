@@ -1,4 +1,5 @@
 import React from "react";
+import { FS4, FS5 } from "../../../../CommonElements/Font/FS";
 const sidebarData = [
   {
     title: "Popular Areas",
@@ -35,7 +36,7 @@ const SideBar = () => {
   return (
     <div className="cat-container">
       <div className="s_form">
-        <p>Get the list of best "Hotels"</p>
+        <FS4 attr={{className:"BoldText"}}>Get the list of best <span className="green_text">"Hotels"</span></FS4>
         <div className="input">
           <input type="text" placeholder="Name*" />
         </div>
@@ -44,6 +45,8 @@ const SideBar = () => {
         </div>
         <button className="btn btn-success">Get Quotes Now</button>{" "}
       </div>
+
+      <div className="sc_linkBox">
       {sidebarData.map((i) => {
         return (
           <>
@@ -62,6 +65,8 @@ const SideBar = () => {
           </>
         );
       })}
+      </div>
+   
     </div>
   );
 };
