@@ -15,20 +15,14 @@ import likes from "../../../../assets/images/Essential/like.png";
 import unlike from "../../../../assets/images/Essential/unlike.png";
 import chart from "../../../../assets/images/Essential/chart.png";
 import Popular from "../../../../assets/images/Essential/Popular.png";
-import TopSearch from "../../../../assets/images/Essential/TopSearch.png";
-const CategoryCard = ({
-  title,
-  address1,
-  address2,
-  like,
-  view,
-  share,
-  picture,
-  statics,
-}) => {
+import edit from "../../../../assets/images/Essential/edit.png";
+import shareFill from "../../../../assets/images/Essential/share-fill.png";
+import halfStart from "../../../../assets/images/Essential/halfStart.png";
+import claim from "../../../../assets/images/Essential/claim.png";
+const CategoryCard = ({ title }) => {
   return (
     <div className="sc_cardBox">
-      <div className="serviceImgBox">
+      <div className="cd-serviceImgBox">
         <Image
           attrImage={{ src: burncastle, alt: "vector women with leptop" }}
         />
@@ -49,6 +43,11 @@ const CategoryCard = ({
               {" "}
               <Image attrImage={{ src: verrify, alt: "verrify" }} />
             </div>
+            <div className="verrify">
+              {" "}
+              <Image attrImage={{ src: claim, alt: "verrify" }} />{" "}
+              <span>Claimed</span>
+            </div>
           </div>
           <div className="sp_cat_list">
             {["cat1", "cat2", "cat3", "cat4"].map((c) => (
@@ -58,25 +57,46 @@ const CategoryCard = ({
               </div>
             ))}
           </div>
-          <FS3 attr={{ className: "w-90" }}>
-            {" "}
-            <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
-            Tutikandi, Shimla
-          </FS3>
-          <div className="sp_card_box">
-          <FS2 attr={{className:"BoldText"}}>
-              Respond in <span className="green_text">2 Hours</span>&nbsp;&nbsp;&nbsp;
+          <div className="cd-address">
+            <FS3>
+              {" "}
+              <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass
+              Road Tutikandi, Shimla &nbsp;&nbsp;
+            </FS3>
+
+            <FS2 attr={{ className: "BoldText d-flex" }}>
+              <span className="green_text">
+                <li>Opens</li>
+              </span>{" "}
+              <span> in 1 mins</span>&nbsp;&nbsp;{" "}
+              <span>
+                <li>11 Years in Business</li>
+              </span>
+              &nbsp;&nbsp;
             </FS2>
-            <div className="d-flex pb-4">
-            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
-              <FS2 attr={{className:"BoldText"}}>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
+          </div>
+
+          <div className="cd_card_box d-flex">
+            <FS2 attr={{ className: "BoldText" }}>
+              Respond in <span className="green_text">2 Hours</span>
+              &nbsp;&nbsp;&nbsp;
+            </FS2>
+            <div className="d-flex ">
+              <span className="chartBox">
+                {" "}
+                <Image attrImage={{ src: chart || unlike, alt: "like" }} />
+              </span>
+              <FS2 attr={{ className: "BoldText" }}>
+                42 People recently enquired
+              </FS2>
+              &nbsp;&nbsp;&nbsp;
             </div>
           </div>
-          <div className="sp_card_box">
+          <div className="cd_card_box">
             <button className="btn btn-success callNow">
               {" "}
               <FS3>Call Now</FS3>
-            </button>{" "} 
+            </button>{" "}
             <button className="btn btn-light">
               <FS3>
                 {" "}
@@ -86,24 +106,25 @@ const CategoryCard = ({
             <button className="btn btn-light">
               <FS3>
                 {" "}
-                <Image attrImage={{ src: wapp, alt: "message" }} /> Tap to Rate{" "}
+                <Image attrImage={{ src: halfStart, alt: "message" }} /> Tap to
+                Rate{" "}
               </FS3>
             </button>{" "}
             <button className="btn btn-light">
               <FS3>
                 {" "}
-                <Image attrImage={{ src: wapp, alt: "message" }} /> Share{" "}
+                <Image
+                  attrImage={{ src: shareFill, alt: "message" }}
+                /> Share{" "}
               </FS3>
             </button>{" "}
             <button className="btn btn-light">
               <FS3>
                 {" "}
-                <Image attrImage={{ src: wapp, alt: "message" }} /> Edit{" "}
+                <Image attrImage={{ src: edit, alt: "message" }} /> Edit{" "}
               </FS3>
             </button>{" "}
           </div>
-
-        
         </div>
         <div className="sc_cardBoxRight">
           <div className="right_top">
@@ -113,20 +134,20 @@ const CategoryCard = ({
             </div>
           </div>
           <div className="right_bottom">
-            <FS2 attr={{className:"BoldText"}}>
-              Respond in <span className="green_text">2 Hours</span>&nbsp;&nbsp;&nbsp;
-            </FS2>
-            <div className="d-flex pb-4">
-            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
-              <FS2 attr={{className:"BoldText"}}>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
-            </div>
- 
-            <div className="Popular">
-              {" "}
-              <Image
-                attrImage={{ src: Popular || unlike, alt: "Popular" }}
-              />{" "}
-            </div>
+          <div className="d-flex jointButton">
+          <button className="btn btn-light ">
+              <FS3> Project On Rent </FS3>
+            </button>{" "} &nbsp;
+
+            <button className="btn btn-light">
+              <FS3>Top Rated Hotel </FS3>
+            </button>{" "}
+          </div>
+        
+            <button className="btn btn-light bestDeal">
+              <FS3>Best Deal </FS3>
+              <FS3>Get free details instantly via SMS</FS3>
+            </button>{" "}
           </div>
         </div>
 
