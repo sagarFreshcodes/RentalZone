@@ -164,7 +164,7 @@ const Content = () => {
                       <img className="cateIcon" src={item?.picture} alt="" />
                     </div>
 
-                    <span attrH6={{ className: "mb-0" }}>{item?.title}</span>
+                    <FS3  >{item?.title}</FS3>
                   </div>
                 </Link>
               </div>

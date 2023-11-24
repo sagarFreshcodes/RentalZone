@@ -4,8 +4,7 @@ import { Card, Col, Container, Row } from "reactstrap";
 import Content from "./Content";
 import SideBar from "./SideBar";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-import Footer from "../../../../CommonElements/Footer/Footer";
-import PaginationBar from "./Pagination";
+import Footer from "../../../../CommonElements/Footer/Footer"; 
 
 const CatagoryDetails = () => {
   return (

@@ -16,11 +16,9 @@ import {
   FS8,
   FS9,
 } from "../../../../CommonElements/Font/FS";
-import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-import Footer from "../../../../CommonElements/Footer/Footer"; 
-import ServiceCard from "./ServiceCard";
-import { BreadCum } from "../../../Common/Component/helperFunction";
-import PaginationBar from "./Pagination";
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox"; 
+import { BreadCum } from "../../../Common/Component/helperFunction"; 
+import CategoryCard from "./CategoryCard";
  
 
 const Content = () => {
@@ -51,7 +49,7 @@ const Content = () => {
         <div className="SeviceContainer">
           {TrandingList.map((item) => {
             return (
-              <ServiceCard
+              <CategoryCard
                 title={item.title}
                 address1={item.address1}
                 address2={item.address2}

@@ -16,7 +16,7 @@ import unlike from "../../../../assets/images/Essential/unlike.png";
 import chart from "../../../../assets/images/Essential/chart.png";
 import Popular from "../../../../assets/images/Essential/Popular.png";
 import TopSearch from "../../../../assets/images/Essential/TopSearch.png";
-const ServiceCard = ({
+const CategoryCard = ({
   title,
   address1,
   address2,
@@ -63,39 +63,47 @@ const ServiceCard = ({
             <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
             Tutikandi, Shimla
           </FS3>
-
+          <div className="sp_card_box">
+          <FS2 attr={{className:"BoldText"}}>
+              Respond in <span className="green_text">2 Hours</span>&nbsp;&nbsp;&nbsp;
+            </FS2>
+            <div className="d-flex pb-4">
+            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
+              <FS2 attr={{className:"BoldText"}}>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
           <div className="sp_card_box">
             <button className="btn btn-success callNow">
               {" "}
               <FS3>Call Now</FS3>
-            </button>{" "}
-            <button className="btn btn-success getQots">
-              <FS3>Get Quote Now</FS3>
-            </button>{" "}
+            </button>{" "} 
             <button className="btn btn-light">
               <FS3>
                 {" "}
                 <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
               </FS3>
             </button>{" "}
+            <button className="btn btn-light">
+              <FS3>
+                {" "}
+                <Image attrImage={{ src: wapp, alt: "message" }} /> Tap to Rate{" "}
+              </FS3>
+            </button>{" "}
+            <button className="btn btn-light">
+              <FS3>
+                {" "}
+                <Image attrImage={{ src: wapp, alt: "message" }} /> Share{" "}
+              </FS3>
+            </button>{" "}
+            <button className="btn btn-light">
+              <FS3>
+                {" "}
+                <Image attrImage={{ src: wapp, alt: "message" }} /> Edit{" "}
+              </FS3>
+            </button>{" "}
           </div>
 
-          <div className="leftside_right_bottom">
-            <FS2>
-              Respond in <span className="sc_since">2 Hours</span>&nbsp;&nbsp;&nbsp;
-            </FS2>
-            <div className="d-flex pb-4">
-            <span className="chartBox">  <Image attrImage={{ src: chart || unlike, alt: "like" }} /></span>
-              <FS2>42 People recently enquired</FS2>&nbsp;&nbsp;&nbsp;
-            </div>
- 
-            <div className="Popular">
-              {" "}
-              <Image
-                attrImage={{ src: Popular || unlike, alt: "Popular" }}
-              />{" "}
-            </div>
-          </div>
+        
         </div>
         <div className="sc_cardBoxRight">
           <div className="right_top">
@@ -130,4 +138,4 @@ const ServiceCard = ({
   );
 };
 
-export default ServiceCard;
+export default CategoryCard;
