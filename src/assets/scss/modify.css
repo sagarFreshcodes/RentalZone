@@ -7,11 +7,16 @@
   margin: auto;
   font-family: Poppins;
 }
+
 .customizer-links{
   display: none;
 }
 
 /* Header */
+
+.ContentBox{
+  width:100% !important ;padding: 1rem !important
+}
 .page-body{
   background-color: white !important;
 }
@@ -1128,7 +1133,9 @@ border: solid 1px #c9c9c9;
       }
 }
 @media screen and (max-width:500px) {
-
+  .ContentBox{
+    width:100% !important ;padding: 1rem  0rem !important
+  }
 
   .sc_cardBoxRight{  display: none !important;}
   .serviceBody{
