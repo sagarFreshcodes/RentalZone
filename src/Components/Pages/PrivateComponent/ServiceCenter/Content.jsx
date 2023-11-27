@@ -21,6 +21,7 @@ import Footer from "../../../../CommonElements/Footer/Footer";
 import ServiceCard from "./ServiceCard";
 import { BreadCum } from "../../../Common/Component/helperFunction";
 import PaginationBar from "./Pagination";
+import SearchBar from "../Home/SearchBar";
  
 
 const Content = () => {
@@ -38,7 +39,12 @@ const Content = () => {
   
 
   return (
-    <Fragment >    
+    <Fragment >   
+       <div className="searchHeadBx w-90">
+         
+         {<SearchBar />}
+       </div>
+
       <ContentBox className=""> 
         <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla"])}</FS4>
       </ContentBox> 

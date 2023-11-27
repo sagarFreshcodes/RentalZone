@@ -123,7 +123,7 @@ const Content = () => {
 
   return (
     <Fragment className="searchHeadFragment">
-      <div className="searchHeadBx">
+      <div className="searchHeadBx w-90">
         <div className="searchHeadline">
           <FS10 attr={{ className: "searchAcross" }}>Search across</FS10>
           <div className="w-80">

@@ -19,6 +19,7 @@ import {
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox"; 
 import { BreadCum } from "../../../Common/Component/helperFunction"; 
 import CategoryCard from "./CategoryCard";
+import SearchBar from "../Home/SearchBar";
  
 
 const Content = () => {
@@ -36,7 +37,13 @@ const Content = () => {
   
 
   return (
-    <Fragment >    
+    <Fragment >  
+      <div className="searchHeadBx w-90">
+         
+         {<SearchBar />}
+       </div>
+       
+      
       <ContentBox className=""> 
         <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla",`Royal Hotel`])}</FS4>
       </ContentBox> 

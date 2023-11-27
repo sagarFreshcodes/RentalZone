@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AutoComplete } from "antd";
-
+import fort from "../../assets/images/Essential/fort.png";
 const LoadCommonFields = ({ setStates, body }) => {
   // return new Promise((resolve, reject) => {
   //   axios
@@ -30,12 +30,13 @@ const CommonSelector = ({
   Icon,
   iconPose,
   boxWidth,
-  style
+  style,className
 }) => {
   const [value, setValue] = useState("");
   const [stateData, setStateData] = useState([]);
   const [serchKeyword, setSerchKeyword] = useState("");
   const [applyChange, setApplyChange] = useState(false);
+  const [optionShow, setOptionShow] = useState(false);
   const width = `${boxWidth}` || ""
   const Name = isEdit ? (applyChange ? value : placeholder || "") : value;
 
@@ -45,9 +46,16 @@ const CommonSelector = ({
     setQuotation({ ...quotation, [postFieldName]: id });
   };
 
-  const onChange = (data) => {
-    setApplyChange(true);
-    setValue(data);
+  const onHandleChange = (e) => {
+    setOptionShow(true)
+    setSerchKeyword(e.target.value)
+    // setApplyChange(true);
+    // setValue(data);
+  };
+  const onHandleClick = (data) => {
+    setOptionShow(true)
+    // setApplyChange(true);
+    // setValue(data);
   };
 
   useEffect(() => {
@@ -93,17 +101,18 @@ const CommonSelector = ({
     }
   }, [serchKeyword]);
 
+  console.log("fgdsgfasgfs",optionShow);
   return (
-    <div className= {`${style||"AutoCompleteBox"}`} style={{width:`${width}`}}>
+    <div className= {`${style||"AutoCompleteBox"} ${className||""}`} style={{width:`${width}`}}>
       {iconPose != "end" ? (
         <p className="selectorIcon">
-          <Icon />
+          {Icon?<Icon /> : ""}
         </p>
       ) : (
         ""
       )}
 
-      <AutoComplete
+      {/* <AutoComplete
         value={Name}
         options={stateData}
         style={{ width: `100%` }}
@@ -111,7 +120,18 @@ const CommonSelector = ({
         onSearch={(text) => setSerchKeyword(text)}
         onChange={onChange}
         placeholder={placeholder}
-      />
+      /> */}
+
+     <div className="searchInboxContainer" onBlur={()=>setOptionShow(false)}>
+     <input type="text" className="searchInbox" onClick={onHandleClick} onChange={onHandleChange} placeholder={placeholder}/>
+
+     <div className={`OptionBox ${optionShow?"":"d-none"}`}>
+     {["surat","dang","navasari","mumbai","delhi","punjab","kashmir"].filter((f)=>f.includes(serchKeyword)).map((e)=>{return(<>
+     
+      <div className="OptionBox_item"><img className="optionImg" src={fort} alt="" /> &nbsp;{e}</div>
+     </>)})}
+     </div>
+     </div>
 
       {iconPose == "end" ? (
         <p className="selectorIcon">

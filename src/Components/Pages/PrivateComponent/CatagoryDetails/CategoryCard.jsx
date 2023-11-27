@@ -19,16 +19,17 @@ import edit from "../../../../assets/images/Essential/edit.png";
 import shareFill from "../../../../assets/images/Essential/share-fill.png";
 import halfStart from "../../../../assets/images/Essential/halfStart.png";
 import claim from "../../../../assets/images/Essential/claim.png";
+import phone from "../../../../assets/images/Essential/phon.png";
 const CategoryCard = ({ title }) => {
   return (
     <div className="sc_cardBox">
       <div className="cd-serviceImgBox">
         <Image
-          attrImage={{ src: burncastle, alt: "vector women with leptop" }}
+          attrImage={{src: burncastle, alt: "vector women with leptop" }}
         />
       </div>
-      <div className="serviceBody">
-        <div className="sc_cardBoxLeft">
+      <div className="cat_details_Body">
+        <div className="cd_cardBoxLeft">
           <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
@@ -39,11 +40,11 @@ const CategoryCard = ({ title }) => {
               ))}
             </div>
             <div>1110 Rating</div>
-            <div className="verrify">
+            <div className="verrify un">
               {" "}
               <Image attrImage={{ src: verrify, alt: "verrify" }} />
             </div>
-            <div className="verrify">
+            <div className="verrify un">
               {" "}
               <Image attrImage={{ src: claim, alt: "verrify" }} />{" "}
               <span>Claimed</span>
@@ -60,15 +61,15 @@ const CategoryCard = ({ title }) => {
           <div className="cd-address">
             <FS3>
               {" "}
-              <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass
+              <Image attrImage={{ src: location, alt: "location" }} /> By Pass
               Road Tutikandi, Shimla &nbsp;&nbsp;
             </FS3>
 
             <FS2 attr={{ className: "BoldText d-flex" }}>
-              <span className="green_text">
+              <span className="green_text un">
                 <li>Opens</li>
               </span>{" "}
-              <span> in 1 mins</span>&nbsp;&nbsp;{" "}
+              <span className="un"> in 1 mins</span>&nbsp;&nbsp;{" "}
               <span>
                 <li>11 Years in Business</li>
               </span>
@@ -81,7 +82,7 @@ const CategoryCard = ({ title }) => {
               Respond in <span className="green_text">2 Hours</span>
               &nbsp;&nbsp;&nbsp;
             </FS2>
-            <div className="d-flex ">
+            <div className="d-flex un">
               <span className="chartBox">
                 {" "}
                 <Image attrImage={{ src: chart || unlike, alt: "like" }} />
@@ -92,10 +93,10 @@ const CategoryCard = ({ title }) => {
               &nbsp;&nbsp;&nbsp;
             </div>
           </div>
-          <div className="cd_card_box">
-            <button className="btn btn-success callNow">
+          <div className="cd_card_box cd_button_box">
+            <button className="btn btn-light callNow">
               {" "}
-              <FS3>Call Now</FS3>
+              <FS3><Image attrImage={{ style:{width:"25px !important"},src: phone, alt: "message" }} /> Call Now</FS3>
             </button>{" "}
             <button className="btn btn-light">
               <FS3>

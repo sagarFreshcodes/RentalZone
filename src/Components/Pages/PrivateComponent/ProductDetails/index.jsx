@@ -6,12 +6,12 @@ import SideBar from "./SideBar";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import CategoryMedia from "./CategoryMedia";
-
+import Productpage from "../../../../assets/images/Essential/Productpage.png";
 const ProductDetails = () => {
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-      <Container fluid={true}>
+      {/* <Container fluid={true}>
         <div className="servicePage">
           <div className="cds_content">
             <Content />
@@ -36,7 +36,11 @@ const ProductDetails = () => {
         <ContentBox className="">
           <Footer />
         </ContentBox>
-      </Container>
+      </Container> */}
+
+    <div className="w-100">
+    <img className="w-100" style={{width:"100%", clipPath:"inset(0rem 9rem 0rem 12rem);"}} src={Productpage} alt="" />
+    </div>
     </Fragment>
   );
 };

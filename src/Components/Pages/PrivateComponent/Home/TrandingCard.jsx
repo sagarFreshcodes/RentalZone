@@ -2,10 +2,11 @@ import React from "react";
 import { Card, CardBody, Col, Media } from "reactstrap";
 import { H4, P, Btn, Image, H5 } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
-
+import { useNavigate } from "react-router-dom";
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
 import { FS3, FS4, FS6, FS8, FS9 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
+import { PRODUCT_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 const TrandingCard = ({
   title,
   address1,
@@ -20,8 +21,12 @@ const TrandingCard = ({
   d3,
   d4,
 }) => {
+  const Navigate = useNavigate();
+  const handleCatClick = () => {
+    Navigate(`${PRODUCT_DETAILS_ROUTE}/Dubai`);
+  };
   return (
-    <div className="trandCardBox">
+    <div className="trandCardBox" onClick={handleCatClick}>
       <Card className="profile-box">
         <CardBody className="d-flex">
           <div className="trandImgBox">
@@ -43,12 +48,7 @@ const TrandingCard = ({
                 <span className="productRate"> <FS3  >{`Rent @`}</FS3><FS6  attr={{className:"BoldText"}}>{`$${share}`}</FS6></span>
                
 
-                {/* <div className="T-number">
-                  <div>📉 {statics}</div>
-                  <div>❤️ {like}</div>
-                  <div>👁️ {view}</div>
-                  <div>📤 {share}</div>
-                </div> */}
+               
               </div>
             </Media>
             <div>

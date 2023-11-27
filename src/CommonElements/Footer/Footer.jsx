@@ -1,5 +1,5 @@
 import React from 'react'
-import { FS3, FS4, FS8 } from '../Font/FS';
+import { FS3, FS4, FS6, FS8 } from '../Font/FS';
 
 const Footer = () => {
   return (
@@ -69,7 +69,7 @@ export default Footer
 const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
     return (
       <div className="footerLinkBox" style={{ width: boxWidth }}>
-        <FS8> {title}</FS8>
+        <FS6> {title}</FS6>
         <br />  
         <div className="linksContainer">
           {linkTitleArray?.map((i) => {
@@ -78,7 +78,7 @@ const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
                 className="linkBox"
                 style={{ width: linkBoxWidth, minWidth: "8rem" }}
               >
-                 <FS4>✔️<span className='curserPointer'> {i}</span></FS4>
+                 <FS3>✔️<span className='curserPointer'> {i}</span></FS3>
               </div>
             );
           })}
