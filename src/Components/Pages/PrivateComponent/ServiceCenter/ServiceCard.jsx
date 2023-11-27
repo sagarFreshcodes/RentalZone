@@ -15,6 +15,8 @@ import likes from "../../../../assets/images/Essential/like.png";
 import unlike from "../../../../assets/images/Essential/unlike.png";
 import chart from "../../../../assets/images/Essential/chart.png";
 import Popular from "../../../../assets/images/Essential/Popular.png";
+import callnow from "../../../../assets/images/Essential/callnow.png";
+import getquot from "../../../../assets/images/Essential/getquot.png";
 import TopSearch from "../../../../assets/images/Essential/TopSearch.png";
 import { CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 
@@ -40,12 +42,17 @@ const ServiceCard = ({
             <Image
               attrImage={{ src: burncastle, alt: "vector women with leptop" }}
             />
+
+            <div className="price_box">
+            <div className="startFrom"><FS3>Start From</FS3></div>
+            <div className="priceContent"><span className="priceNm"><FS6>₹ 2,00,000/</FS6></span>  <span className="interval"><FS3>Day</FS3></span></div>
+            </div>
           </div>
           <div className="serviceBody">
             <div className="sc_cardBoxLeft" onClick={handleCatClick}>
               <FS6 attr={{ className: "f-w-600 lh-1.2 title" }}>{title}</FS6>
-              <div className="sc-number un">
-                <div className="greenRateBox">4.6</div>
+              <div className="sc-number">
+                <div className="greenRateBox  un">4.6</div>
                 <div className="d-flex rStar">
                   {" "}
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -77,7 +84,7 @@ const ServiceCard = ({
                   {" "}
                   <FS3>Call Now</FS3>
                 </button>{" "}
-                <button className="btn btn-success getQots">
+                <button className="btn btn-success getQots un">
                   <FS3>Get Quote Now</FS3>
                 </button>{" "}
                 <button className="btn btn-light">
@@ -160,13 +167,13 @@ const ServiceCard = ({
           <button className="btn btn-light star">
             {" "} 
             <FS3>
-            <Image attrImage={{ src: start, alt: "message" }} /> Write Review{" "}   </FS3>
+            <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote Now{" "}   </FS3>
           </button>{" "}
           <button className="btn btn-light">
             {" "} 
             <FS3>
               {" "}
-              <Image attrImage={{ src: location, alt: "message" }} /> Mumbai{" "}
+              <Image attrImage={{ src: callnow, alt: "message" }} /> Call Now{" "}
             </FS3>
           </button>{" "}
           <button className="btn btn-light">
@@ -174,6 +181,8 @@ const ServiceCard = ({
               {" "}
               <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
             </FS3>
+
+          
           </button>{" "}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { FS4, FS5 } from "../../../../CommonElements/Font/FS";
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 const sidebarData = [
   {
     title: "Popular Areas",
@@ -34,6 +35,7 @@ const sidebarData = [
 ];
 const SideBar = () => {
   return (
+    <ContentBox className=""> 
     <div className="cat-container">
       <div className="s_form">
         <FS4 attr={{className:"BoldText"}}>Get the list of best <span className="green_text">"Hotels"</span></FS4>
@@ -68,6 +70,7 @@ const SideBar = () => {
       </div>
    
     </div>
+    </ContentBox>
   );
 };
 

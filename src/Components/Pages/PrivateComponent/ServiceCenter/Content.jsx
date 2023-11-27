@@ -81,7 +81,7 @@ export default Content;
  
 const TrandingList = [
   {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
+    title: "Laptop Computer Repair",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -93,7 +93,7 @@ const TrandingList = [
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
   {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
+    title: "Laptop Computer Repair",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -105,7 +105,7 @@ const TrandingList = [
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
   {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
+    title: "Laptop Computer Repair",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -117,7 +117,7 @@ const TrandingList = [
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
   {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
+    title: "Laptop Computer Repair",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -129,7 +129,7 @@ const TrandingList = [
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
   {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
+    title: "Laptop Computer Repair",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",

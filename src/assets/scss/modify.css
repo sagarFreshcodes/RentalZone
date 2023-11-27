@@ -451,6 +451,32 @@ background-color: #ffffff;
 
 .serviceImgBox{ 
   width: 20%;
+  position: relative;
+}
+.price_box{
+  width: 80%;
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  text-align: center;
+  background-color: #ffffffc7;
+  border-radius: 8px; 
+
+}
+.priceContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.interval{}
+.priceNm{
+  color: #FF7D18;
+}
+.startFrom{
+  color: #797979;
+  font-weight: 400;
+  font-weight: bolder;
 }
 .cd-serviceImgBox{ 
   width: 20%;
@@ -943,13 +969,13 @@ padding-bottom: 5px;
 
       .sc_cardBoxLeft #FS3,
     .sc_cardBoxLeft #FS6{
-      font-size: 12px !important; 
+      font-size: 14px !important; 
       overflow: hidden; 
       word-break: break-all !important;
       white-space: break-spaces !important;
   
       display: -webkit-box;
-      -webkit-line-clamp: 1; /* Set to the number of lines you want */
+      -webkit-line-clamp: 2; /* Set to the number of lines you want */
       -webkit-box-orient: vertical;
 
     }
@@ -964,11 +990,13 @@ padding-bottom: 5px;
     .sp_button_box .btn{
       width: 26%;
       height: max-content;
-      padding: 1px 9px;
-      border-radius: 3px;
+      padding: 5px 9px;
+      border-radius: 7px;
       border: solid 2px #dddddd  !important; 
     }
-
+    .sp_button_box .btn:hover{ 
+      border: solid 2px #8d8d8d8d  !important;  
+    }
     .sp_button_box .star{
       width: 37% !important; 
     }
@@ -1005,6 +1033,27 @@ padding-bottom: 5px;
     /* .card .searchHeadBx{
       display: none !important;
     } */
+
+    .price_box{
+      width: 100%;
+      top: 60%; 
+    left: 0;
+    }
+
+    .price_box #FS6{
+      font-size: 14px !important;
+    }
+
+    .price_box #FS3{
+      font-size: 10px !important;
+    }
+
+    .rStar .media {
+      width: 15px !important;
+  }
+  .left-header .SearchBar{
+    display:  none !important;
+  }
   }
 
 @media screen and (max-width:700px) {
@@ -1097,6 +1146,27 @@ border: solid 1px #c9c9c9;
   }
   .cd_button_box #FS3{
     width: 2.5rem;
+  }
+
+  .price_box{
+    width: 100%;
+    top: 60%; 
+  left: 0;
+  background-color: #fffffffc;
+  }
+.serviceImgBox{
+  background-color: #fffffffc;
+}
+  .price_box #FS6{
+    font-size: 14px !important;
+  }
+
+  .price_box #FS3{
+    font-size: 10px !important;
+  }
+
+  .sc_cardBoxLeft .rStar{
+    display: none !important;
   }
 }
 @media screen and (max-width:400px) {
