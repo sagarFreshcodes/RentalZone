@@ -17,7 +17,7 @@ import chart from "../../../../assets/images/Essential/chart.png";
 import Popular from "../../../../assets/images/Essential/Popular.png";
 import callnow from "../../../../assets/images/Essential/callnow.png";
 import getquot from "../../../../assets/images/Essential/getquot.png";
-import TopSearch from "../../../../assets/images/Essential/TopSearch.png";
+import call_w from "../../../../assets/images/Essential/call_w.png";
 import { CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 
 const ServiceCard = ({
@@ -44,8 +44,17 @@ const ServiceCard = ({
             />
 
             <div className="price_box">
-            <div className="startFrom"><FS3>Start From</FS3></div>
-            <div className="priceContent"><span className="priceNm"><FS6>₹ 2,00,000/</FS6></span>  <span className="interval"><FS3>Day</FS3></span></div>
+              <div className="startFrom">
+                <FS3>Start From</FS3>
+              </div>
+              <div className="priceContent">
+                <span className="priceNm">
+                  <FS6>₹ 2,00,000/</FS6>
+                </span>{" "}
+                <span className="interval">
+                  <FS3>Day</FS3>
+                </span>
+              </div>
             </div>
           </div>
           <div className="serviceBody">
@@ -66,14 +75,59 @@ const ServiceCard = ({
                 </div>
               </div>
               <div className="sp_cat_list">
-                {["cat1", "cat2", "cat3", "cat4"].map((c) => (
+                {[
+                  "cat1",
+                  "cat2",
+                  "cat3",
+                  "cat4",
+                  "cat1",
+                  "cat2",
+                  "cat3",
+                  "cat4",
+                ].map((c) => (
                   <div className="sp_category">
                     {" "}
                     <FS3>{c}</FS3>
                   </div>
                 ))}
+
+                <div className="sp_category2">
+                  {" "}
+                  <FS3>
+                    {[
+                      "cat1",
+                      "cat2",
+                      "cat3",
+                      "cat4",
+                      "cat1",
+                      "cat2",
+                      "cat3",
+                      "cat4",
+                      "cat1",
+                      "cat2",
+                      "cat3",
+                      "cat4",
+                    ].join(", ")}
+                  </FS3>
+                </div>
               </div>
-              <FS3 attr={{ className: "w-90" }}>
+
+              <div className="price_box_responsive">
+              <div className="startFrom">
+                <FS3>Start From</FS3>
+              </div>
+              <div className="priceContent">
+                <span className="priceNm">
+                  <FS6>₹ 2,00,000/</FS6>
+                </span>{" "}
+                <span className="interval">
+                  <FS3>Day</FS3>
+                </span>
+              </div>
+            </div>
+
+
+              <FS3 attr={{ className: "w-90 sc_hideLocation" }}>
                 {" "}
                 <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass
                 Road Tutikandi, Shimla
@@ -160,20 +214,25 @@ const ServiceCard = ({
         </div>
 
         <div
+          className="sp_button_box locationBox
+"
+        >
+          <FS3 attr={{ className: "w-90" }}>
+            {" "}
+            <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
+            Tutikandi, Shimla
+          </FS3>
+        </div>
+        <div
           className="sp_button_box
 "
         >
           {" "}
-          <button className="btn btn-light star">
-            {" "} 
-            <FS3>
-            <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote Now{" "}   </FS3>
-          </button>{" "}
-          <button className="btn btn-light">
-            {" "} 
+          <button className="btn btn-success">
+            {" "}
             <FS3>
               {" "}
-              <Image attrImage={{ src: callnow, alt: "message" }} /> Call Now{" "}
+              <Image attrImage={{ src: call_w, alt: "message" }} /> Call Now{" "}
             </FS3>
           </button>{" "}
           <button className="btn btn-light">
@@ -181,8 +240,13 @@ const ServiceCard = ({
               {" "}
               <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
             </FS3>
-
-          
+          </button>{" "}
+          <button className="btn btn-primary star">
+            {" "}
+            <FS3>
+              <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote
+              Now{" "}
+            </FS3>
           </button>{" "}
         </div>
       </div>

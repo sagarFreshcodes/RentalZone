@@ -40,7 +40,8 @@ const LocationIcon = () => {
   );
 };
 
-const Content = () => {
+const Content = ({ props }) => {
+  const { homepage_category, HomPageData,StateData  } = props;
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
@@ -120,7 +121,11 @@ const Content = () => {
     //   setSearchBarShow(true);
     // }
   });
-
+  const test = () => {
+    console.log(`StateData`, StateData);
+    console.log(`HomPageData`, HomPageData);
+    console.log(`homepage_category`, homepage_category);
+  };
   return (
     <Fragment className="searchHeadFragment">
       <div className="searchHeadBx w-90">
@@ -154,18 +159,21 @@ const Content = () => {
       <ContentBox className="">
         {/* <H4 attrH4={{ className: "mb-3" }}>Rentalzone.in</H4> */}
         <div className="catContainer">
-          {CategoryList2.map((item) => {
+          {homepage_category?.map((item) => {
             return (
               <div className="catBox" key={item.id}>
-                <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
-                  <div className="catCard">
-                    <div className="cateIconBox">
-                      <img className="cateIcon" src={item?.picture} alt="" />
-                    </div>
-
-                    <FS3>{item?.title}</FS3>
+                <div className="catCard">
+                  <div className="cateIconBox" onClick={test}>
+                    <img
+                      className="cateIcon"
+                      src={item?.category_icon}
+                      alt=""
+                    />
                   </div>
-                </Link>
+                  <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
+                    <FS3>{item?.carousel_title}</FS3>
+                  </Link>
+                </div>
               </div>
             );
           })}
@@ -210,7 +218,7 @@ const Content = () => {
       </ContentBox>
 
       <ContentBox className="">
-        <Footer />
+        <Footer   />
       </ContentBox>
     </Fragment>
   );
@@ -411,7 +419,7 @@ const TrandingList = [
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
-   
+
   {
     title: "It Rental Solution",
     d1: "Intel Core i7 10 Gen",

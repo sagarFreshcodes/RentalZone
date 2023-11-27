@@ -4,12 +4,16 @@ import "./index.scss";
 import App from "./App";
 import "./i18n";
 import reportWebVitals from "./reportWebVitals";
-import "./../node_modules/rsuite/dist/rsuite.min.css"
-import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "./../node_modules/rsuite/dist/rsuite.min.css";
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import store from "./Redux_Store/store";
+import { Provider } from "react-redux";
 const Root = () => {
   return (
     <div className="App">
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </div>
   );
 };

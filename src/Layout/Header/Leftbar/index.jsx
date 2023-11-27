@@ -6,8 +6,9 @@ import { Image } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import NotificationSlider from "./NotificationSlider";
 import SearchBar, { SearchIcon } from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
-
+import { useDispatch, useSelector } from 'react-redux'; 
 const Leftbar = () => {
+  const state = useSelector((state) => state);
   const { layoutURL, setToggleIcon, toggleSidebar } =
     useContext(CustomizerContext);
   const [sidebartoggle, setSidebartoggle] = useState(true);
@@ -66,7 +67,8 @@ const Leftbar = () => {
   return (
     <Fragment className="RightBarBox">
       <Col className="header-logo-wrapper col-auto p-0" id="out_side_click">
-        <div className="logo-wrapper">
+        <div className="logo-wrapper" onClick={()=>{console.log(`state`,state)}}>
+          {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
           <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}>
             <Image
               attrImage={{
