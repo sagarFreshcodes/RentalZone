@@ -58,8 +58,8 @@ const ServiceCard = ({
             </div>
           </div>
           <div className="serviceBody">
-            <div className="sc_cardBoxLeft" onClick={handleCatClick}>
-              <FS6 attr={{ className: "f-w-600 lh-1.2 title" }}>{title}</FS6>
+            <div className="sc_cardBoxLeft">
+              <FS6 attr={{ className: "f-w-600 lh-1.2 title cursorPointer",  onClick:handleCatClick }} >{title}</FS6>
               <div className="sc-number">
                 <div className="greenRateBox  un">4.6</div>
                 <div className="d-flex rStar">

@@ -58,11 +58,11 @@ import { Carousel } from "rsuite";
 
 const Slider = () => ( 
     <Carousel autoplay className="custom-slider">
-      <img src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg" />
-      <img src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg" />
-      <img src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg" />
-      <img src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg" />
-      <img src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg" />
+      <img src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/banner_bills.png" />
+      <img src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/banner_CCTV.png" />
+      <img src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/banner_packersmovers.png?v=1.1" /> 
+      <img src="https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/banner_hotels.png?v=1.0" />
+     
     </Carousel> 
 );
 

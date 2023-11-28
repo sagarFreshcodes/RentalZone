@@ -51,7 +51,9 @@
     align-items: center;
     flex-direction: column;
 }
-
+.rs-carousel-slider img{
+  height: 100% !important;
+}
 .catCard #FS3{  
     overflow: hidden; 
     word-break: break-all !important;
@@ -159,7 +161,7 @@ width: 90%;
 .BoldText{
   font-weight: bold !important;
 }
-
+ 
 .T-number{
   display: flex;
   gap: 0.2rem;
@@ -230,18 +232,80 @@ width: 90%;
 
 }
 .top-bar{
-  display: flex !important;
-  flex-wrap: wrap;
+  display: flex !important; 
+  justify-content: space-between;
 }
 .top-img{
-  width: 60% !important;
+  width: 50% !important;
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;  
 }
+.bannerImg {
+  position: relative;
+  
+}
+.bannerImg img{
+  width: 100%;
+  border-radius: 1rem;
 
-.top-img img{
-  width: 23%!important;
+} 
+.bannerImg:hover img{
+  position: absolute;
+  width: 102%;
+  bottom: 1px;
+  right: 1px; 
+}
+.bannerImg:hover .b_title{
+  font-size: 18px;
+}
+.banner-photo{ 
+position: absolute;
+top: 10%;
+left: 5%;
+color: white;
+}
+.Explores_Box .e_icon{
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 500; 
+}
+.e_title{
+  display: none;
+
+}
+.Explores_Box{
+  display: flex;
+  align-items: center;
+}
+.bannerImg:hover .banner-Explores{ 
+  background-color: rgb(255, 255, 255);
+
+}
+.bannerImg:hover  .e_title{
+display: inline;   
+}
+
+.bannerImg:hover .e_icon{
+  display: contents; 
+  }
+
+.banner-Explores{ 
+  position: absolute;
+  bottom: 10%; 
+  color: rgb(8, 3, 3);    
+  background-color: white;
+  }
+
+.banner-photo .b_title{
+  font-weight: 900;
+}
+.banner-photo .b_desc{
+  
+}
+.top-bar .bannerImg{
+  border-radius: 1rem;
+  width: 11.5%!important;
 }
 .top-img img,
 .top-courosel div,

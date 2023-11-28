@@ -47,8 +47,7 @@ const Home = () => {
           <Col
             xl="12"
             md="12"
-            className="box-col-9"
-       
+            className="box-col-9" 
           >
             <div className="file-content">
               <Card>

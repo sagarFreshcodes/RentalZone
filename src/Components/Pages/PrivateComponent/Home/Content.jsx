@@ -41,7 +41,7 @@ const LocationIcon = () => {
 };
 
 const Content = ({ props }) => {
-  const { homepage_category, HomPageData,StateData  } = props;
+  const { homepage_category, HomPageData, StateData } = props;
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
@@ -121,6 +121,34 @@ const Content = ({ props }) => {
     //   setSearchBarShow(true);
     // }
   });
+
+  const bannerList = [
+    {
+      link:
+        "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
+      title:"B2B",
+      description: "Quik Quotes",
+      backColor:"#0f7dd8"
+    },
+    {
+      link:
+        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_repair_image.png?v=1.0?w=1920&q=75",
+      title:"B2B",
+      description: "Quik Quotes", backColor:"#2654a1"
+    },
+    {
+      link:
+        "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/realestate.png?v=1.0?w=1920&q=75",
+      title:"B2B",
+      description: "Quik Quotes", backColor:"#6769d0"
+    },
+    {
+      link:
+        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_doctor_image.png?v=1.0?w=1920&q=75",
+      title:"B2B",
+      description: "Quik Quotes", backColor:"#00ac7d"
+    },
+  ];
   const test = () => {
     console.log(`StateData`, StateData);
     console.log(`HomPageData`, HomPageData);
@@ -144,16 +172,20 @@ const Content = ({ props }) => {
           <div className="top-courosel">
             <Slider />
           </div>
-          <div className="top-img">
-            {[1, 2, 3, 4].map((i) => {
-              return (
-                <img
-                  src="https://img2.exportersindia.com/product_images/bc-full/2020/10/7958556/laptop-rental-service-1604068225-5622089.jpg"
-                  alt=""
-                />
-              );
-            })}
-          </div>
+          {bannerList?.map((i) => {
+            return (
+              <div className="bannerImg" style={{backgroundColor:i?.backColor}}>
+                <div className="banner-photo">
+                  <div className="b_title">{i?.title}</div>
+                  <div className="b_desc">{i?.description}</div>
+                </div>
+                <img src={i?.link} alt="" />
+                <div className="banner-Explores">
+                  <div className="Explores_Box" style={{color:i?.backColor}}><span  className="e_title" >{`Explore`}</span><span  className="e_icon">{`>`}</span></div> 
+                </div>
+              </div>
+            );
+          })}
         </div>
       </ContentBox>
       <ContentBox className="">
@@ -163,7 +195,7 @@ const Content = ({ props }) => {
             return (
               <div className="catBox" key={item.id}>
                 <div className="catCard">
-                  <div className="cateIconBox" onClick={test}>
+                  <div className="cateIconBox" onClick={test} >
                     <img
                       className="cateIcon"
                       src={item?.category_icon}
@@ -218,7 +250,7 @@ const Content = ({ props }) => {
       </ContentBox>
 
       <ContentBox className="">
-        <Footer   />
+        <Footer />
       </ContentBox>
     </Fragment>
   );
