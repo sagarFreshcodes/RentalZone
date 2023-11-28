@@ -23,6 +23,11 @@ import SearchBar from "./SearchBar";
 import { SERVICE_CENTER_ROUTE } from "../../../../Route/RouthPath";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import NotificationSlider from "../../../../Layout/Header/Leftbar/NotificationSlider";
+
+import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
+import lptopImg3 from "../../../../assets/images/Essential/lptopImg3.png";
+import lptopImg2 from "../../../../assets/images/Essential/lptopImg2.png";
+import lptopImg4 from "../../../../assets/images/Essential/lptopImg4.png";
 const SearchIcon = () => {
   return (
     <p className="SearchIconBox">
@@ -124,29 +129,28 @@ const Content = ({ props }) => {
 
   const bannerList = [
     {
-      link:
-        "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
-      title:"B2B",
+      link: "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
+      title: "B2B",
       description: "Quik Quotes",
-      backColor:"#0f7dd8"
+      backColor: "#0f7dd8",
     },
     {
-      link:
-        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_repair_image.png?v=1.0?w=1920&q=75",
-      title:"B2B",
-      description: "Quik Quotes", backColor:"#2654a1"
+      link: "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_repair_image.png?v=1.0?w=1920&q=75",
+      title: "B2B",
+      description: "Quik Quotes",
+      backColor: "#2654a1",
     },
     {
-      link:
-        "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/realestate.png?v=1.0?w=1920&q=75",
-      title:"B2B",
-      description: "Quik Quotes", backColor:"#6769d0"
+      link: "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/realestate.png?v=1.0?w=1920&q=75",
+      title: "B2B",
+      description: "Quik Quotes",
+      backColor: "#6769d0",
     },
     {
-      link:
-        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_doctor_image.png?v=1.0?w=1920&q=75",
-      title:"B2B",
-      description: "Quik Quotes", backColor:"#00ac7d"
+      link: "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_doctor_image.png?v=1.0?w=1920&q=75",
+      title: "B2B",
+      description: "Quik Quotes",
+      backColor: "#00ac7d",
     },
   ];
   const test = () => {
@@ -174,14 +178,20 @@ const Content = ({ props }) => {
           </div>
           {bannerList?.map((i) => {
             return (
-              <div className="bannerImg" style={{backgroundColor:i?.backColor}}>
+              <div
+                className="bannerImg"
+                style={{ backgroundColor: i?.backColor }}
+              >
                 <div className="banner-photo">
                   <div className="b_title">{i?.title}</div>
                   <div className="b_desc">{i?.description}</div>
                 </div>
                 <img src={i?.link} alt="" />
                 <div className="banner-Explores">
-                  <div className="Explores_Box" style={{color:i?.backColor}}><span  className="e_title" >{`Explore`}</span><span  className="e_icon">{`>`}</span></div> 
+                  <div className="Explores_Box" style={{ color: i?.backColor }}>
+                    <span className="e_title">{`Explore`}</span>
+                    <span className="e_icon">{`>`}</span>
+                  </div>
                 </div>
               </div>
             );
@@ -194,18 +204,19 @@ const Content = ({ props }) => {
           {homepage_category?.map((item) => {
             return (
               <div className="catBox" key={item.id}>
+                  <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
                 <div className="catCard">
-                  <div className="cateIconBox" onClick={test} >
+                  <div className="cateIconBox shadowEffect1" onClick={test}>
                     <img
                       className="cateIcon"
                       src={item?.category_icon}
                       alt=""
                     />
                   </div>
-                  <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
-                    <FS3>{item?.carousel_title}</FS3>
-                  </Link>
-                </div>
+                
+                    <FS3>{item?.category_name}</FS3>
+                 
+                </div> </Link>
               </div>
             );
           })}
@@ -243,6 +254,7 @@ const Content = ({ props }) => {
                 d2={item.d2}
                 d3={item.d3}
                 d4={item.d4}
+                specification={item.specification}
               />
             );
           })}
@@ -404,7 +416,7 @@ const CategoryList2 = [
 ];
 const TrandingList = [
   {
-    title: "It Rental Solution",
+    title: "ASUS ROG Zephyrus M15 Gaming Laptop",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -412,15 +424,15 @@ const TrandingList = [
     view: "5522",
     share: "233",
     star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
+    picture: lptopImg,
+    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
     d1: "Intel Core i7 10 Gen",
     d2: " 16GB/1TB SSD",
     d3: " RTX 2060 6GB Graphics",
     d4: "15.6 FHD 240Hz Display",
   },
   {
-    title: "It Rental Solution",
+    title: "ASUS ROG Zephyrus M15 Gaming Laptop",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
     static: "89",
@@ -432,13 +444,14 @@ const TrandingList = [
     d2: " 16GB/1TB SSD",
     d3: " RTX 2060 6GB Graphics",
     d4: "15.6 FHD 240Hz Display",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
+    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
+    picture: lptopImg3,
   },
   {
-    title: "It Rental Solution",
+    title: "ASUS ROG Zephyrus M15 Gaming Laptop",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
+    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
     static: "89",
     like: "98",
     view: "5522",
@@ -448,24 +461,23 @@ const TrandingList = [
     d3: " RTX 2060 6GB Graphics",
     d4: "15.6 FHD 240Hz Display",
     star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
+    picture: lptopImg2,
   },
 
   {
-    title: "It Rental Solution",
+    title: "ASUS ROG Zephyrus M15 Gaming Laptop",
     d1: "Intel Core i7 10 Gen",
     d2: " 16GB/1TB SSD",
     d3: " RTX 2060 6GB Graphics",
     d4: "15.6 FHD 240Hz Display",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
+    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
     static: "89",
     like: "98",
     view: "5522",
     share: "233",
     star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
+    picture: lptopImg4,
   },
 ];

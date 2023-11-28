@@ -1,0 +1,28 @@
+
+/* shadowEfect */
+.shadowEffect{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+   }
+  
+.shadowEffect:hover{
+    position: relative;
+    right: 1px;
+    box-shadow: rgba(100, 98, 98, 0.56) 5px 5px 15px 5px !important;
+   }
+
+
+   /* shadowEfect */
+.shadowEffect1{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+   }
+  
+.shadowEffect1:hover{
+    box-shadow: rgba(100, 98, 98, 0.56) 5px 5px 15px 5px !important;
+   }
+
+
+
+   /*button shadowEfect */
+.buttonShadow{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+   }

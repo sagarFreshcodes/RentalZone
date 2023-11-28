@@ -36,7 +36,7 @@ const ServiceCard = ({
   };
   return (
     <>
-      <div className="sc_cardBoxPerent">
+      <div className="sc_cardBoxPerent shadowEffect">
         <div className="sc_cardBox">
           <div className="serviceImgBox">
             <Image
@@ -134,14 +134,14 @@ const ServiceCard = ({
               </FS3>
 
               <div className="sp_card_box">
-                <button className="btn btn-success callNow">
+                <button className="btn btn-success callNow bottonHover">
                   {" "}
                   <FS3>Call Now</FS3>
                 </button>{" "}
-                <button className="btn btn-success getQots un">
+                <button className="btn btn-success getQots un bottonHover">
                   <FS3>Get Quote Now</FS3>
                 </button>{" "}
-                <button className="btn btn-light">
+                <button className="btn btn-light bottonHover">
                   <FS3>
                     {" "}
                     <Image
@@ -228,7 +228,7 @@ const ServiceCard = ({
 "
         >
           {" "}
-          <button className="btn btn-success">
+          <button className="btn btn-success ">
             {" "}
             <FS3>
               {" "}

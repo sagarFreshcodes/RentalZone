@@ -40,7 +40,7 @@ const Content = () => {
     <Fragment >    
        <div className="searchHeadBx">
          
-        {<SearchBar />}
+       {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
       <ContentBox className=""> 
         <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla",`Royal Hotel`])}</FS4>

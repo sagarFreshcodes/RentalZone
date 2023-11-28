@@ -94,24 +94,24 @@ const CategoryCard = ({ title }) => {
             </div>
           </div>
           <div className="cd_card_box cd_button_box">
-            <button className="btn btn-light callNow">
+            <button className="btn btn-light callNow buttonShadow">
               {" "}
               <FS3><Image attrImage={{ style:{width:"25px !important"},src: phone, alt: "message" }} /> Call Now</FS3>
             </button>{" "}
-            <button className="btn btn-light">
+            <button className="btn btn-light buttonShadow">
               <FS3>
                 {" "}
                 <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
               </FS3>
             </button>{" "}
-            <button className="btn btn-light">
+            <button className="btn btn-light buttonShadow">
               <FS3>
                 {" "}
                 <Image attrImage={{ src: halfStart, alt: "message" }} /> Tap to
                 Rate{" "}
               </FS3>
             </button>{" "}
-            <button className="btn btn-light">
+            <button className="btn btn-light buttonShadow">
               <FS3>
                 {" "}
                 <Image
@@ -119,7 +119,7 @@ const CategoryCard = ({ title }) => {
                 /> Share{" "}
               </FS3>
             </button>{" "}
-            <button className="btn btn-light">
+            <button className="btn btn-light buttonShadow">
               <FS3>
                 {" "}
                 <Image attrImage={{ src: edit, alt: "message" }} /> Edit{" "}

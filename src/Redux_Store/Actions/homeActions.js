@@ -12,7 +12,7 @@ export const HomePageApi = ({Location}) => {
       // Perform asynchronous operation (e.g., API call)
       // const response = await axios.get(`${API_ROOT_URL}``${HOME_API}`);
       const response = await axios.get(
-        `http://laptops.rent/api/get-homepage?current_location=${Location}`
+        `https://mail.laptops.rent/api/get-homepage?current_location=${Location}`
       );
       // Dispatch success action with received data
       dispatch({

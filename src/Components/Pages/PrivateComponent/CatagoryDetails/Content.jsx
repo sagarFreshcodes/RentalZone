@@ -40,7 +40,7 @@ const Content = () => {
     <Fragment >  
       <div className="searchHeadBx w-90">
          
-         {<SearchBar />}
+      {<SearchBar className="hideSearchbarOnDesktop" />}
        </div>
        
       

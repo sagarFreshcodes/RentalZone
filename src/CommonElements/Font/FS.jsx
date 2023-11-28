@@ -47,6 +47,15 @@ const FS6 = (props) => {
     </p>
   );
 };
+
+const FSVW6 = (props) => {
+  return (
+    <p {...props.attr}  id="FSVW6" >
+      {props.children}
+    </p>
+  );
+};
+
 const FS7 = (props) => {
   return (
     <p {...props.attr} id="FS7" >

@@ -7,7 +7,9 @@ import CustomizerContext from "../../../_helper/Customizer";
 import NotificationSlider from "./NotificationSlider";
 import SearchBar, { SearchIcon } from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
 import { useDispatch, useSelector } from 'react-redux'; 
+import { useLocation } from 'react-router-dom';
 const Leftbar = () => {
+  let location = useLocation();
   const state = useSelector((state) => state);
   const { layoutURL, setToggleIcon, toggleSidebar } =
     useContext(CustomizerContext);
@@ -22,9 +24,12 @@ const Leftbar = () => {
       function updateSize() {
         setSize([window.innerWidth, window.innerHeight]);
         if (window.innerWidth <= 991) {
+         
           setToggleIcon(true);
         } else {
+         
           setToggleIcon(false);
+
         }
       }
       window.addEventListener("resize", updateSize);
@@ -60,6 +65,7 @@ const Leftbar = () => {
     // Use scrollY for whatever measurement or action you need
     if (scrollY <= 175) {
       setSearchBarShow(false);
+
     } else {
       setSearchBarShow(true);
     }
@@ -105,7 +111,7 @@ const Leftbar = () => {
         <NotificationSlider />
       </Col> */}
 
-      {searchBarShow ? (
+      {searchBarShow || !location.pathname.includes(`home`)? (
         <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
           <SearchBar /> 
         </Col>

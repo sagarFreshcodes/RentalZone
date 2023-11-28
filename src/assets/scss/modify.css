@@ -16,7 +16,7 @@
 /* Header */
 
 .ContentBox{
-  width:100% !important ;padding: 1rem !important
+  width:100% !important ;padding: 0.5rem !important
 }
 .page-body{
   background-color: white !important;
@@ -26,7 +26,7 @@
   position: sticky !important;
 }
 .cateIcon{
-  width: 100% !important;
+  width: 50px !important;
   aspect-ratio: 1;
 }
 .cateIconBox{
@@ -67,7 +67,7 @@
 .catContainer{
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-  gap: 3rem;
+  gap: 4vw;
 }
 .catBox{
   width: 100%;
@@ -116,7 +116,7 @@ width: 90%;
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr  1fr 1fr;
   align-items: center;
-  border-radius: 1rem;
+
   gap: 1rem;
 } 
 .SeviceContainer{
@@ -137,6 +137,9 @@ width: 90%;
 }
 .TImgBox{
 
+}
+.hideSearchbarOnDesktop{
+  display: none !important;
 }
 .TCard{
   display: flex;
@@ -172,7 +175,7 @@ width: 90%;
    font-size: 13px;
 }
 
-.curserPointer{
+.cursorPointer{
   cursor: pointer;
 } 
 
@@ -209,16 +212,23 @@ width: 90%;
     padding: 2rem;
     border-radius: 15px;
 }
- .trandCardBox .card-body{
+ .trandCardBox{
+  display: flex;
   flex-direction: column;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #F8F8F8 !important;
+
  }
-.trandImgBox{ 
-  width: 100%;
-}
+
+
+
+ 
 
 .trandImgBox img{ 
-  width: 50%;
+  width: 100%;
   min-width: 15rem !important;
+  border-radius: 1rem;
 }
 
 .trandBody{
@@ -484,6 +494,11 @@ width: fit-content !important;
   margin: 0px !important;
   font-size: 20px !important;
 }
+
+#FS6{  padding: 0px !important;
+  margin: 0px !important;
+  font-size: 20px !important;
+}
 #FS7{  padding: 0px !important;
   margin: 0px !important;
   font-size: 22px !important;
@@ -528,13 +543,13 @@ background-color: #ffffff;
 /*  Servise */
 
 .serviceImgBox{ 
-  width: 20%;
+  width: 15%;
   position: relative;
 }
 .price_box{
   width: 80%;
   position: absolute;
-  top: 8%;
+  top: 65%;
   left: 10%;
   text-align: center;
   background-color: #ffffffc7;
@@ -542,6 +557,23 @@ background-color: #ffffff;
 
 }
 
+.price_box #FS6{
+font-size: 1vw !important;
+
+}
+.price_box #FS3{
+  font-size: 0.8vw !important;
+  
+  }
+
+.tc-price_box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+
+}
 .price_box_responsive{
 
   width: 80%; 
@@ -578,7 +610,7 @@ background-color: #ffffff;
   padding: 10px 10px 50px 10px;
 }
 .serviceBody{
-  width: 80%;
+  width: 85%;
   display: flex;
   position: relative;
   padding-left: 1rem;
@@ -708,9 +740,7 @@ padding-bottom: 5px;
   width: 100%;
 
 }
-.sc_cardBoxPerent{
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+ 
 .sc_cardBoxLeft{
   width: 80%;
   display: flex;
@@ -765,10 +795,16 @@ padding-bottom: 5px;
  display: none !important;
 }
 .sp_card_box .btn{
+
+  margin: 0 1rem 0 0;
   padding: 1px 9px;
   border-radius: 3px;
-}
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 
+}
+.bottonHover:hover{
+  filter: brightness(1.1);
+}
 .sp_card_box .callNow{
  background-color: #058A07 !important;
 }
@@ -953,18 +989,31 @@ padding-bottom: 5px;
   }
  }
  
-@media screen and (max-width:1430px) {
+@media screen and (max-width:1500px) {
   /* .nav-right{
   margin-top: 2rem !important;
   }  */
+  .catContainer{ 
+    gap: 3vw;
+  }
 }
 
  
 @media screen and (max-width:1200px) {
-
+  .price_box {
+    background-color: #fff9f9;
+  }
+  .price_box #FS6{
+    font-size: 20px !important;
+    
+    }
+    .price_box #FS3{
+      font-size: 14px !important;
+      
+      }
 
   .catContainer{ 
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;   
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;   
   } 
   .top-courosel{
     width: 100% !important;
@@ -981,9 +1030,13 @@ padding-bottom: 5px;
   .top-bar{
     display: none !important;
   }
+  .cateIcon{
+    width: 100% !important;
+  }
   .catBox {
     width: 100%; 
   }
+ 
   .searchHeadline{
     display: none !important;
   }
@@ -1027,9 +1080,12 @@ padding-bottom: 5px;
      
   }
   @media screen and (max-width:800px) { 
+    .hideSearchbarOnDesktop{
+      display: flex !important;
+    }
     .catContainer{ 
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;   
-      gap:1rem
+      gap:4vw
     } 
     .cat_details_Body .un,
     .serviceBody .un{
@@ -1173,12 +1229,14 @@ padding-bottom: 5px;
     left: 0;
     }
 
-    .price_box #FS6{
-      font-size: 14px !important;
+    .price_box_responsive #FS6{
+      font-size: 10px !important;
+      font-weight: 600;
     }
 
-    .price_box #FS3{
-      font-size: 10px !important;
+    .price_box_responsive #FS3{
+      font-size: 10px !important;      font-weight: 600;
+
     }
 
     .price_box{

@@ -56,7 +56,7 @@ const Footer = () => {
         />
       </div>
       <br />
-      <br /> 
+      <br />
 
       {city_location.length > 2 ? (
         <div>
@@ -70,7 +70,7 @@ const Footer = () => {
       ) : (
         ""
       )}
-<br /> 
+      <br />
       {area_location.length > 2 ? (
         <div>
           <FooterLinkBox2
@@ -102,7 +102,7 @@ const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
               style={{ width: linkBoxWidth, minWidth: "8rem" }}
             >
               <FS3>
-                ✔️<span className="curserPointer"> {i}</span>
+                ✔️<span className="cursorPointer"> {i}</span>
               </FS3>
             </div>
           );
@@ -125,7 +125,7 @@ const FooterLinkBox2 = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
               style={{ width: linkBoxWidth, minWidth: "8rem" }}
             >
               <FS3>
-                ✔️<span className="curserPointer"> {i?.area_name}</span>
+                ✔️<span className="cursorPointer"> {i?.area_name}</span>
               </FS3>
             </div>
           );
