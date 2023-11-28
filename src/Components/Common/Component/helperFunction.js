@@ -23,6 +23,19 @@ export const GET_API = (endPoint) => {
   });
 };
 
+export const GetApi = (endPoint) => {
+  return new Promise((Response, Reject) => {
+    axios
+    .get(endPoint)
+      // .get(`${API_ROOT_URL}${endPoint}`)
+      .then((res) => {
+        Response(res);
+      })
+      .catch((error) => {
+        Reject(error);
+      });
+  });
+};
 
 export const POST_API = ({ endPoint, body }) => {
   return new Promise((Response, Reject) => {

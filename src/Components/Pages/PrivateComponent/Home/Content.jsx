@@ -212,9 +212,8 @@ const Content = ({ props }) => {
                       src={item?.category_icon}
                       alt=""
                     />
-                  </div>
-                
-                    <FS3>{item?.category_name}</FS3>
+                  </div> 
+                    <FS4>{item?.category_name}</FS4>
                  
                 </div> </Link>
               </div>

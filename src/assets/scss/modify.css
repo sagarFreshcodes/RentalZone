@@ -67,7 +67,7 @@
 .catContainer{
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-  gap: 4vw;
+  gap: 3vw;
 }
 .catBox{
   width: 100%;
@@ -1095,7 +1095,9 @@ padding: 1rem 0;
     gap: 3vw;
   }
 }
-
+.cateIcon{
+  width: 90% !important;
+}
  
 @media screen and (max-width:1200px) {
   .price_box {
@@ -1129,7 +1131,7 @@ padding: 1rem 0;
     display: none !important;
   }
   .cateIcon{
-    width: 100% !important;
+    width: 80% !important;
   }
   .catBox {
     width: 100%; 

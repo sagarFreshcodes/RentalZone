@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import CommonSelector from "../../../CommonSelector/CommonSelector";
+import React, { useState } from "react"; 
 import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import { AiOutlineDown, AiFillBell } from "react-icons/ai";
 import { CardHeader, Form, Input, Media } from "reactstrap";
 import { useLocation } from 'react-router-dom';
 import SearchModal from "./SearchModel";
+import CommonSelector from "../../../CommonSelector/LocationAutoSearch";
+import LocationAutoSearch from "../../../CommonSelector/LocationAutoSearch";
 export const SearchIcon = () => {
   return (
     <p className="SearchIconBox">
