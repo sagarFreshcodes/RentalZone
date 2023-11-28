@@ -976,6 +976,104 @@ padding-bottom: 5px;
 .callNow img{
   width: 25px !important;
 }
+
+.gq-formKey{
+  display: flex;
+  gap: 6rem;
+}
+.quoteInputBox{
+  border: solid 1px black;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.gq-formKey .title{
+  width: 30%;
+}
+
+.gq-formKey .rightInput{
+  width: 70%;
+}
+
+.gq-fieldBox{
+  display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.rightInput select{
+  word-wrap: normal;
+  width: 100%;
+  height: 2.2rem;
+}
+
+.rightInput select:focus{
+  outline-color:#0c1b1b
+}
+
+.rightInput input{
+width: 100%;
+}
+.gqcatChecklist{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: solid 1px;
+  max-height: 6rem;
+  padding: 10px;
+  overflow-y: auto;
+}
+ 
+.gqcheckCtg{}
+.gqcheckInput{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 90%;
+}
+.gq-model{
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  z-index: 10;
+  position: relative !important; 
+}
+
+.gq-model-content {
+position: relative !important;
+}
+
+.gq-model-content img{ 
+  width: 100%; 
+  }
+
+ .chatModelContent .chat-history{
+  height: 20rem;
+  min-height: 20rem;
+  overflow-y: auto;
+ }
+
+ .chatModelContent .pull-right,
+ .chatModelContent .my-message{
+width: 70%;
+padding: 1rem 0;
+ }
+
+ .chatModelContent .pull-right{
+  background-color: #9192f2;
+  border-radius: 1rem 0 1rem 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+ }
+ .chatModelContent .my-message{    background-color: #9191a6;
+  border-radius: 0 1rem 1rem 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;}
+
+  .chatModelContent .smiley-box{
+    width: 2.5rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
     width: 30% !important

@@ -26,3 +26,16 @@
 .buttonShadow{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
    }
+
+
+/* inputbox */
+
+.CMN_InputBox{
+    border: solid 1px black;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+.CMN_InputBox input{
+    border: none !important;
+  }

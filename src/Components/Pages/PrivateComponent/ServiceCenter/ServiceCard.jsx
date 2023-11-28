@@ -29,7 +29,9 @@ const ServiceCard = ({
   share,
   picture,
   statics,
+  AllProps,
 }) => {
+  const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
   const handleCatClick = () => {
     Navigate(`${CATEGORY_DETAILS_ROUTE}/Dubai`);
@@ -59,7 +61,14 @@ const ServiceCard = ({
           </div>
           <div className="serviceBody">
             <div className="sc_cardBoxLeft">
-              <FS6 attr={{ className: "f-w-600 lh-1.2 title cursorPointer",  onClick:handleCatClick }} >{title}</FS6>
+              <FS6
+                attr={{
+                  className: "f-w-600 lh-1.2 title cursorPointer",
+                  onClick: handleCatClick,
+                }}
+              >
+                {title}
+              </FS6>
               <div className="sc-number">
                 <div className="greenRateBox  un">4.6</div>
                 <div className="d-flex rStar">
@@ -113,19 +122,18 @@ const ServiceCard = ({
               </div>
 
               <div className="price_box_responsive">
-              <div className="startFrom">
-                <FS3>Start From</FS3>
+                <div className="startFrom">
+                  <FS3>Start From</FS3>
+                </div>
+                <div className="priceContent">
+                  <span className="priceNm">
+                    <FS6>₹ 2,00,000/</FS6>
+                  </span>{" "}
+                  <span className="interval">
+                    <FS3>Day</FS3>
+                  </span>
+                </div>
               </div>
-              <div className="priceContent">
-                <span className="priceNm">
-                  <FS6>₹ 2,00,000/</FS6>
-                </span>{" "}
-                <span className="interval">
-                  <FS3>Day</FS3>
-                </span>
-              </div>
-            </div>
-
 
               <FS3 attr={{ className: "w-90 sc_hideLocation" }}>
                 {" "}
@@ -138,10 +146,13 @@ const ServiceCard = ({
                   {" "}
                   <FS3>Call Now</FS3>
                 </button>{" "}
-                <button className="btn btn-success getQots un bottonHover">
+                <button
+                  className="btn btn-success getQots un bottonHover"
+                  onClick={toggle}
+                >
                   <FS3>Get Quote Now</FS3>
                 </button>{" "}
-                <button className="btn btn-light bottonHover">
+                <button className="btn btn-light bottonHover" onClick={toggle2}>
                   <FS3>
                     {" "}
                     <Image
@@ -235,13 +246,13 @@ const ServiceCard = ({
               <Image attrImage={{ src: call_w, alt: "message" }} /> Call Now{" "}
             </FS3>
           </button>{" "}
-          <button className="btn btn-light">
+          <button className="btn btn-light" onClick={toggle2}>
             <FS3>
               {" "}
               <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
             </FS3>
           </button>{" "}
-          <button className="btn btn-primary star">
+          <button className="btn btn-primary star" onClick={toggle}>
             {" "}
             <FS3>
               <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote
