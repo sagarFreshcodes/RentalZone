@@ -41,8 +41,7 @@ const SearchBar = ({ fun,className }) => {
     locationSearch ? setLocationSearch(false) : setLocationSearch(true);
   };
   return (
-    <>
- 
+    <> 
       <div className={`SearchBar ${className}`}>
         <LocationAutoSearch
           placeholder={currentLocation}

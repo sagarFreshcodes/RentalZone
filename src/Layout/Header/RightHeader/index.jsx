@@ -24,12 +24,7 @@ const RightHeader = (props) => {
  }
   return (
     <Fragment>
-      <Col
-        xxl="5"
-        xl="2"
-        md="2"
-        sm="2"
-        className="nav-right pull-right right-header col-2 p-0 ms-auto"
+      <Col  className="nav-right pull-right right-header col-2 p-0 ms-auto"
 
        
       >

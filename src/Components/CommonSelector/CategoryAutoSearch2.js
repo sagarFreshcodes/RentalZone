@@ -4,48 +4,77 @@ import fort from "../../assets/images/Essential/fort.png";
 import { GetApi } from "../Common/Component/helperFunction";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  CategoryActions,
-  GeneralActions,
-  LocationActions,
-  SetCategory,
-  SetLocation,
-} from "../../Redux_Store/Actions/generalActions"; 
+import { SetLocation } from "../../Redux_Store/Actions/generalActions";
+import { ActionType } from "../../Redux_Store/ReduxConstant";
+const LoadCommonFields = ({ setStates, body }) => {};
 
-const CategoryAutoSearch = ({ 
-  placeholder, 
+const CategoryAutoSearch2 = ({
+  isEdit,
+  setSelectedTax,
+  editQuotationData,
+  quotation,
+  placeholder,
+  field,
+  validation,
+  setQuotation,
+  postFieldName,
+  optionsArray,
   Icon,
   iconPose,
   boxWidth,
   style,
-  className, 
+  className, setState,currentLocation
 }) => {
   const dispatch = useDispatch();
-  const GeneralState = useSelector((state) => state.GeneralState); 
-  const { categoryList,category,isCategoryLoading } = GeneralState;   
-  const CategoryName = `${category?.name}`
-  const [serchKeyword, setSerchKeyword] = useState(CategoryName);  
-  const [optionShow, setOptionShow] = useState(false); 
-  const [mouseOn, setMouseOn] = useState(false);  
-  const width = `${boxWidth}` || "";   
+  const LocatioInState = useSelector((state) => state ); 
+  const [value, setValue] = useState("");
+
+  const [stateData, setStateData] = useState([]);
+  const [serchKeyword, setSerchKeyword] = useState("");
+  const [applyChange, setApplyChange] = useState(false);
+  const [optionShow, setOptionShow] = useState(false);
+  const [blur, setBlur] = useState(false);
+  const [leave, setLeave] = useState(false);
+  const [mouseOn, setMouseOn] = useState(false);
+  const [optionList, setOptionList] = useState([]);
+  const [loader, setLoader] = useState(false);
+
+  const width = `${boxWidth}` || "";
+  const Name = isEdit ? (applyChange ? value : placeholder || "") : value;
+
+  const onSelect = (data) => {
+    const id = stateData.filter((v) => v.value == data)[0].id;
+    console.log(data, id);
+    setQuotation({ ...quotation, [postFieldName]: id });
+  };
+
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
-  const onInputClick = (e) => {  
-    console.log(serchKeyword);
+  const onInputClick = (e) => {
+    console.log(`LocatioInState`,LocatioInState);
     setOptionShow(true);
-  }; 
+  };
+
   const onHandleClick = (e) => {
-    setSerchKeyword(e.name);
-    setOptionShow(false);  
-    dispatch(SetCategory({ categoryData: e }));
+    setOptionShow(false);
+    console.log("redux log",e);
+    setState(e.name) 
+   
   };
 
   useEffect(() => {
-  
-    if (optionShow) {
-      dispatch(CategoryActions({ serchKeyword: serchKeyword , location:CategoryName}));
-    } 
+    setLoader(true);
+    GetApi(`https://laptops.rent/api/get-search-data?keyword=${serchKeyword}&current_location=${currentLocation}`)
+      .then((response) => {
+        setOptionList(response.data.data);
+        setLoader(false);
+        console.log("2512", response.data.data);
+      })
+      .catch((error) => {
+        setLoader(false);
+        console.log(`2512`, error);
+      });
   }, [serchKeyword]);
 
   return (
@@ -69,11 +98,9 @@ const CategoryAutoSearch = ({
           onClick={onInputClick}
           onChange={onHandleChange}
           placeholder={placeholder}
-          value={serchKeyword}
+          value={placeholder}
         />
-        <div
-          className={`CategorySearchLoader ${isCategoryLoading ? "" : "d-none"}`}
-        >
+        <div className={`CategorySearchLoader ${loader ? "" : "d-none"}`}>
           <ApiLoader />
         </div>
 
@@ -82,7 +109,7 @@ const CategoryAutoSearch = ({
           onPointerLeave={() => setMouseOn(false)}
           onMouseMove={() => setMouseOn(true)}
         >
-          {categoryList?.map((e) => {
+          {optionList.map((e) => {
             return (
               <>
                 <div
@@ -112,7 +139,7 @@ const CategoryAutoSearch = ({
   );
 };
 
-export default CategoryAutoSearch;
+export default CategoryAutoSearch2;
 
 const statusData = [
   {

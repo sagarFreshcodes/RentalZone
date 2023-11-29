@@ -71,9 +71,8 @@ const Leftbar = () => {
     }
   });
   return (
-    <Fragment className="RightBarBox">
-      <Col className="header-logo-wrapper col-auto p-0" id="out_side_click">
-        <div className="logo-wrapper" onClick={()=>{console.log(`state`,state)}}>
+    <Fragment className="RightBarBox"> 
+     <div className="logo-wrapper" onClick={()=>{console.log(`state`,state)}}>
           {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
           <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}>
             <Image
@@ -92,7 +91,7 @@ const Leftbar = () => {
             />
           </Link>
         </div>
-        <div
+        {/* <div
           className="toggle-sidebar"
           onClick={() => responsive_openCloseSidebar(sidebartoggle)}
           style={
@@ -105,16 +104,13 @@ const Leftbar = () => {
             className="status_toggle middle sidebar-toggle"
             id="sidebar-toggle"
           />
-        </div>
-      </Col>
-      {/* <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
-        <NotificationSlider />
-      </Col> */}
+        </div> */} 
+ 
 
       {searchBarShow || !location.pathname.includes(`home`)? (
-        <Col xxl="5" xl="6" lg="5" md="4" sm="3" className="left-header p-0">
+        <div   className="leftSearchbar">
           <SearchBar /> 
-        </Col>
+        </div>
       ) : (
         ""
       )}

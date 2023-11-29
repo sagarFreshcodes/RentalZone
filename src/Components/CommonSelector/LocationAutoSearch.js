@@ -4,77 +4,44 @@ import fort from "../../assets/images/Essential/fort.png";
 import { GetApi } from "../Common/Component/helperFunction";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
-import { SetLocation } from "../../Redux_Store/Actions/generalActions";
+import { 
+  LocationActions,
+  SetLocation,
+} from "../../Redux_Store/Actions/generalActions";
 import { ActionType } from "../../Redux_Store/ReduxConstant";
 const LoadCommonFields = ({ setStates, body }) => {};
 
-const LocationAutoSearch = ({
-  isEdit,
-  setSelectedTax,
-  editQuotationData,
-  quotation,
-  placeholder,
-  field,
-  validation,
-  setQuotation,
-  postFieldName,
-  optionsArray,
+const LocationAutoSearch = ({ 
+  placeholder, 
   Icon,
   iconPose,
   boxWidth,
   style,
-  className, setState
+  className, 
 }) => {
   const dispatch = useDispatch();
-  const LocatioInState = useSelector((state) => state ); 
-  const [value, setValue] = useState("");
-
-  const [stateData, setStateData] = useState([]);
-  const [serchKeyword, setSerchKeyword] = useState("");
-  const [applyChange, setApplyChange] = useState(false);
-  const [optionShow, setOptionShow] = useState(false);
-  const [blur, setBlur] = useState(false);
-  const [leave, setLeave] = useState(false);
-  const [mouseOn, setMouseOn] = useState(false);
-  const [optionList, setOptionList] = useState([]);
-  const [loader, setLoader] = useState(false);
-
-  const width = `${boxWidth}` || "";
-  const Name = isEdit ? (applyChange ? value : placeholder || "") : value;
-
-  const onSelect = (data) => {
-    const id = stateData.filter((v) => v.value == data)[0].id;
-    console.log(data, id);
-    setQuotation({ ...quotation, [postFieldName]: id });
-  };
-
+  const GeneralState = useSelector((state) => state.GeneralState); 
+  const { isLocationLoading, location, locationsList } = GeneralState;   
+  const [serchKeyword, setSerchKeyword] = useState(`${location?.name}`?.split(",")[0]); 
+  const [optionShow, setOptionShow] = useState(false); 
+  const [mouseOn, setMouseOn] = useState(false);  
+  const width = `${boxWidth}` || "";   
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
-  const onInputClick = (e) => {
-    console.log(`LocatioInState`,LocatioInState);
+  const onInputClick = (e) => {  
     setOptionShow(true);
-  };
-
+  }; 
   const onHandleClick = (e) => {
-    setOptionShow(false);
-    console.log("redux log",e);
-    setState(`${e.name}`.split(",")[0]) 
-   
+    setSerchKeyword(e.name);
+    setOptionShow(false);  
+    dispatch(SetLocation({ locationData: e }));
   };
 
   useEffect(() => {
-    setLoader(true);
-    GetApi(`https://laptops.rent/api/search-city-area?keyword=${serchKeyword}`)
-      .then((response) => {
-        setOptionList(response.data.data);
-        setLoader(false);
-        console.log("2512", response.data.data);
-      })
-      .catch((error) => {
-        setLoader(false);
-        console.log(`2512`, error);
-      });
+    if (optionShow) {
+      dispatch(LocationActions({ serchKeyword: serchKeyword }));
+    } 
   }, [serchKeyword]);
 
   return (
@@ -98,9 +65,11 @@ const LocationAutoSearch = ({
           onClick={onInputClick}
           onChange={onHandleChange}
           placeholder={placeholder}
-          value={placeholder}
+          value={serchKeyword}
         />
-        <div className={`autoSearchLoader ${loader ? "" : "d-none"}`}>
+        <div
+          className={`autoSearchLoader ${isLocationLoading ? "" : "d-none"}`}
+        >
           <ApiLoader />
         </div>
 
@@ -109,7 +78,7 @@ const LocationAutoSearch = ({
           onPointerLeave={() => setMouseOn(false)}
           onMouseMove={() => setMouseOn(true)}
         >
-          {optionList.map((e) => {
+          {locationsList?.map((e) => {
             return (
               <>
                 <div
