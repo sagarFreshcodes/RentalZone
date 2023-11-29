@@ -3,8 +3,8 @@ import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import { AiOutlineDown, AiFillBell } from "react-icons/ai";
 import { CardHeader, Form, Input, Media } from "reactstrap";
 import { useLocation } from 'react-router-dom';
-import SearchModal from "./SearchModel";
-import CommonSelector from "../../../CommonSelector/LocationAutoSearch";
+import SearchModal from "./SearchModel";  
+import CategoryAutoSearch from "../../../CommonSelector/CategoryAutoSearch";
 import LocationAutoSearch from "../../../CommonSelector/LocationAutoSearch";
 export const SearchIcon = () => {
   return (
@@ -25,7 +25,8 @@ const LocationIcon = () => {
 
 const SearchBar = ({ fun,className }) => {
   const [modal, setModel] = useState(false);
-  let location = useLocation();
+  const [currentLocation, setCurrentLocation] = useState("Bombay"); 
+  const [currentCategory, setCurrentCategory] = useState("Category, Listing, Product"); 
   const [locationSearch, setLocationSearch] = useState(false);
   const toggle = () => {
     if (modal) {
@@ -43,8 +44,8 @@ const SearchBar = ({ fun,className }) => {
     <>
  
       <div className={`SearchBar ${className}`}>
-        <CommonSelector
-          placeholder="Location"
+        <LocationAutoSearch
+          placeholder={currentLocation}
           field={`status`}
           setQuotation={{}}
           quotation={{}}
@@ -53,10 +54,11 @@ const SearchBar = ({ fun,className }) => {
           Icon={LocationIcon}
           boxWidth="15rem"
           className="location"
+          setState={setCurrentLocation}
         />
 
-        <CommonSelector
-          placeholder="Category, Listing, Product"
+        <CategoryAutoSearch
+          placeholder={currentCategory}
           field={`status`}
           setQuotation={{}}
           quotation={{}}
@@ -64,13 +66,15 @@ const SearchBar = ({ fun,className }) => {
           optionsArray={[]}
           Icon={SearchIcon}
           iconPose="end"
+          setState={setCurrentCategory}
+          currentLocation={currentLocation}
         />
       </div>
 
       <div className="SearchBar2" onClick={toggle}>
         {!modal ? (
-          <CommonSelector
-            placeholder="Category, Listing, Product"
+          <CategoryAutoSearch
+             placeholder={currentCategory}
             field={`status`}
             setQuotation={{}}
             quotation={{}}
@@ -78,6 +82,9 @@ const SearchBar = ({ fun,className }) => {
             optionsArray={[]}
             Icon={SearchIcon}
             iconPose="end"
+            setState={setCurrentCategory}
+            
+            currentLocation={currentLocation}
           />
         ) : null}
 
@@ -114,7 +121,7 @@ const SearchBar = ({ fun,className }) => {
           <br />
           <div>
             {locationSearch ? (
-              <CommonSelector
+              <LocationAutoSearch
                 placeholder="Location"
                 field={`status`}
                 setQuotation={{}}
@@ -123,10 +130,11 @@ const SearchBar = ({ fun,className }) => {
                 optionsArray={[]}
                 boxWidth="15rem"
                 className="w-100"
+                setState={setCurrentLocation}
               />
             ) : (
-              <CommonSelector
-                placeholder="Category, Listing, Product"
+              <CategoryAutoSearch
+              placeholder={currentCategory}
                 field={`status`}
                 setQuotation={{}}
                 quotation={{}}
@@ -135,6 +143,8 @@ const SearchBar = ({ fun,className }) => {
                 Icon={SearchIcon}
                 iconPose="end"
                 className="w-100"
+                setState={setCurrentCategory}
+                currentLocation={currentLocation}
               />
             )}
           </div>

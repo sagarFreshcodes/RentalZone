@@ -9,6 +9,7 @@ const initialState = {
   };
   
   const HomeReducer = (state = initialState, action) => {
+    console.log("redux SetLocation" );
     switch (action.type) {
       case ActionType.ON_REQUEST:
         return {

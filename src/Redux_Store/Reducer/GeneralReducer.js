@@ -1,5 +1,4 @@
 // reducers/exampleReducer.js
-
 import { ActionType } from "../ReduxConstant";
 
 const initialState = {
@@ -11,7 +10,16 @@ const initialState = {
   };
   
   const GeneralReducer = (state = initialState, action) => {
+    console.log("redux SetLocation" );
     switch (action.type) {
+      case ActionType.ON_LOCATION_SET:
+        console.log("redux SetLocation" );
+        return {
+          ...state,
+          isLoading: true,
+          error: null,
+          location:action.payload
+        };
       case ActionType.ON_REQUEST_COMMON_API:
         return {
           ...state,

@@ -8,7 +8,7 @@ import { SetLocation } from "../../Redux_Store/Actions/generalActions";
 import { ActionType } from "../../Redux_Store/ReduxConstant";
 const LoadCommonFields = ({ setStates, body }) => {};
 
-const LocationAutoSearch = ({
+const CategoryAutoSearch = ({
   isEdit,
   setSelectedTax,
   editQuotationData,
@@ -23,7 +23,7 @@ const LocationAutoSearch = ({
   iconPose,
   boxWidth,
   style,
-  className, setState
+  className, setState,currentLocation
 }) => {
   const dispatch = useDispatch();
   const LocatioInState = useSelector((state) => state ); 
@@ -59,13 +59,13 @@ const LocationAutoSearch = ({
   const onHandleClick = (e) => {
     setOptionShow(false);
     console.log("redux log",e);
-    setState(`${e.name}`.split(",")[0]) 
+    setState(e.name) 
    
   };
 
   useEffect(() => {
     setLoader(true);
-    GetApi(`https://laptops.rent/api/search-city-area?keyword=${serchKeyword}`)
+    GetApi(`https://laptops.rent/api/get-search-data?keyword=${serchKeyword}&current_location=${currentLocation}`)
       .then((response) => {
         setOptionList(response.data.data);
         setLoader(false);
@@ -100,7 +100,7 @@ const LocationAutoSearch = ({
           placeholder={placeholder}
           value={placeholder}
         />
-        <div className={`autoSearchLoader ${loader ? "" : "d-none"}`}>
+        <div className={`CategorySearchLoader ${loader ? "" : "d-none"}`}>
           <ApiLoader />
         </div>
 
@@ -139,7 +139,7 @@ const LocationAutoSearch = ({
   );
 };
 
-export default LocationAutoSearch;
+export default CategoryAutoSearch;
 
 const statusData = [
   {

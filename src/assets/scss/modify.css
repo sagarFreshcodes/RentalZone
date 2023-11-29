@@ -908,30 +908,6 @@ padding-bottom: 5px;
  .searchInboxContainer{
   width: 100%; 
  }
- .OptionBox{
-  position: absolute;
-  border: solid 1px #979797;
-  border-radius: 6px;
-  width: 100%;
-  top: 3rem; 
-  right: 1px;
-  background-color: white;
-  z-index: 7;
- }
- .OptionBox_item{
-  padding: 5px;
-  border: solid 1px  #97979742;
-  cursor: pointer;
- }
-
- .OptionBox_item:hover{ 
-  border: solid 1px  #857f7f; 
- }
-
- .optionImg {
-  width: 2rem;
-  margin: 0 !important;
-}
  .backIcon{
   font-size: 25px;
     transform: rotate(90deg);
@@ -1401,12 +1377,26 @@ padding: 1rem 0;
     gap:1rem
   } 
 
+  .cateIconBox{
+    width: 100% !important; 
+    border: none;
+    border-radius: 12px;    aspect-ratio: 1;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+ .catCard .shadowEffect1{
+  box-shadow:none !important
+ }
 
-  .cateIconBox{ 
-    padding: 0;
-    border: none;  
-}
-   
+ .catBox{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
+ .catCard #FS4{
+  font-size: 14px !important;
+ }
 
   .cateIcon{
     width: 70% !important;
@@ -1488,8 +1478,7 @@ border: solid 1px #c9c9c9;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
+} 
 .all_cd_link {
   display: flex;
   flex-direction: column;
@@ -1506,5 +1495,25 @@ border: solid 1px #c9c9c9;
   grid-template-columns: 1fr 1fr 1fr  1fr ;   
   gap:0.5rem
 } 
-
+.sp_button_box { 
+  padding: 3px 3px 7px 3px ;
+  gap: 0.1px;
 }
+
+.sp_button_box .btn {
+  width: 26%;
+  height: max-content;
+  padding: 5px 3px;
+}
+
+.sp_button_box .star {
+  width: 40% !important; 
+}
+ 
+.catCard #FS4{
+  font-size: 12px !important;
+ }
+}
+
+
+ 

@@ -13,7 +13,9 @@ export const GeneralActions = () => {
       dispatch({ type: ActionType.ON_REQUEST_COMMON_API });
       // Perform asynchronous operation (e.g., API call)
       // const response = await axios.get(`${API_ROOT_URL}``${COMMONPAGE_API}`);
-      const response = await axios.get(`https://mail.laptops.rent/api/common-page`);
+      const response = await axios.get(
+        `https://mail.laptops.rent/api/common-page`
+      );
       dispatch({
         type: ActionType.ON_SUCCESS_COMMON_API,
         payload: response.data,
@@ -25,5 +27,15 @@ export const GeneralActions = () => {
         payload: error.message,
       });
     }
+  };
+};
+
+export const SetLocation = ({ locationData }) => {
+  console.log("redux SetLocation" );
+  return async (dispatch) => {
+    dispatch({
+      type: ActionType.ON_LOCATION_SET,
+      payload: locationData,
+    });
   };
 };
