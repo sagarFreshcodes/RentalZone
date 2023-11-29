@@ -19,7 +19,9 @@
 .nav-right {
   width: fit-content !important;
 }
-
+.logo-wrapper{
+  display: contents !important;
+}
  
 .ContentBox{
   width:100% !important ;padding: 0.5rem !important
@@ -475,60 +477,6 @@ width: fit-content !important;
 
 }
 
-#FS1{
-  font-size: 10px !important;
-}
-#FS2{
-  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 12px !important;
-}
-#FS3{
-  font-size: 14px !important;
-  padding: 0px !important;
-  margin: 0px !important;
-}
-#FS4{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 16px !important;
-}
-#FS5{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 18px !important;
-}
-#FS6{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 20px !important;
-}
-
-#FS6{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 20px !important;
-}
-#FS7{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 22px !important;
-}
-#FS8{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 24px !important;
-}
-#FS9{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 26px !important;
-}
-#FS10{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 28px !important;
-}
-#FS11{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 30px !important;
-}
-#FS12{  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 32px !important;
-}
 .RentalzoneIn{
   padding-right: 2rem;
 }
@@ -1084,6 +1032,15 @@ padding: 1rem 0;
 }
  
 @media screen and (max-width:1200px) {
+
+  .cd_cardBoxLeft{
+    width: 95% !important; 
+  
+  }
+  
+  .sc_cardBoxRight{
+    width: 5% !important; 
+  }
   .price_box {
     background-color: #fff9f9;
   }
@@ -1171,6 +1128,13 @@ padding: 1rem 0;
      }
     .hideSearchbarOnDesktop{
       display: flex !important;
+      justify-content: space-between;
+    }
+    .hideSearchbarOnDesktop .AutoCompleteBox{
+   width: 45% !important;
+    } 
+    .searchHeadBx{
+      padding: 0 2rem !important;
     }
     .catContainer{ 
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;   
@@ -1199,7 +1163,7 @@ padding: 1rem 0;
 
     .cd_cardBoxLeft{
       width: 100% !important;
-      gap:1rem !important
+      gap:1.3vw !important
     }
 
     .sp_card_box .btn-light,
@@ -1287,9 +1251,28 @@ padding: 1rem 0;
 
 
 .cd_button_box .btn{
+  background-color: rgba(255, 255, 255, 0) !important;
+  border: none !important; 
   padding: 0 !important;
-} 
-    .sp_button_box .callNow{
+      }
+.cd_button_box .buttonShadow{
+        box-shadow: none !important;
+            }
+
+.cd_button_box #FS3{
+  font-size:  0px !important;
+  border: solid 1px #c9c9c9;
+      border-radius: 50%;
+      width: 3rem;
+      aspect-ratio: 1;display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cd_button_box img{
+      position: absolute;
+      width: 35% !important;
+    }
+.sp_button_box .callNow{
      background-color: #058A07 !important;
     }
     .cd-serviceImgBox{
@@ -1335,8 +1318,7 @@ padding: 1rem 0;
     .price_box_responsive{
       display: flex !important;
     }
-    .rStar .media {
-      width: 15px !important;
+    .rStar .media { 
   }
   .left-header .SearchBar{
     display:  none !important;
@@ -1351,8 +1333,7 @@ padding: 1rem 0;
   }
 
 @media screen and (max-width:700px) {
-  .searchHeadBx{ 
-    padding: 0 1vw!important;}
+
   .TrendingsContainer{ 
     grid-template-columns: 1fr; 
   }
@@ -1417,27 +1398,12 @@ padding: 1rem 0;
     width: 70% !important;
   }
 
-  .cd_button_box #FS3{
-font-size:  0px !important;
-border: solid 1px #c9c9c9;
-    border-radius: 50%;
-    width: 3rem;
-    aspect-ratio: 1;display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .cd_button_box img{
-    position: absolute;
-    width: 50% !important;
-  }
-  .cd_button_box .btn{
-  background-color: rgba(255, 255, 255, 0) !important;
-  border: none !important;
 
-  
-      }
+
 }
 @media screen and (max-width:500px) {
+  .searchHeadBx{ 
+    padding: 0 1vw!important;}
   .ContentBox{
     width:100% !important ;padding: 1rem  0rem !important
   }

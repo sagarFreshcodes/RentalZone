@@ -37,7 +37,7 @@ const Content = ({ AllProps }) => {
 
   return (
     <Fragment>
-      <div className="searchHeadBx w-90">
+      <div className="searchHeadBx">
         {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
 

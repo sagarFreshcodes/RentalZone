@@ -42,7 +42,7 @@ const LocationAutoSearch = ({
     if (optionShow) {
       dispatch(LocationActions({ serchKeyword: serchKeyword }));
     } 
-  }, [serchKeyword]);
+  }, [serchKeyword,optionShow]);
 
   return (
     <div

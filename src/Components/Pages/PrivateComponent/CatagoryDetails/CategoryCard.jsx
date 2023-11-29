@@ -4,7 +4,7 @@ import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
 
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
-import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
+import { FS2, FS3, FS4, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";
 import location from "../../../../assets/images/Essential/location.png";
@@ -29,8 +29,8 @@ const CategoryCard = ({ title }) => {
         />
       </div>
       <div className="cat_details_Body">
-        <div className="cd_cardBoxLeft">
-          <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
+        <div className="cd_cardBoxLeft ">
+        <FS8 attr={{ className: "f-w-600 lh-1" }}>{title}</FS8>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
             <div className="d-flex rStar">
@@ -59,13 +59,13 @@ const CategoryCard = ({ title }) => {
             ))}
           </div>
           <div className="cd-address">
-            <FS3>
+            <FS3 attr={{className:"lh-1"}}>
               {" "}
               <Image attrImage={{ src: location, alt: "location" }} /> By Pass
               Road Tutikandi, Shimla &nbsp;&nbsp;
             </FS3>
 
-            <FS2 attr={{ className: "BoldText d-flex" }}>
+            <FS2 attr={{ className: "BoldText d-flex un" }}>
               <span className="green_text un">
                 <li>Opens</li>
               </span>{" "}
@@ -77,7 +77,7 @@ const CategoryCard = ({ title }) => {
             </FS2>
           </div>
 
-          <div className="cd_card_box d-flex">
+          <div className="cd_card_box d-flex un">
             <FS2 attr={{ className: "BoldText" }}>
               Respond in <span className="green_text">2 Hours</span>
               &nbsp;&nbsp;&nbsp;

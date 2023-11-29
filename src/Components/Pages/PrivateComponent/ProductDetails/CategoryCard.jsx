@@ -4,7 +4,7 @@ import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
 
 import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
-import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
+import { FS2, FS3, FS4, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";
 import location from "../../../../assets/images/Essential/location.png";
@@ -29,7 +29,7 @@ const CategoryCard = ({ title }) => {
       </div>
       <div className="serviceBody">
         <div className="sc_cardBoxLeft">
-          <H4 attrH4={{ className: "f-w-600" }}>{title}</H4>
+          <FS8 attr={{ className: "f-w-600" }}>{title}</FS8>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
             <div className="d-flex rStar">

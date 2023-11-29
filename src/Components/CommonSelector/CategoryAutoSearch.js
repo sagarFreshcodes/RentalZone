@@ -46,7 +46,7 @@ const CategoryAutoSearch = ({
     if (optionShow) {
       dispatch(CategoryActions({ serchKeyword: serchKeyword , location:CategoryName}));
     } 
-  }, [serchKeyword]);
+  }, [serchKeyword,optionShow]);
 
   return (
     <div
