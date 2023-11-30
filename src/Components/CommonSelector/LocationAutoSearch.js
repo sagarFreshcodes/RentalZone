@@ -39,7 +39,7 @@ const LocationAutoSearch = ({
   };
 
   useEffect(() => {
-    if (optionShow) {
+    if (optionShow) { 
       dispatch(LocationActions({ serchKeyword: serchKeyword }));
     } 
   }, [serchKeyword,optionShow]);
