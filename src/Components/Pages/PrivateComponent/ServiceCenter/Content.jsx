@@ -40,7 +40,7 @@ const Content = ({ AllProps }) => {
       <div className="searchHeadBx">
         {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
-
+      <div className="spaceForSearchbar" /> 
       <ContentBox className="">
         <FS4 attr={{ className: "lh-1" }}>
           {BreadCum(["Shimla", "Hotels in Shimla"])}

@@ -915,6 +915,9 @@ padding-bottom: 5px;
   width: 100%;
     border: none;
  }
+ .spaceForSearchbar{
+  margin-bottom: 2.6rem;
+ }
  .serchElement{
   display: flex;
     justify-content: space-between;
@@ -1173,6 +1176,8 @@ padding: 1rem 0;
      }
   }
   @media screen and (max-width:800px) { 
+    .cat_details_Body{
+      padding: 0 !important;    }
     .sc_fixedButton{
       display: flex;
     }
@@ -1216,7 +1221,7 @@ padding: 1rem 0;
 
     .cd_cardBoxLeft{
       width: 100% !important;
-      gap:1.3vw !important
+      gap:1.6vw !important
     }
 
     .sp_card_box .btn-light,
@@ -1507,6 +1512,11 @@ padding: 1rem 0;
   .sc_cardBoxLeft .rStar{
     display: none !important;
   }
+
+
+  .sc_fixedButton #FS6{
+    font-size: 12px !important;
+  }
 }
 @media screen and (max-width:400px) {
 
@@ -1558,9 +1568,7 @@ padding: 1rem 0;
   font-size: 12px !important;
  }
 
- .sc_fixedButton #FS6{
-  font-size: 12px !important;
-}
+
 }
 
 

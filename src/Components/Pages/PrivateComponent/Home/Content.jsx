@@ -170,7 +170,7 @@ const Content = ({ props }) => {
         </div>
         {<SearchBar />}
       </div>
-
+      <div className="spaceForSearchbar" /> 
       <ContentBox className="">
         <div className="top-bar">
           <div className="top-courosel">

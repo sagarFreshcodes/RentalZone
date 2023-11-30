@@ -21,18 +21,11 @@ const CatagoryDetails = () => {
 
         <div className="servicePage">
           <div className="s_content ">
-            <ContentBox className="">
-              {" "}
-              <CategoryProduct />
-            </ContentBox>
+            <CategoryProduct />
 
-            <ContentBox className="">
-              {" "}
-              <CategoryMedia />
-            </ContentBox>
+            <CategoryMedia />
           </div>
 
-         
           <div className="s_sidebar">
             <ContentBox className="">
               {" "}

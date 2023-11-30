@@ -41,6 +41,7 @@ const ServiceCenter = () => {
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
       <Container fluid={true}>
+  
         <div className="servicePage">
           <div className="s_content">
             <Content AllProps={AllProps} />
