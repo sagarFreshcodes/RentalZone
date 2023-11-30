@@ -22,14 +22,33 @@ import { CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 
 const ServiceCard = ({
   title,
-  address1,
-  address2,
-  like,
-  view,
-  share,
-  picture,
-  statics,
   AllProps,
+  address,
+  area,
+  area_name,
+  category,
+  city,
+  city_name,
+  contact_person,
+  country,
+  description,
+  email,
+  id,
+  is_approved,
+  listing_type,
+  main_listing_id,
+  name,
+  phone_number,
+  pincode,
+  rates,
+  rates_per,
+  show_mobile,
+  show_on_area_page,
+  show_website,
+  slug,
+  state,
+  user_id,
+  website,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
@@ -67,7 +86,7 @@ const ServiceCard = ({
                   onClick: handleCatClick,
                 }}
               >
-                {title}
+                {name}
               </FS6>
               <div className="sc-number">
                 <div className="greenRateBox  un">4.6</div>
@@ -78,22 +97,13 @@ const ServiceCard = ({
                   ))}
                 </div>
                 <div className="un">1110 Rating</div>
-                <div className="verrify un">
+                <div className={`verrify un ${is_approved == "Yes"?"":"d-none"}`}>
                   {" "}
                   <Image attrImage={{ src: verrify, alt: "verrify" }} />
                 </div>
               </div>
               <div className="sp_cat_list">
-                {[
-                  "cat1",
-                  "cat2",
-                  "cat3",
-                  "cat4",
-                  "cat1",
-                  "cat2",
-                  "cat3",
-                  "cat4",
-                ].map((c) => (
+                {[category].map((c) => (
                   <div className="sp_category">
                     {" "}
                     <FS3>{c}</FS3>
@@ -102,29 +112,14 @@ const ServiceCard = ({
 
                 <div className="sp_category2">
                   {" "}
-                  <FS3>
-                    {[
-                      "cat1",
-                      "cat2",
-                      "cat3",
-                      "cat4",
-                      "cat1",
-                      "cat2",
-                      "cat3",
-                      "cat4",
-                      "cat1",
-                      "cat2",
-                      "cat3",
-                      "cat4",
-                    ].join(", ")}
-                  </FS3>
+                  <FS3>{[category].join(", ")}</FS3>
                 </div>
               </div>
 
               <FS3 attr={{ className: "singleLineContent" }}>
                 {" "}
-                <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass
-                Road Tutikandi, Shimla
+                <Image attrImage={{ src: location, alt: "verrify" }} />{" "}
+                {address}
               </FS3>
 
               <div className="sp_card_box">
@@ -213,27 +208,7 @@ const ServiceCard = ({
         <div
           className="sp_button_box locationBox
 "
-        >
-          {/* <FS3 attr={{ className: "w-90" }}>
-            {" "}
-            <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
-            Tutikandi, Shimla
-          </FS3> */}
-
-          {/* <div className="price_box_responsive">
-            <div className="startFrom">
-              <FS3 attr={{ className: "lh-1" }}>Start From</FS3>
-            </div>
-            <div className="priceContent">
-              <span className="priceNm">
-                <FS6 attr={{ className: "lh-1" }}>₹ 2,00,000/</FS6>
-              </span>{" "}
-              <span className="interval">
-                <FS3 attr={{ className: "lh-1" }}>Day</FS3>
-              </span>
-            </div>
-          </div> */}
-        </div>
+        ></div>
         <div
           className="sp_button_box
 "

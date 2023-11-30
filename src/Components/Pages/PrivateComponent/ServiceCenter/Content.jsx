@@ -28,40 +28,70 @@ const Content = ({ AllProps }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { serviceData, setServiceData, toggle ,toggle2} = AllProps;
+  const {
+    BusinesssListing,
+    BusinessState,
+    serviceData,
+    setServiceData,
+    toggle,
+    toggle2,
+  } = AllProps;
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
     });
   }, []);
-
+  const test = () => {
+    console.log(`BusinessState`, BusinessState);
+    console.log(`BusinesssListing`, BusinesssListing);
+  };
   return (
     <Fragment>
       <div className="searchHeadBx">
         {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
-      <div className="spaceForSearchbar" /> 
+      <div className="spaceForSearchbar" />
       <ContentBox className="">
         <FS4 attr={{ className: "lh-1" }}>
           {BreadCum(["Shimla", "Hotels in Shimla"])}
         </FS4>
       </ContentBox>
       <ContentBox className="">
-        <FS10 attr={{ className: "lh-1" }}>Top Trendings For Your City </FS10>
+        <FS10 attr={{ className: "lh-1", onClick: test }}>
+          Top Trendings For Your City{" "}
+        </FS10>
       </ContentBox>
       <ContentBox className="">
         <div className="SeviceContainer">
-          {TrandingList.map((item) => {
+          {BusinesssListing?.map((item) => {
             return (
               <ServiceCard
-                title={item.title}
-                address1={item.address1}
-                address2={item.address2}
-                like={item.like}
-                statics={item.static}
-                view={item.view}
-                share={item.share}
-                picture={item.picture}
+                address={item?.address}
+                area={item?.area}
+                area_name={item?.area_name}
+                category={item?.category}
+                city={item?.city}
+                city_name={item?.city_name}
+                contact_person={item?.contact_person}
+                country={item?.country}
+                description={item?.description}
+                email={item?.email}
+                id={item?.id}
+                is_approved={item?.is_approved}
+                listing_type={item?.listing_type}
+                main_listing_id={item?.main_listing_id}
+                name={item?.name}
+                phone_number={item?.phone_number}
+                pincode={item?.pincode}
+                rates={item?.rates}
+                rates_per={item?.rates_per}
+                show_mobile={item?.show_mobile}
+                show_on_area_page={item?.show_on_area_page}
+                show_website={item?.show_website}
+                slug={item?.slug}
+                state={item?.state}
+                user_id={item?.user_id}
+                website={item?.website}
                 AllProps={AllProps}
               />
             );

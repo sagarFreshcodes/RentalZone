@@ -1,9 +1,5 @@
-import React from "react";
-import { Card, CardBody, Col, Media } from "reactstrap";
-import { H4, P, Btn, Image } from "../../../../AbstractElements";
-import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
-
-import CarToon from "../../../../assets/images/dashboard/cartoon.svg";
+import React from "react"; 
+import { H4, P, Btn, Image } from "../../../../AbstractElements"; 
 import { FS2, FS3, FS4, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";

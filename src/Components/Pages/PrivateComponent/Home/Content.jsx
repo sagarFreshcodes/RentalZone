@@ -1,12 +1,6 @@
 import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
-import { PlusSquare, Upload } from "react-feather";
-import errorImg from "../../../../assets/images/search-not-found.png";
-import { toast } from "react-toastify";
-import { H4, H6, LI, P, UL, Image, H1, H3 } from "../../../../AbstractElements";
-import { CardHeader, Form, Input, Media } from "reactstrap";
-import { FileApi } from "../../../../api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FS10,
   FS3,
@@ -18,115 +12,25 @@ import {
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import TrandingCard from "./TrandingCard";
 import Slider from "./Slider";
-import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import SearchBar from "./SearchBar";
 import { SERVICE_CENTER_ROUTE } from "../../../../Route/RouthPath";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import NotificationSlider from "../../../../Layout/Header/Leftbar/NotificationSlider";
-
 import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
 import lptopImg3 from "../../../../assets/images/Essential/lptopImg3.png";
 import lptopImg2 from "../../../../assets/images/Essential/lptopImg2.png";
 import lptopImg4 from "../../../../assets/images/Essential/lptopImg4.png";
-const SearchIcon = () => {
-  return (
-    <p className="SearchIconBox">
-      <IoSearch className="react-icon-common" />
-    </p>
-  );
-};
-
-const LocationIcon = () => {
-  return (
-    <IoLocationOutline
-      className="react-icon-common"
-      style={{ fontSize: "25px" }}
-    />
-  );
-};
 
 const Content = ({ props }) => {
-  const { homepage_category, HomPageData, StateData } = props;
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [myfile, setMyFile] = useState([]);
-  const [searchBarShow, setSearchBarShow] = useState(true);
-
-  useEffect(() => {
-    axios.get(FileApi).then((response) => {
-      setMyFile(response.data);
-    });
-  }, []);
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setSearchTerm(event.target.value);
-  };
-
-  const filelist = myfile
-    .filter((data) => {
-      if (searchTerm == null) {
-        return data;
-      } else if (data.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-        return data;
-      }
-    })
-    .map((data, i) => {
-      return (
-        <LI attrLI={{ className: "file-box" }} key={i}>
-          <div className="file-top">
-            <i className={data.icon}></i>
-            <i className="fa fa-ellipsis-v f-14 ellips"></i>
-          </div>
-          <div className="file-bottom">
-            <H6>{data.name}</H6>
-            <P attrPara={{ className: "mb-0 mb-1" }}>{data.size}</P>
-            <P>
-              <b>{"last open"} : </b>
-              {data.modify}
-            </P>
-          </div>
-        </LI>
-      );
-    });
-  const getFile = () => {
-    document.getElementById("upfile").click();
-  };
-  const onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-  const onFileUpload = () => {
-    let myfiles = [...myfile];
-    if (selectedFile !== null) {
-      myfiles.push({
-        id: myfile.length + 1,
-        name: selectedFile.name,
-        size: `${selectedFile.size}`,
-        modify: `${selectedFile.lastModifiedDate}`,
-        icon: "fa fa-file-text-o txt-info",
-      });
-      setMyFile(myfiles);
-      toast.success("File Upload Successfully !");
-    } else {
-      toast.error("Plese Select at least one file !");
-    }
-  };
-
-  // Event listener to detect scroll
-  window.addEventListener("scroll", function () {
-    // Get the current scroll position in the y-direction
-    var scrollY = window.scrollY || window.pageYOffset;
-
-    // Use scrollY for whatever measurement or action you need
-
-    // if (scrollY >= 100) {
-    //   // setSearchBarShow(false);
-
-    // } else {
-    //   setSearchBarShow(true);
-    // }
-  });
-
+  const {
+    homepage_category,
+    HomPageData,
+    StateData,
+    GetBusinessList,
+    location,
+    GeneralData,
+  } = props;
+  const navigate = useNavigate();
   const bannerList = [
     {
       link: "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
@@ -153,15 +57,24 @@ const Content = ({ props }) => {
       backColor: "#00ac7d",
     },
   ];
+
+  const onCategorySelect = ({ category_id, category_slug }) => {
+    GetBusinessList({
+      category_slug: category_slug,
+      category_id: category_id,
+      page: 1,
+    });
+    navigate(SERVICE_CENTER_ROUTE);
+  };
   const test = () => {
     console.log(`StateData`, StateData);
     console.log(`HomPageData`, HomPageData);
-    console.log(`homepage_category`, homepage_category);
+    console.log(`homepage_category`, GeneralData);
   };
   return (
     <Fragment className="searchHeadFragment">
       <div className="searchHeadBx">
-        <div className="searchHeadline">
+        <div className="searchHeadline" onClick={test}>
           <FS10 attr={{ className: "searchAcross" }}>Search across</FS10>
           <div className="w-80">
             {" "}
@@ -170,7 +83,7 @@ const Content = ({ props }) => {
         </div>
         {<SearchBar />}
       </div>
-      <div className="spaceForSearchbar" /> 
+      <div className="spaceForSearchbar" />
       <ContentBox className="">
         <div className="top-bar">
           <div className="top-courosel">
@@ -204,18 +117,24 @@ const Content = ({ props }) => {
           {homepage_category?.map((item) => {
             return (
               <div className="catBox" key={item.id}>
-                  <Link to={`${SERVICE_CENTER_ROUTE}`}>
-                <div className="catCard">
+                <div
+                  className="catCard"
+                  onClick={() =>
+                    onCategorySelect({
+                      category_id: item?.category_id,
+                      category_slug: item?.category_slug,
+                    })
+                  }
+                >
                   <div className="cateIconBox shadowEffect1" onClick={test}>
                     <img
                       className="cateIcon"
                       src={item?.category_icon}
                       alt=""
                     />
-                  </div> 
-                    <FS4>{item?.category_name}</FS4>
-                 
-                </div> </Link>
+                  </div>
+                  <FS4>{item?.category_name}</FS4>
+                </div>{" "}
               </div>
             );
           })}
@@ -424,7 +343,12 @@ const TrandingList = [
     share: "233",
     star: "5",
     picture: lptopImg,
-    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
+    specification: [
+      "Intel Core i7 10 Gen",
+      "16GB/1TB SSD",
+      "RTX 2060 6GB Graphics",
+      `15.6" FHD 240Hz Display`,
+    ],
     d1: "Intel Core i7 10 Gen",
     d2: " 16GB/1TB SSD",
     d3: " RTX 2060 6GB Graphics",
@@ -443,14 +367,24 @@ const TrandingList = [
     d2: " 16GB/1TB SSD",
     d3: " RTX 2060 6GB Graphics",
     d4: "15.6 FHD 240Hz Display",
-    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
+    specification: [
+      "Intel Core i7 10 Gen",
+      "16GB/1TB SSD",
+      "RTX 2060 6GB Graphics",
+      `15.6" FHD 240Hz Display`,
+    ],
     picture: lptopImg3,
   },
   {
     title: "ASUS ROG Zephyrus M15 Gaming Laptop",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
-    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
+    specification: [
+      "Intel Core i7 10 Gen",
+      "16GB/1TB SSD",
+      "RTX 2060 6GB Graphics",
+      `15.6" FHD 240Hz Display`,
+    ],
     static: "89",
     like: "98",
     view: "5522",
@@ -471,7 +405,12 @@ const TrandingList = [
     d4: "15.6 FHD 240Hz Display",
     address1: "Laptop ipad Rental Services in Mumbai",
     address2: "Mira Road, Mumbai, Maharashtra, India.",
-    specification:["Intel Core i7 10 Gen","16GB/1TB SSD","RTX 2060 6GB Graphics",`15.6" FHD 240Hz Display`],
+    specification: [
+      "Intel Core i7 10 Gen",
+      "16GB/1TB SSD",
+      "RTX 2060 6GB Graphics",
+      `15.6" FHD 240Hz Display`,
+    ],
     static: "89",
     like: "98",
     view: "5522",

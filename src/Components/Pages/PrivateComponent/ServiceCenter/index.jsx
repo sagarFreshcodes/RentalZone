@@ -12,7 +12,11 @@ import getquot from "../../../../assets/images/Essential/getquot.png";
 import wapp from "../../../../assets/images/Essential/wapp.png";
 import { Image } from "../../../../AbstractElements";
 import { FS3, FS6 } from "../../../../CommonElements/Font/FS";
+import { useDispatch, useSelector } from "react-redux";
 const ServiceCenter = () => {
+  const BusinessState = useSelector((state) => state.BusinessState);
+  const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
+  const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
   const [serviceData, setServiceData] = useState({});
@@ -35,23 +39,26 @@ const ServiceCenter = () => {
     toggle2: toggle2,
     setServiceData: setServiceData,
     serviceData: serviceData,
+    BusinessState: BusinessState,
+    BusinesssListing: BusinesssListing,
+    PopularArea: PopularArea,
   };
+ 
 
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
       <Container fluid={true}>
-  
         <div className="servicePage">
           <div className="s_content">
             <Content AllProps={AllProps} />
           </div>
           <div className="s_sidebar">
-            <SideBar />
+            <SideBar AllProps={AllProps}  />
           </div>
         </div>
         <ContentBox className="">
-          <PaginationBar />
+          <PaginationBar  />
         </ContentBox>
         <ContentBox className="">
           <Footer />
