@@ -13,8 +13,12 @@ import wapp from "../../../../assets/images/Essential/wapp.png";
 import { Image } from "../../../../AbstractElements";
 import { FS3, FS6 } from "../../../../CommonElements/Font/FS";
 import { useDispatch, useSelector } from "react-redux";
+import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
 const ServiceCenter = () => {
+  const dispatch = useDispatch();
   const BusinessState = useSelector((state) => state.BusinessState);
+  const BusinesssPageData = BusinessState?.service_data?.data;
+
   const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const [modal, setModel] = useState(false);
@@ -34,6 +38,16 @@ const ServiceCenter = () => {
       setChatModal(true);
     }
   };
+
+  const GetBusinessDetails = ({ slug, listing_id }) => {
+    dispatch(
+      ListDetailsApi({
+        slug: slug,
+        listing_id: listing_id,
+      })
+    );
+  };
+
   const AllProps = {
     toggle: toggle,
     toggle2: toggle2,
@@ -42,8 +56,9 @@ const ServiceCenter = () => {
     BusinessState: BusinessState,
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
+    BusinesssPageData: { BusinesssPageData },
+    GetBusinessDetails: GetBusinessDetails,
   };
- 
 
   return (
     <Fragment>
@@ -54,11 +69,11 @@ const ServiceCenter = () => {
             <Content AllProps={AllProps} />
           </div>
           <div className="s_sidebar">
-            <SideBar AllProps={AllProps}  />
+            <SideBar AllProps={AllProps} />
           </div>
         </div>
         <ContentBox className="">
-          <PaginationBar  />
+          <PaginationBar />
         </ContentBox>
         <ContentBox className="">
           <Footer />

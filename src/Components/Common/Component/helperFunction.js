@@ -12,7 +12,7 @@ export function BreadCum(array) {
 export const GET_API = (endPoint) => {
   return new Promise((Response, Reject) => {
     axios
-    .get(`http://laptops.rent/api/get-homepage`)
+      .get(`http://laptops.rent/api/get-homepage`)
       // .get(`${API_ROOT_URL}${endPoint}`)
       .then((res) => {
         Response(res);
@@ -23,24 +23,15 @@ export const GET_API = (endPoint) => {
   });
 };
 
-export const GetApi = (endPoint) => {
-  return new Promise((Response, Reject) => {
-    axios
-    .get(endPoint)
-      // .get(`${API_ROOT_URL}${endPoint}`)
-      .then((res) => {
-        Response(res);
-      })
-      .catch((error) => {
-        Reject(error);
-      });
-  });
+export const GetApi = async (endPoint) => {
+  const response = await axios.get(endPoint)
+  return response;
 };
 
 export const POST_API = ({ endPoint, body }) => {
   return new Promise((Response, Reject) => {
     axios
-      .get(endPoint,body)
+      .get(endPoint, body)
       .then((res) => {
         Response(res);
       })
@@ -50,8 +41,7 @@ export const POST_API = ({ endPoint, body }) => {
   });
 };
 
-
-export const ToastError = (error) => { 
+export const ToastError = (error) => {
   error?.response?.data?.message.query || error?.response?.data?.message?.level
     ? toast.error(error?.message)
     : error?.response?.data?.message
@@ -78,11 +68,9 @@ export const ToastSuccess = (response) => {
   return null;
 };
 
-
-
-
-export const ToastWarning = (warning) => { 
-  warning?.response?.data?.message.query || warning?.response?.data?.message?.level
+export const ToastWarning = (warning) => {
+  warning?.response?.data?.message.query ||
+  warning?.response?.data?.message?.level
     ? toast.warning(warning?.message)
     : warning?.response?.data?.message
     ? toast.warning(warning?.response?.data?.message)

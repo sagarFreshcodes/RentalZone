@@ -24,8 +24,7 @@ const initialState = {
   },
 };
 
-const GeneralReducer = (state = initialState, action) => {
-  console.log("redux SetLocation");
+const GeneralReducer = (state = initialState, action) => { 
   switch (action.type) {
     // Header
     case ActionType.ON_REQUEST_COMMON_API:
@@ -85,15 +84,13 @@ const GeneralReducer = (state = initialState, action) => {
         isCategoryLoading: true,
         error: null,
       };
-    case ActionType.ON_SUCCESS_CATEGORY_API:
-      console.log("redux test LocationActions22");
+    case ActionType.ON_SUCCESS_CATEGORY_API: 
       return {
         ...state,
         isCategoryLoading: false,
         categoryList: action.payload,
       };
-    case ActionType.ON_FAILURE_CATEGORY_API:
-      console.log("redux test LocationActions33");
+    case ActionType.ON_FAILURE_CATEGORY_API: 
       return {
         ...state,
         isCategoryLoading: false,

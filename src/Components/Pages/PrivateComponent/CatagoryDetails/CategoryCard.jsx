@@ -2,7 +2,7 @@ import React from "react";
 import { H4, P, Btn, Image } from "../../../../AbstractElements"; 
 import { FS2, FS3, FS4, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
-import burncastle from "../../../../assets/images/Essential/burncastle.png";
+
 import location from "../../../../assets/images/Essential/location.png";
 import start from "../../../../assets/images/Essential/start.png";
 import verrify from "../../../../assets/images/Essential/verrify.png";
@@ -16,12 +16,12 @@ import shareFill from "../../../../assets/images/Essential/share-fill.png";
 import halfStart from "../../../../assets/images/Essential/halfStart.png";
 import claim from "../../../../assets/images/Essential/claim.png";
 import phone from "../../../../assets/images/Essential/phon.png";
-const CategoryCard = ({ title }) => {
+const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
   return (
     <div className="sc_cardBox">
       <div className="cd-serviceImgBox">
         <Image
-          attrImage={{src: burncastle, alt: "vector women with leptop" }}
+          attrImage={{src: picture, alt: "vector women with leptop" }}
         />
       </div>
       <div className="cat_details_Body">
@@ -36,7 +36,7 @@ const CategoryCard = ({ title }) => {
               ))}
             </div>
             <div>1110 Rating</div>
-            <div className="verrify un">
+            <div className={`verrify un ${is_approved?"":"d-none"}`}>
               {" "}
               <Image attrImage={{ src: verrify, alt: "verrify" }} />
             </div>
@@ -47,7 +47,7 @@ const CategoryCard = ({ title }) => {
             </div>
           </div>
           <div className="sp_cat_list">
-            {["cat1", "cat2", "cat3", "cat4"].map((c) => (
+            {categoryList?.map((c) => (
               <div className="sp_category">
                 {" "}
                 <FS3>{c}</FS3>
@@ -57,8 +57,7 @@ const CategoryCard = ({ title }) => {
           <div className="cd-address">
             <FS3 attr={{className:"lh-1"}}>
               {" "}
-              <Image attrImage={{ src: location, alt: "location" }} /> By Pass
-              Road Tutikandi, Shimla &nbsp;&nbsp;
+              <Image attrImage={{ src: location, alt: "location" }} /> {address} &nbsp;&nbsp;
             </FS3>
 
             <FS2 attr={{ className: "BoldText d-flex un" }}>

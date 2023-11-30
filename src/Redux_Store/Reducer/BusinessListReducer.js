@@ -10,8 +10,7 @@ const initialState = {
     error: null,
   };
   
-  const BusinessReducer = (state = initialState, action) => {
-    console.log("redux SetLocation" );
+  const BusinessReducer = (state = initialState, action) => { 
     switch (action.type) { 
         case ActionType.ON_REQUEST_SERVICE_LIST_API:
           return {

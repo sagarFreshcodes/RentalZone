@@ -10,8 +10,7 @@ const initialState = {
     error: null,
   };
   
-  const HomeReducer = (state = initialState, action) => {
-    console.log("redux SetLocation" );
+  const HomeReducer = (state = initialState, action) => { 
     switch (action.type) {
       case ActionType.ON_REQUEST:
         return {
@@ -34,24 +33,7 @@ const initialState = {
 
 
 
-        // case ActionType.ON_REQUEST_SERVICE_LIST_API:
-        //   return {
-        //     ...state,
-        //     isServiceLoading: true,
-        //     error: null,
-        //   };
-        // case ActionType.ON_SUCCESS_SERVICE_LIST_API:
-        //   return {
-        //     ...state,
-        //     isServiceLoading: false,
-        //     service_data: action.payload,
-        //   };
-        // case ActionType.ON_FAILURE_SERVICE_LIST_API:
-        //   return {
-        //     ...state,
-        //     isServiceLoading: false,
-        //     error: action.payload,
-        //   };
+       
       default:
         return state;
     }

@@ -35,7 +35,11 @@ const Content = ({ AllProps }) => {
     setServiceData,
     toggle,
     toggle2,
+    GetBusinessDetails,
+    BusinesssPageData,
   } = AllProps;
+
+  const { page_title } = BusinesssPageData;
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
@@ -45,6 +49,7 @@ const Content = ({ AllProps }) => {
     console.log(`BusinessState`, BusinessState);
     console.log(`BusinesssListing`, BusinesssListing);
   };
+
   return (
     <Fragment>
       <div className="searchHeadBx">
@@ -93,6 +98,7 @@ const Content = ({ AllProps }) => {
                 user_id={item?.user_id}
                 website={item?.website}
                 AllProps={AllProps}
+                GetBusinessDetails={GetBusinessDetails}
               />
             );
           })}

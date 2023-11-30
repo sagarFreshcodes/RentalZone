@@ -16,82 +16,103 @@ import {
   FS8,
   FS9,
 } from "../../../../CommonElements/Font/FS";
-import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox"; 
-import { BreadCum } from "../../../Common/Component/helperFunction"; 
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import { BreadCum } from "../../../Common/Component/helperFunction";
 import CategoryCard from "./CategoryCard";
 import SearchBar from "../Home/SearchBar";
- 
-
-const Content = () => {
+import burncastle from "../../../../assets/images/Essential/burncastle.png";
+const Content = ({ allProps }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
+  const { ListDetailsState } = allProps;
 
+  const {
+    canonical,
+    contact_person,
+    cover_image_url,
+    description,
+    final_rating,
+    get_ratings,
+    listing_categories,
+    listing_details,
+    listing_id,
+    listing_name,
+    listing_thumbnail_url,
+    listing_video_url,
+    meta_description,
+    meta_keywords,
+    meta_title,
+    page_title,
+    profile_banner,
+    profile_pic,
+    ratings_count,
+    related_listings,
+  } = ListDetailsState;
+
+  const { name, address, is_approved } = listing_details[0];
+  const categoryList = listing_categories.map((i) => i?.category_name);
+  const TrandingList = [
+    {
+      title: name,
+      categoryList: categoryList,
+      address: address,
+      address2: "Mira Road, Mumbai, Maharashtra, India.",
+      static: "89",
+      like: "98",
+      view: "5522",
+      share: "233",
+      star: "5",
+      is_approved: is_approved,
+      picture: profile_pic || burncastle,
+    },
+  ];
+  const test = () => {
+    console.log(ListDetailsState);
+  };
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
     });
   }, []);
 
-  
-
   return (
-    <Fragment >  
+    <Fragment>
       <div className="searchHeadBx">
-         
-      {<SearchBar className="hideSearchbarOnDesktop" />}
-       </div>
-       <div className="spaceForSearchbar" /> 
-      
-      <ContentBox className=""> 
-        <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla",`Royal Hotel`])}</FS4>
-      </ContentBox> 
-      <ContentBox className=""> 
-        <FS10  attr={{className:"lh-1"}}>
-        Top Trendings For Your City </FS10>
+        {<SearchBar className="hideSearchbarOnDesktop" />}
+      </div>
+      <div className="spaceForSearchbar" />
+
+      <ContentBox className="">
+        <FS4 attr={{ className: "lh-1" }}>
+          {BreadCum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
+        </FS4>
       </ContentBox>
       <ContentBox className="">
-     
+        <FS10 attr={{ className: "lh-1", onClick: test }}>{page_title}</FS10>
+      </ContentBox>
+      <ContentBox className="">
         <div className="SeviceContainer">
           {TrandingList.map((item) => {
             return (
               <CategoryCard
-                title={item.title}
-                address1={item.address1}
+                title={item?.title}
+                address={item?.address}
                 address2={item.address2}
                 like={item.like}
                 statics={item.static}
                 view={item.view}
                 share={item.share}
                 picture={item.picture}
+                is_approved={is_approved == "Yes"}
+                categoryList={item?.categoryList}
               />
             );
           })}
         </div>
       </ContentBox>
-
-    
     </Fragment>
   );
 };
 export default Content;
-
- 
-const TrandingList = [
-  {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
-    address1: "Laptop ipad Rental Services in Mumbai",
-    address2: "Mira Road, Mumbai, Maharashtra, India.",
-    static: "89",
-    like: "98",
-    view: "5522",
-    share: "233",
-    star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
-  },
-  
-];
-
- 

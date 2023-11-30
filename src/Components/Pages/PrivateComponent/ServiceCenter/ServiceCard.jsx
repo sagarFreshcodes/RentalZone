@@ -49,10 +49,17 @@ const ServiceCard = ({
   state,
   user_id,
   website,
+  GetBusinessDetails,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
+
   const handleCatClick = () => {
+    GetBusinessDetails({
+      slug: slug,
+      listing_id: main_listing_id,
+    });
+
     Navigate(`${CATEGORY_DETAILS_ROUTE}`);
   };
   return (
@@ -97,7 +104,11 @@ const ServiceCard = ({
                   ))}
                 </div>
                 <div className="un">1110 Rating</div>
-                <div className={`verrify un ${is_approved == "Yes"?"":"d-none"}`}>
+                <div
+                  className={`verrify un ${
+                    is_approved == "Yes" ? "" : "d-none"
+                  }`}
+                >
                   {" "}
                   <Image attrImage={{ src: verrify, alt: "verrify" }} />
                 </div>
