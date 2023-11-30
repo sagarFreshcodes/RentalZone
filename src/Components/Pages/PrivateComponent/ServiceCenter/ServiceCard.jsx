@@ -34,7 +34,7 @@ const ServiceCard = ({
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
   const handleCatClick = () => {
-    Navigate(`${CATEGORY_DETAILS_ROUTE}/Dubai`);
+    Navigate(`${CATEGORY_DETAILS_ROUTE}`);
   };
   return (
     <>

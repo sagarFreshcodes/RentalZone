@@ -204,7 +204,7 @@ const Content = ({ props }) => {
           {homepage_category?.map((item) => {
             return (
               <div className="catBox" key={item.id}>
-                  <Link to={`${SERVICE_CENTER_ROUTE + "/" + `Dubai`}`}>
+                  <Link to={`${SERVICE_CENTER_ROUTE}`}>
                 <div className="catCard">
                   <div className="cateIconBox shadowEffect1" onClick={test}>
                     <img

@@ -34,8 +34,8 @@ const Routers = () => {
           <Route path={"/"} element={<PrivateRoute />}>
             {login || authenticated ? (
               <>
-                <Route exact element={<Navigate to={`${HOME_ROUTE}/${layout}`} />} />
-                <Route exact path={`/`} element={<Navigate to={`${HOME_ROUTE}/${layout}`} />} />
+                <Route exact element={<Navigate to={`${HOME_ROUTE}`} />} />
+                <Route exact path={`/`} element={<Navigate to={`${HOME_ROUTE}`} />} />
               </>
             ) : (
               ""

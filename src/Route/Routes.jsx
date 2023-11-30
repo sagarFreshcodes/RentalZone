@@ -187,10 +187,10 @@ import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails"
 
 export const routes = [
   // Private component
-  { path: `${HOME_ROUTE}/:layout`, Component: <Home /> }, 
-  { path: `${SERVICE_CENTER_ROUTE}/:layout`, Component: <ServiceCenter /> }, 
-  { path: `${CATEGORY_DETAILS_ROUTE}/:layout`, Component: <CatagoryDetails /> }, 
-  { path: `${PRODUCT_DETAILS_ROUTE}/:layout`, Component: <ProductDetails /> }, 
+  { path: `${HOME_ROUTE}`, Component: <Home /> }, 
+  { path: `${SERVICE_CENTER_ROUTE}`, Component: <ServiceCenter /> }, 
+  { path: `${CATEGORY_DETAILS_ROUTE}`, Component: <CatagoryDetails /> }, 
+  { path: `${PRODUCT_DETAILS_ROUTE}`, Component: <ProductDetails /> }, 
   // dev options
   { path: `${process.env.PUBLIC_URL}/dashboard/default/:layout`, Component: <Default /> },
   { path: `${process.env.PUBLIC_URL}/dashboard/e-commerce/:layout`, Component: <Ecommerce /> },

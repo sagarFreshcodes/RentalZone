@@ -15,7 +15,7 @@ const ProductCard = ({
 }) => {
   const Navigate = useNavigate();
   const handleCatClick = () => {
-    Navigate(`${PRODUCT_DETAILS_ROUTE}/Dubai`);
+    Navigate(`${PRODUCT_DETAILS_ROUTE}`);
   };
   return (
     <div className="productCardBox shadowEffect" onClick={handleCatClick}>

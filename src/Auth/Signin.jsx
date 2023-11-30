@@ -32,9 +32,7 @@ const Signin = ({ selected }) => {
     setName("Emay Walter");
     if (email === "test@gmail.com" && password === "test123") {
       localStorage.setItem("login", JSON.stringify(true)); 
-      history(`${HOME_ROUTE}/${layoutURL}`);
-      console.log("layoutURLlayoutURLlayoutURL",`${HOME_ROUTE}/${layoutURL}`); 
-      
+      history(`${HOME_ROUTE}`);  
       toast.success("Successfully logged in!..");
     } else {
       toast.error("You enter wrong password or username!..");
