@@ -28,12 +28,11 @@ const ProductCard = ({
     Navigate(`${PRODUCT_DETAILS_ROUTE}/Dubai`);
   };
   return (
-    <div className="trandCardBox shadowEffect" onClick={handleCatClick}>
-      <div className="trandImgBox">
+    <div className="productCardBox shadowEffect" onClick={handleCatClick}>
+      <div className="cd_productImgBox">
         <Image attrImage={{ src: picture, alt: "vector women with leptop" }} />
-      </div>
-      <div className="trandBody">
-        <Media body>
+        
+      </div> 
           <div className="greeting-user">
             <div className="tc-price_box">
               <div className="startFrom">
@@ -53,12 +52,8 @@ const ProductCard = ({
               <FS3> {specification?.join("  |  ")}</FS3>
             </div> 
           
-          </div>
-        </Media>
-        <div>
-          <div className="badge f-10 p-0" id="txt" />
-        </div>
-      </div>
+          </div> 
+         
     </div>
   );
 };

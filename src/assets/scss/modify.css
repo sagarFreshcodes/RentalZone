@@ -131,7 +131,7 @@ width: 90%;
 .ProductContainer{
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: 1fr 1fr  1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
 
   gap: 1rem;
@@ -269,12 +269,29 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
  }
 
 
+ .productCardBox{
+  display: flex; 
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: #F8F8F8 !important;
+
+ }
 
  
-
+.productCardBox .greeting-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .trandImgBox img{ 
   width: 100%;
   min-width: 15rem !important;
+  border-radius: 1rem;
+}
+
+.cd_productImgBox img{ 
+  width: 100%; 
   border-radius: 1rem;
 }
 
@@ -1049,6 +1066,8 @@ padding: 1rem 0;
     justify-content: center;
     align-items: center;
   }
+
+
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
     width: 30% !important
@@ -1071,7 +1090,16 @@ padding: 1rem 0;
   }
 
   .ProductContainer{ 
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; 
+  }
+
+
+  .ProductContainer .cd_productImgBox{
+width: 30% !important;
+  }
+
+  .ProductContainer .greeting-user{
+    width: 70% !important;
   }
 }
 .cateIcon{
@@ -1080,7 +1108,7 @@ padding: 1rem 0;
  
 @media screen and (max-width:1200px) {
   .ProductContainer{ 
-    grid-template-columns: 1fr 1fr ; 
+    grid-template-columns: 1fr   ; 
   }
   .cd_cardBoxLeft{
     width: 95% !important; 
@@ -1391,6 +1419,13 @@ padding: 1rem 0;
   }
 
 @media screen and (max-width:700px) {
+.ProductContainer  #FS6{
+font-size: 16px !important;
+  }
+
+  .ProductContainer .greeting-user{
+    
+  }
 .cm_Box{
   background-color: white !important;
 }
@@ -1469,7 +1504,13 @@ padding: 1rem 0;
 @media screen and (max-width:600px) {  .searchHeadBx{ 
   padding: 0 1vw!important;} }
 @media screen and (max-width:500px) {
+  .ProductContainer  #FS6{
+    font-size: 14px !important;
+      }
 
+      .ProductContainer  #FS3{
+        font-size: 10px !important;
+          }
   .ContentBox{
     width:100% !important ;padding: 1rem  0rem !important
   }
