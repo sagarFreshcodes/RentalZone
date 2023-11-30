@@ -143,6 +143,15 @@
     font-size: 32px !important;
   }
 
+  .singleLineContent{
+    width: 100% !important;
+    overflow: hidden;
+    word-break: break-all !important;
+    white-space: break-spaces !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical;
+  }
 
   @media screen and (max-width:500px) {
     #FS10{ 

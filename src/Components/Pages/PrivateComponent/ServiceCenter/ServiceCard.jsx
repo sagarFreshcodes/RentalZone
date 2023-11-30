@@ -121,21 +121,7 @@ const ServiceCard = ({
                 </div>
               </div>
 
-              <div className="price_box_responsive">
-                <div className="startFrom">
-                  <FS3>Start From</FS3>
-                </div>
-                <div className="priceContent">
-                  <span className="priceNm">
-                    <FS6>₹ 2,00,000/</FS6>
-                  </span>{" "}
-                  <span className="interval">
-                    <FS3>Day</FS3>
-                  </span>
-                </div>
-              </div>
-
-              <FS3 attr={{ className: "w-90 sc_hideLocation" }}>
+              <FS3 attr={{ className: "singleLineContent" }}>
                 {" "}
                 <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass
                 Road Tutikandi, Shimla
@@ -228,11 +214,25 @@ const ServiceCard = ({
           className="sp_button_box locationBox
 "
         >
-          <FS3 attr={{ className: "w-90" }}>
+          {/* <FS3 attr={{ className: "w-90" }}>
             {" "}
             <Image attrImage={{ src: location, alt: "verrify" }} /> By Pass Road
             Tutikandi, Shimla
-          </FS3>
+          </FS3> */}
+
+          {/* <div className="price_box_responsive">
+            <div className="startFrom">
+              <FS3 attr={{ className: "lh-1" }}>Start From</FS3>
+            </div>
+            <div className="priceContent">
+              <span className="priceNm">
+                <FS6 attr={{ className: "lh-1" }}>₹ 2,00,000/</FS6>
+              </span>{" "}
+              <span className="interval">
+                <FS3 attr={{ className: "lh-1" }}>Day</FS3>
+              </span>
+            </div>
+          </div> */}
         </div>
         <div
           className="sp_button_box

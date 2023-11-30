@@ -6,6 +6,7 @@ import SideBar from "./SideBar";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import CategoryMedia from "./CategoryMedia";
+import CategoryProduct from "./CategoryProduct";
 
 const CatagoryDetails = () => {
   return (
@@ -22,10 +23,16 @@ const CatagoryDetails = () => {
           <div className="s_content ">
             <ContentBox className="">
               {" "}
+              <CategoryProduct />
+            </ContentBox>
+
+            <ContentBox className="">
+              {" "}
               <CategoryMedia />
             </ContentBox>
           </div>
 
+         
           <div className="s_sidebar">
             <ContentBox className="">
               {" "}
