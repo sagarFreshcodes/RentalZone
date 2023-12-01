@@ -1,49 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { AutoComplete } from "antd";
 import fort from "../../assets/images/Essential/fort.png";
-import { GetApi, SearchDirect } from "../Common/Component/helperFunction";
+import {
+  GetApi,
+  SearchDirect,
+  WaitFor,
+} from "../Common/Component/helperFunction";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
-import { 
+import {
   LocationActions,
   SetLocation,
 } from "../../Redux_Store/Actions/generalActions";
 import { ActionType } from "../../Redux_Store/ReduxConstant";
 const LoadCommonFields = ({ setStates, body }) => {};
 
-const LocationAutoSearch = ({ 
-  placeholder, 
+const LocationAutoSearch = ({
+  placeholder,
   Icon,
   iconPose,
   boxWidth,
   style,
-  className, OnSearchIcon
+  className,
+  OnSearchIcon,
 }) => {
   const dispatch = useDispatch();
-  const GeneralState = useSelector((state) => state.GeneralState); 
-  const { isLocationLoading, location, locationsList } = GeneralState;   
-  const [serchKeyword, setSerchKeyword] = useState(`${location?.name}`?.split(",")[0]); 
-  const [optionShow, setOptionShow] = useState(false); 
-  const [mouseOn, setMouseOn] = useState(false);  
-  const width = `${boxWidth}` || "";   
+  const GeneralState = useSelector((state) => state.GeneralState);
+  const { isLocationLoading, location, locationsList } = GeneralState;
+  const [serchKeyword, setSerchKeyword] = useState(
+    `${location?.name}`?.split(",")[0]
+  );
+  const [optionShow, setOptionShow] = useState(false);
+  const [mouseOn, setMouseOn] = useState(false);
+  const width = `${boxWidth}` || "";
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
-  const onInputClick = (e) => {  
+  const onInputClick = (e) => {
     setOptionShow(true);
-  }; 
+  };
   const onHandleClick = (e) => {
     setSerchKeyword(e.name);
-    setOptionShow(false);  
-    OnSearchIcon()
+    setOptionShow(false);
+    OnSearchIcon();
     dispatch(SetLocation({ locationData: e }));
   };
 
   useEffect(() => {
-    if (optionShow) { 
-      dispatch(LocationActions({ serchKeyword: serchKeyword }));
-    } 
-  }, [serchKeyword,optionShow]);
+    const Fun = () => {
+      if (optionShow) {
+        return dispatch(LocationActions({ serchKeyword: serchKeyword }));
+      }
+    };
+    WaitFor({ time: 400, functionality: Fun });
+  }, [serchKeyword, optionShow]);
 
   return (
     <div
@@ -79,20 +89,28 @@ const LocationAutoSearch = ({
           onPointerLeave={() => setMouseOn(false)}
           onMouseMove={() => setMouseOn(true)}
         >
-          {locationsList?.map((e) => {
-            return (
-              <>
-                <div
-                  className="OptionBox_item"
-                  onClick={() => onHandleClick(e)}
-                >
-                  {/* <img className="optionImg" src={fort} alt="" /> &nbsp;{e?.name} */}
+          {locationsList?.length > 0 ? (
+            <>
+              {locationsList?.map((e) => {
+                return (
+                  <>
+                    <div
+                      className="OptionBox_item"
+                      onClick={() => onHandleClick(e)}
+                    >
+                      {/* <img className="optionImg" src={fort} alt="" /> &nbsp;{e?.name} */}
 
-                  {e?.name}
-                </div>
-              </>
-            );
-          })}
+                      {e?.name}
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <div className="OptionBox_item text-center" > 
+              No records
+            </div>
+          )}
         </div>
       </div>
 

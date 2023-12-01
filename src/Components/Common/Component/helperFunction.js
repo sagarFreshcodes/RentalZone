@@ -115,12 +115,19 @@ export const SearchDirect = ({ navigate, GeneralState }) => {
   const CurrentLocation = GeneralState?.location?.city_slug;
   const CurrentCategory = GeneralState?.category;
   if (CurrentCategory?.type == "category") {
-    console.log("CurrentCategory",CurrentCategory);
+    console.log("CurrentCategory", CurrentCategory);
     return navigate(
       `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
     );
   } else {
-    console.log("CurrentCategory",CurrentCategory);
+    console.log("CurrentCategory", CurrentCategory);
     return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
   }
+};
+
+export const WaitFor = ({ time, functionality }) => {
+  const timeout = setTimeout(() => {
+    functionality();
+  }, time);
+  return () => clearTimeout(timeout);
 };

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AutoComplete } from "antd";
 import fort from "../../assets/images/Essential/fort.png";
-import { GetApi, SearchDirect } from "../Common/Component/helperFunction";
+import {
+  GetApi,
+  SearchDirect,
+  WaitFor,
+} from "../Common/Component/helperFunction";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -32,6 +36,7 @@ const CategoryAutoSearch = ({
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
+
   const onInputClick = (e) => {
     console.log(serchKeyword);
     setOptionShow(true);
@@ -39,16 +44,33 @@ const CategoryAutoSearch = ({
   const onHandleClick = (e) => {
     setSerchKeyword(e.name);
     setOptionShow(false);
-    OnSearchIcon()
+    OnSearchIcon();
     dispatch(SetCategory({ categoryData: e }));
   };
 
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     // model.onChange({
+  //     //     key: model.Columedata?.id || '',
+  //     //     value: query,
+  //     // })
+  //     console.log(serchKeyword, "serchKeyword");
+  //   }, 500);
+  //   return () => clearTimeout(timeout);
+  // }, [serchKeyword]);
+
   useEffect(() => {
-    if (optionShow) {
-      dispatch(
-        CategoryActions({ serchKeyword: serchKeyword, location: CategoryName })
-      );
-    }
+    const Fun = () => {
+      if (optionShow) {
+        return dispatch(
+          CategoryActions({
+            serchKeyword: serchKeyword,
+            location: CategoryName,
+          })
+        );
+      }
+    };
+    WaitFor({ time: 400, functionality: Fun });
   }, [serchKeyword, optionShow]);
 
   return (
@@ -89,7 +111,7 @@ const CategoryAutoSearch = ({
           onPointerLeave={() => setMouseOn(false)}
           onMouseMove={() => setMouseOn(true)}
         >
-          {categoryList?.map((e) => {
+          {/* {categoryList?.map((e) => {
             return (
               <>
                 <div
@@ -100,7 +122,28 @@ const CategoryAutoSearch = ({
                 </div>
               </>
             );
-          })}
+          })} */}
+
+          {categoryList?.length > 0 ? (
+            <>
+              {categoryList?.map((e) => {
+                return (
+                  <>
+                    <div
+                      className="OptionBox_item"
+                      onClick={() => onHandleClick(e)}
+                    >
+                      {/* <img className="optionImg" src={fort} alt="" /> &nbsp;{e?.name} */}
+
+                      {e?.name}
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <div className="OptionBox_item text-center">No records</div>
+          )}
         </div>
       </div>
 

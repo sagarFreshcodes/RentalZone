@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
+import Skeleton from "react-loading-skeleton";
 const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const ServiceCenter = () => {
   const { category_name } = BusinesssPageData;
   const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
+  const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
   const [serviceData, setServiceData] = useState({});
@@ -59,14 +61,15 @@ const ServiceCenter = () => {
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
     BusinesssPageData: { BusinesssPageData },
-    BreadcrumData:BreadcrumData
+    BreadcrumData: BreadcrumData,
+    isServiceLoading: isServiceLoading,
   };
 
   const test = () => {
-    console.log(`BusinessState`, QueryParams);
+    console.log(`BusinessState`, BusinessState);
     console.log(`BusinesssListing`, CurrentLocation);
   };
-
+  console.log("isServiceLoading123", isServiceLoading);
   useEffect(() => {
     const GetBusinessList = ({
       CurrentLocation,
@@ -97,9 +100,14 @@ const ServiceCenter = () => {
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
       <Container fluid={true}>
         <div className="servicePage" onClick={test}>
-          <div className="s_content">
-            <Content AllProps={AllProps} />
-          </div>
+          {/* {isServiceLoading ? (
+            <Skeleton height={1000} />
+          ) : ( */}
+            <div className="s_content">
+              <Content AllProps={AllProps} />
+            </div>
+          {/* )} */}
+
           <div className="s_sidebar">
             <SideBar AllProps={AllProps} />
           </div>

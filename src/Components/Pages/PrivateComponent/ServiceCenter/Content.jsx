@@ -37,6 +37,7 @@ const Content = ({ AllProps }) => {
     toggle2,
     BusinesssPageData,
     BreadcrumData,
+    isServiceLoading,
   } = AllProps;
 
   const { page_title } = BusinesssPageData;
