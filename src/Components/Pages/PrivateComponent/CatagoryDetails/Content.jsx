@@ -26,33 +26,35 @@ const Content = ({ allProps }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { ListDetailsState } = allProps;
+  const { ListDetails } = allProps || {};
 
   const {
-    canonical,
-    contact_person,
-    cover_image_url,
-    description,
-    final_rating,
-    get_ratings,
+    // canonical,
+    // contact_person,
+    // cover_image_url,
+    // description,
+    // final_rating,
+    // get_ratings,
     listing_categories,
     listing_details,
-    listing_id,
-    listing_name,
-    listing_thumbnail_url,
-    listing_video_url,
-    meta_description,
-    meta_keywords,
-    meta_title,
+    // listing_id,
+    // listing_name,
+    // listing_thumbnail_url,
+    // listing_video_url,
+    // meta_description,
+    // meta_keywords,
+    // meta_title,
     page_title,
-    profile_banner,
+    // profile_banner,
     profile_pic,
-    ratings_count,
-    related_listings,
-  } = ListDetailsState;
+    // ratings_count,
+    // related_listings,
+  } = ListDetails || {};
 
-  const { name, address, is_approved } = listing_details[0];
-  const categoryList = listing_categories.map((i) => i?.category_name);
+  const { name, address, is_approved } = listing_details
+    ? listing_details[0]
+    : {};
+  const categoryList = listing_categories?.map((i) => i?.category_name);
   const TrandingList = [
     {
       title: name,
@@ -69,7 +71,7 @@ const Content = ({ allProps }) => {
     },
   ];
   const test = () => {
-    console.log(ListDetailsState);
+    console.log(ListDetails);
   };
   useEffect(() => {
     axios.get(FileApi).then((response) => {

@@ -18,21 +18,11 @@ const Home = () => {
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
-  const GetBusinessList = ({ category_slug, category_id, page }) => {
-    dispatch(
-      BusinessListApi({
-        location: CurrentLocation,
-        category_slug: category_slug,
-        category_id: category_id,
-        page: page,
-      })
-    );
-  };
+
   const props = {
     homepage_category: Homepage_category,
     HomPageData: HomPageData,GeneralData:GeneralData,
-    StateData: StateData,
-    GetBusinessList: GetBusinessList,
+    StateData: StateData, 
   };
 
   useEffect(() => {

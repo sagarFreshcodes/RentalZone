@@ -34,8 +34,7 @@ const Content = ({ AllProps }) => {
     serviceData,
     setServiceData,
     toggle,
-    toggle2,
-    GetBusinessDetails,
+    toggle2, 
     BusinesssPageData,
   } = AllProps;
 
@@ -97,8 +96,7 @@ const Content = ({ AllProps }) => {
                 state={item?.state}
                 user_id={item?.user_id}
                 website={item?.website}
-                AllProps={AllProps}
-                GetBusinessDetails={GetBusinessDetails}
+                AllProps={AllProps} 
               />
             );
           })}

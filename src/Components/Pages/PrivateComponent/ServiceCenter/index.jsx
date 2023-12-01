@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { Card, Col, Container, Row } from "reactstrap";
+import { useLocation } from "react-router";
 import Content from "./Content";
 import SideBar from "./SideBar";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
@@ -12,18 +13,23 @@ import getquot from "../../../../assets/images/Essential/getquot.png";
 import wapp from "../../../../assets/images/Essential/wapp.png";
 import { Image } from "../../../../AbstractElements";
 import { FS3, FS6 } from "../../../../CommonElements/Font/FS";
-import { useDispatch, useSelector } from "react-redux";
-import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
+import { useDispatch, useSelector } from "react-redux"; 
+import { useEffect } from "react";
+import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 const ServiceCenter = () => {
+  const QueryParams = useLocation();
   const dispatch = useDispatch();
+  const GeneralData = useSelector((state) => state?.GeneralState);
+  const CurrentLocation = GeneralData?.location?.city_slug;
+  const ParamsList = `${QueryParams.pathname}`.split("/");
   const BusinessState = useSelector((state) => state.BusinessState);
   const BusinesssPageData = BusinessState?.service_data?.data;
-
   const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
   const [serviceData, setServiceData] = useState({});
+
   const toggle = () => {
     if (modal) {
       setModel(false);
@@ -39,14 +45,7 @@ const ServiceCenter = () => {
     }
   };
 
-  const GetBusinessDetails = ({ slug, listing_id }) => {
-    dispatch(
-      ListDetailsApi({
-        slug: slug,
-        listing_id: listing_id,
-      })
-    );
-  };
+
 
   const AllProps = {
     toggle: toggle,
@@ -56,15 +55,42 @@ const ServiceCenter = () => {
     BusinessState: BusinessState,
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
-    BusinesssPageData: { BusinesssPageData },
-    GetBusinessDetails: GetBusinessDetails,
+    BusinesssPageData: { BusinesssPageData }, 
   };
 
+  const test = () => {
+    console.log(`BusinessState`, QueryParams);
+    console.log(`BusinesssListing`, CurrentLocation);
+  };
+
+  useEffect(() => {
+    const GetBusinessList = ({
+      CurrentLocation,
+      category_slug,
+      category_id,
+      page,
+    }) => {
+      dispatch(
+        BusinessListApi({
+          location: CurrentLocation,
+          category_slug: category_slug,
+          category_id: category_id,
+          page: page,
+        })
+      );
+    };
+    GetBusinessList({
+      CurrentLocation: CurrentLocation,
+      category_slug: ParamsList[1],
+      category_id: +ParamsList[2],
+      page: 1,
+    });
+  }, []);
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
       <Container fluid={true}>
-        <div className="servicePage">
+        <div className="servicePage" onClick={test}>
           <div className="s_content">
             <Content AllProps={AllProps} />
           </div>

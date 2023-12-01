@@ -18,7 +18,7 @@ import Popular from "../../../../assets/images/Essential/Popular.png";
 import callnow from "../../../../assets/images/Essential/callnow.png";
 import getquot from "../../../../assets/images/Essential/getquot.png";
 import call_w from "../../../../assets/images/Essential/call_w.png";
-import { CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
+import { BASE_ROUTE, CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 
 const ServiceCard = ({
   title,
@@ -48,19 +48,14 @@ const ServiceCard = ({
   slug,
   state,
   user_id,
-  website,
-  GetBusinessDetails,
+  website, 
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
 
   const handleCatClick = () => {
-    GetBusinessDetails({
-      slug: slug,
-      listing_id: main_listing_id,
-    });
-
-    Navigate(`${CATEGORY_DETAILS_ROUTE}`);
+ 
+    Navigate(`${BASE_ROUTE}/${slug}-${main_listing_id}`);
   };
   return (
     <>

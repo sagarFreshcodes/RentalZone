@@ -13,7 +13,7 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import TrandingCard from "./TrandingCard";
 import Slider from "./Slider";
 import SearchBar from "./SearchBar";
-import { SERVICE_CENTER_ROUTE } from "../../../../Route/RouthPath";
+import { BASE_ROUTE, SERVICE_CENTER_ROUTE } from "../../../../Route/RouthPath";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import NotificationSlider from "../../../../Layout/Header/Leftbar/NotificationSlider";
 import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
@@ -25,8 +25,7 @@ const Content = ({ props }) => {
   const {
     homepage_category,
     HomPageData,
-    StateData,
-    GetBusinessList,
+    StateData, 
     location,
     GeneralData,
   } = props;
@@ -58,13 +57,8 @@ const Content = ({ props }) => {
     },
   ];
 
-  const onCategorySelect = ({ category_id, category_slug }) => {
-    GetBusinessList({
-      category_slug: category_slug,
-      category_id: category_id,
-      page: 1,
-    });
-    navigate(SERVICE_CENTER_ROUTE);
+  const onCategorySelect = ({ category_id, category_slug }) => { 
+    navigate(`${BASE_ROUTE}/${category_slug}/${category_id}`);
   };
   const test = () => {
     console.log(`StateData`, StateData);
