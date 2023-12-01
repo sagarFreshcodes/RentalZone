@@ -1,13 +1,24 @@
 import React from "react";
 import { FS3, FS4, FS6, FS8 } from "../Font/FS";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useMemo } from "react";
+import { GeneralActions } from "../../Redux_Store/Actions/generalActions";
 const Footer = () => {
+  const dispatch = useDispatch();
+  const GeneralState = useSelector((state) => state?.GeneralState);
+  const CurrentLocation = GeneralState?.location 
   const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
   const area_location = GeneralData?.area_location || [];
   const city_location = GeneralData?.city_location || [];
   const test = () => {
-    console.log(city_location, area_location);
+    console.log(CurrentLocation);
   };
+
+  useMemo(() => dispatch(GeneralActions()), [dispatch,CurrentLocation]);
+  // useEffect(() => {
+  //   dispatch(GeneralActions());
+  // }, [dispatch]);
   return (
     <div className="footerContainer">
       <div className="footerComponentBox" onClick={test}>

@@ -58,12 +58,12 @@ const Content = ({ props }) => {
   ];
 
   const onCategorySelect = ({ category_id, category_slug }) => { 
-    navigate(`${BASE_ROUTE}/${category_slug}/${category_id}`);
+    navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {
     console.log(`StateData`, StateData);
     console.log(`HomPageData`, HomPageData);
-    console.log(`homepage_category`, GeneralData);
+    console.log(`location`, location);
   };
   return (
     <Fragment className="searchHeadFragment">

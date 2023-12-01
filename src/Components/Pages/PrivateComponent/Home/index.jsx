@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const HomPageData = useSelector((state) => state?.Home?.data?.data);
   const GeneralData = useSelector((state) => state?.GeneralState);
-  const CurrentLocation = `${GeneralData?.location?.name}`.split(",")[0]
+  const CurrentLocation = `${GeneralData?.location?.city_slug}`
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
@@ -23,11 +23,12 @@ const Home = () => {
     homepage_category: Homepage_category,
     HomPageData: HomPageData,GeneralData:GeneralData,
     StateData: StateData, 
+    location: CurrentLocation,
   };
 
   useEffect(() => {
     dispatch(HomePageApi({ Location: CurrentLocation }));
-    dispatch(GeneralActions());
+    // dispatch(GeneralActions());
   }, [dispatch]);
 
   useEffect(() => {

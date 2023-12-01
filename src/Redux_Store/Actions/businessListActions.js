@@ -9,7 +9,7 @@ export const BusinessListApi = ({category_slug,category_id,page,location}) => {
     try { 
       dispatch({ type: ActionType.ON_REQUEST_SERVICE_LIST_API });  
       const response = await axios.get(
-        `${API_ROOT_URL}/${GET_BUSINESS_LIST_API}?category_slug=${category_slug}-${location}&category_id=${category_id}&current_location=${location}&page=${page}`
+        `${API_ROOT_URL}/${GET_BUSINESS_LIST_API}?category_slug=${category_slug}&category_id=${category_id}&current_location=${location}&page=${page}`
       ); 
       dispatch({
         type: ActionType.ON_SUCCESS_SERVICE_LIST_API,
