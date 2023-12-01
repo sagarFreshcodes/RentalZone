@@ -1,11 +1,13 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { IoSearch, IoLocationOutline } from "react-icons/io5";
 import { AiOutlineDown, AiFillBell } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { CardHeader, Form, Input, Media } from "reactstrap";
-import { useLocation } from 'react-router-dom';
-import SearchModal from "./SearchModel";  
+import SearchModal from "./SearchModel";
 import CategoryAutoSearch from "../../../CommonSelector/CategoryAutoSearch";
 import LocationAutoSearch from "../../../CommonSelector/LocationAutoSearch";
+import { useSelector } from "react-redux";
+import { SearchDirect } from "../../../Common/Component/helperFunction";
 export const SearchIcon = () => {
   return (
     <p className="SearchIconBox">
@@ -23,11 +25,16 @@ const LocationIcon = () => {
   );
 };
 
-const SearchBar = ({ fun,className }) => {
+const SearchBar = ({ fun, className }) => {
   const [modal, setModel] = useState(false);
-  const [currentLocation, setCurrentLocation] = useState("Bombay"); 
-  const [currentCategory, setCurrentCategory] = useState("Category, Listing, Product"); 
+  const [currentLocation, setCurrentLocation] = useState("Bombay");
+  const [currentCategory, setCurrentCategory] = useState(
+    "Category, Listing, Product"
+  );
   const [locationSearch, setLocationSearch] = useState(false);
+  const GeneralState = useSelector((state) => state?.GeneralState);
+  const navigate = useNavigate();
+
   const toggle = () => {
     if (modal) {
       setLocationSearch(false);
@@ -40,8 +47,12 @@ const SearchBar = ({ fun,className }) => {
   const toggle2 = () => {
     locationSearch ? setLocationSearch(false) : setLocationSearch(true);
   };
+
+  const OnSearchIcon = () => {
+    SearchDirect({ navigate, GeneralState });
+  };
   return (
-    <> 
+    <>
       <div className={`SearchBar ${className}`}>
         <LocationAutoSearch
           placeholder={currentLocation}
@@ -54,6 +65,7 @@ const SearchBar = ({ fun,className }) => {
           boxWidth="15rem"
           className="location"
           setState={setCurrentLocation}
+          OnSearchIcon={OnSearchIcon}
         />
 
         <CategoryAutoSearch
@@ -67,13 +79,14 @@ const SearchBar = ({ fun,className }) => {
           iconPose="end"
           setState={setCurrentCategory}
           currentLocation={currentLocation}
+          OnSearchIcon={OnSearchIcon}
         />
       </div>
 
       <div className="SearchBar2" onClick={toggle}>
         {!modal ? (
           <CategoryAutoSearch
-             placeholder={currentCategory}
+            placeholder={currentCategory}
             field={`status`}
             setQuotation={{}}
             quotation={{}}
@@ -82,7 +95,7 @@ const SearchBar = ({ fun,className }) => {
             Icon={SearchIcon}
             iconPose="end"
             setState={setCurrentCategory}
-            
+            OnSearchIcon={OnSearchIcon}
             currentLocation={currentLocation}
           />
         ) : null}
@@ -130,10 +143,11 @@ const SearchBar = ({ fun,className }) => {
                 boxWidth="15rem"
                 className="w-100"
                 setState={setCurrentLocation}
+                OnSearchIcon={OnSearchIcon}
               />
             ) : (
               <CategoryAutoSearch
-              placeholder={currentCategory}
+                placeholder={currentCategory}
                 field={`status`}
                 setQuotation={{}}
                 quotation={{}}
@@ -144,6 +158,7 @@ const SearchBar = ({ fun,className }) => {
                 className="w-100"
                 setState={setCurrentCategory}
                 currentLocation={currentLocation}
+                OnSearchIcon={OnSearchIcon}
               />
             )}
           </div>

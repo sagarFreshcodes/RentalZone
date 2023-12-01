@@ -1,12 +1,36 @@
 import axios from "axios";
 import { API_ROOT_URL } from "../../../Constant/api_constant";
 import { toast } from "react-toastify";
-export function BreadCum(array) {
-  if (!Array.isArray(array)) {
+import { BASE_ROUTE } from "../../../Route/RouthPath";
+import { FS4 } from "../../../CommonElements/Font/FS";
+import { Link } from "react-router-dom";
+export function BreadCrum(array) {
+  console.log("testb1");
+  if (!Array.isArray(array)) { 
     return "Please provide an array as input.";
+  } else { 
+    if (array[0]?.title) { 
+      return (
+        <FS4 attr={{ className: "lh-1" }}>
+          <div className="BreadCreumBox">
+            {array?.map((i, index) => {
+              return (
+                <>
+                  <Link to={i?.link}>
+                    <div className="BreadCreumTitle">
+                      {i.title} {array?.length == index + 1 ? " " : ` > `} &nbsp;
+                    </div>
+                  </Link>
+                </>
+              );
+            })}
+          </div>
+        </FS4>
+      );
+    } else { 
+      return array.join(" > ");
+    }
   }
-
-  return array.join(" > ");
 }
 
 export const GET_API = (endPoint) => {
@@ -24,7 +48,7 @@ export const GET_API = (endPoint) => {
 };
 
 export const GetApi = async (endPoint) => {
-  const response = await axios.get(endPoint)
+  const response = await axios.get(endPoint);
   return response;
 };
 
@@ -80,4 +104,16 @@ export const ToastWarning = (warning) => {
     ? toast.warning(warning)
     : toast.warning("Something going wrong");
   return null;
+};
+
+export const slugConvertor = (string) => {
+  return `${string}`.toLowerCase().split(" ").join("-");
+};
+
+export const SearchDirect = ({ navigate, GeneralState }) => {
+  const CurrentLocation = GeneralState?.location?.city_slug;
+  const CurrentCategory = GeneralState?.category;
+  return navigate(
+    `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
+  );
 };

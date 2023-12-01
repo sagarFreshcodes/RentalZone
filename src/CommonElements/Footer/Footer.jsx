@@ -1,24 +1,43 @@
 import React from "react";
 import { FS3, FS4, FS6, FS8 } from "../Font/FS";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { GeneralActions } from "../../Redux_Store/Actions/generalActions";
+import { BASE_ROUTE } from "../../Route/RouthPath";
+import { slugConvertor } from "../../Components/Common/Component/helperFunction";
 const Footer = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state?.GeneralState);
-  const CurrentLocation = GeneralState?.location 
+  const CurrentLocation = GeneralState?.location?.city_slug;
+  const CurrentCategory = GeneralState?.category;
+  const SelectedCategory = GeneralState?.selectedCategory;
   const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
   const area_location = GeneralData?.area_location || [];
   const city_location = GeneralData?.city_location || [];
+  const area_location_empty = area_location?.length == 0;
+  const city_location_empty = city_location?.length == 0;
   const test = () => {
-    console.log(CurrentLocation);
+    console.log("GeneralState", GeneralState);
   };
 
-  useMemo(() => dispatch(GeneralActions()), [dispatch,CurrentLocation]);
-  // useEffect(() => {
-  //   dispatch(GeneralActions());
-  // }, [dispatch]);
+
+  const onCategorySelect = (data) => {
+    console.log(data);
+    const placeSlug = slugConvertor(data?.area_name);
+    navigate(
+      `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${placeSlug}/${SelectedCategory?.category_id}`,
+      { state: { location: placeSlug } }
+    );
+  };
+
+  useMemo(() => {
+    if (area_location_empty || city_location_empty) {
+      dispatch(GeneralActions());
+    }
+  }, [dispatch]);
   return (
     <div className="footerContainer">
       <div className="footerComponentBox" onClick={test}>
@@ -76,6 +95,7 @@ const Footer = () => {
             linkTitleArray={city_location}
             boxWidth={"100%"}
             linkBoxWidth={`20%`}
+            onCategorySelect={onCategorySelect}
           />
         </div>
       ) : (
@@ -89,6 +109,7 @@ const Footer = () => {
             linkTitleArray={area_location}
             boxWidth={"100%"}
             linkBoxWidth={`20%`}
+            onCategorySelect={onCategorySelect}
           />
         </div>
       ) : (
@@ -123,7 +144,13 @@ const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
   );
 };
 
-const FooterLinkBox2 = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
+const FooterLinkBox2 = ({
+  title,
+  linkTitleArray,
+  boxWidth,
+  linkBoxWidth,
+  onCategorySelect,
+}) => {
   return (
     <div className="footerLinkBox" style={{ width: boxWidth }}>
       <FS6> {title}</FS6>
@@ -132,6 +159,7 @@ const FooterLinkBox2 = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
         {linkTitleArray?.map((i) => {
           return (
             <div
+              onClick={() => onCategorySelect(i)}
               className="linkBox"
               style={{ width: linkBoxWidth, minWidth: "8rem" }}
             >

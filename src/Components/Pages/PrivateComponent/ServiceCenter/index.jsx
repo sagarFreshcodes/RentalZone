@@ -13,9 +13,10 @@ import getquot from "../../../../assets/images/Essential/getquot.png";
 import wapp from "../../../../assets/images/Essential/wapp.png";
 import { Image } from "../../../../AbstractElements";
 import { FS3, FS6 } from "../../../../CommonElements/Font/FS";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
+import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
@@ -23,13 +24,17 @@ const ServiceCenter = () => {
   const CurrentLocation = GeneralData?.location?.city_slug;
   const ParamsList = `${QueryParams.pathname}`.split("/");
   const BusinessState = useSelector((state) => state.BusinessState);
-  const BusinesssPageData = BusinessState?.service_data?.data;
+  const BusinesssPageData = BusinessState?.service_data?.data || {};
+  const { category_name } = BusinesssPageData;
   const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
   const [serviceData, setServiceData] = useState({});
-
+  const BreadcrumData = [
+    { title: "home", link: `${HOME_ROUTE}` },
+    { title: category_name, link: `${BASE_ROUTE}${QueryParams?.pathname}` },
+  ];
   const toggle = () => {
     if (modal) {
       setModel(false);
@@ -45,8 +50,6 @@ const ServiceCenter = () => {
     }
   };
 
-
-
   const AllProps = {
     toggle: toggle,
     toggle2: toggle2,
@@ -55,7 +58,8 @@ const ServiceCenter = () => {
     BusinessState: BusinessState,
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
-    BusinesssPageData: { BusinesssPageData }, 
+    BusinesssPageData: { BusinesssPageData },
+    BreadcrumData:BreadcrumData
   };
 
   const test = () => {
@@ -72,7 +76,9 @@ const ServiceCenter = () => {
     }) => {
       dispatch(
         BusinessListApi({
-          location: CurrentLocation,
+          location: QueryParams?.state?.location
+            ? QueryParams?.state?.location
+            : CurrentLocation,
           category_slug: category_slug,
           category_id: category_id,
           page: page,

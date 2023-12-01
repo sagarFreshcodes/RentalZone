@@ -13,10 +13,8 @@ export const GeneralActions = () => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
-      dispatch({ type: ActionType.ON_REQUEST_COMMON_API }); 
-      const response = await axios.get(
-        `${API_ROOT_URL}/${COMMONPAGE_API}`
-      );
+      dispatch({ type: ActionType.ON_REQUEST_COMMON_API });
+      const response = await axios.get(`${API_ROOT_URL}/${COMMONPAGE_API}`);
       dispatch({
         type: ActionType.ON_SUCCESS_COMMON_API,
         payload: response.data,
@@ -44,7 +42,7 @@ export const LocationActions = ({ serchKeyword }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
-      dispatch({ type: ActionType.ON_REQUEST_LOCATION_API }); 
+      dispatch({ type: ActionType.ON_REQUEST_LOCATION_API });
       const response = await axios.get(
         `${API_ROOT_URL}/${SEARCH_CITY_AREA_API}?keyword=${serchKeyword}`
       );
@@ -64,7 +62,7 @@ export const LocationActions = ({ serchKeyword }) => {
 };
 
 export const SetCategory = ({ categoryData }) => {
-  console.log("redux serchKeyword",categoryData);
+  console.log("redux serchKeyword", categoryData);
   return async (dispatch) => {
     dispatch({
       type: ActionType.ON_CATEGORY_SET,
@@ -73,8 +71,16 @@ export const SetCategory = ({ categoryData }) => {
   };
 };
 
-export const CategoryActions = ({ serchKeyword, location }) => {
+export const SelectCategory = ({ categoryDetails }) => { 
+  return async (dispatch) => {
+    dispatch({
+      type: ActionType.ON_CATEGORY_SELECT,
+      payload: categoryDetails,
+    });
+  };
+};
 
+export const CategoryActions = ({ serchKeyword, location }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request

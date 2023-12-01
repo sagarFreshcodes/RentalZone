@@ -11,11 +11,13 @@ const initialState = {
   isCategoryLoading: false,
   error: null,
   category: {
-    name: "Computer Point",
-    type: "listing",
-    listing_slug: "computer-point",
-    subdomain_slug: "laptop",
+    name: "Computer Rental",
+    type: "category",
+    category_slug: "computer-rental",
+    category_id: 2,
+    subdomain_slug: "computer",
   },
+  selectedCategory: { category_id: 2, category_slug: "computer-rental" },
   location: {
     name: "Mumbai,Maharashtra",
     original_city: "Mumbai",
@@ -24,7 +26,7 @@ const initialState = {
   },
 };
 
-const GeneralReducer = (state = initialState, action) => { 
+const GeneralReducer = (state = initialState, action) => {
   switch (action.type) {
     // Header
     case ActionType.ON_REQUEST_COMMON_API:
@@ -49,7 +51,7 @@ const GeneralReducer = (state = initialState, action) => {
     // Location
     case ActionType.ON_LOCATION_SET:
       return {
-        ...state, 
+        ...state,
         location: action.payload,
       };
     case ActionType.ON_REQUEST_LOCATION_API:
@@ -73,30 +75,34 @@ const GeneralReducer = (state = initialState, action) => {
 
     // Category
 
-    case ActionType.ON_CATEGORY_SET: 
+    case ActionType.ON_CATEGORY_SET:
       return {
-        ...state, 
+        ...state,
         category: action.payload,
       };
-    case ActionType.ON_REQUEST_CATEGORY_API: 
+    case ActionType.ON_REQUEST_CATEGORY_API:
       return {
         ...state,
         isCategoryLoading: true,
         error: null,
       };
-    case ActionType.ON_SUCCESS_CATEGORY_API: 
+    case ActionType.ON_SUCCESS_CATEGORY_API:
       return {
         ...state,
         isCategoryLoading: false,
         categoryList: action.payload,
       };
-    case ActionType.ON_FAILURE_CATEGORY_API: 
+    case ActionType.ON_FAILURE_CATEGORY_API:
       return {
         ...state,
         isCategoryLoading: false,
         error: action.payload,
       };
-
+    case ActionType.ON_CATEGORY_SELECT:
+      return {
+        ...state,
+        selectedCategory: action.payload,
+      };
     default:
       return state;
   }

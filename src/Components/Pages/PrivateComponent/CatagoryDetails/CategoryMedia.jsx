@@ -17,7 +17,7 @@ import {
   FS9,
 } from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-import { BreadCum } from "../../../Common/Component/helperFunction";
+import { BreadCrum } from "../../../Common/Component/helperFunction";
 import CategoryCard from "./CategoryCard";
 import lake from "../../../../assets/images/Essential/lake.png";
 import desert from "../../../../assets/images/Essential/desert.png";
@@ -37,32 +37,32 @@ const CategoryMedia = () => {
   return (
     <Fragment>
       <div className="cm_Box">
-      <ContentBox className="">
-        <FS10 attr={{ className: "lh-1" }}>Photos </FS10>
-      </ContentBox>
-      <ContentBox className="">
-        <div className="MediaContainer">
-          <div>
-            <Image attrImage={{ src: desert, alt: "desert" }} />
+        <ContentBox className="">
+          <FS10 attr={{ className: "lh-1" }}>Photos </FS10>
+        </ContentBox>
+        <ContentBox className="">
+          <div className="MediaContainer">
+            <div>
+              <Image attrImage={{ src: desert, alt: "desert" }} />
 
-            <div>
-              <FS3 attr={{className:"BoldText"}}>All</FS3>
-              <FS3>1200 Photos</FS3>
+              <div>
+                <FS3 attr={{ className: "BoldText" }}>All</FS3>
+                <FS3>1200 Photos</FS3>
+              </div>
+            </div>
+            <div className="lakeVideo">
+              <Image attrImage={{ src: lake, alt: "lake" }} />
+              <div>
+                <FS3 attr={{ className: "BoldText" }}>Video</FS3>
+                <FS3>1200 Videos</FS3>
+              </div>
+              <Image
+                attrImage={{ src: play, alt: "play", className: "play" }}
+              />
             </div>
           </div>
-          <div className="lakeVideo">
-            <Image attrImage={{ src: lake, alt: "lake" }} />
-            <div>
-              <FS3 attr={{className:"BoldText"}}>Video</FS3>
-              <FS3>1200 Videos</FS3>
-            </div>
-              <Image attrImage={{ src: play, alt: "play", className:"play" }} />
-             
-          </div>
-        </div>
-      </ContentBox>
+        </ContentBox>
       </div>
-     
     </Fragment>
   );
 };

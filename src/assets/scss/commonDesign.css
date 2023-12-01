@@ -153,6 +153,17 @@
     -webkit-box-orient: vertical;
   }
 
+  .BreadCreumTitle{
+    text-transform: capitalize !important;
+    cursor: pointer;
+  }
+  .BreadCreumBox{
+    display: flex;
+  }
+  .BreadCreumBox a{
+    text-decoration: none;
+    color: black;
+  }
   @media screen and (max-width:500px) {
     #FS10{ 
         font-size: 22px !important;

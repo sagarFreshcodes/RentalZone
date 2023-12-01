@@ -20,15 +20,12 @@ import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
 import lptopImg3 from "../../../../assets/images/Essential/lptopImg3.png";
 import lptopImg2 from "../../../../assets/images/Essential/lptopImg2.png";
 import lptopImg4 from "../../../../assets/images/Essential/lptopImg4.png";
-
+import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
+import { useDispatch, useSelector } from "react-redux";
 const Content = ({ props }) => {
-  const {
-    homepage_category,
-    HomPageData,
-    StateData, 
-    location,
-    GeneralData,
-  } = props;
+  const { homepage_category, HomPageData, StateData, location, GeneralData } =
+    props;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const bannerList = [
     {
@@ -57,7 +54,15 @@ const Content = ({ props }) => {
     },
   ];
 
-  const onCategorySelect = ({ category_id, category_slug }) => { 
+  const onCategorySelect = ({ category_id, category_slug }) => {
+    dispatch(
+      SelectCategory({
+        categoryDetails: {
+          category_id: category_id,
+          category_slug: category_slug,
+        },
+      })
+    );
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {

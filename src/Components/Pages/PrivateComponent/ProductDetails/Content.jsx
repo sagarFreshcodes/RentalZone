@@ -16,11 +16,10 @@ import {
   FS8,
   FS9,
 } from "../../../../CommonElements/Font/FS";
-import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox"; 
-import { BreadCum } from "../../../Common/Component/helperFunction"; 
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import { BreadCrum } from "../../../Common/Component/helperFunction";
 import CategoryCard from "./CategoryCard";
 import SearchBar from "../Home/SearchBar";
- 
 
 const Content = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -34,23 +33,20 @@ const Content = () => {
     });
   }, []);
 
-  
-
   return (
-    <Fragment >    
-       <div className="searchHeadBx">
-         
-       {<SearchBar className="hideSearchbarOnDesktop" />}
+    <Fragment>
+      <div className="searchHeadBx">
+        {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
-      <ContentBox className=""> 
-        <FS4 attr={{className:"lh-1"}}>{BreadCum(["Shimla","Hotels in Shimla",`Royal Hotel`])}</FS4>
-      </ContentBox> 
-      <ContentBox className=""> 
-        <FS10  attr={{className:"lh-1"}}>
-        Top Trendings For Your City </FS10>
+      <ContentBox className="">
+        <FS4 attr={{ className: "lh-1" }}>
+          {BreadCrum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
+        </FS4>
       </ContentBox>
       <ContentBox className="">
-     
+        <FS10 attr={{ className: "lh-1" }}>Top Trendings For Your City </FS10>
+      </ContentBox>
+      <ContentBox className="">
         <div className="SeviceContainer">
           {TrandingList.map((item) => {
             return (
@@ -68,14 +64,11 @@ const Content = () => {
           })}
         </div>
       </ContentBox>
-
-    
     </Fragment>
   );
 };
 export default Content;
 
- 
 const TrandingList = [
   {
     title: "Laptop Computer Repair & Services -sadhi Technologies",
@@ -89,7 +82,4 @@ const TrandingList = [
     picture:
       "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
   },
-  
 ];
-
- 

@@ -17,7 +17,7 @@ import {
   FS9,
 } from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-import { BreadCum } from "../../../Common/Component/helperFunction";
+import { BreadCrum } from "../../../Common/Component/helperFunction";
 import CategoryCard from "./CategoryCard";
 import SearchBar from "../Home/SearchBar";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";
@@ -88,7 +88,7 @@ const Content = ({ allProps }) => {
 
       <ContentBox className="">
         <FS4 attr={{ className: "lh-1" }}>
-          {BreadCum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
+          {BreadCrum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
         </FS4>
       </ContentBox>
       <ContentBox className="">

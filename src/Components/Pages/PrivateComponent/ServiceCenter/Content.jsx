@@ -19,7 +19,7 @@ import {
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import ServiceCard from "./ServiceCard";
-import { BreadCum } from "../../../Common/Component/helperFunction";
+import { BreadCrum } from "../../../Common/Component/helperFunction";
 import PaginationBar from "./Pagination";
 import SearchBar from "../Home/SearchBar";
 
@@ -34,8 +34,9 @@ const Content = ({ AllProps }) => {
     serviceData,
     setServiceData,
     toggle,
-    toggle2, 
+    toggle2,
     BusinesssPageData,
+    BreadcrumData,
   } = AllProps;
 
   const { page_title } = BusinesssPageData;
@@ -47,6 +48,7 @@ const Content = ({ AllProps }) => {
   const test = () => {
     console.log(`BusinessState`, BusinessState);
     console.log(`BusinesssListing`, BusinesssListing);
+    console.log(`BreadcrumData`, BreadcrumData);
   };
 
   return (
@@ -55,11 +57,7 @@ const Content = ({ AllProps }) => {
         {<SearchBar className="hideSearchbarOnDesktop" />}
       </div>
       <div className="spaceForSearchbar" />
-      <ContentBox className="">
-        <FS4 attr={{ className: "lh-1" }}>
-          {BreadCum(["Shimla", "Hotels in Shimla"])}
-        </FS4>
-      </ContentBox>
+      <ContentBox className="">{BreadCrum(BreadcrumData)}</ContentBox>
       <ContentBox className="">
         <FS10 attr={{ className: "lh-1", onClick: test }}>
           Top Trendings For Your City{" "}
@@ -96,7 +94,7 @@ const Content = ({ AllProps }) => {
                 state={item?.state}
                 user_id={item?.user_id}
                 website={item?.website}
-                AllProps={AllProps} 
+                AllProps={AllProps}
               />
             );
           })}

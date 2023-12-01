@@ -17,7 +17,7 @@ const LocationAutoSearch = ({
   iconPose,
   boxWidth,
   style,
-  className, 
+  className, OnSearchIcon
 }) => {
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state.GeneralState); 
@@ -50,7 +50,7 @@ const LocationAutoSearch = ({
       style={{ width: `${width}` }}
     >
       {iconPose != "end" ? (
-        <p className="selectorIcon">{Icon ? <Icon /> : ""}</p>
+        <p className="selectorIcon cursorPointer">{Icon ? <Icon /> : ""}</p>
       ) : (
         ""
       )}
@@ -96,7 +96,7 @@ const LocationAutoSearch = ({
       </div>
 
       {iconPose == "end" ? (
-        <p className="selectorIcon">
+        <p className="selectorIcon cursorPointer">
           <Icon />
         </p>
       ) : (
