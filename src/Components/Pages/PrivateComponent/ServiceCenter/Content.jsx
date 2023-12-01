@@ -95,6 +95,7 @@ const Content = ({ AllProps }) => {
                 user_id={item?.user_id}
                 website={item?.website}
                 AllProps={AllProps}
+                BreadcrumData={BreadcrumData}
               />
             );
           })}

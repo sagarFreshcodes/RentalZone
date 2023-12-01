@@ -26,7 +26,7 @@ const Content = ({ allProps }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { ListDetails } = allProps || {};
+  const { ListDetails,BreadcrumData } = allProps || {};
 
   const {
     // canonical,
@@ -86,10 +86,8 @@ const Content = ({ allProps }) => {
       </div>
       <div className="spaceForSearchbar" />
 
-      <ContentBox className="">
-        <FS4 attr={{ className: "lh-1" }}>
-          {BreadCrum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
-        </FS4>
+      <ContentBox className=""> 
+          {BreadCrum(BreadcrumData)} 
       </ContentBox>
       <ContentBox className="">
         <FS10 attr={{ className: "lh-1", onClick: test }}>{page_title}</FS10>

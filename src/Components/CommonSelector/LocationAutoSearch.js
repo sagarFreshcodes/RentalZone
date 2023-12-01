@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AutoComplete } from "antd";
 import fort from "../../assets/images/Essential/fort.png";
-import { GetApi } from "../Common/Component/helperFunction";
+import { GetApi, SearchDirect } from "../Common/Component/helperFunction";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
 import { 
@@ -35,6 +35,7 @@ const LocationAutoSearch = ({
   const onHandleClick = (e) => {
     setSerchKeyword(e.name);
     setOptionShow(false);  
+    OnSearchIcon()
     dispatch(SetLocation({ locationData: e }));
   };
 

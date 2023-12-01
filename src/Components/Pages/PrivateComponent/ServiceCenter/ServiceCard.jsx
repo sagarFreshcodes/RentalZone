@@ -18,7 +18,10 @@ import Popular from "../../../../assets/images/Essential/Popular.png";
 import callnow from "../../../../assets/images/Essential/callnow.png";
 import getquot from "../../../../assets/images/Essential/getquot.png";
 import call_w from "../../../../assets/images/Essential/call_w.png";
-import { BASE_ROUTE, CATEGORY_DETAILS_ROUTE } from "../../../../Route/RouthPath";
+import {
+  BASE_ROUTE,
+  CATEGORY_DETAILS_ROUTE,
+} from "../../../../Route/RouthPath";
 
 const ServiceCard = ({
   title,
@@ -48,14 +51,16 @@ const ServiceCard = ({
   slug,
   state,
   user_id,
-  website, 
+  website,
+  BreadcrumData,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
 
   const handleCatClick = () => {
- 
-    Navigate(`${BASE_ROUTE}/${slug}-${main_listing_id}`);
+    Navigate(`${BASE_ROUTE}/${slug}-${main_listing_id}`, {
+      state: { BreadcrumData: BreadcrumData },
+    });
   };
   return (
     <>

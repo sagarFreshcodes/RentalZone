@@ -6,10 +6,10 @@ import { FS4 } from "../../../CommonElements/Font/FS";
 import { Link } from "react-router-dom";
 export function BreadCrum(array) {
   console.log("testb1");
-  if (!Array.isArray(array)) { 
+  if (!Array.isArray(array)) {
     return "Please provide an array as input.";
-  } else { 
-    if (array[0]?.title) { 
+  } else {
+    if (array[0]?.title) {
       return (
         <FS4 attr={{ className: "lh-1" }}>
           <div className="BreadCreumBox">
@@ -18,7 +18,8 @@ export function BreadCrum(array) {
                 <>
                   <Link to={i?.link}>
                     <div className="BreadCreumTitle">
-                      {i.title} {array?.length == index + 1 ? " " : ` > `} &nbsp;
+                      {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
+                      &nbsp;
                     </div>
                   </Link>
                 </>
@@ -27,7 +28,7 @@ export function BreadCrum(array) {
           </div>
         </FS4>
       );
-    } else { 
+    } else {
       return array.join(" > ");
     }
   }
@@ -113,7 +114,13 @@ export const slugConvertor = (string) => {
 export const SearchDirect = ({ navigate, GeneralState }) => {
   const CurrentLocation = GeneralState?.location?.city_slug;
   const CurrentCategory = GeneralState?.category;
-  return navigate(
-    `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
-  );
+  if (CurrentCategory?.type == "category") {
+    console.log("CurrentCategory",CurrentCategory);
+    return navigate(
+      `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
+    );
+  } else {
+    console.log("CurrentCategory",CurrentCategory);
+    return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
+  }
 };

@@ -11,16 +11,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
+import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 const CatagoryDetails = () => {
   const QueryParams = useLocation();
-  const Parameter = `${QueryParams?.pathname}`.split("-")
-  const slug = Parameter.slice(0,-1).join("-")
-  const listing_id = +Parameter.slice(-1)
+  const Parameter = `${QueryParams?.pathname}`.split("-");
+  const slug = Parameter.slice(0, -1).join("-");
+  const listing_id = +Parameter.slice(-1);
   const dispatch = useDispatch();
   const ListDetailsState =
     useSelector((state) => state?.ListDetailsState) || {};
   const { isLoading, data } = ListDetailsState || {};
   const ListDetails = data?.data || {};
+
+  const {listing_name} = ListDetails || {}
   // const {
   //   canonical,
   //   contact_person,
@@ -43,9 +46,6 @@ const CatagoryDetails = () => {
   //   ratings_count,
   //   related_listings,
   // } = ListDetailsState;
-  const allProps = {
-    ListDetails: ListDetails,
-  };
 
   useEffect(() => {
     const GetBusinessDetails = ({ slug, listing_id }) => {
@@ -55,13 +55,26 @@ const CatagoryDetails = () => {
           listing_id: listing_id,
         })
       );
-    }; 
-    GetBusinessDetails({ slug:slug, listing_id:listing_id }) 
+    };
+    GetBusinessDetails({ slug: slug, listing_id: listing_id });
   }, []);
+
+  const preBreadcrumData = QueryParams?.state?.BreadcrumData
+    ? QueryParams?.state?.BreadcrumData
+    : [{ title: "home", link: `${HOME_ROUTE}` }];
+  const BreadcrumData = [
+    ...preBreadcrumData,
+    { title: listing_name, link: `${BASE_ROUTE}${QueryParams?.pathname}` },
+  ];
+
+  const allProps = {
+    ListDetails: ListDetails,
+    BreadcrumData: BreadcrumData,
+  };
   const test = () => {
-    console.log(ListDetailsState);
+    console.log(QueryParams);
     console.log(ListDetails);
-    console.log(slug,listing_id);
+    console.log(BreadcrumData);
   };
   return (
     <Fragment>
