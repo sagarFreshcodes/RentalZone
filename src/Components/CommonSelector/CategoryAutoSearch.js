@@ -72,7 +72,7 @@ const CategoryAutoSearch = ({
         );
       }
     };
-    WaitFor({ time: 400, functionality: Fun });
+    WaitFor({ time: 1000, functionality: Fun });
   }, [serchKeyword, optionShow]);
 
   return (

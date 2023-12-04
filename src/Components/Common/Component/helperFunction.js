@@ -2,10 +2,12 @@ import axios from "axios";
 import { API_ROOT_URL } from "../../../Constant/api_constant";
 import { toast } from "react-toastify";
 import { BASE_ROUTE } from "../../../Route/RouthPath";
-import { FS4 } from "../../../CommonElements/Font/FS";
+import { FS3, FS4 } from "../../../CommonElements/Font/FS";
 import { Link } from "react-router-dom";
+import { SelectCategory } from "../../../Redux_Store/Actions/generalActions";
 export function BreadCrum(array) {
   console.log("testb1");
+
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
   } else {
@@ -16,12 +18,45 @@ export function BreadCrum(array) {
             {array?.map((i, index) => {
               return (
                 <>
-                  <Link to={i?.link}>
+                  {i?.link == "page_title" ? (
                     <div className="BreadCreumTitle">
-                      {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
+                      <FS4 attr={{ className: "BoldText" }}>
+                        {" "}
+                        {i.title} {` >> `}{" "}
+                      </FS4>
                       &nbsp;
                     </div>
-                  </Link>
+                  ) : i?.link == "page_info" ? (
+                    <>
+                      <div className="BreadCreumTitle">
+                        <FS4 attr={{ className: "FW3" }}>
+                          {" "}
+                          {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
+                        </FS4>
+                        &nbsp;
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <Link to={i?.link}>
+                        <div
+                          className="BreadCreumTitle"
+                          onClick={() => console.log(array[index + 1])}
+                        >
+                          <FS4>
+                            {" "}
+                            {i.title}{" "}
+                            {array?.length == index + 1
+                              ? " "
+                              : array[index + 1]?.link == "page_info"
+                              ? ` - `
+                              : ` > `}{" "}
+                          </FS4>
+                          &nbsp;
+                        </div>
+                      </Link>
+                    </>
+                  )}
                 </>
               );
             })}
@@ -111,19 +146,38 @@ export const slugConvertor = (string) => {
   return `${string}`.toLowerCase().split(" ").join("-");
 };
 
-export const SearchDirect = ({ navigate, GeneralState,searchData }) => {
-
+export const SearchDirect = ({
+  navigate,
+  GeneralState,
+  searchData,
+  dispatch,
+}) => {
   const CurrentLocation = GeneralState?.location?.city_slug;
   const CurrentCategory = GeneralState?.category;
-  if (searchData?.type == "category") {
-    console.log("searchData", searchData);
+  if (searchData) {
+    if (searchData?.type == "category") {
+      console.log("searchData", searchData);
+      dispatch(
+        SelectCategory({
+          categoryDetails: {
+            category_id: searchData?.category_id,
+            category_slug: searchData?.category_slug,
+          },
+        })
+      );
+      return navigate(
+        `${BASE_ROUTE}/${searchData?.category_slug}-${CurrentLocation}/${searchData?.category_id}`
+      );
+    } else if (searchData?.type == "listing") {
+      console.log("searchData", searchData);
+      return navigate(`${BASE_ROUTE}/${searchData?.listing_slug}`);
+    }
+  } else {
     return navigate(
-      `${BASE_ROUTE}/${searchData?.category_slug}-${CurrentLocation}/${searchData?.category_id}`
+      `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
     );
-  } else if (searchData?.type == "listing") {
-    console.log("searchData", searchData);
-    return navigate(`${BASE_ROUTE}/${searchData?.listing_slug}`);
   }
+
 };
 
 export const WaitFor = ({ time, functionality }) => {

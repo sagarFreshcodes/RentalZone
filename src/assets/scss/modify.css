@@ -14,6 +14,9 @@
 }
 
 /* Header */
+.logoImageClass{
+  width: 6rem !important;
+}
 .UserHeaderBox{
   width: fit-content !important;
 }
@@ -33,7 +36,8 @@
   justify-content: space-between;
 }
 .leftSearchbar{
-  width: 70% !important
+  width: 60% !important;
+  margin: auto 0px;
 } 
 .logo-wrapper,
 .nav-right {
@@ -1121,6 +1125,9 @@ padding: 1rem 0;
 .leftSearchbar .categoryAS{
   width: 70% !important;
 }
+.spaceForSearchbar{
+  display: none;
+}
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
     width: 30% !important
@@ -1250,12 +1257,20 @@ width: 30% !important;
 
     .sc_linkBox{ 
       grid-template-columns: 1fr 1fr; 
-     } 
+     }
+
+     .leftSearchbar{
+      width: 70% !important;
+     }
+
      .headerLogoSearchBox{
       width: 70% !important;
      }
   }
   @media screen and (max-width:800px) { 
+    .spaceForSearchbar{
+      display: block;
+    }
     .cat_details_Body{
       padding: 0 !important;    }
     .sc_fixedButton{

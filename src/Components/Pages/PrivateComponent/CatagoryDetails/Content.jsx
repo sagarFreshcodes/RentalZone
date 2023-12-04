@@ -86,9 +86,9 @@ const Content = ({ allProps }) => {
       </div>
       <div className="spaceForSearchbar" />
 
-      <ContentBox className=""> 
+      {/* <ContentBox className=""> 
           {BreadCrum(BreadcrumData)} 
-      </ContentBox>
+      </ContentBox> */}
       <ContentBox className="">
         <FS10 attr={{ className: "lh-1", onClick: test }}>{page_title}</FS10>
       </ContentBox>

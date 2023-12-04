@@ -28,8 +28,8 @@ const Footer = () => {
     console.log(data);
     const placeSlug = slugConvertor(data?.area_name);
     navigate(
-      `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${CurrentLocation}/${SelectedCategory?.category_id}`,
-      // { state: { location: placeSlug } }
+      `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${placeSlug}/${SelectedCategory?.category_id}`,
+      { state: { location: placeSlug } }
     );
   };
 
@@ -91,7 +91,7 @@ const Footer = () => {
       {city_location.length > 2 ? (
         <div>
           <FooterLinkBox2
-            title={"City Locations"}
+            title={"Mumbai Locations"}
             linkTitleArray={city_location}
             boxWidth={"100%"}
             linkBoxWidth={`20%`}
@@ -105,7 +105,7 @@ const Footer = () => {
       {area_location.length > 2 ? (
         <div>
           <FooterLinkBox2
-            title={"Area Locations"}
+            title={"Navi Mumbai Areas"}
             linkTitleArray={area_location}
             boxWidth={"100%"}
             linkBoxWidth={`20%`}

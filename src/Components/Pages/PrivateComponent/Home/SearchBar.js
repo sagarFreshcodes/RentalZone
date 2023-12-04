@@ -6,7 +6,7 @@ import { CardHeader, Form, Input, Media } from "reactstrap";
 import SearchModal from "./SearchModel";
 import CategoryAutoSearch from "../../../CommonSelector/CategoryAutoSearch";
 import LocationAutoSearch from "../../../CommonSelector/LocationAutoSearch";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { SearchDirect } from "../../../Common/Component/helperFunction";
 export const SearchIcon = () => {
   return (
@@ -34,7 +34,7 @@ const SearchBar = ({ fun, className }) => {
   const [locationSearch, setLocationSearch] = useState(false);
   const GeneralState = useSelector((state) => state?.GeneralState);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const toggle = () => {
     if (modal) {
       setLocationSearch(false);
@@ -49,7 +49,20 @@ const SearchBar = ({ fun, className }) => {
   };
 
   const OnSearchIcon = ({ searchData }) => {
-    SearchDirect({ navigate, GeneralState, searchData });
+    SearchDirect({
+      navigate: navigate,
+      GeneralState: GeneralState,
+      searchData: searchData,
+      dispatch: dispatch,
+    });
+  };
+
+  const OnSearch = () => {
+    SearchDirect({
+      navigate: navigate,
+      GeneralState: GeneralState, 
+      dispatch: dispatch,
+    });
   };
   return (
     <>
@@ -57,7 +70,7 @@ const SearchBar = ({ fun, className }) => {
         <LocationAutoSearch
           placeholder={currentLocation}
           className="location"
-          OnSearchIcon={OnSearchIcon}
+          OnSearchIcon={OnSearch}
           Icon={LocationIcon}
         />
 
@@ -117,7 +130,7 @@ const SearchBar = ({ fun, className }) => {
                 placeholder="Location"
                 boxWidth="15rem"
                 className="w-100"
-                OnSearchIcon={OnSearchIcon}
+                OnSearchIcon={OnSearch}
               />
             ) : (
               (OnSearchIcon,

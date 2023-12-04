@@ -167,6 +167,9 @@
   .FW5{
     font-weight: 500 !important;
   }
+  .FW3{
+    font-weight: 300 !important;
+  }
   @media screen and (max-width:500px) {
     #FS10{ 
         font-size: 22px !important;

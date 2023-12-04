@@ -31,10 +31,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(
       SelectCategory({
-        categoryDetails: { category_id: 2, category_slug: "computer-rental" },
+        categoryDetails: { category_id: 3, category_slug: "laptop-rental" },
       })
     );
-    
+
     dispatch(HomePageApi({ Location: CurrentLocation }));
     // dispatch(GeneralActions());
   }, [dispatch]);

@@ -52,7 +52,7 @@ const LocationAutoSearch = ({
         return dispatch(LocationActions({ serchKeyword: serchKeyword }));
       }
     };
-    WaitFor({ time: 400, functionality: Fun });
+    WaitFor({ time: 1000, functionality: Fun });
   }, [serchKeyword, optionShow]);
 
   return (
