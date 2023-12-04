@@ -977,8 +977,15 @@ padding-bottom: 5px;
 }
 
 .gq-formKey{
+  width: 45%;
   display: flex;
-  gap: 6rem;
+  flex-direction: column;
+}
+
+.gq-formKey2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .quoteInputBox{
   border: solid 1px black;
@@ -986,18 +993,13 @@ padding-bottom: 5px;
   padding: 1px;
 }
 
-.gq-formKey .title{
-  width: 30%;
-}
-
-.gq-formKey .rightInput{
-  width: 70%;
-}
+ 
 
 .gq-fieldBox{
   display: flex;
-    flex-direction: column;
+ flex-wrap: wrap;
     gap: 0.8rem;
+    justify-content: space-between;
 }
 .rightInput select{
   word-wrap: normal;
@@ -1014,19 +1016,19 @@ width: 100%;
 }
 .gqcatChecklist{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border: solid 1px;
+  grid-template-columns: 1fr 1fr ; 
   max-height: 6rem;
-  padding: 10px;
-  overflow-y: auto;
+  padding: 10px 0;
+  overflow-y: scroll;
 }
  
 .gqcheckCtg{}
 .gqcheckInput{
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: baseline;
   width: 90%;
+  gap: 1rem;
 }
 .gq-model{
   padding: 10px;
@@ -1037,12 +1039,18 @@ width: 100%;
 
 .gq-model-content {
 position: relative !important;
+font-family: Poppins !important;
 }
-
+.gq-model-content .modal-header{
+  background-color: #E5F3F9;
+}
 .gq-model-content img{ 
   width: 100%; 
   }
-
+.gq-formKey p{ 
+    font-weight: 500 !important;
+ 
+}
  .chatModelContent .chat-history{
   height: 20rem;
   min-height: 20rem;
@@ -1073,7 +1081,10 @@ padding: 1rem 0;
     justify-content: center;
     align-items: center;
   }
-
+  .gq-formKey .rightInput,
+.CMN_InputBox .quoteInput{
+  font-size: 12px !important;
+}
 
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
@@ -1508,7 +1519,18 @@ font-size: 16px !important;
 
 }
 
-@media screen and (max-width:600px) {  .searchHeadBx{ 
+@media screen and (max-width:600px) {  
+  .gq-formKey {
+    width: 100%;}
+ .gq-formKey #FS4{ 
+    font-size: 14px !important;
+ 
+}
+.gqcheckInput { 
+  gap: 5px;
+}
+
+  .searchHeadBx{ 
   padding: 0 1vw!important;} }
 @media screen and (max-width:500px) {
   .pd_price_box{display: flex;}

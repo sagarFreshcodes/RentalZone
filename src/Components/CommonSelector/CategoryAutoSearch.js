@@ -42,22 +42,13 @@ const CategoryAutoSearch = ({
     setOptionShow(true);
   };
   const onHandleClick = (e) => {
+    console.log("clickOnOption");
     setSerchKeyword(e.name);
     setOptionShow(false);
     OnSearchIcon();
     dispatch(SetCategory({ categoryData: e }));
   };
-
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     // model.onChange({
-  //     //     key: model.Columedata?.id || '',
-  //     //     value: query,
-  //     // })
-  //     console.log(serchKeyword, "serchKeyword");
-  //   }, 500);
-  //   return () => clearTimeout(timeout);
-  // }, [serchKeyword]);
+ 
 
   useEffect(() => {
     const Fun = () => {

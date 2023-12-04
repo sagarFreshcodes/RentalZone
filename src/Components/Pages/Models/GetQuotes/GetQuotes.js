@@ -4,6 +4,8 @@ import { Btn, H5 } from "../../../../AbstractElements";
 import { Close, SaveChanges } from "../../../../Constant";
 import CommonAutoSearch from "../../../CommonSelector/CommonAutoSearch";
 import { useState } from "react";
+import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
+import { CloseButton } from "../../../Common/Component/DesignElement";
 
 const GetQuotesModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
@@ -80,19 +82,27 @@ const GetQuotesModel = (props) => {
     >
       <div className="modal-header">
         <H5 attrH5={{ className: "modal-title" }}>{"Get Quotes"}</H5>
-       
+        <CloseButton attr={{className:"reg_React_Icon", onClick: props.toggler }}/>
       </div>
       {/* <img src="https://t4.ftcdn.net/jpg/02/76/08/07/360_F_276080724_hltnCyDjcqAyRtLzDYo3T2jXbBtCD7fl.jpg" alt="" /> */}
       <ModalBody className={props.bodyClass}>
         <div>
           <div className="gq-model">
+            <div className="title">
+              <FS4
+                attr={{ className: "FW5" }}
+              >{`Select below option for quotes`}</FS4>
+            </div>{" "}
             <div className="gqcatChecklist">
               {categ.map((i) => {
                 return (
                   <>
                     <div className="gqcheckInput">
-                      <span className="gqcheckCtg"> {i}</span>{" "}
                       <input type="checkbox" />
+                      <span className="gqcheckCtg">
+                        {" "}
+                        <FS2>{i}</FS2>
+                      </span>{" "}
                     </div>
                   </>
                 );
@@ -104,25 +114,32 @@ const GetQuotesModel = (props) => {
               {formFields.map((i) => {
                 return (
                   <>
-                    <div className="gq-formKey">
+                    <div
+                      className={
+                        [
+                          "selection",
+                          "quantity",
+                          "name",
+                          "phoneNumber",
+                        ].includes(i.name)
+                          ? "gq-formKey"
+                          : "gq-formKey2"
+                      }
+                    >
                       {" "}
-                      <div className="title">{i.title}</div>{" "}
+                      <div className="title">
+                        <FS4>{i.title}</FS4>
+                      </div>{" "}
                       <div className="rightInput">
                         {i.name == `selection` ? (
                           <>
-                            {/* <CommonAutoSearch
-                              options={selectOption}
-                              setState={setSelectedOption}
-                              placeholder={selectedOption?.lable}
-                            /> */}
-
                             <select
                               name=""
                               id=""
                               onClick={(e) => console.log(e.target.value)}
                             >
-                              <option value="adasd">adasd</option>
-                              <option value="adaseed">adaseed</option>
+                              <option value="adasd">Option 1</option>
+                              <option value="adaseed">Option 2</option>
                             </select>
                           </>
                         ) : (
@@ -149,9 +166,6 @@ const GetQuotesModel = (props) => {
         </div>
       </ModalBody>
       <ModalFooter>
-        <Btn attrBtn={{ color: "secondary", onClick: props.toggler }}>
-          {Close}
-        </Btn>
         <Btn attrBtn={{ color: "primary", onClick: props.toggler }}>
           {"Submit"}
         </Btn>

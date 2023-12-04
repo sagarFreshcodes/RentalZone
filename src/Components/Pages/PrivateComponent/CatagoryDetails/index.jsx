@@ -84,8 +84,7 @@ const CatagoryDetails = () => {
           <div className="cds_content">
             <Content allProps={allProps} />
           </div>
-        </div>
-
+        </div> 
         <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
           <div className="s_content ">
             <CategoryProduct />

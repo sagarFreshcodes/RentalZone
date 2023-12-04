@@ -56,29 +56,16 @@ const SearchBar = ({ fun, className }) => {
       <div className={`SearchBar ${className}`}>
         <LocationAutoSearch
           placeholder={currentLocation}
-          field={`status`}
-          setQuotation={{}}
-          quotation={{}}
-          postFieldName={`status`}
-          optionsArray={[]}
-          Icon={LocationIcon}
           boxWidth="15rem"
           className="location"
-          setState={setCurrentLocation}
           OnSearchIcon={OnSearchIcon}
+          Icon={LocationIcon}
         />
 
         <CategoryAutoSearch
           placeholder={currentCategory}
-          field={`status`}
-          setQuotation={{}}
-          quotation={{}}
-          postFieldName={`status`}
-          optionsArray={[]}
           Icon={SearchIcon}
           iconPose="end"
-          setState={setCurrentCategory}
-          currentLocation={currentLocation}
           OnSearchIcon={OnSearchIcon}
         />
       </div>
@@ -87,16 +74,9 @@ const SearchBar = ({ fun, className }) => {
         {!modal ? (
           <CategoryAutoSearch
             placeholder={currentCategory}
-            field={`status`}
-            setQuotation={{}}
-            quotation={{}}
-            postFieldName={`status`}
-            optionsArray={[]}
             Icon={SearchIcon}
             iconPose="end"
-            setState={setCurrentCategory}
             OnSearchIcon={OnSearchIcon}
-            currentLocation={currentLocation}
           />
         ) : null}
 
@@ -135,31 +115,21 @@ const SearchBar = ({ fun, className }) => {
             {locationSearch ? (
               <LocationAutoSearch
                 placeholder="Location"
-                field={`status`}
-                setQuotation={{}}
-                quotation={{}}
-                postFieldName={`status`}
-                optionsArray={[]}
                 boxWidth="15rem"
                 className="w-100"
-                setState={setCurrentLocation}
                 OnSearchIcon={OnSearchIcon}
               />
             ) : (
-              <CategoryAutoSearch
-                placeholder={currentCategory}
-                field={`status`}
-                setQuotation={{}}
-                quotation={{}}
-                postFieldName={`status`}
-                optionsArray={[]}
-                Icon={SearchIcon}
-                iconPose="end"
-                className="w-100"
-                setState={setCurrentCategory}
-                currentLocation={currentLocation}
-                OnSearchIcon={OnSearchIcon}
-              />
+              (OnSearchIcon,
+              (
+                <CategoryAutoSearch
+                  placeholder={currentCategory}
+                  Icon={SearchIcon}
+                  iconPose="end"
+                  className="w-100"
+                  OnSearchIcon={OnSearchIcon}
+                />
+              ))
             )}
           </div>
 

@@ -164,6 +164,9 @@
     text-decoration: none;
     color: black;
   }
+  .FW5{
+    font-weight: 500 !important;
+  }
   @media screen and (max-width:500px) {
     #FS10{ 
         font-size: 22px !important;
