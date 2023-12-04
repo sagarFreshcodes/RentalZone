@@ -82,7 +82,9 @@ const ServiceCard = ({
 
   ];
   const RandomImg = imgList[Math.floor(Math.random() * imgList.length)];
-
+const OnDial = () =>{
+  document.location.href = 'tel:+91{{1234567892}}'
+}
   return (
     <>
       <div
@@ -158,7 +160,7 @@ const ServiceCard = ({
               </FS3>
 
               <div className="sp_card_box">
-                <button className="btn btn-success callNow bottonHover">
+                <button className="btn btn-success callNow bottonHover"  onClick={OnDial}>
                   {" "}
                   <FS3>Call Now</FS3>
                 </button>{" "}
@@ -249,7 +251,7 @@ const ServiceCard = ({
 "
         >
           {" "}
-          <button className="btn btn-success ">
+          <button className="btn btn-success " onClick={OnDial} >
             {" "}
             <FS3>
               {" "}
