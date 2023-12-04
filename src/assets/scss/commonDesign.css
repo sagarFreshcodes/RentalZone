@@ -40,6 +40,10 @@
     border: none !important;
   }
 
+  .CMN_InputBox textarea{
+    width: 100%;
+    border: none !important;
+  }
 
 
   /* Auto search */

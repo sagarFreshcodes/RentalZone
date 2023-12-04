@@ -43,13 +43,13 @@ const GetQuotesModel = (props) => {
       title: "Location",
       placeHolder: "Location",
       type: "text",
-      name: "",
+      name: "location",
     },
     {
       title: "Message",
       placeHolder: "Message",
-      type: "text",
-      name: "location",
+      type: "textarea",
+      name: "message",
     },
   ];
 
@@ -82,7 +82,9 @@ const GetQuotesModel = (props) => {
     >
       <div className="modal-header">
         <H5 attrH5={{ className: "modal-title" }}>{"Get Quotes"}</H5>
-        <CloseButton attr={{className:"reg_React_Icon", onClick: props.toggler }}/>
+        <CloseButton
+          attr={{ className: "reg_React_Icon", onClick: props.toggler }}
+        />
       </div>
       {/* <img src="https://t4.ftcdn.net/jpg/02/76/08/07/360_F_276080724_hltnCyDjcqAyRtLzDYo3T2jXbBtCD7fl.jpg" alt="" /> */}
       <ModalBody className={props.bodyClass}>
@@ -114,40 +116,59 @@ const GetQuotesModel = (props) => {
               {formFields.map((i) => {
                 return (
                   <>
-                    <div
-                      className={
-                        [
-                          "selection",
-                          "quantity",
-                          "name",
-                          "phoneNumber",
-                        ].includes(i.name)
-                          ? "gq-formKey"
-                          : "gq-formKey2"
-                      }
-                    >
-                      {" "}
-                      <div className="title">
-                        <FS4>{i.title}</FS4>
-                      </div>{" "}
-                      <div className="rightInput">
-                        {i.name == `selection` ? (
-                          <>
-                            <select
-                              name=""
-                              id=""
-                              onClick={(e) => console.log(e.target.value)}
-                            >
-                              <option value="adasd">Option 1</option>
-                              <option value="adaseed">Option 2</option>
-                            </select>
-                          </>
-                        ) : (
+                    {[
+                      "selection",
+                      "quantity",
+                      "name",
+                      "phoneNumber",
+                      "location",
+                      "email",
+                    ].includes(i.name) ? (
+                      <div className="gq-formKey">
+                        {" "}
+                        <div className="title">
+                          <FS4>{i.title}</FS4>
+                        </div>{" "}
+                        <div className="rightInput">
+                          {i.name == `selection` ? (
+                            <>
+                              <select
+                                name=""
+                                id=""
+                                onClick={(e) => console.log(e.target.value)}
+                              >
+                                <option value="adasd">Option 1</option>
+                                <option value="adaseed">Option 2</option>
+                              </select>
+                            </>
+                          ) : (
+                            <>
+                              {" "}
+                              <div className="CMN_InputBox">
+                                {" "}
+                                <input
+                                  placeholder={i?.placeHolder}
+                                  className="quoteInput"
+                                  type={i?.type}
+                                  name={i?.name}
+                                />{" "}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="gq-formKey2">
+                        {" "}
+                        <div className="title">
+                          <FS4>{i.title}</FS4>
+                        </div>{" "}
+                        <div className="rightInput">
                           <>
                             {" "}
                             <div className="CMN_InputBox">
                               {" "}
-                              <input
+                              <textarea
                                 placeholder={i?.placeHolder}
                                 className="quoteInput"
                                 type={i?.type}
@@ -155,9 +176,9 @@ const GetQuotesModel = (props) => {
                               />{" "}
                             </div>
                           </>
-                        )}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 );
               })}{" "}

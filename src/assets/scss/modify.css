@@ -1022,7 +1022,7 @@ padding-bottom: 5px;
 .gq-fieldBox{
   display: flex;
  flex-wrap: wrap;
-    gap: 0.8rem;
+ gap: 2px;
     justify-content: space-between;
 }
 .rightInput select{
@@ -1127,6 +1127,10 @@ padding: 1rem 0;
 }
 .spaceForSearchbar{
   display: none;
+}
+
+.rightInput .CMN_InputBox{
+  border: solid 1px rgb(133, 133, 133) !important;
 }
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
