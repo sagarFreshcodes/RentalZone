@@ -24,31 +24,12 @@ const RightHeader = (props) => {
  }
   return (
     <Fragment>
-      <Col  className="nav-right pull-right right-header col-2 p-0 ms-auto"
-
-       
-      >
-        {/* <Col md="8"> */}
-        <UL attrUL={{ className: "simple-list nav-menus flex-row" }}>
-           <Searchbar onSearch ={onSearch} /> 
-         
-          {/* <Language />
-          
-          <BookmarkHeader />
-          <MoonLight />
-          <CartHeader /> */}
-          {/* <Notificationbar /> */}
+      <Col  className="nav-right pull-right right-header col-2 p-0 ms-auto" 
+      > 
+        <UL attrUL={{ className: "simple-list nav-menus flex-row" }}> 
           <UserHeader />
-        </UL>
-        {/* </Col> */}
-      </Col>
-      <div className="searchModelBox">
-      <SearchModal isOpen={modal} title={`ModalTitle`} toggler={toggle}>
-      <SearchBar /> 
-        <div className=""></div>
-      </SearchModal>
-      </div>
-     
+        </UL> 
+      </Col> 
     </Fragment>
   );
 };

@@ -12,6 +12,7 @@ import {
   CategoryActions,
   GeneralActions,
   LocationActions,
+  SelectCategory,
   SetCategory,
   SetLocation,
 } from "../../Redux_Store/Actions/generalActions";
@@ -42,11 +43,21 @@ const CategoryAutoSearch = ({
     setOptionShow(true);
   };
   const onHandleClick = (e) => {
-    console.log("clickOnOption");
+    console.log("clickOnOption",e);
     setSerchKeyword(e.name);
     setOptionShow(false);
-    OnSearchIcon();
+    OnSearchIcon({searchData:e});
     dispatch(SetCategory({ categoryData: e }));
+
+
+    // dispatch(
+    //   SelectCategory({
+    //     categoryDetails: {
+    //       category_id: category_id,
+    //       category_slug: category_slug,
+    //     },
+    //   })
+    // );
   };
  
 

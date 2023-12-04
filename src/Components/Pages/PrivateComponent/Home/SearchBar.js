@@ -48,15 +48,14 @@ const SearchBar = ({ fun, className }) => {
     locationSearch ? setLocationSearch(false) : setLocationSearch(true);
   };
 
-  const OnSearchIcon = () => {
-    SearchDirect({ navigate, GeneralState });
+  const OnSearchIcon = ({ searchData }) => {
+    SearchDirect({ navigate, GeneralState, searchData });
   };
   return (
     <>
       <div className={`SearchBar ${className}`}>
         <LocationAutoSearch
           placeholder={currentLocation}
-          boxWidth="15rem"
           className="location"
           OnSearchIcon={OnSearchIcon}
           Icon={LocationIcon}
@@ -66,6 +65,7 @@ const SearchBar = ({ fun, className }) => {
           placeholder={currentCategory}
           Icon={SearchIcon}
           iconPose="end"
+          className="categoryAS"
           OnSearchIcon={OnSearchIcon}
         />
       </div>

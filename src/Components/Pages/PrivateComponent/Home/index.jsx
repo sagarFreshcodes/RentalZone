@@ -4,29 +4,37 @@ import { Card, Col, Container, Row } from "reactstrap";
 import Content from "./Content";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { 
-  HomePageApi,
-} from "../../../../Redux_Store/Actions/homeActions";
-import { GeneralActions } from "../../../../Redux_Store/Actions/generalActions";
+import { HomePageApi } from "../../../../Redux_Store/Actions/homeActions";
+import {
+  GeneralActions,
+  SelectCategory,
+} from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 
 const Home = () => {
   const dispatch = useDispatch();
   const HomPageData = useSelector((state) => state?.Home?.data?.data);
   const GeneralData = useSelector((state) => state?.GeneralState);
-  const CurrentLocation = `${GeneralData?.location?.city_slug}`
+  const CurrentLocation = `${GeneralData?.location?.city_slug}`;
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
 
   const props = {
     homepage_category: Homepage_category,
-    HomPageData: HomPageData,GeneralData:GeneralData,
-    StateData: StateData, 
+    HomPageData: HomPageData,
+    GeneralData: GeneralData,
+    StateData: StateData,
     location: CurrentLocation,
   };
 
   useEffect(() => {
+    dispatch(
+      SelectCategory({
+        categoryDetails: { category_id: 2, category_slug: "computer-rental" },
+      })
+    );
+    
     dispatch(HomePageApi({ Location: CurrentLocation }));
     // dispatch(GeneralActions());
   }, [dispatch]);

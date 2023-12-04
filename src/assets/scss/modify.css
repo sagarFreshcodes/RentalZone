@@ -14,7 +14,27 @@
 }
 
 /* Header */
-.leftSearchbar,
+.UserHeaderBox{
+  width: fit-content !important;
+}
+
+.UserHeaderBox .profile-nav{
+  margin: 0 !important;
+}
+
+.headerLogoSearchBox{
+  display: flex;
+  gap: 1rem;
+  width: 80% !important;
+}
+
+.page-wrapper .page-header .header-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.leftSearchbar{
+  width: 70% !important
+} 
 .logo-wrapper,
 .nav-right {
   width: fit-content !important;
@@ -1064,12 +1084,12 @@ padding: 1rem 0;
  }
 
  .chatModelContent .pull-right{
-  background-color: #9192f2;
+  background-color: #FFF2E8;
   border-radius: 1rem 0 1rem 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
  }
- .chatModelContent .my-message{    background-color: #9191a6;
+ .chatModelContent .my-message{    background-color: #E5F3F9;
   border-radius: 0 1rem 1rem 1rem;
   padding: 1rem;
   margin-bottom: 1rem;}
@@ -1085,7 +1105,22 @@ padding: 1rem 0;
 .CMN_InputBox .quoteInput{
   font-size: 12px !important;
 }
+.gq-model-content .btn-primary{
+  background-color: #0085BE !important;
+}
+.searchHeadBx .location{
+  width: 15% !important;
+}
+.searchHeadBx .categoryAS{
+  width: 35% !important;
+}
 
+.leftSearchbar .location{
+  width: 30% !important;
+}
+.leftSearchbar .categoryAS{
+  width: 70% !important;
+}
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{
     width: 30% !important
@@ -1215,10 +1250,9 @@ width: 30% !important;
 
     .sc_linkBox{ 
       grid-template-columns: 1fr 1fr; 
-     }
-
-     .leftSearchbar{
-      width: 55% !important;
+     } 
+     .headerLogoSearchBox{
+      width: 70% !important;
      }
   }
   @media screen and (max-width:800px) { 
@@ -1256,6 +1290,14 @@ width: 30% !important;
       width: -webkit-fill-available;
       z-index: 10; 
     }
+
+    .searchHeadBx .location{
+      width: 30% !important;
+    }
+    .searchHeadBx .categoryAS{
+      width: 70% !important;
+    }
+
     .sc_cardBoxRight
     {
       display: none;

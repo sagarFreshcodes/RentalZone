@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 import { Image } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import NotificationSlider from "./NotificationSlider";
-import SearchBar, { SearchIcon } from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
-import { useDispatch, useSelector } from 'react-redux'; 
-import { useLocation } from 'react-router-dom';
+import SearchBar, {
+  SearchIcon,
+} from "../../../Components/Pages/PrivateComponent/Home/SearchBar";
+import UserHeader from "./UserHeader";
+import { UL } from "../../../AbstractElements";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 const Leftbar = () => {
   let location = useLocation();
   const state = useSelector((state) => state);
@@ -24,12 +28,9 @@ const Leftbar = () => {
       function updateSize() {
         setSize([window.innerWidth, window.innerHeight]);
         if (window.innerWidth <= 991) {
-         
           setToggleIcon(true);
         } else {
-         
           setToggleIcon(false);
-
         }
       }
       window.addEventListener("resize", updateSize);
@@ -61,62 +62,56 @@ const Leftbar = () => {
   // Event listener to detect scroll
   window.addEventListener("scroll", function () {
     // Get the current scroll position in the y-direction
-    var scrollY = window.scrollY || window.pageYOffset; 
+    var scrollY = window.scrollY || window.pageYOffset;
     // Use scrollY for whatever measurement or action you need
     if (scrollY <= 175) {
       setSearchBarShow(false);
-
     } else {
       setSearchBarShow(true);
     }
   });
   return (
-    <Fragment className="RightBarBox"> 
-     <div className="logo-wrapper" onClick={()=>{console.log(`state`,state)}}>
-          {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
-          <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}>
-            <Image
-              attrImage={{
-                className: "img-fluid for-light",
-                src: `${require("../../../assets/images/logo/logo.png")}`,
-                alt: "",
-              }}
-            />
-            <Image
-              attrImage={{
-                className: "img-fluid for-dark",
-                src: `${require("../../../assets/images/logo/logo_dark.png")}`,
-                alt: "",
-              }}
-            />
-          </Link>
+    <Fragment> 
+        <div className="headerLogoSearchBox">
+          <div
+            className="logo-wrapper"
+            onClick={() => {
+              console.log(`state`, state);
+            }}
+          >
+            {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
+            <Link
+              to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}
+            >
+              <Image
+                attrImage={{
+                  className: "img-fluid for-light",
+                  src: `${require("../../../assets/images/logo/logo.png")}`,
+                  alt: "",
+                }}
+              />
+              <Image
+                attrImage={{
+                  className: "img-fluid for-dark",
+                  src: `${require("../../../assets/images/logo/logo_dark.png")}`,
+                  alt: "",
+                }}
+              />
+            </Link>
+          </div>
+
+          {searchBarShow || !location.pathname.includes(`home`) ? (
+            <div className="leftSearchbar">
+              <SearchBar />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        {/* <div
-          className="toggle-sidebar"
-          onClick={() => responsive_openCloseSidebar(sidebartoggle)}
-          style={
-            window.innerWidth <= 991
-              ? { display: "block" }
-              : { display: "none" }
-          }
-        >
-          <AlignCenter
-            className="status_toggle middle sidebar-toggle"
-            id="sidebar-toggle"
-          />
-        </div> */} 
- 
 
-      {searchBarShow || !location.pathname.includes(`home`)? (
-        <div   className="leftSearchbar">
-          <SearchBar /> 
-        </div>
-      ) : (
-        ""
-      )}
-
-
-    
+        <div className="UserHeaderBox">
+          <UserHeader />
+        </div> 
     </Fragment>
   );
 };

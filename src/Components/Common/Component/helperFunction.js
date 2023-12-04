@@ -111,17 +111,18 @@ export const slugConvertor = (string) => {
   return `${string}`.toLowerCase().split(" ").join("-");
 };
 
-export const SearchDirect = ({ navigate, GeneralState }) => {
+export const SearchDirect = ({ navigate, GeneralState,searchData }) => {
+
   const CurrentLocation = GeneralState?.location?.city_slug;
   const CurrentCategory = GeneralState?.category;
-  if (CurrentCategory?.type == "category") {
-    console.log("CurrentCategory", CurrentCategory);
+  if (searchData?.type == "category") {
+    console.log("searchData", searchData);
     return navigate(
-      `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
+      `${BASE_ROUTE}/${searchData?.category_slug}-${CurrentLocation}/${searchData?.category_id}`
     );
-  } else {
-    console.log("CurrentCategory", CurrentCategory);
-    return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
+  } else if (searchData?.type == "listing") {
+    console.log("searchData", searchData);
+    return navigate(`${BASE_ROUTE}/${searchData?.listing_slug}`);
   }
 };
 
