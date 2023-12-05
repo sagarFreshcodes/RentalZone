@@ -43,7 +43,8 @@ const AppLayout = ({ children, classNames, ...rest }) => {
       >
         <Header />
         <div className="page-body-wrapper">
-          <Sidebar />
+          {developerOption ? <Sidebar /> : ""}
+
           <TransitionGroup {...rest}>
             <CSSTransition
               key={location.key}

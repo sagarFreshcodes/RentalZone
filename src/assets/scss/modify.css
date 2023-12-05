@@ -1024,8 +1024,14 @@ padding-bottom: 5px;
 .gq-fieldBox{
   display: flex;
  flex-wrap: wrap;
+ margin: 10px 0;
  gap: 2px;
     justify-content: space-between;
+}
+.gq-model-bbox{
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 .rightInput select{
   word-wrap: normal;
@@ -1057,8 +1063,8 @@ width: 100%;
   gap: 1rem;
 }
 .gq-model{
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  /* padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important; */
   z-index: 10;
   position: relative !important; 
 }
@@ -1069,6 +1075,7 @@ font-family: Poppins !important;
 }
 .gq-model-content .modal-header{
   background-color: #E5F3F9;
+  padding: 8px 25px !important;
 }
 .gq-model-content img{ 
   width: 100%; 

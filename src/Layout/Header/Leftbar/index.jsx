@@ -12,6 +12,7 @@ import UserHeader from "./UserHeader";
 import { UL } from "../../../AbstractElements";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { HOME_ROUTE } from "../../../Route/RouthPath";
 const Leftbar = () => {
   let location = useLocation();
   const state = useSelector((state) => state);
@@ -58,7 +59,7 @@ const Leftbar = () => {
       }
     }
   };
-
+  const developerOption = localStorage.getItem("developerOption") == "true";
   // Event listener to detect scroll
   window.addEventListener("scroll", function () {
     // Get the current scroll position in the y-direction
@@ -81,7 +82,7 @@ const Leftbar = () => {
           >
             {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
             <Link
-              to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}
+              to={developerOption?`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`:HOME_ROUTE}
             >
               <Image
                 attrImage={{

@@ -109,9 +109,7 @@ const GetQuotesModel = (props) => {
                   </>
                 );
               })}
-            </div>
-            <br />
-            <br />
+            </div> 
             <div className="gq-fieldBox">
               {formFields.map((i) => {
                 return (
@@ -184,14 +182,14 @@ const GetQuotesModel = (props) => {
               })}{" "}
             </div>
           </div>
-        </div>
-      </ModalBody>
-      <ModalFooter>
-        <Btn attrBtn={{ color: "primary", onClick: props.toggler }}>
+        </div> 
+    <div className="gq-model-bbox">
+    <Btn attrBtn={{ color: "primary", onClick: props.toggler }}>
           {"Submit"}
         </Btn>
-        {/* <Btn attrBtn={{ color: 'primary', onClick: props.toggler }}>{SaveChanges}</Btn> */}
-      </ModalFooter>
+    </div>
+      </ModalBody>
+   
     </Modal>
   );
 };
