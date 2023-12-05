@@ -160,6 +160,7 @@
   .BreadCreumTitle{
     text-transform: capitalize !important;
     cursor: pointer;
+    line-height: 0;
   }
   .BreadCreumBox{
     flex-wrap: wrap;
@@ -174,6 +175,16 @@
   }
   .FW3{
     font-weight: 300 !important;
+  }
+
+.noDataFoundImg{
+  width: 20% !important;
+    margin: auto !important;
+}
+  .NoRecords{
+    position: absolute;
+    top: 50%;
+    left: 50%;
   }
   @media screen and (max-width:500px) {
     #FS10{ 

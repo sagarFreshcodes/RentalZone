@@ -8,13 +8,13 @@ import {
   SEARCH_CITY_AREA_API,
 } from "../../Constant/api_constant";
 import { ActionType } from "../ReduxConstant";
-import { ToastError } from "../../Components/Common/Component/helperFunction";
+import { GetApi, ToastError } from "../../Components/Common/Component/helperFunction";
 export const GeneralActions = () => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
-      dispatch({ type: ActionType.ON_REQUEST_COMMON_API });
-      const response = await axios.get(`${API_ROOT_URL}/${COMMONPAGE_API}`);
+      dispatch({ type: ActionType.ON_REQUEST_COMMON_API }); 
+      const response = await GetApi(`${API_ROOT_URL}/${COMMONPAGE_API}`) 
       dispatch({
         type: ActionType.ON_SUCCESS_COMMON_API,
         payload: response.data,
@@ -42,10 +42,9 @@ export const LocationActions = ({ serchKeyword }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
-      dispatch({ type: ActionType.ON_REQUEST_LOCATION_API });
-      const response = await axios.get(
-        `${API_ROOT_URL}/${SEARCH_CITY_AREA_API}?keyword=${serchKeyword}`
-      );
+      dispatch({ type: ActionType.ON_REQUEST_LOCATION_API }); 
+
+      const response = await GetApi(`${API_ROOT_URL}/${SEARCH_CITY_AREA_API}?keyword=${serchKeyword}`) 
       dispatch({
         type: ActionType.ON_SUCCESS_LOCATION_API,
         payload: response?.data?.data,
@@ -61,8 +60,7 @@ export const LocationActions = ({ serchKeyword }) => {
   };
 };
 
-export const SetCategory = ({ categoryData }) => {
-  console.log("redux serchKeyword", categoryData);
+export const SetCategory = ({ categoryData }) => { 
   return async (dispatch) => {
     dispatch({
       type: ActionType.ON_CATEGORY_SET,
@@ -84,14 +82,8 @@ export const CategoryActions = ({ serchKeyword, location }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
-      dispatch({ type: ActionType.ON_REQUEST_CATEGORY_API });
-      // Perform asynchronous operation (e.g., API call)
-      // const response = await axios.get(`${API_ROOT_URL}``${COMMONPAGE_API}`);
-
-      const response = await axios.get(
-        `${API_ROOT_URL}/${GET_SEARCH_DATA_API}?keyword=${serchKeyword}&current_location=${location}`
-      );
-
+      dispatch({ type: ActionType.ON_REQUEST_CATEGORY_API }); 
+      const response = await GetApi(`${API_ROOT_URL}/${GET_SEARCH_DATA_API}?keyword=${serchKeyword}&current_location=${location}`) 
       dispatch({
         type: ActionType.ON_SUCCESS_CATEGORY_API,
         payload: response?.data?.data,

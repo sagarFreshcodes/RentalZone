@@ -13,55 +13,55 @@ export function BreadCrum(array) {
   } else {
     if (array[0]?.title) {
       return (
-        <FS4 attr={{ className: "lh-1" }}>
-          <div className="BreadCreumBox">
-            {array?.map((i, index) => {
-              return (
-                <>
-                  {i?.link == "page_title" ? (
+        // <FS4 attr={{ className: "lh-1" }}>
+        <div className="BreadCreumBox">
+          {array?.map((i, index) => {
+            return (
+              <>
+                {i?.link == "page_title" ? (
+                  <div className="BreadCreumTitle">
+                    <FS3 attr={{ className: "BoldText" }}>
+                      {" "}
+                      {i.title} {` >> `}{" "}
+                    </FS3>
+                    &nbsp;
+                  </div>
+                ) : i?.link == "page_info" ? (
+                  <>
                     <div className="BreadCreumTitle">
-                      <FS4 attr={{ className: "BoldText" }}>
+                      <FS3 attr={{ className: "FW3" }}>
                         {" "}
-                        {i.title} {` >> `}{" "}
-                      </FS4>
+                        {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
+                      </FS3>
                       &nbsp;
                     </div>
-                  ) : i?.link == "page_info" ? (
-                    <>
-                      <div className="BreadCreumTitle">
-                        <FS4 attr={{ className: "FW3" }}>
+                  </>
+                ) : (
+                  <>
+                    <Link to={i?.link}>
+                      <div
+                        className="BreadCreumTitle"
+                        onClick={() => console.log(array[index + 1])}
+                      >
+                        <FS3>
                           {" "}
-                          {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
-                        </FS4>
+                          {i.title}{" "}
+                          {array?.length == index + 1
+                            ? " "
+                            : array[index + 1]?.link == "page_info"
+                            ? ` - `
+                            : ` > `}{" "}
+                        </FS3>
                         &nbsp;
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <Link to={i?.link}>
-                        <div
-                          className="BreadCreumTitle"
-                          onClick={() => console.log(array[index + 1])}
-                        >
-                          <FS4>
-                            {" "}
-                            {i.title}{" "}
-                            {array?.length == index + 1
-                              ? " "
-                              : array[index + 1]?.link == "page_info"
-                              ? ` - `
-                              : ` > `}{" "}
-                          </FS4>
-                          &nbsp;
-                        </div>
-                      </Link>
-                    </>
-                  )}
-                </>
-              );
-            })}
-          </div>
-        </FS4>
+                    </Link>
+                  </>
+                )}
+              </>
+            );
+          })}
+        </div>
+        // </FS4>
       );
     } else {
       return array.join(" > ");
@@ -84,8 +84,24 @@ export const GET_API = (endPoint) => {
 };
 
 export const GetApi = async (endPoint) => {
-  const response = await axios.get(endPoint);
+  const HEADERS = {
+    headers: {
+      // "Content-Type": "application/json",
+      // "Accept": "application/json",
+      // 'Authorization': "AuthStr================="
+      // Include any other required headers
+    },
+  };
+  const response = await axios.get(endPoint, HEADERS);
   return response;
+  // return Promise(async (RESPONCE, REJECT) => {
+  //   try {
+  //     const response = await axios.get(endPoint, HEADERS);
+  //     RESPONCE(response);
+  //   } catch (error) {
+  //     REJECT(error);
+  //   }
+  // });
 };
 
 export const POST_API = ({ endPoint, body }) => {

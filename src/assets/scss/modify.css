@@ -533,7 +533,7 @@ width: fit-content !important;
 }
 .s_content{
   width: 80% !important;
-
+position: relative;
 
 }
 
@@ -744,6 +744,15 @@ padding-bottom: 5px;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+.SC_CardSkelaton .ant-skeleton-avatar-circle{
+  border-radius: 0% !important;
+  position: relative;
+    top: 10px;
+}
+.SC_CardSkelaton .ant-skeleton-avatar-lg{
+  width: 5rem !important; 
+  height: 5rem !important;
 }
 .s_form{
   display: flex;

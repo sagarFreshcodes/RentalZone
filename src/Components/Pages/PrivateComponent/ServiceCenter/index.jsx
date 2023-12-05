@@ -140,9 +140,7 @@ const ServiceCenter = () => {
             <SideBar AllProps={AllProps} />
           </div>
         </div>
-        <ContentBox className="">
-          <PaginationBar />
-        </ContentBox>
+     
         <ContentBox className="">
           <Footer />
         </ContentBox>

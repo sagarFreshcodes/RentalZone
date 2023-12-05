@@ -13,14 +13,9 @@ import {
 export const ListDetailsApi = ({ slug, listing_id }) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: ActionType.ON_FAILURE_LIST_DETAILS_API });
-      const response = await GetApi(
-        `${API_ROOT_URL}/${GET_LIST_DETAILS_API}?slug=${slug}&listing_id=${listing_id}`
-      );
-
-      // const response = await axios.get(
-      //   `${API_ROOT_URL}/${GET_LIST_DETAILS_API}?slug=${slug}&listing_id=${listing_id}`
-      // );
+      dispatch({ type: ActionType.ON_FAILURE_LIST_DETAILS_API }); 
+      const response = await GetApi(`${API_ROOT_URL}/${GET_LIST_DETAILS_API}?slug=${slug}&listing_id=${listing_id}`) 
+  
       dispatch({
         type: ActionType.ON_SUCCESS_LIST_DETAILS_API,
         payload: response?.data
