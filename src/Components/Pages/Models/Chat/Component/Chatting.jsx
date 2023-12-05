@@ -5,14 +5,14 @@ import ChatHeader from './ChatHeader';
 import SendChat from './SendChat';
 import ChatAppContext from '../../../../../_helper/Chat';
 
-const Chatting = () => {
+const Chatting = ({allProps}) => {
   const { menuToggle } = useContext(ChatAppContext);
 
   return (
     <Fragment>
       <Row className='chat-box'> 
           <div className='chat'>
-            <ChatHeader />
+            <ChatHeader allProps={allProps} />
             <br /><br />
             <ChatMessage />
             <SendChat />

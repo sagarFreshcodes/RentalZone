@@ -688,7 +688,9 @@ font-weight: 400;
 line-height: normal;
 padding-bottom: 5px;
 }
-
+.s_cat:hover{
+  text-decoration: underline;
+}
 .cd_link {
   color: #3A3A3A;
   font-size: 14px;
@@ -1131,6 +1133,61 @@ padding: 1rem 0;
 
 .rightInput .CMN_InputBox{
   border: solid 1px rgb(133, 133, 133) !important;
+}
+
+.chat-message .input-group{
+  background-color: #F0F0F0 !important;
+  border-radius: 8px  !important;
+  align-items: center !important;
+  justify-content: space-between; 
+}
+.chat-message .emogyBox{
+  margin: 5px !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  background-color: white;
+}
+.chat-message input{
+  border: none;
+  background: #f0f8ff00;
+  color: #0c1b1b;
+  width: 75%;
+}
+
+.chat-message input:focus-visible{
+  border: none;
+  outline: none;
+}
+
+.chat-message .sendArroBox{
+  margin: 0 5px !important;
+  border-radius: 8px !important;
+  background-color: #FF7D18;
+}
+.sendArroBox img{ 
+  padding: 12px !important;
+  position: relative;
+    top: 3px;
+    right: 1px;
+}
+.chat-message .searchBox{
+  margin: 0 5px !important; 
+  border-radius: 8px !important;
+  background-color: #F8F8F8;
+  display: flex;
+  align-items: center;
+}
+.searchBox img{
+  padding: 12px !important;
+}
+.chatmessegeColumn{
+  display: flex;
+  position: relative;
+}
+.chat-message .clipImg{
+  position: relative;
+  right: 10px;
+
 }
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{

@@ -162,6 +162,7 @@
     cursor: pointer;
   }
   .BreadCreumBox{
+    flex-wrap: wrap;
     display: flex;
   }
   .BreadCreumBox a{

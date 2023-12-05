@@ -71,6 +71,10 @@ const ChatModel = (props) => {
     "Server Rental",
     "MacBook Rental",
   ];
+
+  const allProps = {
+    toggle:props.toggler
+  }
   return (
     <Modal
       isOpen={props.isOpen}
@@ -81,14 +85,8 @@ const ChatModel = (props) => {
     >
  
       <ModalBody className={props.bodyClass}>
-        <Chatting/>
-      </ModalBody>
-      <ModalFooter>
-        <Btn attrBtn={{ color: "secondary", onClick: props.toggler }}>
-          {Close}
-        </Btn>
-        {/* <Btn attrBtn={{ color: 'primary', onClick: props.toggler }}>{SaveChanges}</Btn> */}
-      </ModalFooter>
+        <Chatting allProps={allProps}/>
+      </ModalBody> 
     </Modal>
   );
 };

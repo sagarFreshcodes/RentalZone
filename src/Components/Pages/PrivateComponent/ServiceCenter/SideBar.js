@@ -77,7 +77,7 @@ const SideBar = ({ AllProps }) => {
                       return (
                         <>
                           <div
-                            className="s_cat"
+                            className="s_cat cursorPointer"
                             onClick={() => onCategorySelect(c?.link)}
                           >
                             {c?.title}
