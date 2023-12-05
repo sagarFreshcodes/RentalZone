@@ -48,16 +48,7 @@ const CategoryAutoSearch = ({
     setOptionShow(false);
     OnSearchIcon({searchData:e});
     dispatch(SetCategory({ categoryData: e }));
-
-
-    // dispatch(
-    //   SelectCategory({
-    //     categoryDetails: {
-    //       category_id: category_id,
-    //       category_slug: category_slug,
-    //     },
-    //   })
-    // );
+ 
   };
  
 

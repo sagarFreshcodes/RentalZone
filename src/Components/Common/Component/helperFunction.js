@@ -170,9 +170,9 @@ export const SearchDirect = ({
 }) => {
   const CurrentLocation = GeneralState?.location?.city_slug;
   const CurrentCategory = GeneralState?.category;
+
   if (searchData) {
     if (searchData?.type == "category") {
-      console.log("searchData", searchData);
       dispatch(
         SelectCategory({
           categoryDetails: {
@@ -189,10 +189,53 @@ export const SearchDirect = ({
       return navigate(`${BASE_ROUTE}/${searchData?.listing_slug}`);
     }
   } else {
-    return navigate(
-      `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
-    );
+    if (CurrentCategory?.listing_slug) {
+      console.log("searchData2512111", searchData, CurrentCategory);
+      return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
+    } else {
+      console.log("searchData2512222", searchData, CurrentCategory);
+      return navigate(
+        `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
+      );
+    }
   }
+};
+
+export const SearchLocationDirect = ({
+  navigate,
+  GeneralState,
+  dispatch,
+  locationData,
+}) => {
+  const CurrentLocation = GeneralState?.location?.city_slug;
+  const CurrentCategory = GeneralState?.category;
+  console.log("locationData2512", locationData);
+  const { city_slug } = locationData;
+  // if (locationData) {
+  if (CurrentCategory?.type == "category") {
+    dispatch(
+      SelectCategory({
+        categoryDetails: {
+          category_id: CurrentCategory?.category_id,
+          category_slug: CurrentCategory?.category_slug,
+        },
+      })
+    );
+    return navigate(
+      `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${city_slug}/${CurrentCategory?.category_id}`
+    );
+  } else if (CurrentCategory?.type == "listing") {
+    return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
+  }
+  // } else {
+  //   if (CurrentCategory?.listing_slug) {
+  //     return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
+  //   } else {
+  //     return navigate(
+  //       `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
+  //     );
+  //   }
+  // }
 };
 
 export const WaitFor = ({ time, functionality }) => {

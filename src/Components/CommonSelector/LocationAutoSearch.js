@@ -12,9 +12,6 @@ import {
   LocationActions,
   SetLocation,
 } from "../../Redux_Store/Actions/generalActions";
-import { ActionType } from "../../Redux_Store/ReduxConstant";
-const LoadCommonFields = ({ setStates, body }) => {};
-
 const LocationAutoSearch = ({
   placeholder,
   Icon,
@@ -27,9 +24,8 @@ const LocationAutoSearch = ({
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state.GeneralState);
   const { isLocationLoading, location, locationsList } = GeneralState;
-  const [serchKeyword, setSerchKeyword] = useState(
-    `${location?.name}`?.split(",")[0]
-  );
+  const { city_slug } = GeneralState?.location;
+  const [serchKeyword, setSerchKeyword] = useState(city_slug);
   const [optionShow, setOptionShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
   const width = `${boxWidth}` || "";
@@ -37,12 +33,13 @@ const LocationAutoSearch = ({
     setSerchKeyword(e.target.value);
   };
   const onInputClick = (e) => {
+    console.log("onHandleClick2512", GeneralState);
     setOptionShow(true);
   };
   const onHandleClick = (e) => {
     setSerchKeyword(e.name);
     setOptionShow(false);
-    OnSearchIcon();
+    OnSearchIcon({ locationData: e });
     dispatch(SetLocation({ locationData: e }));
   };
 
@@ -52,12 +49,16 @@ const LocationAutoSearch = ({
         return dispatch(LocationActions({ serchKeyword: serchKeyword }));
       }
     };
- 
+
     const timeout = setTimeout(() => {
       Fun();
     }, 500);
-    return () => clearTimeout(timeout); 
+    return () => clearTimeout(timeout);
   }, [serchKeyword, optionShow]);
+
+  useEffect(() => {
+    setSerchKeyword(city_slug);
+  }, [city_slug]);
 
   return (
     <div
@@ -111,9 +112,7 @@ const LocationAutoSearch = ({
               })}
             </>
           ) : (
-            <div className="OptionBox_item text-center" > 
-              No records
-            </div>
+            <div className="OptionBox_item text-center">No records</div>
           )}
         </div>
       </div>

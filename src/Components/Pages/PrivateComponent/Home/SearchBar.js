@@ -7,7 +7,10 @@ import SearchModal from "./SearchModel";
 import CategoryAutoSearch from "../../../CommonSelector/CategoryAutoSearch";
 import LocationAutoSearch from "../../../CommonSelector/LocationAutoSearch";
 import { useSelector, useDispatch } from "react-redux";
-import { SearchDirect } from "../../../Common/Component/helperFunction";
+import {
+  SearchDirect,
+  SearchLocationDirect,
+} from "../../../Common/Component/helperFunction";
 export const SearchIcon = () => {
   return (
     <p className="SearchIconBox">
@@ -57,11 +60,12 @@ const SearchBar = ({ fun, className }) => {
     });
   };
 
-  const OnSearch = () => {
-    SearchDirect({
+  const OnSearchLocation = ({ locationData }) => {
+    SearchLocationDirect({
       navigate: navigate,
-      GeneralState: GeneralState, 
+      GeneralState: GeneralState,
       dispatch: dispatch,
+      locationData: locationData,
     });
   };
   return (
@@ -70,7 +74,7 @@ const SearchBar = ({ fun, className }) => {
         <LocationAutoSearch
           placeholder={currentLocation}
           className="location"
-          OnSearchIcon={OnSearch}
+          OnSearchIcon={OnSearchLocation}
           Icon={LocationIcon}
         />
 
@@ -130,7 +134,7 @@ const SearchBar = ({ fun, className }) => {
                 placeholder="Location"
                 boxWidth="15rem"
                 className="w-100"
-                OnSearchIcon={OnSearch}
+                OnSearchIcon={OnSearchLocation}
               />
             ) : (
               (OnSearchIcon,

@@ -675,6 +675,7 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 font-weight: 600;
+
 }
 .catBox a{
   text-decoration: none;
@@ -687,6 +688,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 padding-bottom: 5px;
+text-transform: capitalize !important;
 }
 .s_cat:hover{
   text-decoration: underline;
@@ -973,6 +975,7 @@ padding-bottom: 5px;
  .searchInbox{
   width: 100%;
     border: none;
+    text-transform: capitalize;
  }
  .spaceForSearchbar{
   margin-bottom: 2.6rem;
