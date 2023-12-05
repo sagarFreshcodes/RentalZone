@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
@@ -8,7 +8,7 @@ import "./../node_modules/rsuite/dist/rsuite.min.css";
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import store from "./Redux_Store/store";
 import { Provider } from "react-redux";
-const Root = () => {
+const Root = () => { 
   return (
     <div className="App">
       <Provider store={store}>

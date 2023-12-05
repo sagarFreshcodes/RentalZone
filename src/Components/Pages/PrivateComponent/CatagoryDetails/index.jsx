@@ -12,6 +12,7 @@ import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
+import { ScrollUp } from "../../../Common/Component/helperFunction";
 const CatagoryDetails = () => {
   const QueryParams = useLocation();
   const Parameter = `${QueryParams?.pathname}`.split("-");
@@ -57,6 +58,8 @@ const CatagoryDetails = () => {
       );
     };
     GetBusinessDetails({ slug: slug, listing_id: listing_id });
+
+    ScrollUp()
   }, []);
 
   const preBreadcrumData = QueryParams?.state?.BreadcrumData

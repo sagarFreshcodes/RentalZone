@@ -7,7 +7,12 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import CategoryMedia from "./CategoryMedia";
 import Productpage from "../../../../assets/images/Essential/Productpage.png";
+import { useEffect } from "react";
+import { ScrollUp } from "../../../Common/Component/helperFunction";
 const ProductDetails = () => {
+  useEffect(()=>{
+    ScrollUp()
+  },[])
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}

@@ -83,7 +83,7 @@ const ServiceCard = ({
   ];
   const RandomImg = imgList[Math.floor(Math.random() * imgList.length)];
 const OnDial = () =>{
-  document.location.href = 'tel:+91{{1234567892}}'
+  document.location.href = `tel:${phone_number}`
 }
   return (
     <>

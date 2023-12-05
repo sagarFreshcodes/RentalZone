@@ -10,6 +10,7 @@ import {
   SelectCategory,
 } from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
+import { ScrollUp } from "../../../Common/Component/helperFunction";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    ScrollUp()
     document.title = pageTitle;
   }, [pageTitle]);
 

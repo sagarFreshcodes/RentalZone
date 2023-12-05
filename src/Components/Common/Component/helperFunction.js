@@ -177,7 +177,6 @@ export const SearchDirect = ({
       `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
     );
   }
-
 };
 
 export const WaitFor = ({ time, functionality }) => {
@@ -185,4 +184,8 @@ export const WaitFor = ({ time, functionality }) => {
     functionality();
   }, time);
   return () => clearTimeout(timeout);
+};
+
+export const ScrollUp = () => {
+  window.scrollTo(0, 0);
 };
