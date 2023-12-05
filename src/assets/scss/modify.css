@@ -1151,7 +1151,7 @@ padding: 1rem 0;
   border: none;
   background: #f0f8ff00;
   color: #0c1b1b;
-  width: 75%;
+  width: 70%;
 }
 
 .chat-message input:focus-visible{
@@ -1188,6 +1188,11 @@ padding: 1rem 0;
   position: relative;
   right: 10px;
 
+}
+
+.chat-box .chat-header{
+  display: flex;
+  justify-content: space-between;
 }
  @media screen and (max-width:1700px) {
   .sc_cardBoxRight{

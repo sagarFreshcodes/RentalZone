@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import video from "../../../../../assets/images/Essential/Models/video.png";
 import audio from "../../../../../assets/images/Essential/Models/audio.png";
 import closeButton from "../../../../../assets/images/Essential/Models/closeButton.png";
+import search from "../../../../../assets/images/Essential/Models/search.png";
 const ChatHeader = ({allProps}) => {
   const { selectedUserr, setMenuToggle, menuToggle } = useContext(ChatAppContext);
   const location = useLocation();
@@ -17,7 +18,7 @@ const ChatHeader = ({allProps}) => {
   const {toggle} = allProps
   return (
     <Fragment>
-      <div className='chat-header clearfix'>
+      <div className='chat-header'>
         {/* <Image
           attrImage={{
             className: 'rounded-circle',
@@ -37,6 +38,9 @@ const ChatHeader = ({allProps}) => {
         <UL attrUL={{ className: 'simple-list list-inline float-start float-sm-end chat-menu-icons d-flex flex-row' }}>
           
          
+          <LI attrLI={{ className: 'list-inline-item border-0' }}>
+          <img src={search} alt="" />
+          </LI>
           <LI attrLI={{ className: 'list-inline-item border-0' }}>
           <img src={audio} alt="" />
           </LI>

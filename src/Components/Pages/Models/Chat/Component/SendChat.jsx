@@ -72,10 +72,7 @@ const SendChat = () => {
             </div>
             <input type="text" placeholder="Type a message..." />
             <img className="clipImg" src={Attcachment} alt=""   />
-          </InputGroup>
-          <div className="searchBox">
-              <img src={search} alt=""  />
-            </div>
+          </InputGroup> 
             <div className="sendArroBox">
               <img src={send} alt=""   />
             </div>
