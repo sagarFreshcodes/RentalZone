@@ -6,6 +6,7 @@ import man from "../../../assets/images/dashboard/profile.png";
 import { LI, UL, Image, P } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import { Account, Admin, Inbox, LogOut, Taskboard } from "../../../Constant";
+import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
 
 const UserHeader = () => {
   const history = useNavigate();
@@ -57,6 +58,13 @@ const UserHeader = () => {
           }}>
           <User />
           <span>{Account} </span>
+        </LI>
+        <LI
+          attrLI={{
+            onClick: () => UserMenuRedirect(LIST_BUSINESS_ROUTE),
+          }}>
+          <User />
+          <span>{`Free listing`} </span>
         </LI>
         <LI
           attrLI={{

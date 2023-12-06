@@ -59,7 +59,7 @@ const CategoryAutoSearch = ({
 
     const timeout = setTimeout(() => {
       Fun();
-    }, 500);
+    }, 1000);
     return () => clearTimeout(timeout); 
   }, [serchKeyword, optionShow]);
 
