@@ -55,9 +55,7 @@ const Content = ({ AllProps }) => {
     });
   }, []);
   const test = () => {
-    console.log(`BusinessState`, BusinessState);
-    console.log(`BusinesssListing`, BusinesssListing);
-    console.log(`BreadcrumData`, BreadcrumData);
+ 
   };
 
   return (

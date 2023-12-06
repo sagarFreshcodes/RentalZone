@@ -51,8 +51,7 @@ const Leftbar = () => {
         toggleSidebar(!toggle);
         document.querySelector(".sidebar-wrapper").className =
           "sidebar-wrapper close_icon ";
-      } else {
-        console.log("991 54 else", toggle);
+      } else { 
         toggleSidebar(!toggle);
         document.querySelector(".sidebar-wrapper").className =
           "sidebar-wrapper ";
@@ -76,9 +75,7 @@ const Leftbar = () => {
         <div className="headerLogoSearchBox" >
           <div
             className="logo-wrapper"
-            onClick={() => {
-              console.log(`state`, state);
-            }}
+          
           >
             {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
             <Link
@@ -110,7 +107,7 @@ const Leftbar = () => {
           )}
         </div>
 
-        <div className="UserHeaderBox" onBlur={()=>console.log("on blur 2512")}>
+        <div className="UserHeaderBox"  >
           <UserHeader />
         </div> 
     </Fragment>

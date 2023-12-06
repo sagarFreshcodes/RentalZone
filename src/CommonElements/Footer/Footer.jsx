@@ -19,13 +19,11 @@ const Footer = () => {
   const city_location = GeneralData?.city_location || [];
   const area_location_empty = area_location?.length == 0;
   const city_location_empty = city_location?.length == 0;
-  const test = () => {
-    console.log("GeneralState", GeneralState);
+  const test = () => { 
   };
 
 
-  const onCategorySelect = (data) => {
-    console.log(data);
+  const onCategorySelect = (data) => { 
     const placeSlug = slugConvertor(data?.area_name);
     navigate(
       `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${placeSlug}/${SelectedCategory?.category_id}`,

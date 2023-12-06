@@ -45,7 +45,7 @@ const CommonAutoSearch = ({
 
   const onSelect = (data) => {
     const id = stateData.filter((v) => v.value == data)[0].id;
-    console.log(data, id);
+ 
     setQuotation({ ...quotation, [postFieldName]: id });
   };
 
@@ -85,7 +85,7 @@ const CommonAutoSearch = ({
             ?.map((e) => {
               return (
                 <>
-                  <div className="OptionBox_item" onClick={()=>console.log(`fasfasfasfa`)}>
+                  <div className="OptionBox_item"  >
                     {e.img ? (
                       <img className="optionImg" src={fort} alt="" />
                     ) : (

@@ -88,8 +88,7 @@ const OnDial = () =>{
   return (
     <>
       <div
-        className="sc_cardBoxPerent shadowEffect"
-        onClick={() => console.log(`RandomImg`, RandomImg)}
+        className="sc_cardBoxPerent shadowEffect" 
       >
         <div className="sc_cardBox">
           <div className="serviceImgBox">

@@ -75,9 +75,7 @@ const CatagoryDetails = () => {
     BreadcrumData: BreadcrumData,
   };
   const test = () => {
-    console.log(QueryParams);
-    console.log(ListDetails);
-    console.log(BreadcrumData);
+ 
   };
   return (
     <Fragment>

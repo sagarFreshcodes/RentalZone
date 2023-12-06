@@ -70,8 +70,7 @@ const Content = ({ allProps }) => {
       picture: profile_pic || burncastle,
     },
   ];
-  const test = () => {
-    console.log(ListDetails);
+  const test = () => { 
   };
   useEffect(() => {
     axios.get(FileApi).then((response) => {

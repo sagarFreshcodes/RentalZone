@@ -66,9 +66,7 @@ const Content = ({ props }) => {
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {
-    console.log(`StateData`, StateData);
-    console.log(`HomPageData`, HomPageData);
-    console.log(`location`, location);
+  
   };
   return (
     <Fragment className="searchHeadFragment">

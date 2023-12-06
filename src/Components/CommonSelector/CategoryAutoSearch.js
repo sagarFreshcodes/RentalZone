@@ -31,12 +31,10 @@ const CategoryAutoSearch = ({
     setSerchKeyword(e.target.value);
   };
 
-  const onInputClick = (e) => {
-    console.log(serchKeyword);
+  const onInputClick = (e) => { 
     setOptionShow(true);
   };
-  const onHandleClick = (e) => {
-    console.log("clickOnOption",e);
+  const onHandleClick = (e) => { 
     setSerchKeyword(e.name);
     setOptionShow(false);
     OnSearchIcon({searchData:e});

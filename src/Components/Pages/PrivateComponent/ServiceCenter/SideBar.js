@@ -24,8 +24,7 @@ const SideBar = ({ AllProps }) => {
   const { city_slug } = CurrentLocation;
   const { PopularArea } = AllProps;
 
-  const onCategorySelect = (link) => {
-    console.log("2512", CurrentLocation);
+  const onCategorySelect = (link) => { 
     const rightLink = `${link}`.split("/")[3];
     navigate(`${BASE_ROUTE}/${rightLink}/${category_id}`); 
   };
@@ -74,9 +73,7 @@ const SideBar = ({ AllProps }) => {
     );
   }, [CurrentUrlPath]);
 
-  const Test = () =>{
-    console.log(`test2512 PopularArea`, PopularArea)
-    console.log(`test2512`, CurrentUrlcity)
+  const Test = () =>{ 
   }
   return (
     <ContentBox className="">

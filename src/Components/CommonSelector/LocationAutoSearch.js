@@ -32,8 +32,7 @@ const LocationAutoSearch = ({
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
-  const onInputClick = (e) => {
-    console.log("onHandleClick2512", GeneralState);
+  const onInputClick = (e) => { 
     setOptionShow(true);
   };
   const onHandleClick = (e) => {

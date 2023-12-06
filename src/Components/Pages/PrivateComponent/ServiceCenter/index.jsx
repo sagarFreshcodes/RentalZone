@@ -81,11 +81,7 @@ const ServiceCenter = () => {
   };
 
   const test = () => {
-    console.log(`BusinessState`, BusinessState);
-    console.log(
-      `BusinesssListing`,
-      `${QueryParams.pathname}`.split("/").slice(-1)[0]
-    );
+  
   };
   useEffect(() => {
     const GetBusinessList = ({

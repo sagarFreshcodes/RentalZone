@@ -5,8 +5,7 @@ import { BASE_ROUTE } from "../../../Route/RouthPath";
 import { FS3, FS4 } from "../../../CommonElements/Font/FS";
 import { Link } from "react-router-dom";
 import { SelectCategory } from "../../../Redux_Store/Actions/generalActions";
-export function BreadCrum(array) {
-  console.log("testb1");
+export function BreadCrum(array) { 
 
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -41,8 +40,7 @@ export function BreadCrum(array) {
                     <Link to={i?.link}>
                       <div
                        className={ `BreadCreumTitle BreadCreumLable${index}`}
-                        onClick={() => console.log(array[index + 1])}
-                      >
+                           >
                         <FS3>
                           {" "}
                           {i.title}{" "}
@@ -184,16 +182,13 @@ export const SearchDirect = ({
       return navigate(
         `${BASE_ROUTE}/${searchData?.category_slug}-${CurrentLocation}/${searchData?.category_id}`
       );
-    } else if (searchData?.type == "listing") {
-      console.log("searchData", searchData);
+    } else if (searchData?.type == "listing") { 
       return navigate(`${BASE_ROUTE}/${searchData?.listing_slug}`);
     }
   } else {
-    if (CurrentCategory?.listing_slug) {
-      console.log("searchData2512111", searchData, CurrentCategory);
+    if (CurrentCategory?.listing_slug) { 
       return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
-    } else {
-      console.log("searchData2512222", searchData, CurrentCategory);
+    } else { 
       return navigate(
         `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
       );
@@ -208,8 +203,7 @@ export const SearchLocationDirect = ({
   locationData,
 }) => {
   const CurrentLocation = GeneralState?.location?.city_slug;
-  const CurrentCategory = GeneralState?.category;
-  console.log("locationData2512", locationData);
+  const CurrentCategory = GeneralState?.category; 
   const { city_slug } = locationData;
   // if (locationData) {
   if (CurrentCategory?.type == "category") {

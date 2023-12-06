@@ -36,8 +36,7 @@ const UserHeader = () => {
     history(redirect);
   };
 
-  const OnShow = () => {
-    console.log("on blue 2512");
+  const OnShow = () => { 
     setShow(!show);
   };
   return (
@@ -48,7 +47,7 @@ const UserHeader = () => {
     
    
     >
-      <div className="media profile-media"    onBlur={() => {console.log("blure on blue 2512")}}>
+      <div className="media profile-media"     >
         <Image
           attrImage={{
             className: "b-r-10 m-0",
@@ -65,8 +64,7 @@ const UserHeader = () => {
       </div>
       <UL
         attrUL={{
-          className: `simple-list profile-dropdown ${show ? "" : "d-none"}`,
-          onBlur:() => {console.log('sdgjisdgksghdkshkd 2512')}, 
+          className: `simple-list profile-dropdown ${show ? "" : "d-none"}`, 
         }}
       >
         <LI

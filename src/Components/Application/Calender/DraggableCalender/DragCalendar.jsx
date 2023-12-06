@@ -91,8 +91,7 @@ class DragCalendar extends Component {
     });
   };
 
-  handleeventRecieve = (info) => {
-    console.log("info 95", info.draggedEl.getAttribute("id"));
+  handleeventRecieve = (info) => { 
     const id = uuid();
     const newEvent = {
       title: info.draggedEl.getAttribute("title"),
@@ -105,8 +104,7 @@ class DragCalendar extends Component {
     });
   };
 
-  render() {
-    console.log("event state", this.state.calendarEvents);
+  render() { 
     return (
       <Fragment>
         <Col xxl="3" className="box-col-12">

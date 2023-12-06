@@ -133,7 +133,7 @@ const GetQuotesModel = (props) => {
                               <select
                                 name=""
                                 id=""
-                                onClick={(e) => console.log(e.target.value)}
+                                
                               >
                                 <option value="adasd">Option 1</option>
                                 <option value="adaseed">Option 2</option>

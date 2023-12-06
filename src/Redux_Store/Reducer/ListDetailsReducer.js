@@ -5,26 +5,22 @@ const initialState = {
   error: null,
 };
 
-const ListDetailsReducer = (state = initialState, action) => {
-  console.log("redux SetLocation" ,action);
+const ListDetailsReducer = (state = initialState, action) => { 
   switch (action.type) {
     
-    case ActionType.ON_FAILURE_LIST_DETAILS_API:
-      console.log("redux SetLocation111");
+    case ActionType.ON_FAILURE_LIST_DETAILS_API: 
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case ActionType.ON_SUCCESS_LIST_DETAILS_API:
-      console.log("redux SetLocation222");
+    case ActionType.ON_SUCCESS_LIST_DETAILS_API: 
       return {
         ...state,
         isLoading: false,
         data: action.payload,
       };
-    case ActionType.ON_REQUEST_LIST_DETAILS_API:
-      console.log("redux SetLocation222");
+    case ActionType.ON_REQUEST_LIST_DETAILS_API: 
       return {
         ...state,
         isLoading: false,
