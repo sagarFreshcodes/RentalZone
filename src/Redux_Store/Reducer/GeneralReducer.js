@@ -1,4 +1,5 @@
 // reducers/exampleReducer.js
+import { CATEGORY_DATA, LOCATION_DATA } from "../../Constant/general_constant";
 import { ActionType } from "../ReduxConstant";
 
 const initialState = {
@@ -10,20 +11,9 @@ const initialState = {
   isLocationLoading: false,
   isCategoryLoading: false,
   error: null,
-  category: {
-    name: "Computer Rental",
-    type: "category",
-    category_slug: "computer-rental",
-    category_id: 2,
-    subdomain_slug: "computer",
-  },
+  category: CATEGORY_DATA,
   selectedCategory: { category_id: 2, category_slug: "computer-rental" },
-  location: {
-    name: "Mumbai,Maharashtra",
-    original_city: "Mumbai",
-    city_slug: "mumbai",
-    state_slug: "maharashtra",
-  },
+  location: LOCATION_DATA,
 };
 
 const GeneralReducer = (state = initialState, action) => {

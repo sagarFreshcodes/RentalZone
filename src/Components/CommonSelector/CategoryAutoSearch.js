@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { AutoComplete } from "antd";
-import fort from "../../assets/images/Essential/fort.png";
-import {
-  GetApi,
-  SearchDirect,
-  WaitFor,
-} from "../Common/Component/helperFunction";
+import React, { useEffect, useState } from "react"; 
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
 import {

@@ -19,7 +19,10 @@ import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListAct
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 import Skeleton from "react-loading-skeleton";
 import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
-import { ScrollUp, slugConvertor } from "../../../Common/Component/helperFunction";
+import {
+  ScrollUp,
+  slugConvertor,
+} from "../../../Common/Component/helperFunction";
 const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
@@ -121,7 +124,7 @@ const ServiceCenter = () => {
       })
     );
 
-    ScrollUp()
+    ScrollUp();
   }, []);
   return (
     <Fragment>
@@ -140,7 +143,7 @@ const ServiceCenter = () => {
             <SideBar AllProps={AllProps} />
           </div>
         </div>
-     
+
         <ContentBox className="">
           <Footer />
         </ContentBox>

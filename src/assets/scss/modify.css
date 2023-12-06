@@ -167,7 +167,7 @@ width: 90%;
   align-items: center; 
   border-radius: 1rem;     gap: 1rem;
 }
-
+ 
 .sc_fixedButton{
   background-color: #eaeaeaf0;
   position: fixed;
@@ -850,6 +850,9 @@ text-transform: capitalize !important;
 
 .sp_category2{
  display: none !important;
+}
+.sp_card_box{
+  margin-bottom: 2px;
 }
 .sp_card_box .btn{
 

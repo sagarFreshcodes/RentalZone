@@ -18,8 +18,8 @@ export function BreadCrum(array) {
           {array?.map((i, index) => {
             return (
               <>
-                {i?.link == "page_title" ? (
-                  <div className="BreadCreumTitle">
+                {i?.link == `page_title` ? (
+                  <div className={ `BreadCreumTitle BreadCreumLable${index}`}>
                     <FS3 attr={{ className: "BoldText" }}>
                       {" "}
                       {i.title} {` >> `}{" "}
@@ -28,7 +28,7 @@ export function BreadCrum(array) {
                   </div>
                 ) : i?.link == "page_info" ? (
                   <>
-                    <div className="BreadCreumTitle">
+                    <div className={ `BreadCreumTitle BreadCreumLable${index}`}>
                       <FS3 attr={{ className: "FW3" }}>
                         {" "}
                         {i.title} {array?.length == index + 1 ? " " : ` > `}{" "}
@@ -40,7 +40,7 @@ export function BreadCrum(array) {
                   <>
                     <Link to={i?.link}>
                       <div
-                        className="BreadCreumTitle"
+                       className={ `BreadCreumTitle BreadCreumLable${index}`}
                         onClick={() => console.log(array[index + 1])}
                       >
                         <FS3>
@@ -227,15 +227,7 @@ export const SearchLocationDirect = ({
   } else if (CurrentCategory?.type == "listing") {
     return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
   }
-  // } else {
-  //   if (CurrentCategory?.listing_slug) {
-  //     return navigate(`${BASE_ROUTE}/${CurrentCategory?.listing_slug}`);
-  //   } else {
-  //     return navigate(
-  //       `${BASE_ROUTE}/${CurrentCategory?.category_slug}-${CurrentLocation}/${CurrentCategory?.category_id}`
-  //     );
-  //   }
-  // }
+ 
 };
 
 export const WaitFor = ({ time, functionality }) => {

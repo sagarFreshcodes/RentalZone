@@ -114,49 +114,7 @@ const Content = ({ AllProps }) => {
               );
             })}
             pagination={<PaginationBar />}
-          />
-          {/* {isServiceLoading ? (
-            <SC_CardSkelaton />
-          ) : [undefined, 0].includes(BusinesssListing?.length) ? (
-            <>
-              <NoRecords /> `gsggg`
-            </>
-          ) : (
-            BusinesssListing?.map((item) => {
-              return (
-                <ServiceCard
-                  address={item?.address}
-                  area={item?.area}
-                  area_name={item?.area_name}
-                  category={item?.category}
-                  city={item?.city}
-                  city_name={item?.city_name}
-                  contact_person={item?.contact_person}
-                  country={item?.country}
-                  description={item?.description}
-                  email={item?.email}
-                  id={item?.id}
-                  is_approved={item?.is_approved}
-                  listing_type={item?.listing_type}
-                  main_listing_id={item?.main_listing_id}
-                  name={item?.name}
-                  phone_number={item?.phone_number}
-                  pincode={item?.pincode}
-                  rates={item?.rates}
-                  rates_per={item?.rates_per}
-                  show_mobile={item?.show_mobile}
-                  show_on_area_page={item?.show_on_area_page}
-                  show_website={item?.show_website}
-                  slug={item?.slug}
-                  state={item?.state}
-                  user_id={item?.user_id}
-                  website={item?.website}
-                  AllProps={AllProps}
-                  BreadcrumData={BreadcrumData}
-                />
-              );
-            })
-          )} */}
+          /> 
         </div>
       </ContentBox>
     </Fragment>

@@ -74,11 +74,15 @@ const SideBar = ({ AllProps }) => {
     );
   }, [CurrentUrlPath]);
 
+  const Test = () =>{
+    console.log(`test2512 PopularArea`, PopularArea)
+    console.log(`test2512`, CurrentUrlcity)
+  }
   return (
     <ContentBox className="">
       <div
         className="cat-container"
-        onClick={() => console.log(`AllProps`, CurrentUrlcity)}
+        onClick={Test}
       >
         <div className="s_form">
           <FS4 attr={{ className: "BoldText" }}>

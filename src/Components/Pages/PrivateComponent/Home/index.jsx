@@ -8,9 +8,11 @@ import { HomePageApi } from "../../../../Redux_Store/Actions/homeActions";
 import {
   GeneralActions,
   SelectCategory,
+  SetLocation,
 } from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 import { ScrollUp } from "../../../Common/Component/helperFunction";
+import { LOCATION_DATA } from "../../../../Constant/general_constant";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,6 +30,13 @@ const Home = () => {
     StateData: StateData,
     location: CurrentLocation,
   };
+  useEffect(() => {
+    dispatch(
+      SetLocation({
+        locationData: LOCATION_DATA,
+      })
+    );
+  }, []);
 
   useEffect(() => {
     dispatch(
@@ -36,14 +45,14 @@ const Home = () => {
       })
     );
 
-    dispatch(HomePageApi({ Location: CurrentLocation }));
-    // dispatch(GeneralActions());
+    dispatch(HomePageApi({ Location:LOCATION_DATA?.city_slug ||CurrentLocation }));
   }, [dispatch]);
 
   useEffect(() => {
-    ScrollUp()
+    ScrollUp();
     document.title = pageTitle;
   }, [pageTitle]);
+
 
   return (
     <Fragment>
