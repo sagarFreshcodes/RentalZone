@@ -250,18 +250,9 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
   cursor: pointer;
 } 
 
-.linksContainer{
-  display: flex;
-  flex-wrap: wrap; 
-}
+ 
 
-.footerComponentBox{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: start;
-  gap: 3rem;
-}
+
 
 
 .cartoon img{
@@ -278,11 +269,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 .sliderImg{
   width: 100%;
 }
-.footerContainer{
-  background-color: #edf8ff;
-    padding: 2rem;
-    border-radius: 15px;
-}
+
  .trandCardBox{
   display: flex;
   flex-direction: column;

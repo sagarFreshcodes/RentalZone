@@ -123,18 +123,17 @@ export default Footer;
 
 const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
   return (
-    <div className="footerLinkBox" style={{ width: boxWidth }}>
+    <div className="footerLinkBox"  >
       <FS6> {title}</FS6>
       <br />
       <div className="linksContainer">
         {linkTitleArray?.map((i) => {
           return (
             <div
-              className="linkBox"
-              style={{ width: linkBoxWidth, minWidth: "8rem" }}
+              className="linkBox" 
             >
               <FS3>
-                ✔️<span className="cursorPointer"> {i}</span>
+                <span className="cursorPointer"> {i}</span>
               </FS3>
             </div>
           );
@@ -152,19 +151,18 @@ const FooterLinkBox2 = ({
   onCategorySelect,
 }) => {
   return (
-    <div className="footerLinkBox" style={{ width: boxWidth }}>
+    <div className="footerLinkBox"  >
       <FS6> {title}</FS6>
       <br />
-      <div className="linksContainer">
+      <div className="linksContainer2">
         {linkTitleArray?.map((i) => {
           return (
             <div
               onClick={() => onCategorySelect(i)}
-              className="linkBox"
-              style={{ width: linkBoxWidth, minWidth: "8rem" }}
+              className="linkBox" 
             >
               <FS3>
-                ✔️<span className="cursorPointer"> {i?.area_name}</span>
+                <span className="cursorPointer"> {i?.area_name}</span>
               </FS3>
             </div>
           );

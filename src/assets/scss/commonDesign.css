@@ -146,7 +146,7 @@
     margin: 0px !important;
     font-size: 32px !important;
   }
-
+/*   .singleLineContent  text... */
   .singleLineContent{
     width: 100% !important;
     overflow: hidden;
@@ -155,8 +155,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 1 !important;
     -webkit-box-orient: vertical;
-  }
-
+  } 
+  /* BreadCreumTitle */ 
   .BreadCreumTitle{
     text-transform: capitalize !important;
     cursor: pointer;
@@ -188,11 +188,61 @@
     left: 50%;
   }
 
+
+
+  /* footer */
+  .footerContainer{
+    /* background-color: #edf8ff; */
+      padding: 2rem;
+      border-radius: 15px;
+  }
+  .footerComponentBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+
+  }
+  .linksContainer2,
+  .linksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.linksContainer2 { 
+  /* justify-content: space-between; */
+}
+.linksContainer2 .linkBox,
+  .linksContainer .linkBox{ 
+    background-color: #FAFAFA;
+    padding: 2px 8px;
+    border-radius: 5px;
+    color: #797979;
+  }
+
+  .linksContainer2 .linkBox:hover,
+  .linksContainer .linkBox:hover{ 
+    background-color: #E3E3E3; 
+    color: #1E1E1E;
+  }
+
   @media screen and (max-width:1200px) { 
     .servicePage .BreadCreumLable3{
   display: none !important;
     }
+
+
+    .footerComponentBox{ 
+      grid-template-columns: 1fr 1fr; 
+  
+    }
   } 
+  @media screen and (max-width:700px) {   
+    .footerComponentBox{ 
+      grid-template-columns: 1fr ; 
+  
+    }
+  }
   @media screen and (max-width:500px) {
     .servicePage .BreadCreumLable2,
     .servicePage .BreadCreumLable1{
