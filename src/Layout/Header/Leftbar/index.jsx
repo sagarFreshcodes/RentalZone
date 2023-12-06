@@ -73,7 +73,7 @@ const Leftbar = () => {
   });
   return (
     <Fragment> 
-        <div className="headerLogoSearchBox">
+        <div className="headerLogoSearchBox" >
           <div
             className="logo-wrapper"
             onClick={() => {
@@ -110,7 +110,7 @@ const Leftbar = () => {
           )}
         </div>
 
-        <div className="UserHeaderBox">
+        <div className="UserHeaderBox" onBlur={()=>console.log("on blur 2512")}>
           <UserHeader />
         </div> 
     </Fragment>

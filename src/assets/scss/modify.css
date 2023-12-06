@@ -14,6 +14,14 @@
 }
 
 /* Menu */
+.onhover-dropdown{
+  position: relative;
+}
+.profile-dropdown{
+  position: absolute; 
+  background-color: white;
+  width: max-content;
+}
 .UserHeaderBox ul.list-group{
   padding: 1rem;
     display: flex;
@@ -26,6 +34,7 @@
 .simple-list .list-group-item:hover{
   /* background-color: #cdcdcd !important; */
   border: 1px solid #cdcdcd !important;
+  border-radius: 5px;
 }
 /* Header */
 .logoImageClass{

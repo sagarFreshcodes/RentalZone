@@ -12,6 +12,8 @@ const UserHeader = () => {
   const history = useNavigate();
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("Emay Walter");
+  const [mouseOn, setMouseOn] = useState(false);
+  const [show, setShow] = useState(false);
   const { layoutURL } = useContext(CustomizerContext);
   const authenticated = JSON.parse(localStorage.getItem("authenticated"));
   const auth0_profile = JSON.parse(localStorage.getItem("auth0_profile"));
@@ -34,9 +36,19 @@ const UserHeader = () => {
     history(redirect);
   };
 
+  const OnShow = () => {
+    console.log("on blue 2512");
+    setShow(!show);
+  };
   return (
-    <ul className="profile-nav onhover-dropdown pe-0 py-0">
-      <div className="media profile-media">
+    <ul
+      className="profile-nav onhover-dropdown pe-0 py-0"
+      onClick={OnShow}
+      // onPointerLeave={()=> setShow(false)}
+    
+   
+    >
+      <div className="media profile-media"    onBlur={() => {console.log("blure on blue 2512")}}>
         <Image
           attrImage={{
             className: "b-r-10 m-0",
@@ -51,32 +63,50 @@ const UserHeader = () => {
           </P>
         </div>
       </div>
-      <UL attrUL={{ className: "simple-list profile-dropdown onhover-show-div" }}>
+      <UL
+        attrUL={{
+          className: `simple-list profile-dropdown ${show ? "" : "d-none"}`,
+          onBlur:() => {console.log('sdgjisdgksghdkshkd 2512')}, 
+        }}
+      >
         <LI
           attrLI={{
-            onClick: () => UserMenuRedirect(`${process.env.PUBLIC_URL}/app/users/profile/${layoutURL}`),
-          }}>
+            onClick: () =>
+              UserMenuRedirect(
+                `${process.env.PUBLIC_URL}/app/users/profile/${layoutURL}`
+              ),
+          }}
+        >
           <User />
           <span>{Account} </span>
         </LI>
         <LI
           attrLI={{
             onClick: () => UserMenuRedirect(LIST_BUSINESS_ROUTE),
-          }}>
+          }}
+        >
           <User />
           <span>{`Free listing`} </span>
         </LI>
         <LI
           attrLI={{
-            onClick: () => UserMenuRedirect(`${process.env.PUBLIC_URL}/app/email-app/${layoutURL}`),
-          }}>
+            onClick: () =>
+              UserMenuRedirect(
+                `${process.env.PUBLIC_URL}/app/email-app/${layoutURL}`
+              ),
+          }}
+        >
           <Mail />
           <span>{Inbox}</span>
         </LI>
         <LI
           attrLI={{
-            onClick: () => UserMenuRedirect(`${process.env.PUBLIC_URL}/app/todo-app/todo/${layoutURL}`),
-          }}>
+            onClick: () =>
+              UserMenuRedirect(
+                `${process.env.PUBLIC_URL}/app/todo-app/todo/${layoutURL}`
+              ),
+          }}
+        >
           <FileText />
           <span>{Taskboard}</span>
         </LI>
