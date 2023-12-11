@@ -18,15 +18,15 @@ import {
 } from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import { BreadCrum } from "../../../Common/Component/helperFunction";
-import CategoryCard from "./CategoryCard";
-import SearchBar from "../Home/SearchBar";
+import ProductDetail from "./ProductDetail";
+import SideBar from "./SideBar";
 
-const Content = () => {
+const Content = ({ propsObject }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-
+  const { BreadcrumData } = propsObject;
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
@@ -35,33 +35,13 @@ const Content = () => {
 
   return (
     <Fragment>
-      <div className="searchHeadBx">
-        {<SearchBar className="hideSearchbarOnDesktop" />}
-      </div>
       <ContentBox className="">
-        <FS4 attr={{ className: "lh-1" }}>
-          {BreadCrum(["Shimla", "Hotels in Shimla", `Royal Hotel`])}
-        </FS4>
+        <FS4 attr={{ className: "lh-1" }}>{BreadCrum(BreadcrumData)}</FS4>
       </ContentBox>
       <ContentBox className="">
-        <FS10 attr={{ className: "lh-1" }}>Top Trendings For Your City </FS10>
-      </ContentBox>
-      <ContentBox className="">
-        <div className="SeviceContainer">
-          {TrandingList.map((item) => {
-            return (
-              <CategoryCard
-                title={item.title}
-                address1={item.address1}
-                address2={item.address2}
-                like={item.like}
-                statics={item.static}
-                view={item.view}
-                share={item.share}
-                picture={item.picture}
-              />
-            );
-          })}
+        <div className="productContent">
+          <ProductDetail/>
+          <SideBar/>
         </div>
       </ContentBox>
     </Fragment>

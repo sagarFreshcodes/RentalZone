@@ -22,7 +22,7 @@ import LearningProvider from './_helper/Learning/LearningProvider';
 import FaqProvider from './_helper/Faq/FaqProvider';
 import AnimationThemeProvider from './_helper/AnimationTheme/AnimationThemeProvider';
 import CustomizerProvider from './_helper/Customizer/CustomizerProvider';
-import "./assets/scss/modify.css"
+import "./assets/scss/Modified/modify.css"
 import "./assets/scss/commonDesign.css"
 import '../node_modules/react-loading-skeleton/dist/skeleton.css'
 const App = () => (

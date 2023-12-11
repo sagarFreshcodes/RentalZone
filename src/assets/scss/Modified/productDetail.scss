@@ -1,0 +1,16 @@
+.ProductPage {
+  .tempBorder {
+    border: solid red !important;
+  }
+  .productContent {
+    display: flex;
+    flex-wrap: wrap;
+    .pd_SideBar {
+      width: 40%;
+    }
+
+    .pd_ProductDetail {
+      width: 60%;
+    }
+  }
+}
