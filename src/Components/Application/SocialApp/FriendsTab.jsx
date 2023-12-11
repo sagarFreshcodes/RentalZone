@@ -13,6 +13,7 @@ const FriendsTab = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
+    console.log("UserCardApi",UserCardApi);
     axios.get(UserCardApi).then((res) => setCards(res.data));
   }, []);
 

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ChatApi, ChatMemberApi } from '../../api';
 
 const ChatProvider = (props) => {
+  console.log("ChatApi2512",ChatApi);
   const [allMemberss, setAllMembers] = useState([]);
   const [menuToggle, setMenuToggle] = useState(false);
   const [memberss, setMembers] = useState();

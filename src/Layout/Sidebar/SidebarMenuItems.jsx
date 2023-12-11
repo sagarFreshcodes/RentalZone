@@ -62,7 +62,7 @@ const SidebarMenuItems = ({
     setClick(click+1)
     if (click > 5) {
       localStorage.setItem("developerOption",true)  
-    }else{
+    }else if (click == 4){
       localStorage.setItem("developerOption",false)  
     }  
   }
