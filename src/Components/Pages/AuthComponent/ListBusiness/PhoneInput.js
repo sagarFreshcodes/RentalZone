@@ -13,7 +13,7 @@ export const PhoneInput = ({ onChange }) => {
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
   const [mobile, setMobile] = useState("");
-  const Toggle = () => { 
+  const Toggle = () => {
     setShow(!show);
   };
 
@@ -44,60 +44,64 @@ export const PhoneInput = ({ onChange }) => {
   };
   return (
     <div className="PhoneInput">
-      <div className="flagDrop">
-        {" "}
-        <img
-          onClick={Toggle}
-          className="flag"
-          src={selectedCountry?.flag}
-          alt=""
-        />{" "}
-        <span>+{selectedCountry?.callingCodes[0]}</span>
-        <div
-          id="scroll-3"
-          className={show ? "countryCodeBox" : "d-none"}
-          onPointerLeave={() => setMouseOn(false)}
-          onMouseMove={() => setMouseOn(true)}
-        >
-          <div className="countrysearch">
-            <input
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
-              placeholder="Search here..."
-              type="text"
-            />
-          </div>
-          <br />
-          {countryList
-            ?.filter((i) =>
-              `${i?.name}`.toLowerCase().includes(`${search}`.toLowerCase())
-            )
-            ?.map((i) => {
-              return (
-                <>
-                  {" "}
-                  <div className="countryCode" onClick={() => onSelect(i)}>
+      <div className="phoneDialBox">
+        <div className="flagDrop">
+          {" "}
+          <img
+            onClick={Toggle}
+            className="flag"
+            src={selectedCountry?.flag}
+            alt=""
+          />{" "}
+          <span>+{selectedCountry?.callingCodes[0]}</span>
+          <div
+            id="scroll-3"
+            className={show ? "countryCodeBox" : "d-none"}
+            onPointerLeave={() => setMouseOn(false)}
+            onMouseMove={() => setMouseOn(true)}
+          >
+            <div className="countrysearch">
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                placeholder="Search here..."
+                type="text"
+              />
+            </div>
+            <br />
+            {countryList
+              ?.filter((i) =>
+                `${i?.name}`.toLowerCase().includes(`${search}`.toLowerCase())
+              )
+              ?.map((i) => {
+                return (
+                  <>
                     {" "}
-                    <div className="flagbox">
+                    <div className="countryCode" onClick={() => onSelect(i)}>
                       {" "}
-                      <img className="flag" src={i?.flag} alt="" />{" "}
+                      <div className="flagbox">
+                        {" "}
+                        <img className="flag" src={i?.flag} alt="" />{" "}
+                      </div>
+                      <div className="countryName">
+                        ({i?.callingCodes[0]}) {i?.name}
+                      </div>
                     </div>
-                    <div className="countryName">
-                      ({i?.callingCodes[0]}) {i?.name}
-                    </div>
-                  </div>
-                </>
-              );
-            })}
+                  </>
+                );
+              })}
+          </div>
         </div>
+        &nbsp;
+        <input
+          onChange={onHandleChange}
+          type="number"
+          value={mobile}
+          placeholder="Enter Mobile No."
+          onBlur={() => setShow(mouseOn ? true : false)}
+        />
       </div>
-      <input
-        onChange={onHandleChange}
-        type="text"
-        value={mobile}
-        placeholder="Enter Mobile No."
-        onBlur={() => setShow(mouseOn ? true : false)}
-      />
+
       <CommonButton>Start Now {`->`}</CommonButton>
     </div>
   );
