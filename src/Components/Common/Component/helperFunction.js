@@ -234,3 +234,12 @@ export const WaitFor = ({ time, functionality }) => {
 export const ScrollUp = () => {
   window.scrollTo(0, 0);
 };
+
+export function convertStringToIntegerOrString(inputString) {
+  // Check if the input string contains only numbers
+  if (/^\d+$/.test(inputString)) {
+    return parseInt(inputString, 10); // Convert the string to an integer
+  } else {
+    return inputString; // Return the input string as it is
+  }
+}

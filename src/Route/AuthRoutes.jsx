@@ -21,7 +21,7 @@ import ComingBgImg from '../Components/Pages/ComingSoon/ComingBgImg';
 import ComingBgVideo from '../Components/Pages/ComingSoon/ComingBgVideo';
 import Error500 from '../Components/Pages/ErrorPages/ErrorPage500';
 import Error503 from '../Components/Pages/ErrorPages/ErrorPage503';
-import ListBusiness from '../Components/Pages/AutoComponent/ListBusiness/ListBusiness';
+import ListBusiness from '../Components/Pages/AuthComponent/ListBusiness/ListBusiness';
 import { LIST_BUSINESS_ROUTE } from './RouthPath';
 
 export const authRoutes = [

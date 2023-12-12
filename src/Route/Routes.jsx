@@ -184,7 +184,7 @@ import { CATEGORY_DETAILS_ROUTE, HOME_ROUTE, LIST_BUSINESS_ROUTE, PRODUCT_DETAIL
 import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
 import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetails"; 
 import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails";
-import ListBusiness from "../Components/Pages/AutoComponent/ListBusiness/ListBusiness";
+import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
 
 export const routes = [
   // Private component

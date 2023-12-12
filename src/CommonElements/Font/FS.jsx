@@ -102,4 +102,12 @@ const FS12 = (props) => {
     </p>
   );
 };
-export { FS1, FS2, FS3, FS4, FS5, FS6, FS7, FS8, FS9, FS10, FS11, FS12 };
+
+const FS23 = (props) => {
+  return (
+    <p {...props.attr} id="FS23" >
+      {props.children}
+    </p>
+  );
+};
+export { FS1, FS2, FS3, FS4, FS5, FS6, FS7, FS8, FS9, FS10, FS11, FS12,FS23,FSVW6 };

@@ -10,7 +10,13 @@
 @import "vendors/animate/animate";
 @import "vendors/sticky/sticky";
 @import "vendors/todo/todo";
+ 
+
+//  productDetail page
 @import "./Modified/productDetail.scss";
+
+//  AuthComponent pages
+@import "./Modified/AuthComponent.scss";
 
 // Clock
 @import "~react-clock/dist/Clock.css";
