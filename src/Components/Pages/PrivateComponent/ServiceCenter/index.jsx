@@ -43,7 +43,7 @@ const ServiceCenter = () => {
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const [serviceData, setServiceData] = useState({});
   const BreadcrumData = [
     { title: `${page_top_keyword} In ${user_city}`, link: `page_title` },
