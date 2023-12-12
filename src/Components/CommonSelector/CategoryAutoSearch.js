@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import { ApiLoader } from "../Common/Component/DesignElement";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -31,17 +31,15 @@ const CategoryAutoSearch = ({
     setSerchKeyword(e.target.value);
   };
 
-  const onInputClick = (e) => { 
+  const onInputClick = (e) => {
     setOptionShow(true);
   };
-  const onHandleClick = (e) => { 
+  const onHandleClick = (e) => {
     setSerchKeyword(e.name);
     setOptionShow(false);
-    OnSearchIcon({searchData:e});
+    OnSearchIcon({ searchData: e });
     dispatch(SetCategory({ categoryData: e }));
- 
   };
- 
 
   useEffect(() => {
     const Fun = () => {
@@ -58,7 +56,7 @@ const CategoryAutoSearch = ({
     const timeout = setTimeout(() => {
       Fun();
     }, 1000);
-    return () => clearTimeout(timeout); 
+    return () => clearTimeout(timeout);
   }, [serchKeyword, optionShow]);
 
   return (

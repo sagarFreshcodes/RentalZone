@@ -20,41 +20,80 @@ import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
 import lptopImg3 from "../../../../assets/images/Essential/lptopImg3.png";
 import lptopImg2 from "../../../../assets/images/Essential/lptopImg2.png";
 import lptopImg4 from "../../../../assets/images/Essential/lptopImg4.png";
-import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
+import {
+  SelectCategory,
+  SetCategory,
+} from "../../../../Redux_Store/Actions/generalActions";
 import { useDispatch, useSelector } from "react-redux";
 const Content = ({ props }) => {
   const { homepage_category, HomPageData, StateData, location, GeneralData } =
     props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {
+    single_banner_one,
+    single_banner_two,
+    single_banner_three,
+    single_banner_four,
+    banner_path,
+    homepage_banners,
+  } = HomPageData || {};
+
+  const { image_url } = homepage_banners || {};
   const bannerList = [
     {
-      link: "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
+      link:
+        `${banner_path}/${single_banner_one?.image}` ||
+        "https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/b2b.png?v=1.01?w=1920&q=75",
       title: "B2B",
       description: "Quik Quotes",
       backColor: "#0f7dd8",
+      url: single_banner_one?.url,
     },
     {
-      link: "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_repair_image.png?v=1.0?w=1920&q=75",
+      link:
+        `${banner_path}/${single_banner_two?.image}` ||
+        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_repair_image.png?v=1.0?w=1920&q=75",
       title: "B2B",
       description: "Quik Quotes",
       backColor: "#2654a1",
+      url: single_banner_two?.url,
     },
     {
-      link: "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/realestate.png?v=1.0?w=1920&q=75",
+      link:
+        `${banner_path}/${single_banner_three?.image}` ||
+        "	https://akam.cdn.jdmagicbox.com/images/icons/website/newhome/1/realestate.png?v=1.0?w=1920&q=75",
       title: "B2B",
       description: "Quik Quotes",
       backColor: "#6769d0",
+      url: single_banner_three?.url,
     },
     {
-      link: "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_doctor_image.png?v=1.0?w=1920&q=75",
+      link:
+        `${banner_path}/${single_banner_four?.image}` ||
+        "	https://akam.cdn.jdmagicbox.com/images/icontent/newwap/web2022/web_doctor_image.png?v=1.0?w=1920&q=75",
       title: "B2B",
       description: "Quik Quotes",
       backColor: "#00ac7d",
+      url: single_banner_four?.url,
     },
   ];
 
-  const onCategorySelect = ({ category_id, category_slug }) => {
+  const onCategorySelect = ({ category_data }) => {
+    const { category_name, category_id, subdomain_slug, category_slug } =
+      category_data || {};
+    dispatch(
+      SetCategory({
+        categoryData: {
+          name: category_name,
+          type: "category",
+          category_slug: category_slug,
+          category_id: category_id,
+          subdomain_slug: subdomain_slug,
+        },
+      })
+    );
+
     dispatch(
       SelectCategory({
         categoryDetails: {
@@ -66,7 +105,8 @@ const Content = ({ props }) => {
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {
-  
+    console.log("HomPageData2512", HomPageData);
+    console.log("banner_path", banner_path);
   };
   return (
     <Fragment className="searchHeadFragment">
@@ -84,7 +124,7 @@ const Content = ({ props }) => {
       <ContentBox className="">
         <div className="top-bar">
           <div className="top-courosel">
-            <Slider />
+            <Slider image_url={image_url} />
           </div>
           {bannerList?.map((i) => {
             return (
@@ -98,10 +138,15 @@ const Content = ({ props }) => {
                 </div>
                 <img src={i?.link} alt="" />
                 <div className="banner-Explores">
-                  <div className="Explores_Box" style={{ color: i?.backColor }}>
-                    <span className="e_title">{`Explore`}</span>
-                    <span className="e_icon">{`>`}</span>
-                  </div>
+                  <a href={i.url}>
+                    <div
+                      className="Explores_Box"
+                      style={{ color: i?.backColor }}
+                    >
+                      <span className="e_title">{`Explore`}</span>
+                      <span className="e_icon">{`>`}</span>
+                    </div>{" "}
+                  </a>
                 </div>
               </div>
             );
@@ -120,6 +165,7 @@ const Content = ({ props }) => {
                     onCategorySelect({
                       category_id: item?.category_id,
                       category_slug: item?.category_slug,
+                      category_data: item,
                     })
                   }
                 >

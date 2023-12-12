@@ -7,7 +7,10 @@ import {
   HOME_API,
 } from "../../Constant/api_constant";
 import { ActionType } from "../ReduxConstant";
-import { GetApi, ToastError } from "../../Components/Common/Component/helperFunction";
+import {
+  GetApi,
+  ToastError,
+} from "../../Components/Common/Component/helperFunction";
 export const HomePageApi = ({ Location }) => {
   return async (dispatch) => {
     try {
@@ -15,6 +18,7 @@ export const HomePageApi = ({ Location }) => {
 
       const response = await GetApi(
         `${API_ROOT_URL}/${GET_HOMEPAGE_API}?current_location=${Location}`
+        // `${API_ROOT_URL}/${GET_HOMEPAGE_API}?category_slug=computer-rental-mumbai&category_id=2&page=1&user_local_city=Navimumbai&user_local_city_slug=navimumbai&user_local_area=Best Staff Colony&user_local_area_slug=best-staff-colony`
       );
       dispatch({
         type: ActionType.ON_SUCCESS,

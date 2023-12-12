@@ -19,7 +19,7 @@ const LocationAutoSearch = ({
   boxWidth,
   style,
   className,
-  OnSearchIcon,
+  OnSearchLocation,
 }) => {
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state.GeneralState);
@@ -38,7 +38,7 @@ const LocationAutoSearch = ({
   const onHandleClick = (e) => {
     setSerchKeyword(e.name);
     setOptionShow(false);
-    OnSearchIcon({ locationData: e });
+    OnSearchLocation({ locationData: e });
     dispatch(SetLocation({ locationData: e }));
   };
 

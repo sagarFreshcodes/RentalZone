@@ -31,12 +31,19 @@ const ServiceCenter = () => {
   const ParamsList = `${QueryParams.pathname}`.split("/");
   const BusinessState = useSelector((state) => state.BusinessState);
   const BusinesssPageData = BusinessState?.service_data?.data || {};
-  const { category_name, user_city, page_top_keyword } = BusinesssPageData;
-  const BusinesssListing = BusinessState?.service_data?.data?.all_listing?.data;
+  const {
+    category_name,
+    user_city,
+    page_top_keyword,
+    top_five_listings,
+    all_listing,
+  } = BusinesssPageData || {};
+  const BusinesssListing = all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [serviceData, setServiceData] = useState({});
   const BreadcrumData = [
     { title: `${page_top_keyword} In ${user_city}`, link: `page_title` },
@@ -73,15 +80,18 @@ const ServiceCenter = () => {
     BusinessState: BusinessState,
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
-    BusinesssPageData: { BusinesssPageData },
+    BusinesssPageData: BusinesssListing,
     BreadcrumData: BreadcrumData,
     isServiceLoading: isServiceLoading,
     user_city: user_city,
     page_top_keyword: page_top_keyword,
+    all_listing: all_listing,
+    currentPage,
+    setCurrentPage,
   };
 
   const test = () => {
-  
+    console.log(`BusinessState2512`, all_listing);
   };
   useEffect(() => {
     const GetBusinessList = ({
@@ -105,7 +115,7 @@ const ServiceCenter = () => {
       CurrentLocation: CurrentLocation,
       category_slug: ParamsList[1],
       category_id: +ParamsList[2],
-      page: 1,
+      page: currentPage,
     });
 
     const categoryIdByQueryParams = +`${QueryParams?.pathname}`
@@ -121,7 +131,7 @@ const ServiceCenter = () => {
     );
 
     ScrollUp();
-  }, []);
+  }, [currentPage]);
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}

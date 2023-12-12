@@ -46,17 +46,19 @@ const Content = ({ AllProps }) => {
     BusinesssPageData,
     BreadcrumData,
     isServiceLoading,
+    all_listing,
+    setCurrentPage,
+    currentPage,
   } = AllProps;
 
-  const { page_title } = BusinesssPageData;
+  const { page_title } = BusinesssPageData || {};
+  const { total, per_page, last_page, current_page } = all_listing || {};
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
     });
   }, []);
-  const test = () => {
- 
-  };
+  const test = () => {};
 
   return (
     <Fragment>
@@ -111,8 +113,14 @@ const Content = ({ AllProps }) => {
                 />
               );
             })}
-            pagination={<PaginationBar />}
-          /> 
+            pagination={
+              <PaginationBar
+                last_page={last_page}
+                current_page={current_page}
+                setCurrentPage={setCurrentPage}
+              />
+            }
+          />
         </div>
       </ContentBox>
     </Fragment>

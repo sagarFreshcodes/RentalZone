@@ -74,7 +74,7 @@ const SearchBar = ({ fun, className }) => {
         <LocationAutoSearch
           placeholder={currentLocation}
           className="location"
-          OnSearchIcon={OnSearchLocation}
+          OnSearchLocation={OnSearchLocation}
           Icon={LocationIcon}
         />
 
@@ -134,7 +134,7 @@ const SearchBar = ({ fun, className }) => {
                 placeholder="Location"
                 boxWidth="15rem"
                 className="w-100"
-                OnSearchIcon={OnSearchLocation}
+                OnSearchLocation={OnSearchLocation}
               />
             ) : (
               (OnSearchIcon,
