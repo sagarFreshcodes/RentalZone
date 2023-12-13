@@ -16,13 +16,22 @@ const PaginationBar = ({ current_page, last_page, setCurrentPage }) => {
       aria-label="Page navigation example"
     >
       <PaginationItem>
-        <PaginationLink   onClick={() => setCurrentPage(current_page-1)}>{Previous}</PaginationLink>
+        <PaginationLink
+          onClick={() =>
+            current_page == 1
+              ? setCurrentPage(current_page)
+              : setCurrentPage(current_page - 1)
+          }
+        >
+          {Previous}
+        </PaginationLink>
       </PaginationItem>
 
       {generateAscendingNumbers(last_page).map((i) => {
         return (
           <PaginationItem>
-            <PaginationLink 
+            <PaginationLink
+              className={i == current_page ? "selectedPage" : ""}
               onClick={() => setCurrentPage(i)}
             >
               {i}
@@ -31,7 +40,15 @@ const PaginationBar = ({ current_page, last_page, setCurrentPage }) => {
         );
       })}
       <PaginationItem>
-        <PaginationLink  onClick={() => setCurrentPage(current_page+1)}>{Next}</PaginationLink>
+        <PaginationLink
+          onClick={() =>
+            last_page == current_page
+              ? setCurrentPage(current_page)
+              : setCurrentPage(current_page + 1)
+          }
+        >
+          {Next}
+        </PaginationLink>
       </PaginationItem>
     </Pagination>
   );

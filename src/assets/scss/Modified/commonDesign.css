@@ -381,6 +381,12 @@
 #scroll-3::-webkit-scrollbar-thumb {
   background-color: #5d5c5c;
 }
+
+
+/* pagination */
+.selectedPage {
+  background-color: #c4c7ff !important;
+}
 @media screen and (max-width: 1200px) {
   .servicePage .BreadCreumLable3 {
     display: none !important;
