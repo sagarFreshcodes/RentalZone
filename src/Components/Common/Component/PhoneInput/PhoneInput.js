@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { CommonButton } from "../../../../CommonElements/Button";
-import flag from "../../../../assets/images/Essential/AuthComponent/flag.png";
 import axios from "axios";
 import {
   ToastError,
   convertStringToIntegerOrString,
-} from "../../../Common/Component/helperFunction";
-export const PhoneInput = ({ onChange }) => {
+} from "../../../Common/Component/helperFunction"; 
+import { CloseButton } from "../DesignElement";
+export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [show, setShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
   const [mobile, setMobile] = useState("");
+  const { toggle } = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -61,6 +62,9 @@ export const PhoneInput = ({ onChange }) => {
             onMouseMove={() => setMouseOn(true)}
           >
             <div className="countrysearch">
+              <CloseButton
+                attr={{ className: "reg_React_Icon", onClick: Toggle }}
+              />
               <input
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
@@ -101,8 +105,13 @@ export const PhoneInput = ({ onChange }) => {
           onBlur={() => setShow(mouseOn ? true : false)}
         />
       </div>
-
-      <CommonButton>Start Now {`->`}</CommonButton>
+      {onlyInput ? (
+        ""
+      ) : (
+        <CommonButton attr={{ onClick: () => toggle() }}>
+          Start Now {`->`}
+        </CommonButton>
+      )}
     </div>
   );
 };

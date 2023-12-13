@@ -8,7 +8,7 @@ const Btn = (props) =>{
 export default Btn;
 
 export const CommonButton = (props) =>{
-    return <button id='commonButton' {...props.attrBtn}>{props.children}</button> 
+    return <button id='commonButton' {...props.attr}>{props.children}</button> 
 };
 
  
