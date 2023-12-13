@@ -8,15 +8,21 @@ import { FS23, FS6, FS8 } from "../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../CommonElements/Button";
 import OTPModel from "../../Models/OTP/OTPModel";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
-import { POST_API } from "../../../Common/Component/helperFunction";
+import {
+  POST_API,
+  ToastError,
+  ToastSuccess,
+} from "../../../Common/Component/helperFunction";
 import {
   API_ROOT_URL,
+  CHECK_OTP,
   LOGIN_WITH_PHONE,
 } from "../../../../Constant/api_constant";
 
 const ListBusiness = () => {
   const [modal, setModel] = useState(false);
   const [mobile, setMobile] = useState("");
+  const [otp, setOtp] = useState("");
 
   const toggle = () => {
     if (modal) {
@@ -30,48 +36,67 @@ const ListBusiness = () => {
     setMobile(e);
   };
 
-
-
   const GenerateOtp = () => {
     const BodyData = {
       phone_number: mobile || "9090789090",
-    };
-    toggle()
+    }; 
     POST_API({
       endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
       body: BodyData,
     })
       .then((response) => {
+        ToastSuccess(response);
+        toggle();
         console.log("test2512", response);
       })
       .catch((error) => {
+        ToastError(error);
         console.log("test2512", error);
       });
   };
 
+  // const SignUp = () => {
+  //   const BodyData = {
+  //     phone_number: mobile || "9090789090",
+  //     otp: otp,
+  //   };
+  //   toggle();
+  //   POST_API({
+  //     endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
+  //     body: BodyData,
+  //   })
+  //     .then((response) => {
+  //       console.log("test2512", response);
+  //     })
+  //     .catch((error) => {
+  //       console.log("test2512", error);
+  //     });
+  // };
 
-
-  const SignUp = () => {
+  const LoginWithOTP = () => {
     const BodyData = {
       phone_number: mobile || "9090789090",
+      otp: otp,
     };
-    toggle()
+
     POST_API({
-      endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
+      endPoint: `${API_ROOT_URL}/${CHECK_OTP}`,
       body: BodyData,
     })
       .then((response) => {
         console.log("test2512", response);
+        ToastSuccess(response);
+        toggle();
       })
       .catch((error) => {
+        ToastError(error);
         console.log("test2512", error);
       });
   };
 
   const AllProps = {
-    toggle: toggle, 
-    SignUp:SignUp,
-    GenerateOtp:GenerateOtp
+    toggle: toggle,
+    GenerateOtp: GenerateOtp,
   };
   return (
     <>
@@ -110,7 +135,14 @@ const ListBusiness = () => {
         </div>
       </div>
 
-      <OTPModel serviceData={{}} toggler={toggle} isOpen={modal} />
+      <OTPModel
+        serviceData={{}}
+        toggler={toggle}
+        setOtp={setOtp}
+        otp={otp}
+        isOpen={modal}
+        LoginWithOTP={LoginWithOTP}
+      />
     </>
   );
 };

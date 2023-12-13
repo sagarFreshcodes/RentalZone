@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn, H5 } from "../../../../AbstractElements";
 import { FS2, FS3, FS4, FS5 } from "../../../../CommonElements/Font/FS";
@@ -7,10 +7,14 @@ import { CommonButton } from "../../../../CommonElements/Button";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
 import OtpInput from "react-otp-input";
 const OTPModel = (props) => {
-  const [otp, setOtp] = useState("");
+  const {setOtp,otp,LoginWithOTP} = props 
   const onChange = (e) => {
     console.log("test2512", e);
   };
+
+  useEffect(()=>{
+    console.log("otp2512",otp);
+  },[otp])
   return (
     <Modal
       isOpen={props.isOpen}
@@ -50,7 +54,7 @@ const OTPModel = (props) => {
           />
         </div>
         <div className="w-100">
-          <CommonButton attr={{ className: "LoginwithOTP " }}>
+          <CommonButton attr={{ className: "LoginwithOTP", onClick:()=>LoginWithOTP() }}>
             Login with OTP
           </CommonButton>
           <br />
