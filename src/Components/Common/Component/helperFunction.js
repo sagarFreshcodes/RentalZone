@@ -260,3 +260,66 @@ export function generateAscendingNumbers(n) {
     return [1];
   }
 }
+
+export function UpdateSEO({
+  page_title,
+  meta_title,
+  meta_description,
+  meta_keywords,
+}) {
+  // Update Page Title
+  const defaultPageTitle = "Computer On Rent | RentalZone.in";
+  const defaultMetaTitle =
+    "Computer On Rent, Laptop On Rent Near Me in Mumbai | RentalZone.in";
+  const defaultMetaDescription =
+    "RentalZone.in : Providing Laptop on Rent, Computer on Rent, Server on Rent, Car On Rent, Ac on Rent-Hire in Mumbai at low price. Find Top Rental Company online at Rentalzone.in";
+  const defaultMetaKeywords =
+    "Find Computer On Rent, Laptop On Rent, Server On Rent, MacBook On Rent, Printer On Rent, UPS On Rent, iPad On Rent, Display On Rent near me in Mumbai On RentalZone.in";
+
+  document.title = page_title || defaultPageTitle;
+
+  // Update Meta Title
+  var metaTitleTag = document.querySelector('meta[name="title"]');
+  if (metaTitleTag) {
+    metaTitleTag.setAttribute("content", meta_title || defaultMetaTitle);
+  } else {
+    var newMetaTitleTag = document.createElement("meta");
+    newMetaTitleTag.setAttribute("name", "title");
+    newMetaTitleTag.setAttribute("content", meta_title || defaultMetaTitle);
+    document.head.appendChild(newMetaTitleTag);
+  }
+
+  // Update Meta Description
+  var metaDescTag = document.querySelector('meta[name="description"]');
+  if (metaDescTag) {
+    metaDescTag.setAttribute(
+      "content",
+      meta_description || defaultMetaDescription
+    );
+  } else {
+    var newMetaDescTag = document.createElement("meta");
+    newMetaDescTag.setAttribute("name", "description");
+    newMetaDescTag.setAttribute(
+      "content",
+      meta_description || defaultMetaDescription
+    );
+    document.head.appendChild(newMetaDescTag);
+  }
+
+  // Update Meta Keywords
+  var metaKeywordsTag = document.querySelector('meta[name="keywords"]');
+  if (metaKeywordsTag) {
+    metaKeywordsTag.setAttribute(
+      "content",
+      meta_keywords || defaultMetaKeywords
+    );
+  } else {
+    var newMetaKeywordsTag = document.createElement("meta");
+    newMetaKeywordsTag.setAttribute("name", "keywords");
+    newMetaKeywordsTag.setAttribute(
+      "content",
+      meta_keywords || defaultMetaKeywords
+    );
+    document.head.appendChild(newMetaKeywordsTag);
+  }
+}

@@ -76,7 +76,7 @@ const Content = ({ AllProps }) => {
         <div className="SeviceContainer">
           <PageContentManager
             isLoading={isServiceLoading}
-            loader={<SC_CardSkelaton />} 
+            loader={<SC_CardSkelaton />}
             contentArray={BusinesssListing}
             ContentBody={BusinesssListing?.map((item) => {
               return (
@@ -84,8 +84,8 @@ const Content = ({ AllProps }) => {
                   address={item?.address}
                   area={item?.area}
                   area_name={item?.area_name}
-                  category={item?.category}
-                  city={item?.city}
+                  category={`${item?.email}`.split(`,`)}
+                  city={[item?.city]}
                   city_name={item?.city_name}
                   contact_person={item?.contact_person}
                   country={item?.country}
@@ -109,6 +109,7 @@ const Content = ({ AllProps }) => {
                   website={item?.website}
                   AllProps={AllProps}
                   BreadcrumData={BreadcrumData}
+                  item={item}
                 />
               );
             })}

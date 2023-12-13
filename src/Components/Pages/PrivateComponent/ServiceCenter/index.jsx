@@ -21,6 +21,7 @@ import Skeleton from "react-loading-skeleton";
 import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
 import {
   ScrollUp,
+  UpdateSEO,
   slugConvertor,
 } from "../../../Common/Component/helperFunction";
 const ServiceCenter = () => {
@@ -37,8 +38,15 @@ const ServiceCenter = () => {
     page_top_keyword,
     top_five_listings,
     all_listing,
-  } = BusinesssPageData || {};
-  const BusinesssListing = all_listing?.data;
+    page_title,
+    meta_title,
+    meta_description,
+    meta_keywords,
+  } = BusinesssPageData || { top_five_listings: [{}, {}], all_listing: {} };
+  const BusinesssListing =
+    all_listing?.data && top_five_listings
+      ? [...top_five_listings, ...all_listing?.data]
+      : all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
@@ -80,7 +88,7 @@ const ServiceCenter = () => {
     BusinessState: BusinessState,
     BusinesssListing: BusinesssListing,
     PopularArea: PopularArea,
-    BusinesssPageData: BusinesssListing,
+    BusinesssPageData: BusinesssPageData,
     BreadcrumData: BreadcrumData,
     isServiceLoading: isServiceLoading,
     user_city: user_city,
@@ -91,7 +99,9 @@ const ServiceCenter = () => {
   };
 
   const test = () => {
-    console.log(`BusinessState2512`, all_listing);
+    let BusinesssListing2 = [...top_five_listings, ...BusinesssListing];
+    console.log(`BusinessState2512=>`, BusinesssPageData);
+    console.log(`BusinessState2512=>`, BusinesssListing2);
   };
   useEffect(() => {
     const GetBusinessList = ({
@@ -133,10 +143,18 @@ const ServiceCenter = () => {
     ScrollUp();
   }, [currentPage]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [QueryParams]);
 
-  useEffect(()=>{
-    setCurrentPage(1)
-  },[QueryParams])
+  useEffect(() => {
+    UpdateSEO({
+      page_title: page_title,
+      meta_title: meta_title,
+      meta_description: meta_description,
+      meta_keywords: meta_keywords,
+    });
+  }, [page_title, meta_title, meta_description, meta_keywords]);
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}

@@ -11,7 +11,7 @@ import {
   SetLocation,
 } from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
-import { ScrollUp } from "../../../Common/Component/helperFunction";
+import { ScrollUp, UpdateSEO } from "../../../Common/Component/helperFunction";
 import { LOCATION_DATA } from "../../../../Constant/general_constant";
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
 
+  const {page_title, meta_title, meta_description, meta_keywords } = HomPageData ||  {}
   const props = {
     homepage_category: Homepage_category,
     HomPageData: HomPageData,
@@ -53,7 +54,14 @@ const Home = () => {
     document.title = pageTitle;
   }, [pageTitle]);
 
-
+  useEffect(() => {
+    UpdateSEO({
+      page_title: page_title,
+      meta_title: meta_title,
+      meta_description: meta_description,
+      meta_keywords: meta_keywords,
+    });
+  }, [page_title, meta_title, meta_description, meta_keywords]);
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}

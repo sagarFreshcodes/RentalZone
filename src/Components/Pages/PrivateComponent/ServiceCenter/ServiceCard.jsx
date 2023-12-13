@@ -53,6 +53,7 @@ const ServiceCard = ({
   user_id,
   website,
   BreadcrumData,
+  item,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
@@ -64,7 +65,7 @@ const ServiceCard = ({
   };
 
   const imgList = [
-    LaptopPics, 
+    LaptopPics,
     `https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D`,
     `https://images.unsplash.com/photo-1575024357670-2b5164f470c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D`,
     `https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D`,
@@ -79,19 +80,16 @@ const ServiceCard = ({
     `https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMxfHxsYXB0b3B8ZW58MHx8MHx8fDA%3D`,
     `https://images.unsplash.com/photo-1615750173609-2fbf12fd1d2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM0fHxsYXB0b3B8ZW58MHx8MHx8fDA%3D`,
     `https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM1fHxsYXB0b3B8ZW58MHx8MHx8fDA%3D`,
-
   ];
   const RandomImg = imgList[Math.floor(Math.random() * imgList.length)];
-const OnDial = () =>{
-  document.location.href = `tel:${phone_number}`
-}
+  const OnDial = () => {
+    document.location.href = `tel:${phone_number}`;
+  };
   return (
     <>
-      <div
-        className="sc_cardBoxPerent shadowEffect" 
-      >
+      <div className="sc_cardBoxPerent shadowEffect">
         <div className="sc_cardBox">
-          <div className="serviceImgBox">
+          <div className="serviceImgBox" onClick={() => console.log(item)}>
             {/* <Image
               attrImage={{ src: burncastle, alt: "vector women with leptop" }}
             /> */}
@@ -139,7 +137,7 @@ const OnDial = () =>{
                 </div>
               </div>
               <div className="sp_cat_list">
-                {[category].map((c) => (
+                {category.map((c) => (
                   <div className="sp_category">
                     {" "}
                     <FS3>{c}</FS3>
@@ -150,6 +148,10 @@ const OnDial = () =>{
                   {" "}
                   <FS3>{[category].join(", ")}</FS3>
                 </div>
+                <FS3 attr={{className:"areaName"}}>
+                  {area_name ? `${area_name},` : ""}
+                  {city_name}
+                </FS3>
               </div>
 
               <FS3 attr={{ className: "singleLineContent" }}>
@@ -159,7 +161,10 @@ const OnDial = () =>{
               </FS3>
 
               <div className="sp_card_box">
-                <button className="btn btn-success callNow bottonHover"  onClick={OnDial}>
+                <button
+                  className="btn btn-success callNow bottonHover"
+                  onClick={OnDial}
+                >
                   {" "}
                   <FS3>Call Now</FS3>
                 </button>{" "}
@@ -250,7 +255,7 @@ const OnDial = () =>{
 "
         >
           {" "}
-          <button className="btn btn-success " onClick={OnDial} >
+          <button className="btn btn-success " onClick={OnDial}>
             {" "}
             <FS3>
               {" "}

@@ -867,7 +867,11 @@
   gap: 7px;
   flex-wrap: wrap;
 }
-
+.sp_cat_list .areaName{
+  color: #1e4d85 !important;
+  text-transform: uppercase;
+  font-weight: 600;
+}
 .green_text {
   color: #058a07;
 }
@@ -878,7 +882,7 @@
   border-radius: 4px;
   background-color: white;
   position: absolute;
-  top: 1rem;
+  top: 7px;
   right: 1rem;
 }
 

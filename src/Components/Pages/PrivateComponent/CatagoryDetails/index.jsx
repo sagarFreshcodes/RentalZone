@@ -12,7 +12,7 @@ import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
-import { ScrollUp } from "../../../Common/Component/helperFunction";
+import { ScrollUp, UpdateSEO } from "../../../Common/Component/helperFunction";
 const CatagoryDetails = () => {
   const QueryParams = useLocation();
   const Parameter = `${QueryParams?.pathname}`.split("-");
@@ -24,30 +24,10 @@ const CatagoryDetails = () => {
   const { isLoading, data } = ListDetailsState || {};
   const ListDetails = data?.data || {};
 
-  const {listing_name} = ListDetails || {}
-  // const {
-  //   canonical,
-  //   contact_person,
-  //   cover_image_url,
-  //   description,
-  //   final_rating,
-  //   get_ratings,
-  //   listing_categories,
-  //   listing_details,
-  //   listing_id,
-  //   listing_name,
-  //   listing_thumbnail_url,
-  //   listing_video_url,
-  //   meta_description,
-  //   meta_keywords,
-  //   meta_title,
-  //   page_title,
-  //   profile_banner,
-  //   profile_pic,
-  //   ratings_count,
-  //   related_listings,
-  // } = ListDetailsState;
+  const {page_title, meta_title, meta_description, meta_keywords } = ListDetails ||  {}
 
+  const {listing_name} = ListDetails || {}
+ 
   useEffect(() => {
     const GetBusinessDetails = ({ slug, listing_id }) => {
       dispatch(
@@ -74,8 +54,18 @@ const CatagoryDetails = () => {
     ListDetails: ListDetails,
     BreadcrumData: BreadcrumData,
   };
+
+  useEffect(() => {
+    UpdateSEO({
+      page_title: page_title,
+      meta_title: meta_title,
+      meta_description: meta_description,
+      meta_keywords: meta_keywords,
+    });
+  }, [page_title, meta_title, meta_description, meta_keywords]);
+  
   const test = () => {
- 
+    console.log("11222",ListDetails);
   };
   return (
     <Fragment>
