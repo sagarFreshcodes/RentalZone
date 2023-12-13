@@ -90,11 +90,11 @@
     padding: 0 !important;
     position: static !important;
   }
-  .countryCodeBox{ 
+  .countryCodeBox {
     top: 0 !important;
-    left: 19% !important; 
+    left: 19% !important;
     @media screen and (max-width: 500px) {
-      left: 5% !important; 
+      left: 5% !important;
     }
   }
 
@@ -111,6 +111,17 @@
     }
     input {
       width: 80% !important;
+    }
+  }
+
+  .otpInputBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 2rem !important;
+      height: 2rem !important;
     }
   }
 }

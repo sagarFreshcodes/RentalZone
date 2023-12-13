@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn, H5 } from "../../../../AbstractElements";
 import { FS2, FS3, FS4, FS5 } from "../../../../CommonElements/Font/FS";
 import { CloseButton } from "../../../Common/Component/DesignElement";
 import { CommonButton } from "../../../../CommonElements/Button";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
-
+import OtpInput from "react-otp-input";
 const OTPModel = (props) => {
+  const [otp, setOtp] = useState("");
   const onChange = (e) => {
     console.log("test2512", e);
   };
@@ -33,11 +34,19 @@ const OTPModel = (props) => {
           <FS5 attr={{ className: "Welcome" }}>Welcome!</FS5>
           <FS4>Login for a seamless experience</FS4>
         </div>
-        <div>
-          <PhoneInput
+        <div className="otpInputBox">
+          {/* <PhoneInput
             onChange={onChange}
             AllProps={{ toggle: console.log("") }}
             onlyInput={true}
+          /> */}
+
+          <OtpInput
+            value={otp}
+            onChange={setOtp}
+            numInputs={4}
+            renderSeparator={<span>-</span>}
+            renderInput={(props) => <input {...props} />}
           />
         </div>
         <div className="w-100">

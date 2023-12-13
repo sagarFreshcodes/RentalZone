@@ -13,7 +13,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
   const [mobile, setMobile] = useState("");
-  const { toggle } = AllProps;
+  const { toggle,SignUp,GenerateOtp } = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -43,6 +43,10 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
 
     setMobile(e.target.value);
   };
+
+  const HandleClick = () =>{ 
+    GenerateOtp()
+  }
   return (
     <div className="PhoneInput">
       <div className="phoneDialBox">
@@ -108,7 +112,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
       {onlyInput ? (
         ""
       ) : (
-        <CommonButton attr={{ onClick: () => toggle() }}>
+        <CommonButton attr={{ onClick: () => HandleClick() }}>
           Start Now {`->`}
         </CommonButton>
       )}

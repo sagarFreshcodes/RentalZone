@@ -104,7 +104,7 @@ export const GetApi = async (endPoint) => {
 export const POST_API = ({ endPoint, body }) => {
   return new Promise((Response, Reject) => {
     axios
-      .get(endPoint, body)
+      .post(endPoint, body)
       .then((res) => {
         Response(res);
       })

@@ -5,14 +5,19 @@ import message from "../../../../assets/images/Essential/AuthComponent/message.p
 
 import customerService from "../../../../assets/images/Essential/AuthComponent/customerService.png";
 import { FS23, FS6, FS8 } from "../../../../CommonElements/Font/FS";
-import { CommonButton } from "../../../../CommonElements/Button"; 
+import { CommonButton } from "../../../../CommonElements/Button";
 import OTPModel from "../../Models/OTP/OTPModel";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
-
- 
+import { POST_API } from "../../../Common/Component/helperFunction";
+import {
+  API_ROOT_URL,
+  LOGIN_WITH_PHONE,
+} from "../../../../Constant/api_constant";
 
 const ListBusiness = () => {
   const [modal, setModel] = useState(false);
+  const [mobile, setMobile] = useState("");
+
   const toggle = () => {
     if (modal) {
       setModel(false);
@@ -22,12 +27,52 @@ const ListBusiness = () => {
   };
 
   const onChange = (e) => {
-    console.log("test2512", e);
+    setMobile(e);
   };
-  
-  const AllProps =  {
-    toggle:toggle
-  }
+
+
+
+  const GenerateOtp = () => {
+    const BodyData = {
+      phone_number: mobile || "9090789090",
+    };
+    toggle()
+    POST_API({
+      endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
+      body: BodyData,
+    })
+      .then((response) => {
+        console.log("test2512", response);
+      })
+      .catch((error) => {
+        console.log("test2512", error);
+      });
+  };
+
+
+
+  const SignUp = () => {
+    const BodyData = {
+      phone_number: mobile || "9090789090",
+    };
+    toggle()
+    POST_API({
+      endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
+      body: BodyData,
+    })
+      .then((response) => {
+        console.log("test2512", response);
+      })
+      .catch((error) => {
+        console.log("test2512", error);
+      });
+  };
+
+  const AllProps = {
+    toggle: toggle, 
+    SignUp:SignUp,
+    GenerateOtp:GenerateOtp
+  };
   return (
     <>
       <div className="ListBusiness">
