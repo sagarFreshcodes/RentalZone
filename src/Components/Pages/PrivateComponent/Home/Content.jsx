@@ -39,7 +39,7 @@ const Content = ({ props }) => {
     homepage_banners,
   } = HomPageData || {};
 
-  const { image_url } = homepage_banners || {};
+  const image_urls = homepage_banners ? homepage_banners  : [];
   const bannerList = [
     {
       link:
@@ -124,7 +124,7 @@ const Content = ({ props }) => {
       <ContentBox className="">
         <div className="top-bar">
           <div className="top-courosel">
-            <Slider image_url={image_url} />
+            <Slider image_urls={image_urls} />
           </div>
           {bannerList?.map((i) => {
             return (

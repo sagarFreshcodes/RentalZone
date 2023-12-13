@@ -1072,6 +1072,11 @@
 .gq-formKey p {
   font-weight: 500 !important;
 }
+ .chat-header .list-inline-item:hover{
+  border: none !important;
+  outline: none !important;
+
+}
 .chatModelContent .chat-history {
   height: 20rem;
   min-height: 20rem;

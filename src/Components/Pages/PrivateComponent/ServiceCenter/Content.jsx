@@ -76,8 +76,7 @@ const Content = ({ AllProps }) => {
         <div className="SeviceContainer">
           <PageContentManager
             isLoading={isServiceLoading}
-            loader={<SC_CardSkelaton />}
-            // noRecordElement={<NoRecords />}
+            loader={<SC_CardSkelaton />} 
             contentArray={BusinesssListing}
             ContentBody={BusinesssListing?.map((item) => {
               return (

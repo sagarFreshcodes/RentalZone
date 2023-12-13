@@ -353,8 +353,13 @@
   gap: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: solid 2px rgba(255, 255, 255, 0); 
 }
-
+.PhoneInput .countryCode:hover {
+  border: solid 2px #0085be;  
+}
 .PhoneInput .countryName {
   width: max-content;
 }

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FileText, LogIn, Mail, User } from "react-feather";
+import { FileText, LogIn, Mail, User,Activity } from "react-feather";
 import man from "../../../assets/images/dashboard/profile.png";
 
 import { LI, UL, Image, P } from "../../../AbstractElements";
@@ -83,7 +83,7 @@ const UserHeader = () => {
             onClick: () => UserMenuRedirect(LIST_BUSINESS_ROUTE),
           }}
         >
-          <User />
+          <Activity />
           <span>{`Free listing`} </span>
         </LI>
         <LI
