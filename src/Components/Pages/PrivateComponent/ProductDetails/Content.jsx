@@ -49,17 +49,4 @@ const Content = ({ propsObject }) => {
 };
 export default Content;
 
-const TrandingList = [
-  {
-    title: "Laptop Computer Repair & Services -sadhi Technologies",
-    address1: "Laptop ipad Rental Services in Mumbai",
-    address2: "Mira Road, Mumbai, Maharashtra, India.",
-    static: "89",
-    like: "98",
-    view: "5522",
-    share: "233",
-    star: "5",
-    picture:
-      "https://rentalzone.in/public/user-profile/1/profile-pic.png?v=1700541863",
-  },
-];
+ 

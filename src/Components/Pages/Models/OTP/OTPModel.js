@@ -19,7 +19,11 @@ const OTPModel = (props) => {
       className="OTPModel"
     >
       <div className="modal-header">
-        <H5 attrH5={{ className: "modal-title" }}>{"Get Quotes"}</H5>
+        <img
+          className="logoImageClass"
+          src={`${require("../../../../assets/images/logo/pconrent.png")}`}
+          alt=""
+        />
         <CloseButton
           attr={{ className: "reg_React_Icon", onClick: props.toggler }}
         />
@@ -30,7 +34,11 @@ const OTPModel = (props) => {
           <FS4>Login for a seamless experience</FS4>
         </div>
         <div>
-        <PhoneInput onChange={onChange} AllProps={{toggle:console.log("")}} onlyInput={true} />
+          <PhoneInput
+            onChange={onChange}
+            AllProps={{ toggle: console.log("") }}
+            onlyInput={true}
+          />
         </div>
         <div className="w-100">
           <CommonButton attr={{ className: "LoginwithOTP " }}>
