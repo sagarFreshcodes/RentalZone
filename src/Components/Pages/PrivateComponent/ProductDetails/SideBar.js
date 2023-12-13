@@ -14,7 +14,9 @@ const SideBar = () => {
       <div className="p_description">
         <div className="startFrom">
           <div className="price">
-            <FS2>Start From</FS2> <FS8 attr={{style:{color:"#FF7D18"}}}>₹ 10,000/</FS8> <FS2>Day</FS2>
+            <FS2>Start From</FS2>{" "}
+            <FS8 attr={{ style: { color: "#FF7D18" } }}>₹ 10,000/</FS8>{" "}
+            <FS2>Day</FS2>
           </div>
           <div className="action">
             <img src={share} alt="" /> <img src={like} alt="" />
@@ -59,8 +61,14 @@ const SideBar = () => {
               <img src={Profile} alt="Profile" /> <FS4>Vincent Porter</FS4>
             </div>
             <div className="dial">
-              <CommonButton>Chat With Seller</CommonButton>{" "}
-              <img src={CallButton} alt="CallButton" />
+              <div className="commonbtn">
+                {" "}
+                <CommonButton>Chat With Seller</CommonButton>{" "}
+              </div>
+              <div className="image">
+                {" "}
+                <img src={CallButton} alt="CallButton" />
+              </div>
             </div>
           </div>
 
@@ -68,7 +76,7 @@ const SideBar = () => {
             <title>Posted In</title>
             <div className="address">
               <img src={location} alt="location" />
-              <FS3>By Pass Road Tutikandi, Shimla, India</FS3>
+              <FS3>&nbsp; By Pass Road Tutikandi, Shimla, India</FS3>
             </div>
             <div className="link">Google Map</div>
           </div>
@@ -98,10 +106,18 @@ const SideBar = () => {
         </div>
 
         <div className="review">
-          <div className="title">Review ~ The Product</div>
+          <FS6>Review ~ The Product</FS6>
           <div className="productrate">
-            <span>
-              Rate This Product <span className="rate">(0)</span>
+            <span className="d-flex">
+              <span>
+                {" "}
+                <FS4>Rate This Product</FS4>
+              </span>
+
+              <span className="rate">
+                {" "}
+                <FS4>(0)</FS4>
+              </span>
             </span>
             <img src={stars} alt="" />
           </div>
