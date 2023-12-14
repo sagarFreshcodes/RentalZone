@@ -114,7 +114,7 @@ export const POST_API = ({ endPoint, body }) => {
   });
 };
 
-export const ToastError = (error) => { 
+export const ToastError = (error) => {  
   error?.response?.data?.message.query || error?.response?.data?.message?.level
     ? toast.error(error?.message)
     : error?.response?.data?.message
@@ -127,7 +127,7 @@ export const ToastError = (error) => {
   return null;
 };
 
-export const ToastSuccess = (response) => {
+export const ToastSuccess = (response) => { 
   response?.data?.data?.message
     ? toast.success(response?.data?.message)
     : response?.data?.message

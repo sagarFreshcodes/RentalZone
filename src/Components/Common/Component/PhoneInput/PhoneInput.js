@@ -13,7 +13,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
   const [mobile, setMobile] = useState("");
-  const { toggle,SignUp,GenerateOtp } = AllProps;
+  const { toggle,GenerateOtp,Payload} = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -45,7 +45,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   };
 
   const HandleClick = () =>{ 
-    GenerateOtp()
+    GenerateOtp(Payload) 
   }
   return (
     <div className="PhoneInput">

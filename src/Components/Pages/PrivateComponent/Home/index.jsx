@@ -13,6 +13,7 @@ import {
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 import { ScrollUp, UpdateSEO } from "../../../Common/Component/helperFunction";
 import { LOCATION_DATA } from "../../../../Constant/general_constant";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,8 @@ const Home = () => {
       meta_keywords: meta_keywords,
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
+
+ 
   return (
     <Fragment>
       {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}

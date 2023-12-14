@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import man_model from "../../../../assets/images/Essential/AuthComponent/man_model.png";
 import True from "../../../../assets/images/Essential/AuthComponent/True.png";
-import message from "../../../../assets/images/Essential/AuthComponent/message.png";
-
+// import { GoogleLogin } from "@react-oauth/google";
 import customerService from "../../../../assets/images/Essential/AuthComponent/customerService.png";
 import { FS23, FS6, FS8 } from "../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../CommonElements/Button";
@@ -16,13 +15,21 @@ import {
 import {
   API_ROOT_URL,
   CHECK_OTP,
+  GOOGLE_LOGIN,
   LOGIN_WITH_PHONE,
 } from "../../../../Constant/api_constant";
+import { ToastContainer } from "react-toastify";
+import { GoogleLogin } from "@react-oauth/google";
+import { auth } from "../../../../Constant/fireBaseConfig"; // Path to your firebase.js file
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GenerateOtp, LoginWithGoogle, LoginWithOTP } from "./LBFunctions";
 
 const ListBusiness = () => {
   const [modal, setModel] = useState(false);
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
+  const [token, setToken] = useState("");
+  const [email, setEmail] = useState("");
 
   const toggle = () => {
     if (modal) {
@@ -36,67 +43,33 @@ const ListBusiness = () => {
     setMobile(e);
   };
 
-  const GenerateOtp = () => {
-    const BodyData = {
-      phone_number: mobile || "9090789090",
-    }; 
-    POST_API({
-      endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
-      body: BodyData,
-    })
-      .then((response) => {
-        ToastSuccess(response);
-        toggle();
-        console.log("test2512", response);
-      })
-      .catch((error) => {
-        ToastError(error);
-        console.log("test2512", error);
-      });
-  };
 
-  // const SignUp = () => {
-  //   const BodyData = {
-  //     phone_number: mobile || "9090789090",
-  //     otp: otp,
-  //   };
-  //   toggle();
-  //   POST_API({
-  //     endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
-  //     body: BodyData,
-  //   })
-  //     .then((response) => {
-  //       console.log("test2512", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("test2512", error);
-  //     });
-  // };
 
-  const LoginWithOTP = () => {
+  const SubmitGoogleLoginCred = () => {
     const BodyData = {
+      email: email,
+      name: "",
       phone_number: mobile || "9090789090",
-      otp: otp,
+      google_auth_token: token,
     };
 
     POST_API({
-      endPoint: `${API_ROOT_URL}/${CHECK_OTP}`,
+      endPoint: `${API_ROOT_URL}/${GOOGLE_LOGIN}`,
       body: BodyData,
     })
       .then((response) => {
-        console.log("test2512", response);
         ToastSuccess(response);
         toggle();
       })
       .catch((error) => {
         ToastError(error);
-        console.log("test2512", error);
       });
   };
 
   const AllProps = {
     toggle: toggle,
     GenerateOtp: GenerateOtp,
+    Payload: { mobile: mobile, toggle: toggle },
   };
   return (
     <>
@@ -142,7 +115,12 @@ const ListBusiness = () => {
         otp={otp}
         isOpen={modal}
         LoginWithOTP={LoginWithOTP}
+        LoginWithOTPPayload={{ otp: otp, mobile: mobile, toggle: toggle }}
+        LoginWithGoogle={LoginWithGoogle}
+        LoginWithGooglePayload= {{ setToken:setToken, setEmail:setEmail }}
       />
+
+      <ToastContainer />
     </>
   );
 };

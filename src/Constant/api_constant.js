@@ -8,4 +8,5 @@ export const GET_LIST_DETAILS_API =`get-list-details`
 export const HOME_API =`get-homepage`
 export const LOGIN_WITH_PHONE =`login-with-phone`
 export const CHECK_OTP =`check-otp`
+export const GOOGLE_LOGIN =`google-login`
 

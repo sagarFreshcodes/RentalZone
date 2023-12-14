@@ -6,15 +6,23 @@ import { CloseButton } from "../../../Common/Component/DesignElement";
 import { CommonButton } from "../../../../CommonElements/Button";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
 import OtpInput from "react-otp-input";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 const OTPModel = (props) => {
-  const {setOtp,otp,LoginWithOTP} = props 
+  const {
+    setOtp,
+    otp,
+    LoginWithOTP,
+    LoginWithGoogle,
+    LoginWithOTPPayload,
+    LoginWithGooglePayload,
+  } = props;
   const onChange = (e) => {
     console.log("test2512", e);
   };
 
-  useEffect(()=>{
-    console.log("otp2512",otp);
-  },[otp])
+  useEffect(() => {
+    console.log("otp2512", otp);
+  }, [otp]);
   return (
     <Modal
       isOpen={props.isOpen}
@@ -54,14 +62,26 @@ const OTPModel = (props) => {
           />
         </div>
         <div className="w-100">
-          <CommonButton attr={{ className: "LoginwithOTP", onClick:()=>LoginWithOTP() }}>
+          <CommonButton
+            attr={{
+              className: "LoginwithOTP",
+              onClick: () => LoginWithOTP(LoginWithOTPPayload),
+            }}
+          >
             Login with OTP
           </CommonButton>
           <br />
           <br />
-          <CommonButton attr={{ className: "LoginwithGoogle" }}>
+          <CommonButton
+            attr={{
+              className: "LoginwithGoogle",
+              onClick: () => LoginWithGoogle(LoginWithGooglePayload),
+            }}
+          >
             Login with Google
           </CommonButton>
+          <br />
+          <br />
         </div>
         {/* <div className="gq-model-bbox">
           <Btn attrBtn={{ color: "primary", onClick: props.toggler }}>
