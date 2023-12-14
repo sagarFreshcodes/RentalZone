@@ -6,13 +6,12 @@ import {
   convertStringToIntegerOrString,
 } from "../../../Common/Component/helperFunction";
 import { CloseButton } from "../DesignElement";
-export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
+export const PhoneInput = ({ onChange, AllProps, onlyInput, mobile }) => {
   const [show, setShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
-  const [mobile, setMobile] = useState("");
   const { toggle, GenerateOtp, Payload } = AllProps;
   const Toggle = () => {
     setShow(!show);
@@ -37,12 +36,10 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const onHandleChange = (e) => {
     onChange(
       convertStringToIntegerOrString(
-        // `${selectedCountry?.callingCodes[0]}${e.target.value}`
-        `+${e.target.value}`
+        // `+${selectedCountry?.callingCodes[0]}${e.target.value}`
+        `${e.target.value}`
       )
     );
-
-    setMobile(e.target.value);
   };
 
   const HandleClick = () => {

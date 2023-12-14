@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FileText, LogIn, Mail, User,Activity } from "react-feather";
+import { FileText, LogIn, Mail, User, Activity } from "react-feather";
 import man from "../../../assets/images/dashboard/profile.png";
 
 import { LI, UL, Image, P } from "../../../AbstractElements";
@@ -28,26 +28,38 @@ const UserHeader = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("auth0_profile");
     localStorage.removeItem("Name");
+    localStorage.removeItem("rentalUserAuthToken");
     localStorage.setItem("authenticated", false);
-    history(`${process.env.PUBLIC_URL}/login`);
+    history(LIST_BUSINESS_ROUTE);
   };
 
   const UserMenuRedirect = (redirect) => {
     history(redirect);
   };
 
-  const OnShow = () => { 
+  const OnShow = () => {
     setShow(!show);
+  };
+
+  const login = !["null", null, undefined, "undefined"].includes(
+    localStorage.getItem("rentalUserAuthToken")
+  );
+
+  const clickOnFreeListing = () => {
+    UserMenuRedirect(LIST_BUSINESS_ROUTE);
+    console.log("first1235", login);
+    console.log(
+      "first1235 localStorage.getIte",
+      localStorage.getItem("rentalUserAuthToken")
+    );
   };
   return (
     <ul
       className="profile-nav onhover-dropdown pe-0 py-0"
       onClick={OnShow}
       // onPointerLeave={()=> setShow(false)}
-    
-   
     >
-      <div className="media profile-media"     >
+      <div className="media profile-media">
         <Image
           attrImage={{
             className: "b-r-10 m-0",
@@ -64,7 +76,7 @@ const UserHeader = () => {
       </div>
       <UL
         attrUL={{
-          className: `simple-list profile-dropdown ${show ? "" : "d-none"}`, 
+          className: `simple-list profile-dropdown ${show ? "" : "d-none"}`,
         }}
       >
         <LI
@@ -80,7 +92,8 @@ const UserHeader = () => {
         </LI>
         <LI
           attrLI={{
-            onClick: () => UserMenuRedirect(LIST_BUSINESS_ROUTE),
+            onClick: clickOnFreeListing,
+            className: login ? "d-none" : "",
           }}
         >
           <Activity />
@@ -108,7 +121,7 @@ const UserHeader = () => {
           <FileText />
           <span>{Taskboard}</span>
         </LI>
-        <LI attrLI={{ onClick: Logout }}>
+        <LI attrLI={{ onClick: Logout, className: login ? "" : "d-none" }}>
           <LogIn />
           <span>{LogOut}</span>
         </LI>

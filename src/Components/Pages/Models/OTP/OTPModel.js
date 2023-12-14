@@ -15,6 +15,7 @@ const OTPModel = (props) => {
     LoginWithGoogle,
     LoginWithOTPPayload,
     LoginWithGooglePayload,
+    Redirect,
   } = props;
   const onChange = (e) => {
     console.log("test2512", e);
@@ -23,6 +24,7 @@ const OTPModel = (props) => {
   useEffect(() => {
     console.log("otp2512", otp);
   }, [otp]);
+
   return (
     <Modal
       isOpen={props.isOpen}

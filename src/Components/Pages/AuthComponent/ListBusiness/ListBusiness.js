@@ -6,14 +6,16 @@ import OTPModel from "../../Models/OTP/OTPModel";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
 import { ToastContainer } from "react-toastify";
 import { GenerateOtp, LoginWithGoogle, LoginWithOTP } from "./LBFunctions";
-
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 const ListBusiness = () => {
   const [modal, setModel] = useState(false);
-  const [mobile, setMobile] = useState("");
+  const [mobile, setMobile] = useState(9090789091);
   const [otp, setOtp] = useState("");
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
-
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
   const toggle = () => {
     if (modal) {
       setModel(false);
@@ -25,12 +27,18 @@ const ListBusiness = () => {
   const onChange = (e) => {
     setMobile(e);
   };
-
+  const Redirect = () => {
+    console.log("test2512 navigat");
+    navigate(HOME_ROUTE);
+  };
   const AllProps = {
+    mobile: mobile,
     toggle: toggle,
     GenerateOtp: GenerateOtp,
     Payload: { mobile: mobile, toggle: toggle },
+    Redirect: Redirect,
   };
+
   return (
     <>
       <div className="ListBusiness">
@@ -75,14 +83,22 @@ const ListBusiness = () => {
         otp={otp}
         isOpen={modal}
         LoginWithOTP={LoginWithOTP}
-        LoginWithOTPPayload={{ otp: otp, mobile: mobile, toggle: toggle }}
+        LoginWithOTPPayload={{
+          otp: otp,
+          mobile: mobile,
+          toggle: toggle,
+          Redirect: Redirect,
+        }}
         LoginWithGoogle={LoginWithGoogle}
         LoginWithGooglePayload={{
           setToken: setToken,
           setEmail: setEmail,
+          setName: setName,
           mobile: mobile,
           toggle: toggle,
+          Redirect: Redirect,
         }}
+        Redirect={Redirect}
       />
 
       <ToastContainer />
