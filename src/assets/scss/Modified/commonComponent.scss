@@ -1,0 +1,92 @@
+// HanggingBar
+.HanggingBar {
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  top: 35vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+  @media screen and (max-width: 1200px) {
+    top: 45vw;
+  }
+  @media screen and (max-width: 900px) {
+    top: 65vw;
+  }
+  @media screen and (max-width: 700px) {
+    top: 80vw;
+  }
+  @media screen and (max-width: 500px) {
+    top: 110vw;
+  }
+  @media screen and (max-width: 400px) {
+    top: 150vw;
+  }
+  .ChatAction {
+    // position: absolute;
+    top: 0;
+    margin: 1rem;
+    background-color: #ff7d18;
+    border-radius: 6px;
+    // fasfa
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    .ChatHover {
+      display: none;
+    }
+    img {
+      width: 4rem;
+      aspect-ratio: 1;
+    }
+
+    // }
+  }
+
+  .ChatAction:hover {
+    background-color: #803c08;
+    img {
+      padding: 1rem !important;
+    }
+    #FS6 {
+      padding: 0 1rem !important;
+    }
+    .ChatHover {
+      display: inline;
+    }
+  }
+  .MessagAction:hover {
+    background-color: #015173;
+    #FS6 {
+      padding: 0 1rem !important;
+    }
+    img {
+      padding: 1rem !important;
+    }
+    .MessagHover {
+      display: inline;
+    }
+  }
+  .MessagAction {
+    // position: absolute;
+    width: fit-content;
+    bottom: 0;
+    margin: 1rem;
+    background-color: #0085be;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    .MessagHover {
+      display: none;
+    }
+    img {
+      width: 4rem;
+      aspect-ratio: 1;
+    }
+  }
+}

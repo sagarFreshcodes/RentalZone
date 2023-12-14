@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   ToastError,
   convertStringToIntegerOrString,
-} from "../../../Common/Component/helperFunction"; 
+} from "../../../Common/Component/helperFunction";
 import { CloseButton } from "../DesignElement";
 export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
   const [mobile, setMobile] = useState("");
-  const { toggle,GenerateOtp,Payload} = AllProps;
+  const { toggle, GenerateOtp, Payload } = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -37,16 +37,17 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const onHandleChange = (e) => {
     onChange(
       convertStringToIntegerOrString(
-        `${selectedCountry?.callingCodes[0]}${e.target.value}`
+        // `${selectedCountry?.callingCodes[0]}${e.target.value}`
+        `+${e.target.value}`
       )
     );
 
     setMobile(e.target.value);
   };
 
-  const HandleClick = () =>{ 
-    GenerateOtp(Payload) 
-  }
+  const HandleClick = () => {
+    GenerateOtp(Payload);
+  };
   return (
     <div className="PhoneInput">
       <div className="phoneDialBox">

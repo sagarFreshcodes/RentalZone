@@ -10,7 +10,7 @@ const LayoutRoutes = () => {
         {routes.map(({ path, Component }, i) => (
           <Fragment key={i}>
           <Route element={<AppLayout />} key={i}>
-            <Route path={path} element={Component} />
+            <Route path={path} element={Component} /> 
           </Route>
           </Fragment>
         ))}

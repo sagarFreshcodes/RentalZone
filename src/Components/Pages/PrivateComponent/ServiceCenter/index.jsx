@@ -20,6 +20,7 @@ import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 import Skeleton from "react-loading-skeleton";
 import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
 import {
+  HanggingBar,
   ScrollUp,
   UpdateSEO,
   slugConvertor,
@@ -156,56 +157,59 @@ const ServiceCenter = () => {
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
   return (
-    <Fragment>
-      {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-      <Container fluid={true}>
-        <div className="servicePage" onClick={test}>
-          {/* {isServiceLoading ? (
+    <>
+      <Fragment>
+        {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
+        <Container fluid={true}>
+          <div className="servicePage" onClick={test}>
+            {/* {isServiceLoading ? (
             <Skeleton height={1000} />
           ) : ( */}
-          <div className="s_content">
-            <Content AllProps={AllProps} />
-          </div>
-          {/* )} */}
+            <div className="s_content">
+              <Content AllProps={AllProps} />
+            </div>
+            {/* )} */}
 
-          <div className="s_sidebar">
-            <SideBar AllProps={AllProps} />
+            <div className="s_sidebar">
+              <SideBar AllProps={AllProps} />
+            </div>
           </div>
-        </div>
 
-        <ContentBox className="">
-          <Footer />
-        </ContentBox>
-        <br />
-        <br />
-        <div className="sc_fixedButton">
-          <button className="btn btn-light" onClick={toggle2}>
-            <FS6>
+          <ContentBox className="">
+            <Footer />
+          </ContentBox>
+          <br />
+          <br />
+          <div className="sc_fixedButton">
+            <button className="btn btn-light" onClick={toggle2}>
+              <FS6>
+                {" "}
+                <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
+              </FS6>
+            </button>{" "}
+            <button className="btn btn-primary star" onClick={toggle}>
               {" "}
-              <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
-            </FS6>
-          </button>{" "}
-          <button className="btn btn-primary star" onClick={toggle}>
-            {" "}
-            <FS6>
-              <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote
-              Now{" "}
-            </FS6>
-          </button>{" "}
-        </div>
-      </Container>
-      <GetQuotesModel
-        serviceData={serviceData}
-        toggler={toggle}
-        isOpen={modal}
-      />
+              <FS6>
+                <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote
+                Now{" "}
+              </FS6>
+            </button>{" "}
+          </div>
+        </Container>
+        <GetQuotesModel
+          serviceData={serviceData}
+          toggler={toggle}
+          isOpen={modal}
+        />
 
-      <ChatModel
-        serviceData={serviceData}
-        toggler={toggle2}
-        isOpen={chatModal}
-      />
-    </Fragment>
+        <ChatModel
+          serviceData={serviceData}
+          toggler={toggle2}
+          isOpen={chatModal}
+        />
+      </Fragment>{" "}
+      <HanggingBar />
+    </>
   );
 };
 export default ServiceCenter;

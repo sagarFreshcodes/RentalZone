@@ -12,7 +12,11 @@ import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
-import { ScrollUp, UpdateSEO } from "../../../Common/Component/helperFunction";
+import {
+  HanggingBar,
+  ScrollUp,
+  UpdateSEO,
+} from "../../../Common/Component/helperFunction";
 const CatagoryDetails = () => {
   const QueryParams = useLocation();
   const Parameter = `${QueryParams?.pathname}`.split("-");
@@ -24,10 +28,11 @@ const CatagoryDetails = () => {
   const { isLoading, data } = ListDetailsState || {};
   const ListDetails = data?.data || {};
 
-  const {page_title, meta_title, meta_description, meta_keywords } = ListDetails ||  {}
+  const { page_title, meta_title, meta_description, meta_keywords } =
+    ListDetails || {};
 
-  const {listing_name} = ListDetails || {}
- 
+  const { listing_name } = ListDetails || {};
+
   useEffect(() => {
     const GetBusinessDetails = ({ slug, listing_id }) => {
       dispatch(
@@ -39,7 +44,7 @@ const CatagoryDetails = () => {
     };
     GetBusinessDetails({ slug: slug, listing_id: listing_id });
 
-    ScrollUp()
+    ScrollUp();
   }, []);
 
   const preBreadcrumData = QueryParams?.state?.BreadcrumData
@@ -63,37 +68,40 @@ const CatagoryDetails = () => {
       meta_keywords: meta_keywords,
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
-  
+
   const test = () => {
-    console.log("11222",ListDetails);
+    console.log("11222", ListDetails);
   };
   return (
-    <Fragment>
-      {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-      <Container fluid={true}>
-        <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
-          <div className="cds_content">
-            <Content allProps={allProps} />
+    <>
+      <Fragment>
+        {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
+        <Container fluid={true}>
+          <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
+            <div className="cds_content">
+              <Content allProps={allProps} />
+            </div>
           </div>
-        </div> 
-        <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
-          <div className="s_content ">
-            <CategoryProduct />
-            <CategoryMedia />
-          </div>
+          <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
+            <div className="s_content ">
+              <CategoryProduct />
+              <CategoryMedia />
+            </div>
 
-          <div className="s_sidebar">
-            <ContentBox className="">
-              {" "}
-              <SideBar />
-            </ContentBox>
+            <div className="s_sidebar">
+              <ContentBox className="">
+                {" "}
+                <SideBar />
+              </ContentBox>
+            </div>
           </div>
-        </div>
-        <ContentBox className="">
-          <Footer />
-        </ContentBox>
-      </Container>
-    </Fragment>
+          <ContentBox className="">
+            <Footer />
+          </ContentBox>
+        </Container>
+      </Fragment>{" "}
+      <HanggingBar />
+    </>
   );
 };
 export default CatagoryDetails;

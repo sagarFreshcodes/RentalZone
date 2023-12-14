@@ -12,14 +12,13 @@ import {
 import { auth } from "../../../../Constant/fireBaseConfig"; // Path to your firebase.js file
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-
 export const GenerateOtp = ({ mobile, toggle }) => {
-  const BodyData = {
-    phone_number: mobile || "9090789090",
-  };
+  const bodyFormData = new FormData();
+  bodyFormData.append("phone_number", mobile);
+
   POST_API({
     endPoint: `${API_ROOT_URL}/${LOGIN_WITH_PHONE}`,
-    body: BodyData,
+    body: bodyFormData,
   })
     .then((response) => {
       ToastSuccess(response);
@@ -32,13 +31,38 @@ export const GenerateOtp = ({ mobile, toggle }) => {
 };
 
 export const LoginWithOTP = ({ otp, mobile, toggle }) => {
-  const BodyData = {
-    phone_number: mobile || "9090789090",
-    otp: otp,
-  };
+  const bodyFormData = new FormData();
+  bodyFormData.append("phone_number", mobile);
+  bodyFormData.append("otp", otp);
 
   POST_API({
     endPoint: `${API_ROOT_URL}/${CHECK_OTP}`,
+    body: bodyFormData,
+  })
+    .then((response) => {
+      ToastSuccess(response);
+      toggle();
+    })
+    .catch((error) => {
+      ToastError(error);
+    });
+};
+export const SubmitGoogleLoginCred = ({ email, mobile, token, toggle }) => {
+  const BodyData = {
+    email: email,
+    name: "",
+    phone_number: mobile || "9090789090",
+    google_auth_token: token,
+  };
+
+  const bodyFormData = new FormData();
+  bodyFormData.append("email", mobile);
+  bodyFormData.append("name", "");
+  bodyFormData.append("phone_number", mobile);
+  bodyFormData.append("google_auth_token", token);
+
+  POST_API({
+    endPoint: `${API_ROOT_URL}/${GOOGLE_LOGIN}`,
     body: BodyData,
   })
     .then((response) => {
@@ -49,28 +73,8 @@ export const LoginWithOTP = ({ otp, mobile, toggle }) => {
       ToastError(error);
     });
 };
-export const SubmitGoogleLoginCred = ({email,mobile,token, toggle}) => {
-    const BodyData = {
-      email: email,
-      name: "",
-      phone_number: mobile || "9090789090",
-      google_auth_token: token,
-    };
 
-    POST_API({
-      endPoint: `${API_ROOT_URL}/${GOOGLE_LOGIN}`,
-      body: BodyData,
-    })
-      .then((response) => {
-        ToastSuccess(response);
-        toggle();
-      })
-      .catch((error) => {
-        ToastError(error);
-      });
-  };
-  
-export const LoginWithGoogle = ({ setToken, setEmail }) => {
+export const LoginWithGoogle = ({ setToken, setEmail, mobile, toggle }) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -81,6 +85,13 @@ export const LoginWithGoogle = ({ setToken, setEmail }) => {
       setEmail(user.email);
       setToken(token);
       console.log("test2512", user, "toke", token);
+
+      SubmitGoogleLoginCred({
+        email: user.email,
+        mobile: mobile,
+        token: token,
+        toggle: toggle,
+      });
     })
     .catch((error) => {
       // Handle Errors here.
@@ -93,5 +104,3 @@ export const LoginWithGoogle = ({ setToken, setEmail }) => {
       // ...
     });
 };
-
-

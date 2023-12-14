@@ -11,7 +11,11 @@ import {
   SetLocation,
 } from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
-import { ScrollUp, UpdateSEO } from "../../../Common/Component/helperFunction";
+import {
+  HanggingBar,
+  ScrollUp,
+  UpdateSEO,
+} from "../../../Common/Component/helperFunction";
 import { LOCATION_DATA } from "../../../../Constant/general_constant";
 import { toast } from "react-toastify";
 
@@ -24,7 +28,8 @@ const Home = () => {
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
 
-  const {page_title, meta_title, meta_description, meta_keywords } = HomPageData ||  {}
+  const { page_title, meta_title, meta_description, meta_keywords } =
+    HomPageData || {};
   const props = {
     homepage_category: Homepage_category,
     HomPageData: HomPageData,
@@ -47,7 +52,9 @@ const Home = () => {
       })
     );
 
-    dispatch(HomePageApi({ Location:LOCATION_DATA?.city_slug ||CurrentLocation }));
+    dispatch(
+      HomePageApi({ Location: LOCATION_DATA?.city_slug || CurrentLocation })
+    );
   }, [dispatch]);
 
   useEffect(() => {
@@ -64,23 +71,25 @@ const Home = () => {
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
 
- 
   return (
-    <Fragment>
-      {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-      <Container fluid={true}>
-        <Row>
-          {/* <FileSideBar /> */}
-          <Col xl="12" md="12" className="box-col-9">
-            <div className="file-content">
-              <Card>
-                <Content props={props} />
-              </Card>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </Fragment>
+    <>
+      <Fragment>
+        {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
+        <Container fluid={true}>
+          <Row>
+            {/* <FileSideBar /> */}
+            <Col xl="12" md="12" className="box-col-9">
+              <div className="file-content">
+                <Card>
+                  <Content props={props} />
+                </Card>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Fragment>
+      <HanggingBar />
+    </>
   );
 };
 export default Home;

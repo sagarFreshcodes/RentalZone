@@ -2,9 +2,11 @@ import axios from "axios";
 import { API_ROOT_URL } from "../../../Constant/api_constant";
 import { toast } from "react-toastify";
 import { BASE_ROUTE } from "../../../Route/RouthPath";
-import { FS3, FS4 } from "../../../CommonElements/Font/FS";
+import { FS3, FS4, FS6 } from "../../../CommonElements/Font/FS";
 import { Link } from "react-router-dom";
 import { SelectCategory } from "../../../Redux_Store/Actions/generalActions";
+import Chat from "../../../assets/images/Essential/Chat.png";
+import Message from "../../../assets/images/Essential/Message.png";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -89,7 +91,7 @@ export const GetApi = async (endPoint) => {
       // Include any other required headers
     },
   };
-  const response = await axios.get(endPoint, HEADERS);
+  const response = await axios.post(endPoint, HEADERS);
   return response;
   // return Promise(async (RESPONCE, REJECT) => {
   //   try {
@@ -102,9 +104,17 @@ export const GetApi = async (endPoint) => {
 };
 
 export const POST_API = ({ endPoint, body }) => {
+  const HEADERS = {
+    headers: {
+      // "Content-Type": "application/json",
+      // "Accept": "application/json",
+      // 'Authorization': "AuthStr================="
+      // Include any other required headers
+    },
+  };
   return new Promise((Response, Reject) => {
     axios
-      .post(endPoint, body)
+      .post(endPoint, body, HEADERS)
       .then((res) => {
         Response(res);
       })
@@ -114,7 +124,7 @@ export const POST_API = ({ endPoint, body }) => {
   });
 };
 
-export const ToastError = (error) => {  
+export const ToastError = (error) => {
   error?.response?.data?.message.query || error?.response?.data?.message?.level
     ? toast.error(error?.message)
     : error?.response?.data?.message
@@ -127,7 +137,7 @@ export const ToastError = (error) => {
   return null;
 };
 
-export const ToastSuccess = (response) => { 
+export const ToastSuccess = (response) => {
   response?.data?.data?.message
     ? toast.success(response?.data?.message)
     : response?.data?.message
@@ -323,3 +333,20 @@ export function UpdateSEO({
     document.head.appendChild(newMetaKeywordsTag);
   }
 }
+
+export const HanggingBar = () => {
+  return (
+    <>
+      <div className="HanggingBar">
+        <div className="ChatAction">
+          <FS6 attr={{ className: "text-light ChatHover" }}>Chat...</FS6>
+          <img src={Chat} alt="" />
+        </div>
+        <div className="MessagAction">
+          <FS6 attr={{ className: "text-light MessagHover" }}>Message...</FS6>
+          <img src={Message} alt="" />
+        </div>
+      </div>
+    </>
+  );
+};

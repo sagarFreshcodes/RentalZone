@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import man_model from "../../../../assets/images/Essential/AuthComponent/man_model.png";
 import True from "../../../../assets/images/Essential/AuthComponent/True.png";
-// import { GoogleLogin } from "@react-oauth/google";
-import customerService from "../../../../assets/images/Essential/AuthComponent/customerService.png";
 import { FS23, FS6, FS8 } from "../../../../CommonElements/Font/FS";
-import { CommonButton } from "../../../../CommonElements/Button";
 import OTPModel from "../../Models/OTP/OTPModel";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
-import {
-  POST_API,
-  ToastError,
-  ToastSuccess,
-} from "../../../Common/Component/helperFunction";
-import {
-  API_ROOT_URL,
-  CHECK_OTP,
-  GOOGLE_LOGIN,
-  LOGIN_WITH_PHONE,
-} from "../../../../Constant/api_constant";
 import { ToastContainer } from "react-toastify";
-import { GoogleLogin } from "@react-oauth/google";
-import { auth } from "../../../../Constant/fireBaseConfig"; // Path to your firebase.js file
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { GenerateOtp, LoginWithGoogle, LoginWithOTP } from "./LBFunctions";
 
 const ListBusiness = () => {
@@ -42,10 +25,6 @@ const ListBusiness = () => {
   const onChange = (e) => {
     setMobile(e);
   };
-
-
-
-
 
   const AllProps = {
     toggle: toggle,
@@ -98,7 +77,12 @@ const ListBusiness = () => {
         LoginWithOTP={LoginWithOTP}
         LoginWithOTPPayload={{ otp: otp, mobile: mobile, toggle: toggle }}
         LoginWithGoogle={LoginWithGoogle}
-        LoginWithGooglePayload= {{ setToken:setToken, setEmail:setEmail }}
+        LoginWithGooglePayload={{
+          setToken: setToken,
+          setEmail: setEmail,
+          mobile: mobile,
+          toggle: toggle,
+        }}
       />
 
       <ToastContainer />
