@@ -1,6 +1,7 @@
 import {
   API_ROOT_URL,
   CHECK_OTP,
+  GOOGLE_LOGIN,
   LOGIN_WITH_PHONE,
 } from "../../../../Constant/api_constant";
 import {
@@ -48,7 +49,27 @@ export const LoginWithOTP = ({ otp, mobile, toggle }) => {
       ToastError(error);
     });
 };
+export const SubmitGoogleLoginCred = ({email,mobile,token, toggle}) => {
+    const BodyData = {
+      email: email,
+      name: "",
+      phone_number: mobile || "9090789090",
+      google_auth_token: token,
+    };
 
+    POST_API({
+      endPoint: `${API_ROOT_URL}/${GOOGLE_LOGIN}`,
+      body: BodyData,
+    })
+      .then((response) => {
+        ToastSuccess(response);
+        toggle();
+      })
+      .catch((error) => {
+        ToastError(error);
+      });
+  };
+  
 export const LoginWithGoogle = ({ setToken, setEmail }) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -72,3 +93,5 @@ export const LoginWithGoogle = ({ setToken, setEmail }) => {
       // ...
     });
 };
+
+

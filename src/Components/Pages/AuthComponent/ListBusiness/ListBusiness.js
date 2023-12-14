@@ -45,26 +45,7 @@ const ListBusiness = () => {
 
 
 
-  const SubmitGoogleLoginCred = () => {
-    const BodyData = {
-      email: email,
-      name: "",
-      phone_number: mobile || "9090789090",
-      google_auth_token: token,
-    };
 
-    POST_API({
-      endPoint: `${API_ROOT_URL}/${GOOGLE_LOGIN}`,
-      body: BodyData,
-    })
-      .then((response) => {
-        ToastSuccess(response);
-        toggle();
-      })
-      .catch((error) => {
-        ToastError(error);
-      });
-  };
 
   const AllProps = {
     toggle: toggle,
