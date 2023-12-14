@@ -7,10 +7,14 @@ import slide5 from "../../../../assets/images/Essential/ProductDetail/slide5.png
 import { FS4, FS6 } from "../../../../CommonElements/Font/FS";
 const ProductDetail = () => {
   const [fullscreenImg, setFullscreenImg] = useState(slide1);
-  const [imgList, setImgList] = useState([slide2, slide3, slide4, slide5]);
-  // <div className='pd_ProductDetail'>
-  //   <img src={fullPage} className='fluid' alt="" />
-  // </div>
+  const [imgList, setImgList] = useState([
+    slide1,
+    slide2,
+    slide3,
+    slide4,
+    slide5,
+  ]); 
+ 
   return (
     <>
       <div className="pd_ProductDetail">
@@ -19,20 +23,22 @@ const ProductDetail = () => {
             <img src={fullscreenImg} alt="" />
           </div>
           <div className="ImagList">
-            {imgList.map((i) => {
-              return (
-                <>
-                  {" "}
-                  <img src={i} alt="" />
-                </>
-              );
-            })}
+            {imgList
+              .filter((i) => i != fullscreenImg)
+              .map((i) => {
+                return (
+                  <>
+                    {" "}
+                    <img src={i} onClick={()=>setFullscreenImg(i)} alt="" />
+                  </>
+                );
+              })}
           </div>
         </div>
         <div className="Description">
           <div className="title">
             <FS6>Description</FS6>
-            <br /> 
+            <br />
           </div>
           <div className="content">
             {[
@@ -57,7 +63,7 @@ const ProductDetail = () => {
         <div className="Specification">
           <div className="title">
             <FS6>Specification</FS6>
-            <br /> 
+            <br />
           </div>
           <div className="content">
             {[

@@ -14,7 +14,7 @@ const SideBar = () => {
       <div className="p_description">
         <div className="startFrom">
           <div className="price">
-            <FS2>Start From</FS2>{" "}
+            <FS2>Rent From</FS2>{" "}
             <FS8 attr={{ style: { color: "#FF7D18" } }}>₹ 10,000/</FS8>{" "}
             <FS2>Day</FS2>
           </div>
@@ -63,7 +63,7 @@ const SideBar = () => {
             <div className="dial">
               <div className="commonbtn">
                 {" "}
-                <CommonButton>Chat With Seller</CommonButton>{" "}
+                <CommonButton>Chat</CommonButton>{" "}
               </div>
               <div className="image">
                 {" "}
@@ -73,11 +73,14 @@ const SideBar = () => {
           </div>
 
           <div className="postIn">
-            <title>Posted In</title>
+            <div className="title">
+              <FS6>Posted In</FS6>{" "}
+            </div>
             <div className="address">
               <img src={location} alt="location" />
               <FS3>&nbsp; By Pass Road Tutikandi, Shimla, India</FS3>
             </div>
+            <br />
             <div className="link">Google Map</div>
           </div>
         </div>
@@ -143,8 +146,8 @@ const SideBar = () => {
               <div className="inputBox">
                 <textarea type="text" />
               </div>
-            </div>
-
+            </div> 
+            <br />
             <CommonButton> Submit Review </CommonButton>
           </div>
         </div>
