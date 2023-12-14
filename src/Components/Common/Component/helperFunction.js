@@ -350,7 +350,3 @@ export const HanggingBar = () => {
     </>
   );
 };
-
-export const SaveUserAuthToken = ({ token }) => {
-  localStorage.setItem("rentalUserAuthToken", token);
-};
