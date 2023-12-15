@@ -17,11 +17,14 @@ import {
   Location,
 } from "../../../Constant";
 import ProfileModel from "../Models/Profile/ProfileModel";
-
+import { useDispatch, useSelector } from "react-redux";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
+  const ProfileState = useSelector((state) => state.UserReducer.profileData);
+
+  const { user_details, token } = ProfileState || { user_details: {} };
 
   const toggle = () => {
     setModel(!modal);
@@ -41,6 +44,7 @@ const UserProfilePage = ({}) => {
   };
 
   const ButtonClick = (i) => {
+    console.log("test2512", ProfileState);
     switch (i.title) {
       case "Edit Profile":
         setModel(true);

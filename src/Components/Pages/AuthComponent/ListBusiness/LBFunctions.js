@@ -11,6 +11,7 @@ import {
 } from "../../../Common/Component/helperFunction";
 import { auth } from "../../../../Constant/fireBaseConfig"; // Path to your firebase.js file
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { UserActions } from "../../../../Redux_Store/Actions/userActions";
 const SaveUserAuthToken = ({ token }) => {
   console.log("test2512 rentalUserAuthToken", token);
   localStorage.setItem("rentalUserAuthToken", token);
@@ -32,7 +33,7 @@ export const GenerateOtp = ({ mobile, toggle }) => {
     });
 };
 
-export const LoginWithOTP = ({ otp, mobile, toggle, Redirect }) => {
+export const LoginWithOTP = ({ otp, mobile, toggle, Redirect, dispatch }) => {
   const bodyFormData = new FormData();
   bodyFormData.append("phone_number", mobile);
   bodyFormData.append("otp", otp);
@@ -45,6 +46,9 @@ export const LoginWithOTP = ({ otp, mobile, toggle, Redirect }) => {
       console.log("test2512", response);
       SaveUserAuthToken({ token: response.data.data.token });
       ToastSuccess(response);
+      dispatch(
+        UserActions({ status: "success", profileData: response.data.data })
+      );
       toggle();
       Redirect();
     })
@@ -59,6 +63,7 @@ export const SubmitGoogleLoginCred = ({
   toggle,
   Redirect,
   name,
+  dispatch,
 }) => {
   const BodyData = {
     email: email,
@@ -82,6 +87,9 @@ export const SubmitGoogleLoginCred = ({
       SaveUserAuthToken({ token: response.data.data.token });
       Redirect();
       console.log("test2512", response);
+      dispatch(
+        UserActions({ status: "success", profileData: response.data.data })
+      );
       toggle();
     })
     .catch((error) => {
@@ -96,6 +104,7 @@ export const LoginWithGoogle = ({
   mobile,
   toggle,
   Redirect,
+  dispatch,
 }) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -114,6 +123,7 @@ export const LoginWithGoogle = ({
         token: token,
         toggle: toggle,
         Redirect: Redirect,
+        dispatch: dispatch,
       });
     })
     .catch((error) => {

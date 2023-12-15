@@ -13,7 +13,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
-  const { toggle, GenerateOtp, Payload, mobile } = AllProps;
+  const { toggle, GenerateOtp, Payload, mobile, dispatch } = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -35,16 +35,11 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
     setSelectedCountry(e);
   };
   const onHandleChange = (e) => {
-    onChange(
-      convertStringToIntegerOrString(
-        // `+${selectedCountry?.callingCodes[0]}${e.target.value}`
-        `${e.target.value}`
-      )
-    );
+    onChange(convertStringToIntegerOrString(`${e.target.value}`));
   };
 
   const HandleClick = () => {
-    GenerateOtp(Payload);
+    GenerateOtp(Payload, dispatch);
   };
   return (
     <div className="PhoneInput">

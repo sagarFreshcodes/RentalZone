@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import man_model from "../../../../assets/images/Essential/AuthComponent/man_model.png";
 import True from "../../../../assets/images/Essential/AuthComponent/True.png";
 import { FS23, FS6, FS8 } from "../../../../CommonElements/Font/FS";
@@ -8,9 +8,12 @@ import { ToastContainer } from "react-toastify";
 import { GenerateOtp, LoginWithGoogle, LoginWithOTP } from "./LBFunctions";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
+import { useDispatch, useSelector } from "react-redux";
+import { UserActions } from "../../../../Redux_Store/Actions/userActions";
 const ListBusiness = () => {
   const [modal, setModel] = useState(false);
   const [mobile, setMobile] = useState(9090789091);
+  const dispatch = useDispatch();
   const [otp, setOtp] = useState("");
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
@@ -36,8 +39,12 @@ const ListBusiness = () => {
     GenerateOtp: GenerateOtp,
     Payload: { mobile: mobile, toggle: toggle },
     Redirect: Redirect,
+    dispatch: dispatch,
   };
 
+  useEffect(() => {
+    dispatch(UserActions({ status: "fail", profileData: "response" }));
+  }, []);
   return (
     <>
       <div className="ListBusiness">
@@ -87,6 +94,7 @@ const ListBusiness = () => {
           mobile: mobile,
           toggle: toggle,
           Redirect: Redirect,
+          dispatch: dispatch,
         }}
         LoginWithGoogle={LoginWithGoogle}
         LoginWithGooglePayload={{
@@ -96,6 +104,7 @@ const ListBusiness = () => {
           mobile: mobile,
           toggle: toggle,
           Redirect: Redirect,
+          dispatch: dispatch,
         }}
         Redirect={Redirect}
       />

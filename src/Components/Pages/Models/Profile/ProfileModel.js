@@ -91,11 +91,12 @@ const ProfileModel = (props) => {
     const name = target && target.name;
     const value = target && target.value;
     validation.setFieldValue(name, value);
-    console.log(e.target.files[0]);
     ["profileBanner", "profilePic"].includes(name)
       ? setFormData({ ...formData, [name]: e.target.files[0] })
       : setFormData({ ...formData, [name]: value });
   };
+
+  const handleSubmit = () => {};
 
   const test = () => {
     console.log("formData", formData);
