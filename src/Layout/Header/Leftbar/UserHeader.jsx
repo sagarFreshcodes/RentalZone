@@ -6,7 +6,7 @@ import man from "../../../assets/images/dashboard/profile.png";
 import { LI, UL, Image, P } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import { Account, Admin, Inbox, LogOut, Taskboard } from "../../../Constant";
-import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
+import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE } from "../../../Route/RouthPath";
 import { Log_Out } from "../../../Components/Common/Component/helperFunction";
 
 const UserHeader = () => {
@@ -93,6 +93,15 @@ const UserHeader = () => {
         >
           <Activity />
           <span>{`Free listing`} </span>
+        </LI>
+        <LI
+          attrLI={{
+            onClick: () => UserMenuRedirect(PROFILE_ROUTE),
+            className: login ? "" : "d-none",
+          }}
+        >
+          <Activity />
+          <span>{`Profile`} </span>
         </LI>
         <LI
           attrLI={{

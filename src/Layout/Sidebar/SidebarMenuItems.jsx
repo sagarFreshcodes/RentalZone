@@ -12,7 +12,7 @@ const SidebarMenuItems = ({
   activeClass,
 }) => {
   const { layout } = useContext(CustomizerContext);
-  const [Manubar,setManuBar] = useState(MENUITEMS)
+  const [Manubar, setManuBar] = useState(MENUITEMS);
   const [click, setClick] = useState(0);
   const layout1 = localStorage.getItem("sidebar_layout") || layout;
 
@@ -58,20 +58,19 @@ const SidebarMenuItems = ({
     item.active = !item.active;
     setMainMenu({ mainmenu: MENUITEMS });
   };
-  const DevOps = () =>{
-    setClick(click+1)
+  const DevOps = () => {
+    setClick(click + 1);
     if (click > 5) {
-      localStorage.setItem("developerOption",true)  
-    }else if (click == 4){
-      localStorage.setItem("developerOption",false)  
-    }  
-  }
+      localStorage.setItem("developerOption", true);
+    }
+  };
   useEffect(() => {
     if (localStorage.getItem("developerOption")) {
-      const developerOption =`${localStorage.getItem("developerOption")}`==  `true`;
-  
-      if (developerOption) { 
-          setManuBar([...MENUITEMS,...DEVOPPSITEMS])  
+      const developerOption =
+        `${localStorage.getItem("developerOption")}` == `true`;
+
+      if (developerOption) {
+        setManuBar([...MENUITEMS, ...DEVOPPSITEMS]);
       }
     }
   }, []);
@@ -109,7 +108,7 @@ const SidebarMenuItems = ({
                     className="fill-icon"
                     iconId={`fill-${menuItem?.icon}`}
                   />
-                  <span  onClick={DevOps}>{t(menuItem?.title)}</span>
+                  <span onClick={DevOps}>{t(menuItem?.title)}</span>
                   {menuItem?.badge ? (
                     <label className={menuItem?.badge}>
                       {menuItem?.badgetxt}
@@ -147,7 +146,7 @@ const SidebarMenuItems = ({
                     className="fill-icon"
                     iconId={`fill-${menuItem?.icon}`}
                   />
-                  <span  onClick={DevOps}>{t(menuItem?.title)}</span>
+                  <span onClick={DevOps}>{t(menuItem?.title)}</span>
                   {menuItem?.badge ? (
                     <label className={menuItem?.badge}>
                       {menuItem?.badgetxt}

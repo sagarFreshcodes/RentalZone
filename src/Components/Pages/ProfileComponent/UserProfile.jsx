@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Col, Card, CardHeader, Row } from "reactstrap";
+import { Col, Card, Row } from "reactstrap";
 import CountUp from "react-countup";
 import { H6, Image, LI, UL } from "../../../AbstractElements";
 import {
@@ -16,10 +16,16 @@ import {
   MarkJecno,
   Location,
 } from "../../../Constant";
+import ProfileModel from "../Models/Profile/ProfileModel";
 
-const UserProfile = () => {
+const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
+  const [page, setPage] = useState(1);
+  const [modal, setModel] = useState(false);
 
+  const toggle = () => {
+    setModel(!modal);
+  };
   const readUrl = (event) => {
     if (event.target.files.length === 0) return;
     var mimeType = event.target.files[0].type;
@@ -33,9 +39,45 @@ const UserProfile = () => {
       setUrl(reader.result);
     };
   };
+
+  const ButtonClick = (i) => {
+    switch (i.title) {
+      case "Edit Profile":
+        setModel(true);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <Fragment>
-      <Col sm="12">
+      <div className="user-profile ProfileComponent">
+        <div className="ProfileNavbar">
+          {[
+            {
+              title: page == 1 ? "Edit Profile" : "My Profile",
+              btnType: "dark",
+            },
+            { title: "All Listing", btnType: "light" },
+            { title: "Add Listing", btnType: "info" },
+            { title: "All Product", btnType: "warning" },
+            { title: "Add Product", btnType: "danger" },
+            { title: "Reviews", btnType: "success" },
+            { title: "Bookings", btnType: "secondary" },
+            { title: "Change Password", btnType: "primary" },
+            { title: "Logout", btnType: "dark" },
+          ].map((i) => (
+            <button
+              type="button"
+              class={`btn btn-outline-dark`}
+              onClick={() => ButtonClick(i)}
+            >
+              {i.title}
+            </button>
+          ))}
+        </div>
         <Card className="hovercard text-center">
           {/* <CardHeader className="cardheader"> */}
           <Image
@@ -183,9 +225,10 @@ const UserProfile = () => {
             </div>
           </div>
         </Card>
-      </Col>
+      </div>
+      <ProfileModel toggler={toggle} isOpen={modal} />
     </Fragment>
   );
 };
 
-export default UserProfile;
+export default UserProfilePage;

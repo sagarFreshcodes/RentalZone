@@ -10,7 +10,6 @@
 @import "vendors/animate/animate";
 @import "vendors/sticky/sticky";
 @import "vendors/todo/todo";
- 
 
 //  productDetail page
 @import "./Modified/productDetail.scss";
@@ -19,6 +18,8 @@
 @import "./Modified/AuthComponent.scss";
 //  commonComponent pages
 @import "./Modified/commonComponent.scss";
+//  ProfileComponent pages
+@import "./Modified/ProfileComponent.scss";
 
 // Clock
 @import "~react-clock/dist/Clock.css";
@@ -71,5 +72,3 @@
 
 //image upload
 @import "~react-perfect-scrollbar/dist/css/styles.css";
-
-
