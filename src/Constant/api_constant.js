@@ -10,3 +10,4 @@ export const LOGIN_WITH_PHONE = `login-with-phone`;
 export const CHECK_OTP = `check-otp`;
 export const GOOGLE_LOGIN = `google-login`;
 export const LOG_OUT = `logout-user`;
+export const UPDATE_PROFILE = `update-profile`;

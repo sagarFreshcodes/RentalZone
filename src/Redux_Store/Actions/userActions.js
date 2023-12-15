@@ -35,11 +35,11 @@ export const UserActions = ({ status, profileData }) => {
   };
 };
 
-export const SetLocation = ({ locationData }) => {
+export const SetUserProfile = ({ profileData }) => {
   return async (dispatch) => {
     dispatch({
-      type: ActionType.ON_LOCATION_SET,
-      payload: locationData,
+      type: ActionType.ON_CHANGE_USER_PROFILE_API,
+      payload: profileData,
     });
   };
 };

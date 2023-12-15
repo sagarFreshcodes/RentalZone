@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Col, Card, Row } from "reactstrap";
 import CountUp from "react-countup";
 import { H6, Image, LI, UL } from "../../../AbstractElements";
@@ -18,14 +18,34 @@ import {
 } from "../../../Constant";
 import ProfileModel from "../Models/Profile/ProfileModel";
 import { useDispatch, useSelector } from "react-redux";
+import { SetUserProfile } from "../../../Redux_Store/Actions/userActions";
+import {
+  POST_API,
+  ToastError,
+  ToastSuccess,
+} from "../../Common/Component/helperFunction";
+import {
+  API_ROOT_URL,
+  CHECK_OTP,
+  UPDATE_PROFILE,
+} from "../../../Constant/api_constant";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
+
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
-  const ProfileState = useSelector((state) => state.UserReducer.profileData);
+  const user_details = useSelector((state) => state.UserReducer.user_details);
+  const dispatch = useDispatch();
+  const RowData = {
+    profileBanner: user_details && user_details?.profile_pic,
+    profilePic: user_details && user_details?.profile_banner,
+    user_name: user_details && user_details?.name,
+    email: user_details && user_details?.email,
+    phoneNumber: user_details && user_details?.phone_number,
+    website: user_details && user_details?.user_website,
+  };
 
-  const { user_details, token } = ProfileState || { user_details: {} };
-
+  const [formData, setFormData] = useState(RowData);
   const toggle = () => {
     setModel(!modal);
   };
@@ -44,17 +64,52 @@ const UserProfilePage = ({}) => {
   };
 
   const ButtonClick = (i) => {
-    console.log("test2512", ProfileState);
+    console.log("user_details", user_details);
+    // dispatch(SetUserProfile({ profileData: { email: 11111 } }));
+    // const user_details = JSON.stringify(response.data.data.user_details);
+    // localStorage.setItem("user_details", user_details);
     switch (i.title) {
       case "Edit Profile":
         setModel(true);
         break;
-
       default:
         break;
     }
   };
 
+  const OnSubmitForm = () => {
+    const bodyFormData = new FormData();
+    Object.keys(formData).map((i) => {
+      bodyFormData.append(i, formData[i]);
+    });
+
+    POST_API({
+      endPoint: `${API_ROOT_URL}/${UPDATE_PROFILE}`,
+      body: bodyFormData,
+    })
+      .then((response) => {
+        // const user_details = JSON.stringify(response.data.data.user_details);
+
+        // SaveUserAuthToken({
+        //   token: response.data.data.token,
+        //   user_details: user_details,
+        // });
+        ToastSuccess(response);
+
+        // dispatch(
+        //   UserActions({ status: "success", profileData: response.data.data })
+        // );
+        setModel(!modal);
+      })
+      .catch((error) => {
+        ToastError(error);
+      });
+
+    setModel(!modal);
+  };
+  useEffect(() => {
+    setFormData(RowData);
+  }, [user_details]);
   return (
     <Fragment>
       <div className="user-profile ProfileComponent">
@@ -127,18 +182,19 @@ const UserProfilePage = ({}) => {
                   <Col md="6">
                     <div className="ttl-info text-start">
                       <H6>
-                        <i className="fa fa-envelope me-2"></i> {Email}
+                        <i className="fa fa-envelope me-2"></i>
+                        {`Name`}
                       </H6>
-                      <span>{MarekjecnoMailId}</span>
+                      <span>{formData?.user_name}</span>
                     </div>
                   </Col>
                   <Col md="6">
                     <div className="ttl-info text-start ttl-sm-mb-0">
                       <H6>
                         <i className="fa fa-calendar me-2"></i>
-                        {BOD}
+                        {Email}
                       </H6>
-                      <span>{DDMMYY}</span>
+                      <span>{formData.email}</span>
                     </div>
                   </Col>
                 </Row>
@@ -147,10 +203,10 @@ const UserProfilePage = ({}) => {
                 <div className="user-designation">
                   <div className="title">
                     <a target="_blank" href="#javascript">
-                      {MarkJecno}
+                      {ContactUs}
                     </a>
                   </div>
-                  <div className="desc mt-2">{Designer}</div>
+                  <div className="desc mt-2">{formData.phoneNumber}</div>
                 </div>
               </Col>
               <Col sm="6" lg="4" className="order-sm-2 order-xl-2">
@@ -159,9 +215,9 @@ const UserProfilePage = ({}) => {
                     <div className="ttl-info text-start ttl-xs-mt">
                       <H6>
                         <i className="fa fa-phone me-2"></i>
-                        {ContactUs}
+                        {`Website`}
                       </H6>
-                      <span>{ContactUsNumber}</span>
+                      <span>{formData?.website}</span>
                     </div>
                   </Col>
                   <Col md="6">
@@ -170,7 +226,7 @@ const UserProfilePage = ({}) => {
                         <i className="fa fa-location-arrow me-2"></i>
                         {Location}
                       </H6>
-                      <span>{LocationDetails}</span>
+                      <span>{user_details?.user_location}</span>
                     </div>
                   </Col>
                 </Row>
@@ -230,7 +286,14 @@ const UserProfilePage = ({}) => {
           </div>
         </Card>
       </div>
-      <ProfileModel toggler={toggle} isOpen={modal} />
+      <ProfileModel
+        toggler={toggle}
+        isOpen={modal}
+        user_details={user_details}
+        formData={formData}
+        setFormData={setFormData}
+        OnSubmitForm={OnSubmitForm}
+      />
     </Fragment>
   );
 };

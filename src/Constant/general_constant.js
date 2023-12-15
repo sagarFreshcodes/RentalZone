@@ -5,11 +5,12 @@ export const LOCATION_DATA = {
   state_slug: "maharashtra",
 };
 
+export const CATEGORY_DATA = {
+  name: "Computer Rental",
+  type: "category",
+  category_slug: "computer-rental",
+  category_id: 2,
+  subdomain_slug: "computer",
+};
 
-export const CATEGORY_DATA =  {
-    name: "Computer Rental",
-    type: "category",
-    category_slug: "computer-rental",
-    category_id: 2,
-    subdomain_slug: "computer",
-  }
+export const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");

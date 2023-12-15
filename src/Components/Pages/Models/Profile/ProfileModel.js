@@ -1,21 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn, H5 } from "../../../../AbstractElements";
-import { Close, SaveChanges } from "../../../../Constant";
-import CommonAutoSearch from "../../../CommonSelector/CommonAutoSearch";
 import { useState } from "react";
-import { FS2, FS3, FS4 } from "../../../../CommonElements/Font/FS";
 import { CloseButton } from "../../../Common/Component/DesignElement";
 import * as Yup from "yup";
 import { useFormik, ErrorMessage } from "formik";
-const RowData = {
-  profileBanner: "",
-  profilePic: "",
-  user_name: "",
-  email: "",
-  phoneNumber: "",
-  website: "",
-};
+
 const formFields = [
   {
     title: "Profile Pic",
@@ -56,12 +46,8 @@ const formFields = [
 ];
 
 const ProfileModel = (props) => {
-  const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
-  const [formData, setFormData] = useState(RowData);
-  const [eye, seteye] = useState({
-    password: false,
-    confirmPassword: false,
-  });
+  const { user_details, formData, setFormData, OnSubmitForm } = props || {};
+
   const [loader, setLoader] = useState(false);
 
   const validation = useFormik({
@@ -82,6 +68,7 @@ const ProfileModel = (props) => {
     }),
 
     onSubmit: (values) => {
+      console.log(formData);
       setLoader(true);
     },
   });
@@ -96,11 +83,11 @@ const ProfileModel = (props) => {
       : setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {};
-
   const test = () => {
     console.log("formData", formData);
+    // console.log("user_details", user_details);
   };
+
   return (
     <Modal
       isOpen={props.isOpen}
@@ -117,49 +104,71 @@ const ProfileModel = (props) => {
       </div>
       <ModalBody className={props.bodyClass}>
         <div>
-          <form onSubmit={validation.handleSubmit}>
-            {formFields.map((f) => {
-              return (
+          {/* <form onSubmit={validation.handleSubmit}> */}
+          {formFields.map((f) => {
+            return (
+              <>
                 <>
-                  <>
-                    <div className="form-group" onClick={test}>
-                      <label className="form-control-label">{f.title}</label>
-                      <div className="d-flex" style={{ position: "relative" }}>
+                  <div className="form-group" onClick={test}>
+                    <label className="form-control-label">{f.title}</label>
+                    <div className="d-flex" style={{ position: "relative" }}>
+                      {["profileBanner", "profilePic"].includes(f.name) ? (
                         <input
                           className="form-control"
                           onChange={handleChange}
                           type={f.type}
                           name={f.name}
-                          value={validation.values[f.value]}
+                          // value={validation.values[f.value]}
+                          // value={formData[f.name]}
                           id={f.name}
-                          onBlur={validation.handleBlur}
-                          validate={{
-                            required: { value: true },
-                          }}
-                          invalid={
-                            validation.touched.name && validation.errors.name
-                              ? true
-                              : false
-                          }
+                          // onBlur={validation.handleBlur}
+                          // validate={{
+                          //   required: { value: true },
+                          // }}
+                          // invalid={
+                          //   validation.touched.name && validation.errors.name
+                          //     ? true
+                          //     : false
+                          // }
                         />
-                      </div>
-
-                      <div className="invalid-feedback customFormicError2">
-                        {" "}
-                        {validation?.touched[f?.value] &&
-                          validation?.errors[f?.value] &&
-                          validation?.errors[f?.value]}
-                      </div>
+                      ) : (
+                        <input
+                          className="form-control"
+                          onChange={handleChange}
+                          type={f.type}
+                          name={f.name}
+                          // value={validation.values[f.value]}
+                          value={formData[f.name]}
+                          id={f.name}
+                          // onBlur={validation.handleBlur}
+                          // validate={{
+                          //   required: { value: true },
+                          // }}
+                          // invalid={
+                          //   validation.touched.name && validation.errors.name
+                          //     ? true
+                          //     : false
+                          // }
+                        />
+                      )}
                     </div>
-                  </>
+
+                    <div className="invalid-feedback customFormicError2">
+                      {" "}
+                      {/* {validation?.touched[f?.value] &&
+                          validation?.errors[f?.value] &&
+                          validation?.errors[f?.value]} */}
+                    </div>
+                  </div>
                 </>
-              );
-            })}
-          </form>
+              </>
+            );
+          })}
+          {/* </form> */}
         </div>
         <br />
         <div className="gq-model-bbox">
-          <Btn attrBtn={{ color: "primary", onClick: props.toggler }}>
+          <Btn attrBtn={{ color: "primary", onClick: () => OnSubmitForm() }}>
             {"Submit"}
           </Btn>
         </div>

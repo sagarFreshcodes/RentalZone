@@ -12,9 +12,9 @@ import {
 import { auth } from "../../../../Constant/fireBaseConfig"; // Path to your firebase.js file
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { UserActions } from "../../../../Redux_Store/Actions/userActions";
-const SaveUserAuthToken = ({ token }) => {
-  console.log("test2512 rentalUserAuthToken", token);
+const SaveUserAuthToken = ({ token, user_details }) => {
   localStorage.setItem("rentalUserAuthToken", token);
+  localStorage.setItem("user_details", user_details);
 };
 export const GenerateOtp = ({ mobile, toggle }) => {
   const bodyFormData = new FormData();
@@ -43,9 +43,14 @@ export const LoginWithOTP = ({ otp, mobile, toggle, Redirect, dispatch }) => {
     body: bodyFormData,
   })
     .then((response) => {
-      console.log("test2512", response);
-      SaveUserAuthToken({ token: response.data.data.token });
+      const user_details = JSON.stringify(response.data.data.user_details);
+
+      SaveUserAuthToken({
+        token: response.data.data.token,
+        user_details: user_details,
+      });
       ToastSuccess(response);
+
       dispatch(
         UserActions({ status: "success", profileData: response.data.data })
       );
@@ -84,9 +89,14 @@ export const SubmitGoogleLoginCred = ({
   })
     .then((response) => {
       ToastSuccess(response);
-      SaveUserAuthToken({ token: response.data.data.token });
+      const user_details = JSON.stringify(response.data.data.user_details);
+      SaveUserAuthToken({
+        token: response.data.data.token,
+        user_details: user_details,
+      });
       Redirect();
       console.log("test2512", response);
+
       dispatch(
         UserActions({ status: "success", profileData: response.data.data })
       );

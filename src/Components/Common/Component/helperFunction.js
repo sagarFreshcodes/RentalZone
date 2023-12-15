@@ -8,6 +8,7 @@ import { SelectCategory } from "../../../Redux_Store/Actions/generalActions";
 import Chat from "../../../assets/images/Essential/Chat.png";
 import Message from "../../../assets/images/Essential/Message.png";
 import * as ReactIcons from "react-icons/ai";
+import { RentalUserAuthToken } from "../../../Constant/general_constant";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -109,7 +110,7 @@ export const POST_API = ({ endPoint, body }) => {
     headers: {
       // "Content-Type": "application/json",
       // "Accept": "application/json",
-      // 'Authorization': "AuthStr================="
+      Authorization: `Bearer ${RentalUserAuthToken}`,
       // Include any other required headers
     },
   };
@@ -366,6 +367,7 @@ export const Log_Out = ({ Redirect }) => {
       localStorage.removeItem("auth0_profile");
       localStorage.removeItem("Name");
       localStorage.removeItem("rentalUserAuthToken");
+      localStorage.removeItem("user_details");
       localStorage.setItem("authenticated", false);
       ToastSuccess(response);
       Redirect();
