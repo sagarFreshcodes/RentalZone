@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { SelectCategory } from "../../../Redux_Store/Actions/generalActions";
 import Chat from "../../../assets/images/Essential/Chat.png";
 import Message from "../../../assets/images/Essential/Message.png";
+import * as ReactIcons from "react-icons/ai";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -372,4 +373,9 @@ export const Log_Out = ({ Redirect }) => {
     .catch((error) => {
       ToastError(error);
     });
+};
+
+export const ReactIcon = ({ iconName, attr }) => {
+  const Icon = iconName ? ReactIcons[iconName] : ReactIcons[`AiOutlineSmile`];
+  return <Icon {...attr} />;
 };

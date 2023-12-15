@@ -289,11 +289,17 @@
   background-color: #0085be;
   color: white;
   width: fit-content;
+  box-shadow: 0 3px 8px #0000003d !important;
 }
 #commonButton:hover {
   background-color: #036c99;
 }
-
+#commonButton:focus {
+  background-color: #0085be;
+  box-shadow: none !important;
+  padding: 8px;
+  border: 2px solid #036c99;
+}
 /*  PhoneInput */
 .PhoneInput {
   width: 60%;
@@ -331,8 +337,11 @@
   width: 60%;
 }
 @media screen and (max-width: 500px) {
-  .PhoneInput .phoneDialBox { 
+  .PhoneInput .phoneDialBox {
     width: 100%;
+  }
+  .PhoneInput #commonButton {
+    width: 100% !important;
   }
 }
 .PhoneInput .countryCodeBox {
@@ -355,10 +364,10 @@
   margin-bottom: 10px;
   border-radius: 5px;
   padding: 3px 10px;
-  border: solid 2px rgba(255, 255, 255, 0); 
+  border: solid 2px rgba(255, 255, 255, 0);
 }
 .PhoneInput .countryCode:hover {
-  border: solid 2px #0085be;  
+  border: solid 2px #0085be;
 }
 .PhoneInput .countryName {
   width: max-content;
@@ -371,11 +380,19 @@
   border-radius: 6px;
   padding: 5px;
 }
-.PhoneInput .countrysearch svg{
+.PhoneInput .countrysearch svg {
   position: absolute;
   right: 0;
-  top: 1px; 
+  top: 1px;
 }
+.PhoneInput .StartArraow {
+  font-size: 40px;
+  line-height: 0;
+  font-weight: 500;
+  position: relative;
+  top: 9px;
+}
+
 /* scrollbar */
 #scroll-3::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -390,7 +407,6 @@
 #scroll-3::-webkit-scrollbar-thumb {
   background-color: #5d5c5c;
 }
-
 
 /* pagination */
 .selectedPage {

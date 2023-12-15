@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CommonButton } from "../../../../CommonElements/Button";
 import axios from "axios";
 import {
+  ReactIcon,
   ToastError,
   convertStringToIntegerOrString,
 } from "../../../Common/Component/helperFunction";
@@ -111,7 +112,7 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
         ""
       ) : (
         <CommonButton attr={{ onClick: () => HandleClick() }}>
-          Start Now {`->`}
+          Start Now <span className="StartArraow">{`>`}</span>
         </CommonButton>
       )}
     </div>
