@@ -21,15 +21,15 @@ const formFields = [
   },
   {
     title: "Name",
-    placeHolder: "user_name",
+    placeHolder: "name",
     type: "text",
-    name: "user_name",
+    name: "name",
   },
   {
     title: "Phone Number",
     placeHolder: "Phone Number",
     type: "number",
-    name: "phoneNumber",
+    name: "phone_number",
   },
   {
     title: "Email",
@@ -53,18 +53,18 @@ const ProfileModel = (props) => {
   const validation = useFormik({
     // enableReinitialize: true,
     initialValues: {
-      user_name: formData?.user_name || "",
+      name: formData?.name || "",
       email: formData?.email || "",
       website: formData?.website || "",
-      phoneNumber: formData?.phoneNumber || "",
+      phone_number: formData?.phone_number || "",
     },
     validationSchema: Yup.object({
-      user_name: Yup.string().required("Name is required"),
+      name: Yup.string().required("Name is required"),
       email: Yup.string()
         .email("Invalid email format")
         .required("Email is required"),
       website: Yup.string().required("Website is required"),
-      phoneNumber: Yup.string().required("Phone Number is required"),
+      phone_number: Yup.string().required("Phone Number is required"),
     }),
 
     onSubmit: (values) => {

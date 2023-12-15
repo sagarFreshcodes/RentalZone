@@ -110,7 +110,7 @@ export const POST_API = ({ endPoint, body }) => {
     headers: {
       // "Content-Type": "application/json",
       // "Accept": "application/json",
-      Authorization: `Bearer ${RentalUserAuthToken}`,
+      // Authorization: RentalUserAuthToken,
       // Include any other required headers
     },
   };

@@ -6,9 +6,14 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-
+    background-color: #f0ffff78;
     button {
       border: none !important;
     }
+  }
+
+  .profile_banner {
+    width: 100% !important;
+    aspect-ratio: 3.47 !important;
   }
 }

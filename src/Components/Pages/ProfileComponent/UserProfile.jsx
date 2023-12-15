@@ -18,7 +18,10 @@ import {
 } from "../../../Constant";
 import ProfileModel from "../Models/Profile/ProfileModel";
 import { useDispatch, useSelector } from "react-redux";
-import { SetUserProfile } from "../../../Redux_Store/Actions/userActions";
+import {
+  SetUserProfile,
+  UserActions,
+} from "../../../Redux_Store/Actions/userActions";
 import {
   POST_API,
   ToastError,
@@ -29,6 +32,7 @@ import {
   CHECK_OTP,
   UPDATE_PROFILE,
 } from "../../../Constant/api_constant";
+import { RentalUserAuthToken } from "../../../Constant/general_constant";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
 
@@ -37,12 +41,13 @@ const UserProfilePage = ({}) => {
   const user_details = useSelector((state) => state.UserReducer.user_details);
   const dispatch = useDispatch();
   const RowData = {
-    profileBanner: user_details && user_details?.profile_pic,
-    profilePic: user_details && user_details?.profile_banner,
-    user_name: user_details && user_details?.name,
+    // profileBanner: user_details && user_details?.profile_pic,
+    // profilePic: user_details && user_details?.profile_banner,
+    name: user_details && user_details?.name,
     email: user_details && user_details?.email,
-    phoneNumber: user_details && user_details?.phone_number,
+    phone_number: user_details && user_details?.phone_number,
     website: user_details && user_details?.user_website,
+    token: RentalUserAuthToken,
   };
 
   const [formData, setFormData] = useState(RowData);
@@ -95,10 +100,9 @@ const UserProfilePage = ({}) => {
         //   user_details: user_details,
         // });
         ToastSuccess(response);
-
-        // dispatch(
-        //   UserActions({ status: "success", profileData: response.data.data })
-        // );
+        const profileData = { ...user_details, ...formData };
+        dispatch(SetUserProfile({ profileData: profileData }));
+        localStorage.setItem("user_details", JSON.stringify(profileData));
         setModel(!modal);
       })
       .catch((error) => {
@@ -141,8 +145,10 @@ const UserProfilePage = ({}) => {
           {/* <CardHeader className="cardheader"> */}
           <Image
             attrImage={{
-              className: "img-fluid rounded",
-              src: `${require("../../../assets/images/other-images/profile-style-img3.png")}`,
+              className: "img-fluid rounded  profile_banner",
+              src: user_details?.profile_banner
+                ? user_details?.profile_pic
+                : `${require("../../../assets/images/other-images/profile-style-img3.png")}`,
               alt: "gallery",
             }}
           />
@@ -154,7 +160,9 @@ const UserProfilePage = ({}) => {
                   className: "step1",
                   alt: "",
                   src: `${
-                    url ? url : require("../../../assets/images/user/7.jpg")
+                    user_details?.profile_pic
+                      ? user_details?.profile_pic
+                      : require("../../../assets/images/user/7.jpg")
                   }`,
                 }}
               />
@@ -185,7 +193,7 @@ const UserProfilePage = ({}) => {
                         <i className="fa fa-envelope me-2"></i>
                         {`Name`}
                       </H6>
-                      <span>{formData?.user_name}</span>
+                      <span>{formData?.name}</span>
                     </div>
                   </Col>
                   <Col md="6">
@@ -206,7 +214,7 @@ const UserProfilePage = ({}) => {
                       {ContactUs}
                     </a>
                   </div>
-                  <div className="desc mt-2">{formData.phoneNumber}</div>
+                  <div className="desc mt-2">{formData.phone_number}</div>
                 </div>
               </Col>
               <Col sm="6" lg="4" className="order-sm-2 order-xl-2">
