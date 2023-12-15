@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ROOT_URL } from "../../../Constant/api_constant";
+import { API_ROOT_URL, LOG_OUT } from "../../../Constant/api_constant";
 import { toast } from "react-toastify";
 import { BASE_ROUTE } from "../../../Route/RouthPath";
 import { FS3, FS4, FS6 } from "../../../CommonElements/Font/FS";
@@ -349,4 +349,27 @@ export const HanggingBar = () => {
       </div>
     </>
   );
+};
+
+export const Log_Out = ({ Redirect }) => {
+  const bodyFormData = new FormData();
+  const UserToken = localStorage.getItem("rentalUserAuthToken");
+  bodyFormData.append("token", UserToken);
+  POST_API({
+    endPoint: `${API_ROOT_URL}/${LOG_OUT}`,
+    body: bodyFormData,
+  })
+    .then((response) => {
+      localStorage.removeItem("profileURL");
+      localStorage.removeItem("token");
+      localStorage.removeItem("auth0_profile");
+      localStorage.removeItem("Name");
+      localStorage.removeItem("rentalUserAuthToken");
+      localStorage.setItem("authenticated", false);
+      ToastSuccess(response);
+      Redirect();
+    })
+    .catch((error) => {
+      ToastError(error);
+    });
 };

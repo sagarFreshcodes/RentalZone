@@ -7,6 +7,7 @@ import { LI, UL, Image, P } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import { Account, Admin, Inbox, LogOut, Taskboard } from "../../../Constant";
 import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
+import { Log_Out } from "../../../Components/Common/Component/helperFunction";
 
 const UserHeader = () => {
   const history = useNavigate();
@@ -24,13 +25,7 @@ const UserHeader = () => {
   }, []);
 
   const Logout = () => {
-    localStorage.removeItem("profileURL");
-    localStorage.removeItem("token");
-    localStorage.removeItem("auth0_profile");
-    localStorage.removeItem("Name");
-    localStorage.removeItem("rentalUserAuthToken");
-    localStorage.setItem("authenticated", false);
-    history(LIST_BUSINESS_ROUTE);
+    Log_Out({ Redirect: () => history(LIST_BUSINESS_ROUTE) });
   };
 
   const UserMenuRedirect = (redirect) => {

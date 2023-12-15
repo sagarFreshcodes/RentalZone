@@ -28,7 +28,6 @@ const ListBusiness = () => {
     setMobile(e);
   };
   const Redirect = () => {
-    console.log("test2512 navigat");
     navigate(HOME_ROUTE);
   };
   const AllProps = {
