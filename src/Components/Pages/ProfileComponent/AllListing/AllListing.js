@@ -4,4 +4,4 @@ const AllListing = () => {
   return <div>AllListing</div>;
 };
 
-export default AllListing;
+export { AllListing };

@@ -1,21 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Col, Card, Row } from "reactstrap";
-import CountUp from "react-countup";
-import { H6, Image, LI, UL } from "../../../AbstractElements";
-import {
-  BOD,
-  ContactUs,
-  ContactUsNumber,
-  DDMMYY,
-  Designer,
-  Email,
-  Follower,
-  Following,
-  LocationDetails,
-  MarekjecnoMailId,
-  MarkJecno,
-  Location,
-} from "../../../Constant";
 import ProfileModel from "../Models/Profile/ProfileModel";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -39,7 +22,10 @@ import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router";
 import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
 import Profile from "./Profile/Profile";
-import AllListing from "./AllListing/AllListing";
+import { AddListing } from "./AddListing/AddListing";
+import { AllPoduct } from "./AllPoduct/AllPoduct";
+import { AddPoduct } from "./AddPoduct/AddPoduct";
+import { AllListing } from "./AllListing/AllListing";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
   const [navbarShow, setNavbarShow] = useState(false);
@@ -78,20 +64,30 @@ const UserProfilePage = ({}) => {
   const Logout = () => {
     Log_Out({ Redirect: () => history(LIST_BUSINESS_ROUTE) });
   };
-  const ButtonClick = (i) => {
-    console.log("user_details", user_details);
+  const ButtonClick = ({ i, index }) => {
     Toggle();
     // dispatch(SetUserProfile({ profileData: { email: 11111 } }));
     // const user_details = JSON.stringify(response.data.data.user_details);
     // localStorage.setItem("user_details", user_details);
-    switch (i.title) {
-      case "Edit Profile":
-        setModel(true);
+    switch (index + 1) {
+      case 1:
+        i.title == "Edit Profile" ? setModel(true) : console.log("");
+        setPage(1);
         break;
-      case "Logout":
-        Logout();
-      case "All Listing":
+      case 2:
         setPage(2);
+        break;
+      case 3:
+        setPage(3);
+        break;
+      case 4:
+        setPage(4);
+        break;
+      case 5:
+        setPage(5);
+        break;
+      case 9:
+        Logout();
         break;
       default:
         break;
@@ -134,6 +130,10 @@ const UserProfilePage = ({}) => {
   useEffect(() => {
     setFormData(RowData);
   }, [user_details]);
+
+  useEffect(() => {
+    console.log("page", page);
+  }, [page]);
   return (
     <Fragment>
       <div className="user-profile ProfileComponent">
@@ -158,11 +158,12 @@ const UserProfilePage = ({}) => {
             { title: "Bookings", btnType: "secondary" },
             { title: "Change Password", btnType: "primary" },
             { title: "Logout", btnType: "dark" },
-          ].map((i) => (
+          ].map((i, index) => (
             <button
               type="button"
+              key={index}
               class={`btn btn-outline-dark navbarButton1`}
-              onClick={() => ButtonClick(i)}
+              onClick={() => ButtonClick({ i: i, index: index })}
             >
               {i.title}
             </button>
@@ -181,13 +182,14 @@ const UserProfilePage = ({}) => {
             { title: "Bookings", btnType: "secondary" },
             { title: "Change Password", btnType: "primary" },
             { title: "Logout", btnType: "dark" },
-          ].map((i) => (
+          ].map((i, index) => (
             <button
+              key={index}
               type="button"
               class={`btn btn-outline-dark ${
                 navbarShow ? "navbarButton2" : "navbarButton2Hide"
               }`}
-              onClick={() => ButtonClick(i)}
+              onClick={() => ButtonClick({ i: i, index: index })}
             >
               {i.title}
             </button>
@@ -202,8 +204,14 @@ const UserProfilePage = ({}) => {
             page={page}
             navbarShow={navbarShow}
           />
-        ) : (
+        ) : page == 2 ? (
           <AllListing />
+        ) : page == 3 ? (
+          <AddListing />
+        ) : page == 4 ? (
+          <AllPoduct />
+        ) : (
+          <AddPoduct />
         )}
       </div>
       <ProfileModel
