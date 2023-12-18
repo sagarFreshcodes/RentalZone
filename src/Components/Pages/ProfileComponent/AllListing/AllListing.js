@@ -2,13 +2,13 @@ import React from "react";
 import ListingTable from "./ListingTable";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 
-const AllListing = () => {
+const AllListing = ({ AllList }) => {
   return (
     <>
       <ContentBox>
         <br />
         <br />
-        <ListingTable />
+        <ListingTable AllList={AllList} />
       </ContentBox>
     </>
   );

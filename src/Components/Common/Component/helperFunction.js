@@ -95,14 +95,23 @@ export const GetApi = async (endPoint) => {
   };
   const response = await axios.post(endPoint, HEADERS);
   return response;
-  // return Promise(async (RESPONCE, REJECT) => {
-  //   try {
-  //     const response = await axios.get(endPoint, HEADERS);
-  //     RESPONCE(response);
-  //   } catch (error) {
-  //     REJECT(error);
-  //   }
-  // });
+};
+
+export const PostApiForRedux = async (endPoint, body) => {
+  const HEADERS = {
+    headers: {
+      // "Content-Type": "application/json",
+      // "Accept": "application/json",
+      // 'Authorization': "AuthStr================="
+      // Include any other required headers
+    },
+  };
+  const bodyFormData = new FormData();
+  Object.keys(body).map((i) => {
+    bodyFormData.append(i, body[i]);
+  });
+  const response = await axios.post(endPoint, bodyFormData);
+  return response;
 };
 
 export const POST_API = ({ endPoint, body }) => {

@@ -90,7 +90,8 @@ const ProfileModel = (props) => {
     if (["profile_banner", "profile_pic"].includes(name)) {
       setFormData({
         ...formData,
-        [name]: URL.createObjectURL(e.target.files[0]),
+        [name]: e.target.files[0],
+        [`${name}_URL`]: URL.createObjectURL(e.target.files[0]),
       });
     } else {
       setFormData({ ...formData, [name]: value });

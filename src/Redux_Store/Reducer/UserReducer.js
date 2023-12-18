@@ -10,6 +10,7 @@ const initialState = {
   error: null,
   user_details: user_data || {},
   token: user_token,
+  AllList: {},
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -49,7 +50,7 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        data: action.payload,
+        AllList: action.payload,
       };
     case ActionType.ON_REQUEST_MY_LIST_API:
       return {

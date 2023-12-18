@@ -4,27 +4,24 @@ import { Col, Card, CardHeader, Table } from "reactstrap";
 import { H5, Image } from "../../../../AbstractElements";
 import TableContext from "../../../../_helper/Table";
 
-const ListingTable = () => {
+const ListingTable = ({ AllList }) => {
   const { data } = useContext(TableContext);
 
+  const test = () => {
+    console.log("AllList11254", AllList);
+  };
   return (
     <Fragment>
       <Col sm="12">
         <Card>
           <CardHeader>
-            <H5>Basic Table With Border Bottom Color</H5>
-            <span>
-              {" "}
-              {"Use a class"} <code> {"table"} </code> {"to any table, and"}{" "}
-              <code> {".border-bottom-*"} </code>{" "}
-              {"class for Border bottom color"}
-            </span>
+            <H5>My Listings</H5>
           </CardHeader>
-          <div className="table-responsive">
+          <div className="table-responsive" onClick={test}>
             <Table>
               <thead>
                 <tr className="border-bottom-primary">
-                  <th scope="col">{"Id"}</th>
+                  {/* <th scope="col">{"Id"}</th> */}
                   <th scope="col">{"Listing Name"}</th>
                   <th scope="col">{"Date"}</th>
                   <th scope="col">{"Rating"}</th>
@@ -37,7 +34,7 @@ const ListingTable = () => {
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id} className={`border-bottom-${item.color}`}>
-                    <th scope="row">{item.id}</th>
+                    {/* <th scope="row">{item.id}</th> */}
                     <td>
                       <Image
                         attrImage={{

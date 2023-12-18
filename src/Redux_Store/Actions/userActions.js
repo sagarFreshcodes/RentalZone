@@ -12,6 +12,7 @@ import { ActionType } from "../ReduxConstant";
 import {
   GetApi,
   POST_API,
+  PostApiForRedux,
   ToastError,
 } from "../../Components/Common/Component/helperFunction";
 
@@ -35,7 +36,6 @@ export const UserActions = ({ status, profileData }) => {
     }
   };
 };
-
 export const SetUserProfile = ({ profileData }) => {
   return async (dispatch) => {
     dispatch({
@@ -54,20 +54,20 @@ export const SetToken = ({ Token }) => {
   };
 };
 
-export const MyListApi = ({ Location }) => {
+export const MyListApi = ({ Token }) => {
   return async (dispatch) => {
     try {
       dispatch({ type: ActionType.ON_FAILURE_MY_LIST_API });
 
-      const response = await GetApi(
-        `${API_ROOT_URL}/${MY_LIST_API}`
-        // `${API_ROOT_URL}/${GET_HOMEPAGE_API}?category_slug=computer-rental-mumbai&category_id=2&page=1&user_local_city=Navimumbai&user_local_city_slug=navimumbai&user_local_area=Best Staff Colony&user_local_area_slug=best-staff-colony`
-      );
+      const response = await PostApiForRedux(`${API_ROOT_URL}/${MY_LIST_API}`, {
+        token: Token,
+      });
       dispatch({
         type: ActionType.ON_SUCCESS_MY_LIST_API,
-        payload: response.data,
+        payload: response?.data?.data,
       });
     } catch (error) {
+      console.log("response===>", error);
       ToastError(error);
       dispatch({
         type: ActionType.ON_REQUEST_MY_LIST_API,

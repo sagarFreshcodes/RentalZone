@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import ProfileModel from "../Models/Profile/ProfileModel";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  MyListApi,
   SetUserProfile,
   UserActions,
 } from "../../../Redux_Store/Actions/userActions";
@@ -32,8 +33,8 @@ const UserProfilePage = ({}) => {
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
   const user_details = useSelector((state) => state.UserReducer.user_details);
-  const userState = useSelector((state) => state.UserReducer);
-  const { token } = userState || {};
+  const userStateData = useSelector((state) => state.UserReducer);
+  const { token, AllList } = userStateData || { AllList: [] };
   const dispatch = useDispatch();
   const RowData = {
     profile_banner: user_details && user_details?.profile_pic,
@@ -43,6 +44,8 @@ const UserProfilePage = ({}) => {
     phone_number: user_details && user_details?.phone_number,
     user_website: user_details && user_details?.user_website,
     token: token,
+    profile_banner_URL: user_details && user_details?.profile_pic,
+    profile_pic_URL: user_details && user_details?.profile_banner,
   };
 
   const [formData, setFormData] = useState(RowData);
@@ -132,6 +135,11 @@ const UserProfilePage = ({}) => {
   useEffect(() => {
     console.log("page", page);
   }, [page]);
+
+  useEffect(() => {
+    const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
+    dispatch(MyListApi({ Token: RentalUserAuthToken }));
+  }, []);
   return (
     <Fragment>
       <div className="user-profile ProfileComponent">
@@ -203,7 +211,7 @@ const UserProfilePage = ({}) => {
             navbarShow={navbarShow}
           />
         ) : page == 2 ? (
-          <AllListing />
+          <AllListing AllList={AllList} />
         ) : page == 3 ? (
           <AddListing />
         ) : page == 4 ? (
