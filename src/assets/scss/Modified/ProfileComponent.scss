@@ -42,4 +42,64 @@
     width: 100% !important;
     aspect-ratio: 3.47 !important;
   }
+
+  .MyListing {
+    .tableBody {
+      // tr {
+      //   max-height: 2rem;
+      // }
+
+      .userName {
+        overflow: hidden;
+        /* text-overflow: ellipsis; */
+        word-break: break-all !important;
+        white-space: break-spaces !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Set to the number of lines you want */
+        -webkit-box-orient: vertical;
+      }
+      .active {
+        // border: solid #002700;
+        display: flex;
+        justify-content: center;
+        background-color: #267926;
+        border-radius: 6px;
+        color: white;
+      }
+      .de-active {
+        // border: solid #3f0003;
+        display: flex;
+        justify-content: center;
+        background-color: #ab0a27;
+        border-radius: 6px;
+        color: white;
+      }
+      .rating {
+        display: flex;
+        justify-content: center;
+        background-color: #0d8aa6;
+        border-radius: 6px;
+        color: white;
+        width: fit-content;
+        padding: 0 1rem;
+      }
+      // .userName:hover {
+      //   display: block;
+      //   max-height: fit-content !important;
+      //   overflow: none;
+      //   text-overflow: none;
+      //   word-break: break-all !important;
+      //   white-space: break-spaces !important;
+      // }
+    }
+    .TableAction {
+      display: flex;
+      gap: 1rem;
+      .AiFillEye,
+      .AiFillEdit,
+      .AiFillDelete {
+        cursor: pointer;
+      }
+    }
+  }
 }

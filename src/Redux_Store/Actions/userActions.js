@@ -6,6 +6,7 @@ import {
   GET_SEARCH_DATA_API,
   HOME_API,
   MY_LIST_API,
+  PRODUCT_LIST_API,
   SEARCH_CITY_AREA_API,
 } from "../../Constant/api_constant";
 import { ActionType } from "../ReduxConstant";
@@ -71,6 +72,32 @@ export const MyListApi = ({ Token }) => {
       ToastError(error);
       dispatch({
         type: ActionType.ON_REQUEST_MY_LIST_API,
+        payload: error.message,
+      });
+    }
+  };
+};
+
+export const AllProductApi = ({ Token }) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: ActionType.ON_FAILURE_ALL_PRODUCT_API });
+
+      const response = await PostApiForRedux(
+        `${API_ROOT_URL}/${PRODUCT_LIST_API}`,
+        {
+          token: Token,
+        }
+      );
+      dispatch({
+        type: ActionType.ON_SUCCESS_ALL_PRODUCT_API,
+        payload: response?.data?.data,
+      });
+    } catch (error) {
+      console.log("response===>", error);
+      ToastError(error);
+      dispatch({
+        type: ActionType.ON_REQUEST_ALL_PRODUCT_API,
         payload: error.message,
       });
     }

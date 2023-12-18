@@ -24,9 +24,9 @@ const ListingTable = ({ tableData, ClickOnEditIcon }) => {
             <Table>
               <thead className="tableHead">
                 <tr className="border-bottom-primary">
-                  <th scope="col nameHeader">{"Listing Name"}</th>
+                  <th scope="col nameHeader">{"Product Name"}</th>
                   <th scope="col">{"Date"}</th>
-                  <th scope="col">{"Rating"}</th>
+                  <th scope="col">{"Price"}</th>
                   <th scope="col">{"Is Approved	"}</th>
                   <th scope="col">{"Status"}</th>
                   <th scope="col">{"Action"}</th>
@@ -37,14 +37,16 @@ const ListingTable = ({ tableData, ClickOnEditIcon }) => {
                   tableData?.map((item, index) => (
                     <tr key={index}>
                       <td className="userName">
-                        {[""].includes(item?.name) ? "-" : item?.name}
+                        {[""].includes(item?.product_name)
+                          ? "-"
+                          : item?.product_name}
                       </td>
                       <td>{formatDate1(item?.created_at)}</td>
                       <td>
-                        {["null", "", null].includes(item?.rating) ? (
+                        {["null", "", null].includes(item?.price) ? (
                           <div className="rating">0.0</div>
                         ) : (
-                          <div className="rating">{item?.rating}</div>
+                          <div className="rating">{item?.price}</div>
                         )}
                       </td>
                       <td>{item?.is_approved}</td>

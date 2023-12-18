@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import ProfileModel from "../Models/Profile/ProfileModel";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  AllProductApi,
   MyListApi,
   SetUserProfile,
   UserActions,
@@ -34,7 +35,10 @@ const UserProfilePage = ({}) => {
   const [modal, setModel] = useState(false);
   const user_details = useSelector((state) => state.UserReducer.user_details);
   const userStateData = useSelector((state) => state.UserReducer);
-  const { token, AllList } = userStateData || { AllList: [] };
+  const { token, AllList, AllProduct } = userStateData || {
+    AllList: [],
+    AllProduct: [],
+  };
   const dispatch = useDispatch();
   const RowData = {
     profile_banner: user_details && user_details?.profile_pic,
@@ -139,6 +143,7 @@ const UserProfilePage = ({}) => {
   useEffect(() => {
     const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
     dispatch(MyListApi({ Token: RentalUserAuthToken }));
+    dispatch(AllProductApi({ Token: RentalUserAuthToken }));
   }, []);
   return (
     <Fragment>
@@ -215,7 +220,7 @@ const UserProfilePage = ({}) => {
         ) : page == 3 ? (
           <AddListing />
         ) : page == 4 ? (
-          <AllPoduct />
+          <AllPoduct AllProduct={AllProduct} />
         ) : (
           <AddPoduct />
         )}

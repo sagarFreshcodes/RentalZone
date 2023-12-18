@@ -11,6 +11,8 @@ const initialState = {
   user_details: user_data || {},
   token: user_token,
   AllList: {},
+  AllProduct: {},
+  isProductLoading: false,
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -64,6 +66,25 @@ const UserReducer = (state = initialState, action) => {
         isLoading: false,
         token: action.payload,
       };
+    case ActionType.ON_FAILURE_ALL_PRODUCT_API:
+      return {
+        ...state,
+        isProductLoading: true,
+        error: null,
+      };
+    case ActionType.ON_SUCCESS_ALL_PRODUCT_API:
+      return {
+        ...state,
+        isProductLoading: false,
+        AllProduct: action.payload,
+      };
+    case ActionType.ON_REQUEST_ALL_PRODUCT_API:
+      return {
+        ...state,
+        isProductLoading: false,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

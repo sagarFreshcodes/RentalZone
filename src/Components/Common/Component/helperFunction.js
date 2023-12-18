@@ -391,3 +391,24 @@ export const ReactIcon = ({ iconName, attr }) => {
   const Icon = iconName ? ReactIcons[iconName] : ReactIcons[`AiOutlineSmile`];
   return <Icon {...attr} />;
 };
+
+export function formatDate1(inputDate) {
+  const date = new Date(inputDate);
+
+  // Check if the date is invalid
+  if (isNaN(date)) {
+    return ""; // Return an empty string for an invalid date
+  }
+
+  const options = { day: "numeric", month: "short", year: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+}
+
+export function ChangeKeyNameOfObject({ obj, currentKeyName, newKeyName }) {
+  const newObj = { ...obj };
+  if (newObj.hasOwnProperty(currentKeyName)) {
+    newObj[newKeyName] = newObj[currentKeyName];
+    delete newObj[currentKeyName];
+  }
+  return newObj;
+}

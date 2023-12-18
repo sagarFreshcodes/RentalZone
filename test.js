@@ -1,18 +1,19 @@
-function generateAscendingNumbers(n) {
-    if (n <= 0) {
-      return "Please provide a positive number greater than zero.";
-    }
-  
-    const result = [];
-    for (let i = 1; i <= n; i++) {
-      result.push(i);
-    }
-  
-    return result;
+function changeKeyName(obj, currentKeyName, newKeyName) {
+  const newObj = { ...obj };
+  if (newObj.hasOwnProperty(currentKeyName)) {
+    newObj[newKeyName] = newObj[currentKeyName];
+    delete newObj[currentKeyName];
   }
-  
-  // Example usage:
-  const number = 1;
-  const ascendingNumbers = generateAscendingNumbers(number);
-  console.log(ascendingNumbers); // Output: [1, 2, 3, 4, 5]
-  
+  return newObj;
+}
+
+// Example usage:
+const myObject = {
+  name: "Alice",
+  age: 30,
+  address: "123 Main St",
+};
+
+const updatedObject = changeKeyName(myObject, "name", "fullName");
+console.log(updatedObject);
+// Output: { fullName: 'Alice', age: 30, address: '123 Main St' }
