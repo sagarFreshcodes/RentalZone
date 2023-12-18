@@ -8,10 +8,13 @@ import Signin from "../Auth/Signin";
 import PrivateRoute from "./PrivateRoute";
 import { classes } from "../Data/Layouts";
 import { HOME_ROUTE } from "./RouthPath";
-
+import { useDispatch, useSelector } from "react-redux";
+import { SetToken } from "../Redux_Store/Actions/userActions";
 // setup fake backend
 
 const Routers = () => {
+  const dispatch = useDispatch();
+
   const login = useState(JSON.parse(localStorage.getItem("login")))[0];
   const [authenticated, setAuthenticated] = useState(false);
   const defaultLayoutObj = classes.find(
@@ -21,6 +24,10 @@ const Routers = () => {
     localStorage.getItem("layout") || Object.keys(defaultLayoutObj).pop();
 
   useEffect(() => {
+    // Every time setToke in global state from local storage during page Loading
+    const rentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
+    dispatch(SetToken({ Token: rentalUserAuthToken }));
+
     let abortController = new AbortController();
     setAuthenticated(JSON.parse(localStorage.getItem("authenticated")));
     console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
@@ -54,7 +61,7 @@ const Routers = () => {
             exact
             path={`${process.env.PUBLIC_URL}/login`}
             element={<Signin />}
-          /> 
+          />
           {authRoutes.map(({ path, Component }, i) => (
             <Route path={path} element={Component} key={i} />
           ))}

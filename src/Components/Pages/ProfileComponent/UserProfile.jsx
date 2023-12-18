@@ -32,18 +32,21 @@ const UserProfilePage = ({}) => {
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
   const user_details = useSelector((state) => state.UserReducer.user_details);
+  const userState = useSelector((state) => state.UserReducer);
+  const { token } = userState || {};
   const dispatch = useDispatch();
   const RowData = {
-    // profileBanner: user_details && user_details?.profile_pic,
-    // profilePic: user_details && user_details?.profile_banner,
+    profile_banner: user_details && user_details?.profile_pic,
+    profile_pic: user_details && user_details?.profile_banner,
     name: user_details && user_details?.name,
     email: user_details && user_details?.email,
     phone_number: user_details && user_details?.phone_number,
     user_website: user_details && user_details?.user_website,
-    token: RentalUserAuthToken,
+    token: token,
   };
 
   const [formData, setFormData] = useState(RowData);
+
   const toggle = () => {
     setModel(!modal);
   };
@@ -66,9 +69,6 @@ const UserProfilePage = ({}) => {
   };
   const ButtonClick = ({ i, index }) => {
     Toggle();
-    // dispatch(SetUserProfile({ profileData: { email: 11111 } }));
-    // const user_details = JSON.stringify(response.data.data.user_details);
-    // localStorage.setItem("user_details", user_details);
     switch (index + 1) {
       case 1:
         i.title == "Edit Profile" ? setModel(true) : console.log("");
@@ -108,23 +108,21 @@ const UserProfilePage = ({}) => {
       body: bodyFormData,
     })
       .then((response) => {
-        // const user_details = JSON.stringify(response.data.data.user_details);
-
-        // SaveUserAuthToken({
-        //   token: response.data.data.token,
-        //   user_details: user_details,
-        // });
+        console.log("data123654", response);
+        SetUserProfile({
+          profileData: response?.data?.data[0],
+        });
         ToastSuccess(response);
-        const profileData = { ...user_details, ...formData };
-        dispatch(SetUserProfile({ profileData: profileData }));
-        localStorage.setItem("user_details", JSON.stringify(profileData));
+        dispatch(SetUserProfile({ profileData: response?.data?.data[0] }));
+        localStorage.setItem(
+          "user_details",
+          JSON.stringify(response?.data?.data[0])
+        );
         setModel(!modal);
       })
       .catch((error) => {
         ToastError(error);
       });
-
-    setModel(!modal);
   };
 
   useEffect(() => {

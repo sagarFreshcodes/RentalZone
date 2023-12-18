@@ -38,6 +38,31 @@ const UserReducer = (state = initialState, action) => {
           user_details: action.payload,
         },
       };
+
+    case ActionType.ON_FAILURE_MY_LIST_API:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case ActionType.ON_SUCCESS_MY_LIST_API:
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload,
+      };
+    case ActionType.ON_REQUEST_MY_LIST_API:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case ActionType.ON_CHANGE_TOKEN_API:
+      return {
+        ...state,
+        isLoading: false,
+        token: action.payload,
+      };
     default:
       return state;
   }

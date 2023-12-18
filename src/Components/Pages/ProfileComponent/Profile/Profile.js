@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ReactIcon } from "../../../Common/Component/helperFunction";
 import { Col, Card, Row } from "reactstrap";
 import CountUp from "react-countup";
@@ -30,26 +30,19 @@ const Profile = ({
       {/* <CardHeader className="cardheader"> */}
       <Image
         attrImage={{
+          onClick: () => console.log("user_details", user_details),
           className: "img-fluid rounded  profile_banner",
-          src: user_details?.profile_banner
-            ? user_details?.profile_pic
-            : `${require("../../../../assets/images/other-images/profile-style-img3.png")}`,
+          src: user_details && formData.profile_banner,
           alt: "gallery",
         }}
       />
       {/* </CardHeader> */}
       <div className="user-image">
         <div className="avatar">
-          <Image
-            attrImage={{
-              className: "step1",
-              alt: "",
-              src: `${
-                user_details?.profile_pic
-                  ? user_details?.profile_pic
-                  : require("../../../../assets/images/user/7.jpg")
-              }`,
-            }}
+          <img
+            className="step1"
+            src={user_details && formData?.profile_pic}
+            alt=""
           />
         </div>
         {/* <div

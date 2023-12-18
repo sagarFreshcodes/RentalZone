@@ -5,6 +5,7 @@ import {
   COMMONPAGE_API,
   GET_SEARCH_DATA_API,
   HOME_API,
+  MY_LIST_API,
   SEARCH_CITY_AREA_API,
 } from "../../Constant/api_constant";
 import { ActionType } from "../ReduxConstant";
@@ -44,6 +45,37 @@ export const SetUserProfile = ({ profileData }) => {
   };
 };
 
+export const SetToken = ({ Token }) => {
+  return async (dispatch) => {
+    dispatch({
+      type: ActionType.ON_CHANGE_TOKEN_API,
+      payload: Token,
+    });
+  };
+};
+
+export const MyListApi = ({ Location }) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: ActionType.ON_FAILURE_MY_LIST_API });
+
+      const response = await GetApi(
+        `${API_ROOT_URL}/${MY_LIST_API}`
+        // `${API_ROOT_URL}/${GET_HOMEPAGE_API}?category_slug=computer-rental-mumbai&category_id=2&page=1&user_local_city=Navimumbai&user_local_city_slug=navimumbai&user_local_area=Best Staff Colony&user_local_area_slug=best-staff-colony`
+      );
+      dispatch({
+        type: ActionType.ON_SUCCESS_MY_LIST_API,
+        payload: response.data,
+      });
+    } catch (error) {
+      ToastError(error);
+      dispatch({
+        type: ActionType.ON_REQUEST_MY_LIST_API,
+        payload: error.message,
+      });
+    }
+  };
+};
 // export const LocationActions = ({ serchKeyword }) => {
 //   return async (dispatch) => {
 //     try {

@@ -9,15 +9,15 @@ import { useFormik, ErrorMessage } from "formik";
 const formFields = [
   {
     title: "Profile Pic",
-    placeHolder: "profilePic",
+    placeHolder: "profile_pic",
     type: "file",
-    name: "profilePic",
+    name: "profile_pic",
   },
   {
     title: "Profile Banner",
-    placeHolder: "profileBanner",
+    placeHolder: "profile_banner",
     type: "file",
-    name: "profileBanner",
+    name: "profile_banner",
   },
   {
     title: "Name",
@@ -46,7 +46,14 @@ const formFields = [
 ];
 
 const ProfileModel = (props) => {
-  const { user_details, formData, setFormData, OnSubmitForm } = props || {};
+  const {
+    user_details,
+    formData,
+    setFormData,
+    OnSubmitForm,
+    setImgData,
+    imgData,
+  } = props || {};
 
   const [loader, setLoader] = useState(false);
 
@@ -80,9 +87,17 @@ const ProfileModel = (props) => {
     const value = target && target.value;
     console.log("test2512==>", name, value);
     validation.setFieldValue(name, value);
-    ["profileBanner", "profilePic"].includes(name)
-      ? setFormData({ ...formData, [name]: e.target.files[0] })
-      : setFormData({ ...formData, [name]: value });
+    if (["profile_banner", "profile_pic"].includes(name)) {
+      setFormData({
+        ...formData,
+        [name]: URL.createObjectURL(e.target.files[0]),
+      });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+    // ["profile_banner", "profile_pic"].includes(name)
+    //   ? setFormData({ ...formData, [name]: e.target.files[0] })
+    //   : setFormData({ ...formData, [name]: value });
   };
 
   const test = () => {
@@ -114,7 +129,7 @@ const ProfileModel = (props) => {
                   <div className="form-group" onClick={test}>
                     <label className="form-control-label">{f.title}</label>
                     <div className="d-flex" style={{ position: "relative" }}>
-                      {["profileBanner", "profilePic"].includes(f.name) ? (
+                      {["profile_banner", "profile_pic"].includes(f.name) ? (
                         <input
                           className="form-control"
                           onChange={handleChange}
