@@ -10,14 +10,17 @@
     .navbarButton2 {
       display: none !important;
     }
+
     @media screen and (max-width: 800px) {
       flex-direction: column;
       background-color: rgb(122 122 122 / 77%);
       width: fit-content !important;
+
+      .navbarButton1 {
+        display: none !important;
+      }
     }
-    .navbarButton1 {
-      display: none !important;
-    }
+
     .navbarButton2 {
       display: inline !important;
       border: none !important;
@@ -30,11 +33,6 @@
       display: none;
       @media screen and (max-width: 800px) {
         display: block !important;
-      }
-    }
-    @media screen and (max-width: 800px) {
-      button {
-        // display: none;
       }
     }
   }
