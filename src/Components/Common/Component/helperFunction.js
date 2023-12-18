@@ -362,6 +362,7 @@ export const Log_Out = ({ Redirect }) => {
     body: bodyFormData,
   })
     .then((response) => {
+      ToastSuccess(response);
       localStorage.removeItem("profileURL");
       localStorage.removeItem("token");
       localStorage.removeItem("auth0_profile");
@@ -369,11 +370,11 @@ export const Log_Out = ({ Redirect }) => {
       localStorage.removeItem("rentalUserAuthToken");
       localStorage.removeItem("user_details");
       localStorage.setItem("authenticated", false);
-      ToastSuccess(response);
       Redirect();
     })
     .catch((error) => {
       ToastError(error);
+      Redirect();
     });
 };
 

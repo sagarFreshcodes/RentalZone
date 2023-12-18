@@ -23,7 +23,9 @@ import {
   UserActions,
 } from "../../../Redux_Store/Actions/userActions";
 import {
+  Log_Out,
   POST_API,
+  ReactIcon,
   ToastError,
   ToastSuccess,
 } from "../../Common/Component/helperFunction";
@@ -33,9 +35,12 @@ import {
   UPDATE_PROFILE,
 } from "../../../Constant/api_constant";
 import { RentalUserAuthToken } from "../../../Constant/general_constant";
+import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router";
+import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
-
+  const [navbarShow, setNavbarShow] = useState(false);
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
   const user_details = useSelector((state) => state.UserReducer.user_details);
@@ -46,7 +51,7 @@ const UserProfilePage = ({}) => {
     name: user_details && user_details?.name,
     email: user_details && user_details?.email,
     phone_number: user_details && user_details?.phone_number,
-    website: user_details && user_details?.user_website,
+    user_website: user_details && user_details?.user_website,
     token: RentalUserAuthToken,
   };
 
@@ -54,6 +59,7 @@ const UserProfilePage = ({}) => {
   const toggle = () => {
     setModel(!modal);
   };
+  const history = useNavigate();
   const readUrl = (event) => {
     if (event.target.files.length === 0) return;
     var mimeType = event.target.files[0].type;
@@ -67,7 +73,9 @@ const UserProfilePage = ({}) => {
       setUrl(reader.result);
     };
   };
-
+  const Logout = () => {
+    Log_Out({ Redirect: () => history(LIST_BUSINESS_ROUTE) });
+  };
   const ButtonClick = (i) => {
     console.log("user_details", user_details);
     // dispatch(SetUserProfile({ profileData: { email: 11111 } }));
@@ -76,6 +84,9 @@ const UserProfilePage = ({}) => {
     switch (i.title) {
       case "Edit Profile":
         setModel(true);
+        break;
+      case "Logout":
+        Logout();
         break;
       default:
         break;
@@ -111,6 +122,7 @@ const UserProfilePage = ({}) => {
 
     setModel(!modal);
   };
+
   useEffect(() => {
     setFormData(RowData);
   }, [user_details]);
@@ -118,6 +130,13 @@ const UserProfilePage = ({}) => {
     <Fragment>
       <div className="user-profile ProfileComponent">
         <div className="ProfileNavbar">
+          <ReactIcon
+            iconName="AiOutlineMenu"
+            attr={{
+              className: "p_navbar_list",
+              onClick: () => setNavbarShow(!navbarShow),
+            }}
+          />
           {[
             {
               title: page == 1 ? "Edit Profile" : "My Profile",
@@ -134,7 +153,32 @@ const UserProfilePage = ({}) => {
           ].map((i) => (
             <button
               type="button"
-              class={`btn btn-outline-dark`}
+              class={`btn btn-outline-dark navbarButton1`}
+              onClick={() => ButtonClick(i)}
+            >
+              {i.title}
+            </button>
+          ))}
+
+          {[
+            {
+              title: page == 1 ? "Edit Profile" : "My Profile",
+              btnType: "dark",
+            },
+            { title: "All Listing", btnType: "light" },
+            { title: "Add Listing", btnType: "info" },
+            { title: "All Product", btnType: "warning" },
+            { title: "Add Product", btnType: "danger" },
+            { title: "Reviews", btnType: "success" },
+            { title: "Bookings", btnType: "secondary" },
+            { title: "Change Password", btnType: "primary" },
+            { title: "Logout", btnType: "dark" },
+          ].map((i) => (
+            <button
+              type="button"
+              class={`btn btn-outline-dark ${
+                navbarShow ? "navbarButton2" : "navbarButton2Hide"
+              }`}
               onClick={() => ButtonClick(i)}
             >
               {i.title}
@@ -167,7 +211,7 @@ const UserProfilePage = ({}) => {
                 }}
               />
             </div>
-            <div
+            {/* <div
               className="icon-wrapper step2"
               data-intro="Change Profile image here"
             >
@@ -181,7 +225,7 @@ const UserProfilePage = ({}) => {
                   onChange={(e) => readUrl(e)}
                 />
               </i>
-            </div>
+            </div> */}
           </div>
           <div className="info">
             <Row className="step3" data-intro="This is the your details">
@@ -225,7 +269,7 @@ const UserProfilePage = ({}) => {
                         <i className="fa fa-phone me-2"></i>
                         {`Website`}
                       </H6>
-                      <span>{formData?.website}</span>
+                      <span>{formData?.user_website}</span>
                     </div>
                   </Col>
                   <Col md="6">
@@ -302,6 +346,7 @@ const UserProfilePage = ({}) => {
         setFormData={setFormData}
         OnSubmitForm={OnSubmitForm}
       />
+      <ToastContainer />
     </Fragment>
   );
 };

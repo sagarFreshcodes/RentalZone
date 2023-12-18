@@ -39,9 +39,9 @@ const formFields = [
   },
   {
     title: "Website",
-    placeHolder: "website",
+    placeHolder: "Enter your website",
     type: "text",
-    name: "website",
+    name: "user_website",
   },
 ];
 
@@ -55,7 +55,7 @@ const ProfileModel = (props) => {
     initialValues: {
       name: formData?.name || "",
       email: formData?.email || "",
-      website: formData?.website || "",
+      user_website: formData?.user_website || "",
       phone_number: formData?.phone_number || "",
     },
     validationSchema: Yup.object({
@@ -63,7 +63,7 @@ const ProfileModel = (props) => {
       email: Yup.string()
         .email("Invalid email format")
         .required("Email is required"),
-      website: Yup.string().required("Website is required"),
+      user_website: Yup.string().required("user_website is required"),
       phone_number: Yup.string().required("Phone Number is required"),
     }),
 
@@ -75,8 +75,10 @@ const ProfileModel = (props) => {
 
   const handleChange = (e) => {
     const { target } = e;
+
     const name = target && target.name;
     const value = target && target.value;
+    console.log("test2512==>", name, value);
     validation.setFieldValue(name, value);
     ["profileBanner", "profilePic"].includes(name)
       ? setFormData({ ...formData, [name]: e.target.files[0] })
