@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-around;
     background-color: #f0ffff78;
+    padding: 10px;
     .navbarButton2 {
       display: none !important;
     }
@@ -19,15 +20,16 @@
       .navbarButton1 {
         display: none !important;
       }
+
+      .navbarButton2 {
+        display: inline !important;
+        border: none !important;
+      }
+      .navbarButton2Hide {
+        display: none !important;
+      }
     }
 
-    .navbarButton2 {
-      display: inline !important;
-      border: none !important;
-    }
-    .navbarButton2Hide {
-      display: none !important;
-    }
     .p_navbar_list {
       font-size: 2rem;
       display: none;
