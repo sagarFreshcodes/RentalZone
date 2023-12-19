@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
+import axios from "axios";
+import {
+  API_ROOT_URL,
+  GET_CATEGORY_DROPDOWN_API,
+} from "../../../Constant/api_constant";
+import { ToastError } from "../Component/helperFunction";
 const Form1 = () => {
+  const [allCategoryList, setAllCategoryList] = useState([]);
+  const [loading, setLoading] = useState([]);
+  const CategoryList = () => {
+    axios
+      .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+      .then((response) => {
+        setAllCategoryList(response?.data?.data);
+        console.log("response1236", response);
+        setLoading(false);
+      })
+      .catch((error) => {
+        ToastError(error);
+        console.log("response1236", error);
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    CategoryList();
+  }, []);
   return (
     <div>
       <Card>
