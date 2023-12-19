@@ -2,7 +2,11 @@ import React from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
-const Form2 = () => {
+const Form2 = ({ AllProps }) => {
+  const { NextPage } = AllProps;
+  const ClickOnNext = () => {
+    NextPage();
+  };
   return (
     <div>
       <Card>
@@ -45,7 +49,11 @@ const Form2 = () => {
                 <Input className="form-control" type="text" />
               </div>
               <div className="next">
-                <CommonButton attr={{ className: "Next" }}>Next</CommonButton>
+                <CommonButton
+                  attr={{ className: "Next", onClick: ClickOnNext }}
+                >
+                  Next
+                </CommonButton>
               </div>
             </CardBody>
           </Col>{" "}

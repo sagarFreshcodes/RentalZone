@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const Progressbar = ({ currentPage }) => {
+const Progressbar = ({ currentPage, selectOn }) => {
   const Page = currentPage ? currentPage : 2;
   const PrgressData = [1, 2, 3, 4, 5];
   return (
@@ -8,7 +8,10 @@ const Progressbar = ({ currentPage }) => {
       {PrgressData.map((i, index) => {
         return (
           <>
-            <div className="pageProgresssComponent">
+            <div
+              className="pageProgresssComponent"
+              onClick={() => selectOn(index + 1)}
+            >
               <div
                 className={Page >= index + 1 ? "pageRoung" : "RemainPageRoung"}
               >

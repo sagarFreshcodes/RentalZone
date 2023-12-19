@@ -15,22 +15,32 @@ const AddListing = () => {
   const ChangeFormIndex = (index) => {
     setFormIndex(index);
   };
+  const NextPage = () => {
+    setFormIndex(formIndex + 1);
+  };
+
+  const AllProps = {
+    NextPage: NextPage,
+  };
+  const selectOn = (index) => {
+    setFormIndex(index);
+  };
   return (
     <ContentBox>
       <br />
       <br />
       <div className="AddListing">
-        <Progressbar currentPage={"3"} />
+        <Progressbar currentPage={formIndex} selectOn={selectOn} />
         {formIndex == 2 ? (
-          <Form2 />
+          <Form2 AllProps={AllProps} />
         ) : formIndex == 3 ? (
-          <Form3 />
+          <Form3 AllProps={AllProps} />
         ) : formIndex == 4 ? (
-          <Form4 />
+          <Form4 AllProps={AllProps} />
         ) : formIndex == 5 ? (
-          <Form5 />
+          <Form5 AllProps={AllProps} />
         ) : (
-          <Form1 />
+          <Form1 AllProps={AllProps} />
         )}
       </div>
     </ContentBox>
