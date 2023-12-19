@@ -135,6 +135,31 @@ export const POST_API = ({ endPoint, body }) => {
   });
 };
 
+export const POST_FORMDATA_API = ({ endPoint, body }) => {
+  const bodyFormData = new FormData();
+  Object.keys(body).map((i) => {
+    bodyFormData.append(i, body[i]);
+  });
+  const HEADERS = {
+    headers: {
+      // "Content-Type": "application/json",
+      // "Accept": "application/json",
+      // Authorization: RentalUserAuthToken,
+      // Include any other required headers
+    },
+  };
+  return new Promise((Response, Reject) => {
+    axios
+      .post(endPoint, bodyFormData, HEADERS)
+      .then((res) => {
+        Response(res);
+      })
+      .catch((error) => {
+        Reject(error);
+      });
+  });
+};
+
 export const ToastError = (error) => {
   error?.response?.data?.message.query || error?.response?.data?.message?.level
     ? toast.error(error?.message)

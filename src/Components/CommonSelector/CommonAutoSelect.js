@@ -23,6 +23,7 @@ const CommonAutoSelect = ({
   placeholder,
   Icon,
   iconPose,
+  fieldName,
   boxWidth,
   style,
   className,
@@ -30,11 +31,11 @@ const CommonAutoSelect = ({
   labelName,
   APIBody,
   ApiEndPoint,
+  OnSelect,
 }) => {
   const dispatch = useDispatch();
   const [optionList, setOptionList] = useState();
   const [loading, setLoading] = useState(false);
-
   const [serchKeyword, setSerchKeyword] = useState("");
   const [optionShow, setOptionShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
@@ -46,10 +47,10 @@ const CommonAutoSelect = ({
     setOptionShow(true);
   };
   const onHandleClick = (e) => {
-    setSerchKeyword(e.name);
+    setSerchKeyword(e[labelName]);
     setOptionShow(false);
-    OnSearchLocation({ locationData: e });
-    dispatch(SetLocation({ locationData: e }));
+    e[`fieldName`] = fieldName;
+    OnSelect(e);
   };
 
   useEffect(() => {

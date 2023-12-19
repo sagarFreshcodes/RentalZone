@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
@@ -92,20 +92,105 @@ const FormFields = [
 
 const Form2 = ({ AllProps }) => {
   const { NextPage, formData, setFormData } = AllProps;
+  const FormFields = [
+    {
+      title: "Address",
+      name: "address",
+      id: "address",
+      name: "address",
+      type: "text",
+    },
+    {
+      title: "Country",
+      name: "country",
+      id: "country",
+      name: "country",
+      type: "select",
+      lable: "name",
+      ApiEndPoint: GET_COUNTRY_DROPDOWN_API,
+      ApiBody: {},
+    },
+    {
+      title: "State",
+      name: "state",
+      id: "state",
+      name: "state",
+      type: "select",
+      lable: "name",
+      ApiEndPoint: `${GET_STATE_DROPDOWN_API}/${formData.country}`,
+      ApiBody: {},
+    },
+    {
+      title: "City",
+      name: "city",
+      id: "city",
+      name: "city",
+      type: "select",
+      lable: "city",
+      ApiEndPoint: `${GET_CITY_DROPDOWN_API}/${formData.state}`,
+      ApiBody: {},
+    },
+    {
+      title: "Area",
+      name: "area",
+      id: "area",
+      name: "area",
+      type: "select",
+      lable: "area_name",
+      ApiEndPoint: `${GET_AREA_DROPDOWN_API}/${formData.city}`,
+      ApiBody: {},
+    },
+    // {
+    //   title: "Location",
+    //   name: "location",
+    //   id: "location",
+    //   name: "select",
+    //   type: "location",
+    //   lable: "location_name",
+    //   ApiEndPoint: GET_LOCATION_DROPDOWN_API,
+    //   ApiBody: {},
+    // },
+    {
+      title: "Pincode",
+      name: "pincode",
+      id: "pincode",
+      name: "pincode",
+      type: "number",
+    },
+    {
+      title: "Rates Per",
+      name: "rates_per",
+      id: "rates_per",
+      name: "rates_per",
+      type: "text",
+    },
+    {
+      title: "Rates",
+      name: "rates",
+      id: "rates",
+      name: "rates",
+      type: "number",
+    },
+  ];
+
   const ClickOnNext = () => {
     NextPage();
   };
-
+  const OnSelect = (e) => {
+    console.log("fs25", e);
+    setFormData({ ...formData, [e.fieldName]: e.id });
+    // setFormData({ ...formData, [`${e.fieldName}_object`]: e });
+  };
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      pincode: "",
+      address: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string()
-        .required("Required")
-        .min(6, "Password must be at least 6 characters"),
+      pincode: Yup.string().required("Pincode Required"),
+      address: Yup.string().required("Address Required"),
+      rates_per: Yup.string().required("Rates parameter Required"),
+      rates: Yup.string().required("Rates Required"),
     }),
     onSubmit: (values, { setSubmitting, setErrors }) => {
       ClickOnNext();
@@ -115,6 +200,34 @@ const Form2 = ({ AllProps }) => {
   const OnSearchLocation = ({ locationData }) => {
     console.log(locationData);
   };
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      rates_per: formik.values["rates_per"],
+      pincode: formik.values["pincode"],
+      address: formik.values["address"],
+      rates: formik.values["rates"],
+    });
+  }, [formik.values]);
+
+  useEffect(() => {
+    console.log(`formik.errors===>`, formik.errors);
+    setFormData({
+      ...formData,
+      rates_per: formik.values["rates_per"],
+      rates: formik.values["rates"],
+      pincode: formik.values["pincode"],
+      address: formik.values["address"],
+    });
+
+    formik.setValues({
+      rates_per: formData?.rates_per,
+      rates: formData?.rates,
+      pincode: formData?.pincode,
+      address: formData?.address,
+    });
+  }, []);
   return (
     <div>
       <Card>
@@ -134,11 +247,17 @@ const Form2 = ({ AllProps }) => {
                         <div className="inputFieldBox">
                           <FS5 attr={{ className: "BoldText" }}>{i.title}</FS5>
                           <CommonAutoSelect
-                            placeholder={i?.placeholder || ""}
+                            placeholder={i?.placeholder}
+                            // placeholder={
+                            //   i?.placeholder ||
+                            //   formData[`${i?.name}_object`][i.lable]
+                            // }
                             OnSearchLocation={OnSearchLocation}
                             labelName={i.lable}
                             APIBody={i?.ApiBody}
                             ApiEndPoint={i?.ApiEndPoint}
+                            OnSelect={OnSelect}
+                            fieldName={i.name}
                           />
                         </div>
                       ) : (

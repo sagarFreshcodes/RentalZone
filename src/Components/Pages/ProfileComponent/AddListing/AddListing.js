@@ -8,26 +8,51 @@ import Form3 from "./AddListingForms/Form3";
 import Form4 from "./AddListingForms/Form4";
 import Form5 from "./AddListingForms/Form5";
 import Progressbar from "../../../Common/Component/FormProgress/Progressbar";
+import {
+  POST_FORMDATA_API,
+  ToastError,
+  ToastSuccess,
+} from "../../../Common/Component/helperFunction";
+import { ADD_LIST_API, API_ROOT_URL } from "../../../../Constant/api_constant";
+const RowData = {
+  listing_name: "",
+  address: "",
+  country: "",
+  state: "",
+  city: "",
+  area: "",
+  pincode: "",
+  phone_number: "",
+  email: "",
+  website: "",
+  contact_person: "",
+  description: "",
+  rates_per: "",
+  rates: "",
+  listing_category: "",
+};
+const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
 
 const AddListing = () => {
   const [formIndex, setFormIndex] = useState(1);
   const [formData, setFormData] = useState({
-    listing_name: "",
-    address: "",
-    country: "",
-    state: "",
-    city: "",
-    area: "",
-    location: "",
-    pincode: "",
+    listing_name: "Raghav Computers",
+    address: "fasfasfasf",
+    country: 101,
+    state: 21,
+    city: 673,
+    area: 425,
+    pincode: 12364,
     phone_number: "",
-    email: "",
-    website: "",
-    contact_person: "",
-    description: "",
-    rates_per: "",
-    rates: "",
-    listing_category: "",
+    email: "admin@gmail.com",
+    website: "google.com",
+    contact_person: "afasfasfas",
+    description: "Description",
+    rates_per: "property",
+    rates: 10001,
+    listing_category: [3, 4, 7, 9],
+    mobile: 7982165765,
+    token: RentalUserAuthToken,
   });
 
   const ChangeFormIndex = (index) => {
@@ -36,11 +61,24 @@ const AddListing = () => {
   const NextPage = () => {
     setFormIndex(formIndex + 1);
   };
-
+  // .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+  const OnSubmit = () => {
+    POST_FORMDATA_API({
+      endPoint: `${API_ROOT_URL}/${ADD_LIST_API}`,
+      body: formData,
+    })
+      .then((responce) => {
+        ToastSuccess(responce);
+      })
+      .catch((error) => {
+        ToastError(error);
+      });
+  };
   const AllProps = {
     NextPage: NextPage,
     formData: formData,
     setFormData: setFormData,
+    OnSubmit: OnSubmit,
   };
   const selectOn = (index) => {
     setFormIndex(index);
@@ -49,6 +87,7 @@ const AddListing = () => {
   const test = () => {
     console.log(formData);
   };
+
   return (
     <ContentBox>
       <br />
@@ -90,4 +129,23 @@ export { AddListing };
 //   rates_per: 12,
 //   rates: 32,
 //   listing_category: "Laptop Rental",
+// }
+
+// {
+//   "listing_name": "Raghav Computers",
+//   "address": "fasfasfasf",
+//   "country": 101,
+//   "state": 21,
+//   "city": 673,
+//   "area": 425,
+//   "pincode": 12364,
+//   "phone_number": "",
+//   "email": "admin@gmail.com",
+//   "website": "google.com",
+//   "contact_person": "afasfasfas",
+//   "description": "Description",
+//   "rates_per": "property",
+//   "rates": 10001,
+//   "listing_category": [],
+//   "mobile": 7982165765
 // }

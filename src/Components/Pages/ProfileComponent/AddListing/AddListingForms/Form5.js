@@ -3,10 +3,8 @@ import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
 const Form5 = ({ AllProps }) => {
-  const { NextPage } = AllProps;
-  const ClickOnNext = () => {
-    // NextPage();
-  };
+  const { NextPage, formData, setFormData, OnSubmit } = AllProps;
+
   return (
     <div>
       <Card>
@@ -14,45 +12,29 @@ const Form5 = ({ AllProps }) => {
           <Col lg="6" md="12" sm="12">
             <div className="FormHeader">
               {" "}
-              <FS8>Step 1</FS8>
-              <FS5 attr={{ className: "mb-0" }}>Basic Details</FS5>
+              <FS8>Step 5</FS8>
+              <FS5 attr={{ className: "mb-0" }}>All Details</FS5>
             </div>
             <CardBody>
-              <FS5 attr={{ className: "BoldText" }}>Listing Category</FS5>
+              {Object.keys(formData).map((i) => {
+                return (
+                  <div className="listngName">
+                    <FS5 attr={{ className: "BoldText" }}>
+                      {`${i}`.toUpperCase()}
+                    </FS5>
 
-              <div className="listingCategory">
-                {[
-                  "Laptop Rental",
-                  "Computer Rental",
-                  "Printer Rental",
-                  "Server Rental",
-                  "IPad Rental",
-                  "MacBook Rental",
-                  "Projector Rental",
-                  "Display Rental",
-                  "Car Rental",
-                  "Audio Rental",
-                  "UPS Rental",
-                  "AC Rental",
-                  "Furniture Rental",
-                ].map((i, index) => (
-                  <div className="checkbox">
-                    <Input id={index} type="checkbox" />
-                    <Label for={index}>{i}</Label>
+                    <Input
+                      className="form-control"
+                      value={formData[i]}
+                      type="text"
+                    />
                   </div>
-                ))}
-              </div>
-              <br />
-              <div className="listngName">
-                <FS5 attr={{ className: "BoldText" }}>Listing Name</FS5>
+                );
+              })}
 
-                <Input className="form-control" type="text" />
-              </div>
               <div className="next">
-                <CommonButton
-                  attr={{ className: "Next", onClick: ClickOnNext }}
-                >
-                  Next
+                <CommonButton attr={{ className: "Next", onClick: OnSubmit }}>
+                  Submit
                 </CommonButton>
               </div>
             </CardBody>

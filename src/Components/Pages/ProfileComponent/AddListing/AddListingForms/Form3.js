@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
@@ -44,19 +44,52 @@ const Form3 = ({ AllProps }) => {
 
   const formik = useFormik({
     initialValues: {
+      mobile: "",
       email: "",
-      password: "",
+      website: "",
+      contact_person: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string()
-        .required("Required")
-        .min(6, "Password must be at least 6 characters"),
+      mobile: Yup.string().required("Mobile number Required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email id Required"),
+      website: Yup.string().required("Website Required"),
+      contact_person: Yup.string().required("Contact Person Required"),
     }),
     onSubmit: (values, { setSubmitting, setErrors }) => {
       ClickOnNext();
     },
   });
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+
+      mobile: formik.values["mobile"],
+      email: formik.values["email"],
+      website: formik.values["website"],
+      contact_person: formik.values["contact_person"],
+    });
+  }, [formik.values]);
+
+  useEffect(() => {
+    console.log(`formik.errors===>`, formik.errors);
+    setFormData({
+      ...formData,
+      mobile: formik.values["mobile"],
+      email: formik.values["email"],
+      website: formik.values["website"],
+      contact_person: formik.values["contact_person"],
+    });
+
+    formik.setValues({
+      mobile: formData["mobile"],
+      email: formData["email"],
+      website: formData["website"],
+      contact_person: formData["contact_person"],
+    });
+  }, []);
 
   return (
     <div>
@@ -65,8 +98,8 @@ const Form3 = ({ AllProps }) => {
           <Col lg="6" md="12" sm="12">
             <div className="FormHeader">
               {" "}
-              <FS8>Step 2</FS8>
-              <FS5 attr={{ className: "mb-0" }}>Address Details</FS5>
+              <FS8>Step 3</FS8>
+              <FS5 attr={{ className: "mb-0" }}>Personal Details</FS5>
             </div>
             <CardBody>
               <form onSubmit={formik.handleSubmit} className="FormicForm">

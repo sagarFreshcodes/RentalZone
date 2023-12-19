@@ -40,8 +40,7 @@ const Form1 = ({ AllProps }) => {
 
   const formik = useFormik({
     initialValues: {
-      listing_name: "",
-      listing_category: "",
+      listing_name: formData.listing_name,
     },
     validationSchema: Yup.object({
       listing_name: Yup.string().required("Required"),
@@ -77,10 +76,24 @@ const Form1 = ({ AllProps }) => {
   }, []);
   useEffect(() => {
     setFormData({
+      ...formData,
       listing_name: formik.values["listing_name"],
       listing_category: selectedCate,
     });
   }, [formik.values]);
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      listing_name: formik.values["listing_name"],
+      listing_category: selectedCate,
+    });
+
+    formik.setValues({
+      listing_name: formData?.listing_name,
+    });
+    setSelectedCate(formData.listing_category || []);
+  }, []);
   return (
     <div>
       <Card>
@@ -105,6 +118,7 @@ const Form1 = ({ AllProps }) => {
                                 <Input
                                   id={i.id}
                                   type="checkbox"
+                                  checked={selectedCate.includes(i.id)}
                                   onChange={() => SelectCategory(i.id)}
                                 />
                                 <Label for={i.id}>{i.category_name}</Label>

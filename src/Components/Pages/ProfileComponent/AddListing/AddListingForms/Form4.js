@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
@@ -24,19 +24,35 @@ const Form4 = ({ AllProps }) => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      description: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string()
-        .required("Required")
-        .min(6, "Password must be at least 6 characters"),
+      description: Yup.string().required("Description Required"),
     }),
     onSubmit: (values, { setSubmitting, setErrors }) => {
       ClickOnNext();
     },
   });
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+
+      description: formik.values["description"],
+    });
+  }, [formik.values]);
+
+  useEffect(() => {
+    console.log(`formik.errors===>`, formik.errors);
+    setFormData({
+      ...formData,
+      description: formik.values["description"],
+    });
+
+    formik.setValues({
+      description: formData["description"],
+    });
+  }, []);
 
   return (
     <div>
@@ -45,8 +61,8 @@ const Form4 = ({ AllProps }) => {
           <Col lg="6" md="12" sm="12">
             <div className="FormHeader">
               {" "}
-              <FS8>Step 2</FS8>
-              <FS5 attr={{ className: "mb-0" }}>Address Details</FS5>
+              <FS8>Step 4</FS8>
+              <FS5 attr={{ className: "mb-0" }}>Description</FS5>
             </div>
             <CardBody>
               <form onSubmit={formik.handleSubmit} className="FormicForm">
