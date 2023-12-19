@@ -145,3 +145,18 @@
     background-color: #0085be00;
   }
 }
+
+.FormicForm {
+  .inputFieldBox {
+    position: relative;
+  }
+  input {
+    margin-bottom: 2rem;
+  }
+  .FormicError {
+    position: absolute;
+    bottom: -1.5rem;
+    color: red;
+    padding-left: 6px;
+  }
+}
