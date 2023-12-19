@@ -1,12 +1,86 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import {
+  API_ROOT_URL,
+  GET_CATEGORY_DROPDOWN_API,
+} from "../../../../../Constant/api_constant";
+import axios from "axios";
+import { useState } from "react";
+import { ToastError } from "../../../../Common/Component/helperFunction";
+
+const FormFields = [
+  {
+    title: "Listing Category",
+    name: "listing_category",
+    id: "listing_category",
+    name: "listing_category",
+    type: "select",
+  },
+  {
+    title: "Listing Name",
+    name: "listing_name",
+    id: "listing_name",
+    name: "listing_name",
+    type: "text",
+  },
+];
+
 const Form1 = ({ AllProps }) => {
-  const { NextPage } = AllProps;
+  const { NextPage, formData, setFormData } = AllProps;
+  const [allCategoryList, setAllCategoryList] = useState([]);
+  const [selectedCate, setSelectedCate] = useState([]);
+  const [loading, setLoading] = useState([]);
   const ClickOnNext = () => {
     NextPage();
   };
+
+  const formik = useFormik({
+    initialValues: {
+      listing_name: "",
+      listing_category: "",
+    },
+    validationSchema: Yup.object({
+      listing_name: Yup.string().required("Required"),
+    }),
+    onSubmit: (values, { setSubmitting, setErrors }) => {
+      selectedCate?.length != 0 ? ClickOnNext() : console.log("first");
+    },
+  });
+
+  const CategoryList = () => {
+    axios
+      .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+      .then((response) => {
+        setAllCategoryList(response?.data?.data || []);
+        console.log("response1236", response);
+        setLoading(false);
+      })
+      .catch((error) => {
+        ToastError(error);
+        console.log("response1236", error);
+        setLoading(false);
+      });
+  };
+  const SelectCategory = (id) => {
+    console.log(formik.values);
+
+    selectedCate.includes(id)
+      ? setSelectedCate(selectedCate.filter((i) => i != id))
+      : setSelectedCate((prev) => [...prev, id]);
+  };
+  useEffect(() => {
+    CategoryList();
+  }, []);
+  useEffect(() => {
+    setFormData({
+      listing_name: formik.values["listing_name"],
+      listing_category: selectedCate,
+    });
+  }, [formik.values]);
   return (
     <div>
       <Card>
@@ -18,43 +92,66 @@ const Form1 = ({ AllProps }) => {
               <FS5 attr={{ className: "mb-0" }}>Basic Details</FS5>
             </div>
             <CardBody>
-              <FS5 attr={{ className: "BoldText" }}>Listing Category</FS5>
+              <form onSubmit={formik.handleSubmit} className="FormicForm">
+                {FormFields.map((i) => {
+                  return (
+                    <>
+                      {i.type == "select" ? (
+                        <div className="inputFieldBox">
+                          <FS5 attr={{ className: "BoldText" }}>{i.title}</FS5>
+                          <div className="listingCategory commonInput">
+                            {allCategoryList?.map((i, index) => (
+                              <div className="checkbox">
+                                <Input
+                                  id={i.id}
+                                  type="checkbox"
+                                  onChange={() => SelectCategory(i.id)}
+                                />
+                                <Label for={i.id}>{i.category_name}</Label>
+                              </div>
+                            ))}
+                          </div>
+                          {selectedCate?.length == 0 ? (
+                            <div className="FormicError">
+                              {`Select atleast one category`}
+                            </div>
+                          ) : null}
+                        </div>
+                      ) : (
+                        <div className="inputFieldBox">
+                          <br />
+                          <FS5 attr={{ className: "BoldText" }}>{i.title}</FS5>
+                          <Input
+                            className="form-control commonInput"
+                            id={i.name}
+                            name={i.name}
+                            type={i.type}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values[i.name]}
+                          />
+                          {formik.touched[i.name] && formik.errors[i.name] ? (
+                            <div className="FormicError">
+                              {formik.errors[i.name]}
+                            </div>
+                          ) : null}
+                        </div>
+                      )}
+                    </>
+                  );
+                })}
 
-              <div className="listingCategory">
-                {[
-                  "Laptop Rental",
-                  "Computer Rental",
-                  "Printer Rental",
-                  "Server Rental",
-                  "IPad Rental",
-                  "MacBook Rental",
-                  "Projector Rental",
-                  "Display Rental",
-                  "Car Rental",
-                  "Audio Rental",
-                  "UPS Rental",
-                  "AC Rental",
-                  "Furniture Rental",
-                ].map((i, index) => (
-                  <div className="checkbox">
-                    <Input id={index} type="checkbox" />
-                    <Label for={index}>{i}</Label>
-                  </div>
-                ))}
-              </div>
-              <br />
-              <div className="listngName">
-                <FS5 attr={{ className: "BoldText" }}>Listing Name</FS5>
-
-                <Input className="form-control" type="text" />
-              </div>
-              <div className="next">
-                <CommonButton
-                  attr={{ className: "Next", onClick: ClickOnNext }}
-                >
-                  Next
-                </CommonButton>
-              </div>
+                <div className="next">
+                  <CommonButton
+                    attr={{
+                      type: "submit",
+                      className: "Next",
+                    }}
+                  >
+                    Next
+                  </CommonButton>
+                </div>
+              </form>
             </CardBody>
           </Col>{" "}
         </Row>

@@ -37,7 +37,7 @@ const FormFields = [
 ];
 
 const Form3 = ({ AllProps }) => {
-  const { NextPage } = AllProps;
+  const { NextPage, formData, setFormData } = AllProps;
   const ClickOnNext = () => {
     NextPage();
   };

@@ -11,6 +11,24 @@ import Progressbar from "../../../Common/Component/FormProgress/Progressbar";
 
 const AddListing = () => {
   const [formIndex, setFormIndex] = useState(1);
+  const [formData, setFormData] = useState({
+    listing_name: "",
+    address: "",
+    country: "",
+    state: "",
+    city: "",
+    area: "",
+    location: "",
+    pincode: "",
+    phone_number: "",
+    email: "",
+    website: "",
+    contact_person: "",
+    description: "",
+    rates_per: "",
+    rates: "",
+    listing_category: "",
+  });
 
   const ChangeFormIndex = (index) => {
     setFormIndex(index);
@@ -21,15 +39,21 @@ const AddListing = () => {
 
   const AllProps = {
     NextPage: NextPage,
+    formData: formData,
+    setFormData: setFormData,
   };
   const selectOn = (index) => {
     setFormIndex(index);
+  };
+
+  const test = () => {
+    console.log(formData);
   };
   return (
     <ContentBox>
       <br />
       <br />
-      <div className="AddListing">
+      <div className="AddListing" onClick={test}>
         <Progressbar currentPage={formIndex} selectOn={selectOn} />
         {formIndex == 2 ? (
           <Form2 AllProps={AllProps} />
@@ -48,3 +72,22 @@ const AddListing = () => {
 };
 
 export { AddListing };
+
+// {
+//   listing_name: "test bhavin",
+//   address: "surat adajan",
+//   country: 101,
+//   state: 10,
+//   city: 2,
+//   area: "surat adajan",
+//   location: "surat parvat patya adajan",
+//   pincode: 3950006,
+//   phone_number: 3423432423,
+//   email: "bhavin@freshcodes.in",
+//   website: "www.google.com",
+//   contact_person: 90909090,
+//   description: "aasdasd test check one",
+//   rates_per: 12,
+//   rates: 32,
+//   listing_category: "Laptop Rental",
+// }
