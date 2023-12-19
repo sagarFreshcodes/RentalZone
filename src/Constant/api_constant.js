@@ -13,6 +13,7 @@ export const LOG_OUT = `logout-user`;
 export const UPDATE_PROFILE = `update-profile`;
 export const MY_LIST_API = `my-listings`;
 export const ADD_LIST_API = `add-listing`;
+export const ADD_PRODUCT_API = `add-product`;
 export const UPDATE_LISTING_API = `update-listing`;
 export const PRODUCT_LIST_API = `product-list`;
 export const GET_CITY_DROPDOWN_API = `get-city`;
