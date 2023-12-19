@@ -1,4 +1,7 @@
 // HanggingBar
+.BoldText {
+  font-weight: bold !important;
+}
 .HanggingBar {
   width: fit-content;
   position: fixed;
@@ -88,5 +91,57 @@
       width: 4rem;
       aspect-ratio: 1;
     }
+  }
+}
+
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .pageProgresssComponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+  }
+  .lastPageProgresssComponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pageRoung {
+    width: 15%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0085be;
+    border-radius: 50%;
+    color: white;
+    border: solid 1px #0085be;
+  }
+  .RemainPageRoung {
+    width: 15%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    color: #0085be;
+    border: solid 1px #0085be;
+  }
+  .pageProressLine {
+    width: 85%;
+    height: 4px;
+    background-color: #0085be;
+  }
+  .RemainPageProressLine {
+    width: 85%;
+    height: 4px;
+    background-color: #0085be00;
   }
 }

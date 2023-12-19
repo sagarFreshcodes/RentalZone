@@ -102,4 +102,27 @@
       }
     }
   }
+
+  .AddListing {
+    .listingCategory {
+      display: flex;
+      justify-content: space-between;
+      max-height: 18rem;
+      overflow-y: auto;
+      flex-wrap: wrap;
+      .checkbox {
+        width: 12rem;
+      }
+    }
+    .Next {
+      padding: 10px 2rem !important;
+      margin-top: 1rem;
+    }
+    .FormHeader {
+      padding: 15px !important;
+    }
+    .Progressbar {
+      padding: 1rem;
+    }
+  }
 }
