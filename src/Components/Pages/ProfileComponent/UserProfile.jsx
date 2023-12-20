@@ -142,9 +142,11 @@ const UserProfilePage = ({}) => {
     setFormData(RowData);
   }, [user_details]);
 
-  useEffect(() => {
-    console.log("page", page);
-  }, [page]);
+  // useEffect(() => {
+  //   console.log("page", page);
+  //   setEditRecordData({});
+  //   setEditing(false);
+  // }, [page]);
 
   useEffect(() => {
     const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
@@ -169,9 +171,17 @@ const UserProfilePage = ({}) => {
               btnType: "dark",
             },
             { title: "All Listing", btnType: "light" },
-            { title: "Add Listing", btnType: "info" },
+            {
+              title:
+                editing == "editListing" ? "Update Listing" : "Add Listing",
+              btnType: "info",
+            },
             { title: "All Product", btnType: "warning" },
-            { title: "Add Product", btnType: "danger" },
+            {
+              title:
+                editing == "editProduct" ? "Update Product" : "Add Product",
+              btnType: "danger",
+            },
             { title: "Reviews", btnType: "success" },
             { title: "Bookings", btnType: "secondary" },
             { title: "Change Password", btnType: "primary" },

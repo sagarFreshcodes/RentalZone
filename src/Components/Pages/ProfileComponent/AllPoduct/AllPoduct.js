@@ -26,14 +26,45 @@ const AllPoduct = ({
   const [formData, setFormData] = useState({});
   const { data, last_page, links } = AllProduct;
   const [tableData, setTableData] = useState(data);
+  const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
+    localStorage.getItem("rentalUserAuthToken")
+  );
   const toggle = () => {
     setModel(!modal);
   };
 
   const ClickOnEditIcon = ({ item }) => {
-    setFormData(item);
-    toggle();
-    console.log(item);
+    const TestData = {
+      token: RentalUserAuthToken,
+      product_name: "afaa",
+      rent: "fsafs",
+      description: "fasfas",
+      brand: "ffasfs",
+      model: "fsfs",
+      meta_title: "fasfas",
+      meta_desc: "fsfasf",
+      listing: 1056,
+      category: 8,
+    };
+    const RowData = {
+      product_name: item?.product_name,
+      rent: item?.rent,
+      description: item?.description,
+      brand: item?.brand,
+      model: item?.model,
+      meta_title: item?.meta_title,
+      meta_desc: item?.meta_desc,
+      listing: item?.listing_id,
+      category: item?.category_id,
+      token: RentalUserAuthToken,
+    };
+    // console.log("TestData 25025", TestData);
+
+    // console.log("RowData 25025", RowData);
+    // console.log("item 25025", item);
+    // setFormData(item);
+    setEditing("editProduct");
+    ChangePage({ pagenumber: 5, data: RowData });
   };
   const OnSubmitForm = () => {
     const PostObject = ChangeKeyNameOfObject({
@@ -60,6 +91,7 @@ const AllPoduct = ({
   };
   useEffect(() => {
     setTableData(data);
+    setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
   }, [AllProduct]);
 
   return (

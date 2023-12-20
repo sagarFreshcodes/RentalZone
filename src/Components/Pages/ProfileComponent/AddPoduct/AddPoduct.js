@@ -16,6 +16,8 @@ import {
   ADD_LIST_API,
   ADD_PRODUCT_API,
   MY_LIST_API,
+  GET_USER_LIST_API,
+  UPDATE_PRODUCT_API,
 } from "../../../../Constant/api_constant";
 import {
   POST_FORMDATA_API,
@@ -45,15 +47,15 @@ const FormFields = [
     id: "listing",
     name: "listing",
     type: "select",
-    lable: "location_name",
-    ApiEndPoint: MY_LIST_API,
+    lable: "name",
+    ApiEndPoint: `${GET_USER_LIST_API}/${1}`,
     ApiBody: mayListbodyFormData,
   },
   {
     title: "Product name",
     id: "product_name",
     name: "product_name",
-    type: "select",
+    type: "text",
   },
   {
     title: "Rent",
@@ -101,15 +103,47 @@ const AddPoduct = ({
   setEditRecordData,
   editRecordData,
 }) => {
-  const [formData, setFormData] = useState({ token: RentalUserAuthToken });
+  const RowData =
+    editing == "editListing"
+      ? editRecordData
+      : {
+          token: RentalUserAuthToken,
+          product_name: "",
+          rent: "",
+          description: "",
+          brand: "",
+          model: "",
+          meta_title: "",
+          meta_desc: "",
+          listing: 1,
+          category: 8,
+        };
+  const TestData = {
+    token: RentalUserAuthToken,
+    product_name: "afaa",
+    rent: "fsafs",
+    description: "fasfas",
+    brand: "ffasfs",
+    model: "fsfs",
+    meta_title: "fasfas",
+    meta_desc: "fsfasf",
+    listing: 1056,
+    category: 8,
+  };
+
+  const [formData, setFormData] = useState(RowData);
 
   const OnSubmit = () => {
+    const Apiurl =
+      editing == "editProduct" ? UPDATE_PRODUCT_API : ADD_PRODUCT_API;
     POST_FORMDATA_API({
-      endPoint: `${API_ROOT_URL}/${ADD_PRODUCT_API}`,
+      endPoint: `${API_ROOT_URL}/${Apiurl}`,
       body: formData,
     })
       .then((responce) => {
         ToastSuccess(responce);
+        setEditRecordData({});
+        setEditing(false);
       })
       .catch((error) => {
         ToastError(error);
@@ -199,7 +233,9 @@ const AddPoduct = ({
             <Col lg="6" md="12" sm="12">
               <div className="FormHeader">
                 {" "}
-                <FS5 attr={{ className: "mb-0" }}>ADd Product</FS5>
+                <FS5 attr={{ className: "mb-0" }}>
+                  {editing == "editProduct" ? "Update Product" : "Add Product"}
+                </FS5>
               </div>
               <CardBody>
                 <form onSubmit={formik.handleSubmit} className="FormicForm">
@@ -223,6 +259,7 @@ const AddPoduct = ({
                               ApiEndPoint={i?.ApiEndPoint}
                               OnSelect={OnSelect}
                               fieldName={i.name}
+                              state={formData}
                             />
                           </div>
                         ) : (

@@ -86,6 +86,8 @@ const AddListing = ({
     })
       .then((responce) => {
         ToastSuccess(responce);
+        setEditRecordData({});
+        setEditing(false);
       })
       .catch((error) => {
         ToastError(error);
