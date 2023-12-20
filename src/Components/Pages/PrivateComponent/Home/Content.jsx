@@ -37,9 +37,10 @@ const Content = ({ props }) => {
     single_banner_four,
     banner_path,
     homepage_banners,
+    ads_banners,
   } = HomPageData || {};
-
-  const image_urls = homepage_banners ? homepage_banners  : [];
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
+  const image_urls = homepage_banners ? homepage_banners : [];
   const bannerList = [
     {
       link:
@@ -105,8 +106,8 @@ const Content = ({ props }) => {
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {
-    console.log("HomPageData2512", HomPageData);
-    console.log("banner_path", banner_path);
+    console.log("HomPageData2512", banner_image);
+    // console.log("banner_path", banner_path);
   };
   return (
     <Fragment className="searchHeadFragment">
@@ -151,6 +152,9 @@ const Content = ({ props }) => {
               </div>
             );
           })}
+        </div>
+        <div className="banner_image-box">
+          <img src={banner_image} alt="banner_image" />
         </div>
       </ContentBox>
       <ContentBox className="">

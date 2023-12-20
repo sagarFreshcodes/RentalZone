@@ -361,6 +361,15 @@
   left: 5%;
   color: white;
 }
+.banner_image-box {
+  width: 100% !important;
+}
+.banner_image-box img {
+  aspect-ratio: 8.6 !important;
+  width: 100% !important;
+  border-radius: 11px !important;
+  margin: 1rem 0 !important;
+}
 .Explores_Box .e_icon {
   font-size: 40px;
   line-height: 1;

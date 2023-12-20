@@ -113,10 +113,10 @@ const UserProfilePage = ({}) => {
       case 5:
         setPage(5);
         break;
-      case 8:
+      case 6:
         cp_toggle();
         break;
-      case 9:
+      case 7:
         Logout();
         break;
       default:
