@@ -25,7 +25,10 @@ const UserHeader = () => {
   }, []);
 
   const Logout = () => {
-    Log_Out({ Redirect: () => history(LIST_BUSINESS_ROUTE) });
+    Log_Out({
+      Redirect: () => history(LIST_BUSINESS_ROUTE),
+      loadingChange: () => console.log("first"),
+    });
   };
 
   const UserMenuRedirect = (redirect) => {

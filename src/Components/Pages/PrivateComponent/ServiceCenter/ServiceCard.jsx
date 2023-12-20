@@ -54,6 +54,7 @@ const ServiceCard = ({
   website,
   BreadcrumData,
   item,
+  featured,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
@@ -94,6 +95,8 @@ const ServiceCard = ({
               attrImage={{ src: burncastle, alt: "vector women with leptop" }}
             /> */}
             <Image attrImage={{ src: RandomImg, alt: "leptop image" }} />
+            {/* {featured?} */}
+            <div className="Featured">Featured</div>
             <div className="price_box">
               <div className="startFrom">
                 <FS3>Start From</FS3>
@@ -148,7 +151,7 @@ const ServiceCard = ({
                   {" "}
                   <FS3>{[category].join(", ")}</FS3>
                 </div>
-                <FS3 attr={{className:"areaName"}}>
+                <FS3 attr={{ className: "areaName" }}>
                   {area_name ? `${area_name},` : ""}
                   {city_name}
                 </FS3>

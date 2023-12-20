@@ -102,7 +102,7 @@ const ServiceCenter = () => {
   const test = () => {
     let BusinesssListing2 = [...top_five_listings, ...BusinesssListing];
     console.log(`BusinessState2512=>`, BusinesssPageData);
-    console.log(`BusinessState2512=>`, BusinesssListing2);
+    console.log(`top_five_listings=>`, BusinesssListing2);
   };
   useEffect(() => {
     const GetBusinessList = ({
