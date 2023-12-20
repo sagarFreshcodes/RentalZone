@@ -142,11 +142,13 @@ const UserProfilePage = ({}) => {
     setFormData(RowData);
   }, [user_details]);
 
-  // useEffect(() => {
-  //   console.log("page", page);
-  //   setEditRecordData({});
-  //   setEditing(false);
-  // }, [page]);
+  useEffect(() => {
+    if (![3, 5].includes(page)) {
+      console.log("page", page);
+      setEditRecordData({});
+      setEditing(false);
+    }
+  }, [page]);
 
   useEffect(() => {
     const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
