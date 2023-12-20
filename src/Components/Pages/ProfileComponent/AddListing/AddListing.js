@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
@@ -13,29 +13,45 @@ import {
   ToastError,
   ToastSuccess,
 } from "../../../Common/Component/helperFunction";
-import { ADD_LIST_API, API_ROOT_URL } from "../../../../Constant/api_constant";
-const RowData = {
-  listing_name: "",
-  address: "",
-  country: "",
-  state: "",
-  city: "",
-  area: "",
-  pincode: "",
-  phone_number: "",
-  email: "",
-  website: "",
-  contact_person: "",
-  description: "",
-  rates_per: "",
-  rates: "",
-  listing_category: "",
-};
-const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
+import {
+  ADD_LIST_API,
+  API_ROOT_URL,
+  UPDATE_LISTING_API,
+} from "../../../../Constant/api_constant";
 
-const AddListing = () => {
+const AddListing = ({
+  editing,
+  setEditing,
+  ChangePage,
+  setEditRecordData,
+  editRecordData,
+}) => {
   const [formIndex, setFormIndex] = useState(1);
-  const [formData, setFormData] = useState({
+  const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
+    localStorage.getItem("rentalUserAuthToken")
+  );
+
+  const RowData =
+    editing == "editListing"
+      ? editRecordData
+      : {
+          listing_name: "",
+          address: "",
+          country: "",
+          state: "",
+          city: "",
+          area: "",
+          pincode: "",
+          phone_number: "",
+          email: "",
+          website: "",
+          contact_person: "",
+          description: "",
+          rates_per: "",
+          rates: "",
+          listing_category: "",
+        };
+  const TestData = {
     listing_name: "Raghav Computers",
     address: "fasfasfasf",
     country: 101,
@@ -53,18 +69,19 @@ const AddListing = () => {
     listing_category: "[3, 4, 7, 9]",
     mobile: 7982165765,
     token: RentalUserAuthToken,
-  });
-
+  };
+  const [formData, setFormData] = useState(RowData);
   const ChangeFormIndex = (index) => {
     setFormIndex(index);
   };
   const NextPage = () => {
     setFormIndex(formIndex + 1);
   };
-  // .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+
   const OnSubmit = () => {
+    const Apiurl = editing == "editListing" ? UPDATE_LISTING_API : ADD_LIST_API;
     POST_FORMDATA_API({
-      endPoint: `${API_ROOT_URL}/${ADD_LIST_API}`,
+      endPoint: `${API_ROOT_URL}/${Apiurl}`,
       body: formData,
     })
       .then((responce) => {
@@ -85,9 +102,13 @@ const AddListing = () => {
   };
 
   const test = () => {
-    console.log(formData);
+    console.log("formData 25025", formData);
+    console.log("editRecordData 25025", editRecordData);
   };
 
+  useEffect(() => {
+    setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
+  }, []);
   return (
     <ContentBox>
       <br />

@@ -109,6 +109,7 @@ const Form2 = ({ AllProps }) => {
       lable: "name",
       ApiEndPoint: GET_COUNTRY_DROPDOWN_API,
       ApiBody: {},
+      state: formData,
     },
     {
       title: "State",
@@ -117,8 +118,9 @@ const Form2 = ({ AllProps }) => {
       name: "state",
       type: "select",
       lable: "name",
-      ApiEndPoint: `${GET_STATE_DROPDOWN_API}/${formData.country}`,
+      ApiEndPoint: `${GET_STATE_DROPDOWN_API}/${formData.country || 101}`,
       ApiBody: {},
+      state: formData,
     },
     {
       title: "City",
@@ -127,8 +129,9 @@ const Form2 = ({ AllProps }) => {
       name: "city",
       type: "select",
       lable: "city",
-      ApiEndPoint: `${GET_CITY_DROPDOWN_API}/${formData.state}`,
+      ApiEndPoint: `${GET_CITY_DROPDOWN_API}/${formData.state || 101}`,
       ApiBody: {},
+      state: formData,
     },
     {
       title: "Area",
@@ -137,8 +140,9 @@ const Form2 = ({ AllProps }) => {
       name: "area",
       type: "select",
       lable: "area_name",
-      ApiEndPoint: `${GET_AREA_DROPDOWN_API}/${formData.city}`,
+      ApiEndPoint: `${GET_AREA_DROPDOWN_API}/${formData.city || 101}`,
       ApiBody: {},
+      state: formData,
     },
     // {
     //   title: "Location",
@@ -258,6 +262,7 @@ const Form2 = ({ AllProps }) => {
                             ApiEndPoint={i?.ApiEndPoint}
                             OnSelect={OnSelect}
                             fieldName={i.name}
+                            state={formData}
                           />
                         </div>
                       ) : (

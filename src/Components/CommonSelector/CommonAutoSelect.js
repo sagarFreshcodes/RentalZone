@@ -32,9 +32,10 @@ const CommonAutoSelect = ({
   APIBody,
   ApiEndPoint,
   OnSelect,
+  state,
 }) => {
   const dispatch = useDispatch();
-  const [optionList, setOptionList] = useState();
+  const [optionList, setOptionList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [serchKeyword, setSerchKeyword] = useState("");
   const [optionShow, setOptionShow] = useState(false);
@@ -54,19 +55,24 @@ const CommonAutoSelect = ({
   };
 
   useEffect(() => {
-    console.log("labelName2545", labelName);
+    const chech = optionList.some((i) => i?.id == state[fieldName]);
+
     const Fun = async () => {
-      if (optionShow) {
+      //  !chech  is check some record exist in optionlist which id match with id which saved in form state(like formData); it usefull while we have only id of one option in state(especialy during update) ; we need lable in dropdown during page render
+      if (!chech || optionShow) {
         setLoading(true);
         axios
-          .post(
-            `${API_ROOT_URL}/${ApiEndPoint}`,
-            // `${API_ROOT_URL}/${SEARCH_CITY_AREA_API}?keyword=mumbai`,
-            APIBody || {}
-          )
+          .post(`${API_ROOT_URL}/${ApiEndPoint}`, APIBody || {})
           .then((response) => {
-            setOptionList(response?.data?.data);
-            console.log("response1236", response);
+            const ResponseData = response?.data?.data;
+            setOptionList(ResponseData);
+            setSerchKeyword(
+              chech
+                ? ResponseData?.filter((i) => i?.id == state[fieldName])[0][
+                    labelName
+                  ]
+                : ""
+            );
             setLoading(false);
           })
           .catch((error) => {
@@ -81,8 +87,8 @@ const CommonAutoSelect = ({
       Fun();
     }, 1000);
     return () => clearTimeout(timeout);
-  }, [serchKeyword, optionShow]);
-
+  }, [optionShow]);
+  // }, [serchKeyword, optionShow]);
   return (
     <div
       className={`${style || "CommonSelect form-control d-flex commonInput"} ${
@@ -113,20 +119,26 @@ const CommonAutoSelect = ({
         >
           {optionList?.length > 0 ? (
             <>
-              {optionList?.map((e) => {
-                return (
-                  <>
-                    <div
-                      className="OptionBox_item"
-                      onClick={() => onHandleClick(e)}
-                    >
-                      {/* <img className="optionImg" src={fort} alt="" /> &nbsp;{e?.name} */}
+              {optionList
+                .filter((i) =>
+                  `${i[labelName]}`
+                    .toLowerCase()
+                    .includes(`${serchKeyword}`.toLowerCase())
+                )
+                ?.map((e) => {
+                  return (
+                    <>
+                      <div
+                        className="OptionBox_item"
+                        onClick={() => onHandleClick(e)}
+                      >
+                        {/* <img className="optionImg" src={fort} alt="" /> &nbsp;{e?.name} */}
 
-                      {(e[labelName] && e[labelName]) || e?.city}
-                    </div>
-                  </>
-                );
-              })}
+                        {(e[labelName] && e[labelName]) || e?.city}
+                      </div>
+                    </>
+                  );
+                })}
             </>
           ) : (
             <div className="OptionBox_item text-center">No records</div>

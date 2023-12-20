@@ -14,7 +14,14 @@ import {
 import { ToastContainer } from "react-toastify";
 import ProductUpdate from "../../Models/AllPoduct/ProductUpdate";
 
-const AllPoduct = ({ AllProduct }) => {
+const AllPoduct = ({
+  AllProduct,
+  editing,
+  setEditing,
+  ChangePage,
+  setEditRecordData,
+  editRecordData,
+}) => {
   const [modal, setModel] = useState(false);
   const [formData, setFormData] = useState({});
   const { data, last_page, links } = AllProduct;

@@ -8,9 +8,9 @@ import * as Yup from "yup";
 const FormFields = [
   {
     title: "Phone Number",
-    name: "mobile",
-    id: "mobile",
-    name: "mobile",
+    name: "phone_number",
+    id: "phone_number",
+    name: "phone_number",
     type: "number",
   },
   {
@@ -44,13 +44,13 @@ const Form3 = ({ AllProps }) => {
 
   const formik = useFormik({
     initialValues: {
-      mobile: "",
+      phone_number: "",
       email: "",
       website: "",
       contact_person: "",
     },
     validationSchema: Yup.object({
-      mobile: Yup.string().required("Mobile number Required"),
+      phone_number: Yup.string().required("phone_number number Required"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email id Required"),
@@ -66,7 +66,7 @@ const Form3 = ({ AllProps }) => {
     setFormData({
       ...formData,
 
-      mobile: formik.values["mobile"],
+      phone_number: formik.values["phone_number"],
       email: formik.values["email"],
       website: formik.values["website"],
       contact_person: formik.values["contact_person"],
@@ -77,14 +77,14 @@ const Form3 = ({ AllProps }) => {
     console.log(`formik.errors===>`, formik.errors);
     setFormData({
       ...formData,
-      mobile: formik.values["mobile"],
+      phone_number: formik.values["phone_number"],
       email: formik.values["email"],
       website: formik.values["website"],
       contact_person: formik.values["contact_person"],
     });
 
     formik.setValues({
-      mobile: formData["mobile"],
+      phone_number: formData["phone_number"],
       email: formData["email"],
       website: formData["website"],
       contact_person: formData["contact_person"],

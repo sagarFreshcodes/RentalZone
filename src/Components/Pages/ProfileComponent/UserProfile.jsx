@@ -31,8 +31,10 @@ import { AllListing } from "./AllListing/AllListing";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
   const [navbarShow, setNavbarShow] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [page, setPage] = useState(1);
   const [modal, setModel] = useState(false);
+  const [editRecordData, setEditRecordData] = useState({});
   const user_details = useSelector((state) => state.UserReducer.user_details);
   const userStateData = useSelector((state) => state.UserReducer);
   const { token, AllList, AllProduct } = userStateData || {
@@ -101,6 +103,10 @@ const UserProfilePage = ({}) => {
     }
   };
 
+  const ChangePage = ({ pagenumber, data }) => {
+    setPage(pagenumber);
+    setEditRecordData(data);
+  };
   const Toggle = () => {
     setNavbarShow(!navbarShow);
   };
@@ -145,6 +151,7 @@ const UserProfilePage = ({}) => {
     dispatch(MyListApi({ Token: RentalUserAuthToken }));
     dispatch(AllProductApi({ Token: RentalUserAuthToken }));
   }, []);
+
   return (
     <Fragment>
       <div className="user-profile ProfileComponent">
@@ -216,13 +223,39 @@ const UserProfilePage = ({}) => {
             navbarShow={navbarShow}
           />
         ) : page == 2 ? (
-          <AllListing AllList={AllList} />
+          <AllListing
+            AllList={AllList}
+            editing={editing}
+            setEditing={setEditing}
+            ChangePage={ChangePage}
+            setEditRecordData={setEditRecordData}
+            editRecordData={editRecordData}
+          />
         ) : page == 3 ? (
-          <AddListing />
+          <AddListing
+            editing={editing}
+            setEditing={setEditing}
+            ChangePage={ChangePage}
+            setEditRecordData={setEditRecordData}
+            editRecordData={editRecordData}
+          />
         ) : page == 4 ? (
-          <AllPoduct AllProduct={AllProduct} />
+          <AllPoduct
+            AllProduct={AllProduct}
+            editing={editing}
+            setEditing={setEditing}
+            ChangePage={ChangePage}
+            setEditRecordData={setEditRecordData}
+            editRecordData={editRecordData}
+          />
         ) : (
-          <AddPoduct />
+          <AddPoduct
+            editing={editing}
+            setEditing={setEditing}
+            ChangePage={ChangePage}
+            setEditRecordData={setEditRecordData}
+            editRecordData={editRecordData}
+          />
         )}
       </div>
       <ProfileModel

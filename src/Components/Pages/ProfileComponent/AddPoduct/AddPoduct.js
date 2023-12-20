@@ -93,7 +93,14 @@ const FormFields = [
   },
 ];
 
-const AddPoduct = ({ AllProps }) => {
+const AddPoduct = ({
+  AllProps,
+  editing,
+  setEditing,
+  ChangePage,
+  setEditRecordData,
+  editRecordData,
+}) => {
   const [formData, setFormData] = useState({ token: RentalUserAuthToken });
 
   const OnSubmit = () => {
