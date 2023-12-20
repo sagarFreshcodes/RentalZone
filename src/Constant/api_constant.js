@@ -12,6 +12,7 @@ export const GOOGLE_LOGIN = `google-login`;
 export const LOG_OUT = `logout-user`;
 export const UPDATE_PROFILE = `update-profile`;
 export const MY_LIST_API = `my-listings`;
+export const DELETE_LIST_API = `delete-listing`;
 export const GET_USER_LIST_API = `get-user-list`;
 export const ADD_LIST_API = `add-listing`;
 export const ADD_PRODUCT_API = `add-product`;

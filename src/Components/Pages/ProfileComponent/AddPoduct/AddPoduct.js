@@ -25,75 +25,6 @@ import {
   ToastSuccess,
 } from "../../../Common/Component/helperFunction";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
-
-const mayListBody = { token: RentalUserAuthToken };
-const mayListbodyFormData = new FormData();
-Object.keys(mayListBody).map((i) => {
-  mayListbodyFormData.append(i, mayListBody[i]);
-});
-const FormFields = [
-  {
-    title: "Category",
-    id: "category",
-    name: "category",
-    type: "select",
-    lable: "category_name",
-    ApiEndPoint: GET_CATEGORY_DROPDOWN_API,
-    ApiBody: {},
-  },
-  {
-    title: "Listing",
-    id: "listing",
-    name: "listing",
-    type: "select",
-    lable: "name",
-    ApiEndPoint: `${GET_USER_LIST_API}/${1}`,
-    ApiBody: mayListbodyFormData,
-  },
-  {
-    title: "Product name",
-    id: "product_name",
-    name: "product_name",
-    type: "text",
-  },
-  {
-    title: "Rent",
-    id: "rent",
-    name: "rent",
-    type: "text",
-  },
-  {
-    title: "Description",
-    id: "description",
-    name: "description",
-    type: "textarea",
-  },
-  {
-    title: "Brand",
-    id: "brand",
-    name: "brand",
-    type: "text",
-  },
-  {
-    title: "Model",
-    id: "model",
-    name: "model",
-    type: "text",
-  },
-  {
-    title: "Meta Title",
-    id: "meta_title",
-    name: "meta_title",
-    type: "text",
-  },
-  {
-    title: "Meta Desc",
-    id: "meta_desc",
-    name: "meta_desc",
-    type: "text",
-  },
-];
 
 const AddPoduct = ({
   AllProps,
@@ -103,6 +34,76 @@ const AddPoduct = ({
   setEditRecordData,
   editRecordData,
 }) => {
+  const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
+    localStorage.getItem("rentalUserAuthToken")
+  );
+  const mayListBody = { token: RentalUserAuthToken };
+  const mayListbodyFormData = new FormData();
+  Object.keys(mayListBody).map((i) => {
+    mayListbodyFormData.append(i, mayListBody[i]);
+  });
+  const FormFields = [
+    {
+      title: "Category",
+      id: "category",
+      name: "category",
+      type: "select",
+      lable: "category_name",
+      ApiEndPoint: GET_CATEGORY_DROPDOWN_API,
+      ApiBody: {},
+    },
+    {
+      title: "Listing",
+      id: "listing",
+      name: "listing",
+      type: "select",
+      lable: "name",
+      ApiEndPoint: `${GET_USER_LIST_API}/${1}`,
+      ApiBody: mayListbodyFormData,
+    },
+    {
+      title: "Product name",
+      id: "product_name",
+      name: "product_name",
+      type: "text",
+    },
+    {
+      title: "Rent",
+      id: "rent",
+      name: "rent",
+      type: "text",
+    },
+    {
+      title: "Description",
+      id: "description",
+      name: "description",
+      type: "textarea",
+    },
+    {
+      title: "Brand",
+      id: "brand",
+      name: "brand",
+      type: "text",
+    },
+    {
+      title: "Model",
+      id: "model",
+      name: "model",
+      type: "text",
+    },
+    {
+      title: "Meta Title",
+      id: "meta_title",
+      name: "meta_title",
+      type: "text",
+    },
+    {
+      title: "Meta Desc",
+      id: "meta_desc",
+      name: "meta_desc",
+      type: "text",
+    },
+  ];
   const RowData =
     editing == "editListing"
       ? editRecordData
@@ -216,6 +217,7 @@ const AddPoduct = ({
   }, [formik.values]);
 
   useEffect(() => {
+    setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
     if (editing == "editProduct") {
       setFormData(editRecordData);
     }

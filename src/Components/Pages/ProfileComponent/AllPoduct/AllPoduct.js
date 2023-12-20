@@ -4,15 +4,18 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import {
   ChangeKeyNameOfObject,
   POST_API,
+  POST_FORMDATA_API,
   ToastError,
   ToastSuccess,
 } from "../../../Common/Component/helperFunction";
 import {
   API_ROOT_URL,
+  DELETE_LIST_API,
   UPDATE_LISTING_API,
 } from "../../../../Constant/api_constant";
 import { ToastContainer } from "react-toastify";
 import ProductUpdate from "../../Models/AllPoduct/ProductUpdate";
+import DeleteModel from "../../Models/DeleteModel/DeleteModel";
 
 const AllPoduct = ({
   AllProduct,
@@ -23,6 +26,7 @@ const AllPoduct = ({
   editRecordData,
 }) => {
   const [modal, setModel] = useState(false);
+  const [d_modal, setD_Model] = useState(false);
   const [formData, setFormData] = useState({});
   const { data, last_page, links } = AllProduct;
   const [tableData, setTableData] = useState(data);
@@ -33,6 +37,9 @@ const AllPoduct = ({
     setModel(!modal);
   };
 
+  const d_toggle = () => {
+    setD_Model(!d_modal);
+  };
   const ClickOnEditIcon = ({ item }) => {
     const TestData = {
       token: RentalUserAuthToken,
@@ -67,6 +74,27 @@ const AllPoduct = ({
     setEditing("editProduct");
     ChangePage({ pagenumber: 5, data: RowData });
   };
+  const ClickOnDeleteIcon = ({ item }) => {
+    setEditRecordData(item);
+    d_toggle();
+  };
+  const OnDelete = () => {
+    console.log("TestData 25025", editRecordData);
+    POST_FORMDATA_API({
+      endPoint: `${API_ROOT_URL}/${DELETE_LIST_API}`,
+      body: { listing_id: editRecordData.id, token: RentalUserAuthToken },
+    })
+      .then((responce) => {
+        ToastSuccess(responce);
+        setEditRecordData({});
+        setEditing(false);
+        d_toggle();
+      })
+      .catch((error) => {
+        ToastError(error);
+        d_toggle();
+      });
+  };
   const OnSubmitForm = () => {
     const PostObject = ChangeKeyNameOfObject({
       obj: formData,
@@ -100,7 +128,11 @@ const AllPoduct = ({
       <ContentBox>
         <br />
         <br />
-        <ListingTable tableData={tableData} ClickOnEditIcon={ClickOnEditIcon} />
+        <ListingTable
+          tableData={tableData}
+          ClickOnEditIcon={ClickOnEditIcon}
+          ClickOnDeleteIcon={ClickOnDeleteIcon}
+        />
       </ContentBox>
       <ProductUpdate
         toggler={toggle}
@@ -110,6 +142,12 @@ const AllPoduct = ({
         OnSubmitForm={OnSubmitForm}
       />
       <ToastContainer />
+      <DeleteModel
+        toggler={d_toggle}
+        isOpen={d_modal}
+        OnDelete={OnDelete}
+        lablename={editRecordData["name"]}
+      />
     </>
   );
 };

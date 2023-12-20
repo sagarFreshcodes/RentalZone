@@ -160,7 +160,7 @@ const UserProfilePage = ({}) => {
       console.log("28524", page);
       dispatch(AllProductApi({ Token: RentalUserAuthToken }));
     }
-  }, [page]);
+  }, [page, editing]);
 
   return (
     <Fragment>

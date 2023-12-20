@@ -8,7 +8,7 @@ import {
   formatDate1,
 } from "../../../Common/Component/helperFunction";
 
-const ListingTable = ({ tableData, ClickOnEditIcon }) => {
+const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
   const test = () => {
     console.log("tableData11254", tableData);
   };
@@ -73,7 +73,11 @@ const ListingTable = ({ tableData, ClickOnEditIcon }) => {
                           />
                           <ReactIcon
                             iconName={"AiFillDelete"}
-                            attr={{ className: "AiFillDelete" }}
+                            attr={{
+                              className: "AiFillDelete",
+
+                              onClick: () => ClickOnDeleteIcon({ item: item }),
+                            }}
                           />
                         </div>
                       </td>
