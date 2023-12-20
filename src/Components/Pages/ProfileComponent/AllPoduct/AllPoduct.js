@@ -11,11 +11,14 @@ import {
 import {
   API_ROOT_URL,
   DELETE_LIST_API,
+  DELETE_PRODUCT_API,
   UPDATE_LISTING_API,
 } from "../../../../Constant/api_constant";
 import { ToastContainer } from "react-toastify";
 import ProductUpdate from "../../Models/AllPoduct/ProductUpdate";
 import DeleteModel from "../../Models/DeleteModel/DeleteModel";
+import { TableSkelaton } from "../../../Common/Component/Sleleton/Skelaton";
+import { PageContentManager } from "../../../Common/Component/DesignElement";
 
 const AllPoduct = ({
   AllProduct,
@@ -24,6 +27,7 @@ const AllPoduct = ({
   ChangePage,
   setEditRecordData,
   editRecordData,
+  isProductLoading,
 }) => {
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
@@ -81,8 +85,8 @@ const AllPoduct = ({
   const OnDelete = () => {
     console.log("TestData 25025", editRecordData);
     POST_FORMDATA_API({
-      endPoint: `${API_ROOT_URL}/${DELETE_LIST_API}`,
-      body: { listing_id: editRecordData.id, token: RentalUserAuthToken },
+      endPoint: `${API_ROOT_URL}/${DELETE_PRODUCT_API}`,
+      body: { product_id: editRecordData.id, token: RentalUserAuthToken },
     })
       .then((responce) => {
         ToastSuccess(responce);
@@ -128,10 +132,24 @@ const AllPoduct = ({
       <ContentBox>
         <br />
         <br />
-        <ListingTable
-          tableData={tableData}
-          ClickOnEditIcon={ClickOnEditIcon}
-          ClickOnDeleteIcon={ClickOnDeleteIcon}
+        <PageContentManager
+          isLoading={isProductLoading}
+          loader={<TableSkelaton />}
+          contentArray={tableData}
+          ContentBody={
+            <ListingTable
+              tableData={tableData}
+              ClickOnEditIcon={ClickOnEditIcon}
+              ClickOnDeleteIcon={ClickOnDeleteIcon}
+            />
+          }
+          // pagination={
+          //   <PaginationBar
+          //     last_page={5}
+          //     current_page={1}
+          //     setCurrentPage={(setCurrentPage) => console.log("first")}
+          //   />
+          // }
         />
       </ContentBox>
       <ProductUpdate

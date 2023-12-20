@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn, H5 } from "../../../../AbstractElements";
 import { useState } from "react";
-import { CloseButton } from "../../../Common/Component/DesignElement";
+import {
+  ApiLoader,
+  CloseButton,
+} from "../../../Common/Component/DesignElement";
 import * as Yup from "yup";
 import { useFormik, ErrorMessage } from "formik";
 
@@ -53,9 +56,8 @@ const ProfileModel = (props) => {
     OnSubmitForm,
     setImgData,
     imgData,
+    loader,
   } = props || {};
-
-  const [loader, setLoader] = useState(false);
 
   const validation = useFormik({
     // enableReinitialize: true,
@@ -76,7 +78,6 @@ const ProfileModel = (props) => {
 
     onSubmit: (values) => {
       console.log(formData);
-      setLoader(true);
     },
   });
 
@@ -187,7 +188,7 @@ const ProfileModel = (props) => {
         <br />
         <div className="gq-model-bbox">
           <Btn attrBtn={{ color: "primary", onClick: () => OnSubmitForm() }}>
-            {"Submit"}
+            {"Submit"} {loader ? <ApiLoader /> : ""}
           </Btn>
         </div>
       </ModalBody>

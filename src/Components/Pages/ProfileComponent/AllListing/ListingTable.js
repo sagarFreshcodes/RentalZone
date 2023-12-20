@@ -8,7 +8,12 @@ import {
   formatDate1,
 } from "../../../Common/Component/helperFunction";
 
-const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
+const ListingTable = ({
+  tableData,
+  ClickOnEditIcon,
+  ClickOnDeleteIcon,
+  isListingLoading,
+}) => {
   const test = () => {
     console.log("tableData11254", tableData);
   };
@@ -32,7 +37,9 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
                   <th scope="col">{"Action"}</th>
                 </tr>
               </thead>
-              <tbody className="tableBody">
+              <tbody
+                className={`tableBody ${isListingLoading ? "BlurElement" : ""}`}
+              >
                 {tableData &&
                   tableData?.map((item, index) => (
                     <tr key={index}>
@@ -57,10 +64,10 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
                       </td>
                       <td>
                         <div className="TableAction">
-                          <ReactIcon
+                          {/* <ReactIcon
                             iconName={"AiFillEye"}
                             attr={{ className: "AiFillEye" }}
-                          />
+                          /> */}
 
                           <ReactIcon
                             iconName={"AiFillEdit"}

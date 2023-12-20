@@ -12,7 +12,7 @@
       display: none !important;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1000px) {
       flex-direction: column;
       background-color: rgb(122 122 122 / 77%);
       width: fit-content !important;
@@ -32,7 +32,7 @@
     .p_navbar_list {
       font-size: 2rem;
       display: none;
-      @media screen and (max-width: 800px) {
+      @media screen and (max-width: 1000px) {
         display: block !important;
       }
     }

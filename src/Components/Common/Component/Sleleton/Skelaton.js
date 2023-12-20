@@ -109,22 +109,44 @@ export const TestSkelaton = () => {
 export const SC_CardSkelaton = () => {
   return (
     <>
-   <div className="w-100">
-   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => {
-        return (
-          <div className="SC_CardSkelaton">
-            <Skeleton active avatar>
-              <List.Item.Meta
-                avatar={<Skeleton.Image active />}
-                title={<a href={`item.href`}>{`item.title`}</a>}
-                description={`item.description`}
-              />
-              {`item.content`}
-            </Skeleton>
-          </div>
-        );
-      })}
-   </div>
+      <div className="w-100">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => {
+          return (
+            <div className="SC_CardSkelaton">
+              <Skeleton active avatar>
+                <List.Item.Meta
+                  avatar={<Skeleton.Image active />}
+                  title={<a href={`item.href`}>{`item.title`}</a>}
+                  description={`item.description`}
+                />
+                {`item.content`}
+              </Skeleton>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export const TableSkelaton = () => {
+  return (
+    <>
+      <div className="w-100">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => {
+          return (
+            <div className="SC_CardSkelaton">
+              <Skeleton active>
+                <List.Item.Meta
+                  title={<a href={`item.href`}>{`item.title`}</a>}
+                  description={`item.description`}
+                />
+                {`item.content`}
+              </Skeleton>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

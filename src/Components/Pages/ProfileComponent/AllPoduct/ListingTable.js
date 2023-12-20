@@ -59,10 +59,10 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
                       </td>
                       <td>
                         <div className="TableAction">
-                          <ReactIcon
+                          {/* <ReactIcon
                             iconName={"AiFillEye"}
                             attr={{ className: "AiFillEye" }}
-                          />
+                          /> */}
 
                           <ReactIcon
                             iconName={"AiFillEdit"}

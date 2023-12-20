@@ -13,6 +13,7 @@ const initialState = {
   AllList: {},
   AllProduct: {},
   isProductLoading: false,
+  isListingLoading: false,
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -45,19 +46,19 @@ const UserReducer = (state = initialState, action) => {
     case ActionType.ON_FAILURE_MY_LIST_API:
       return {
         ...state,
-        isLoading: true,
+        isListingLoading: true,
         error: null,
       };
     case ActionType.ON_SUCCESS_MY_LIST_API:
       return {
         ...state,
-        isLoading: false,
+        isListingLoading: false,
         AllList: action.payload,
       };
     case ActionType.ON_REQUEST_MY_LIST_API:
       return {
         ...state,
-        isLoading: false,
+        isListingLoading: false,
         error: action.payload,
       };
     case ActionType.ON_CHANGE_TOKEN_API:

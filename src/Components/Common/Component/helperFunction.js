@@ -387,7 +387,8 @@ export const HanggingBar = () => {
   );
 };
 
-export const Log_Out = ({ Redirect }) => {
+export const Log_Out = ({ Redirect, loadingChange }) => {
+  loadingChange("logOutLoader", true);
   const bodyFormData = new FormData();
   const UserToken = localStorage.getItem("rentalUserAuthToken");
   bodyFormData.append("token", UserToken);
@@ -405,10 +406,12 @@ export const Log_Out = ({ Redirect }) => {
       localStorage.removeItem("user_details");
       localStorage.setItem("authenticated", false);
       Redirect();
+      loadingChange("logOutLoader", false);
     })
     .catch((error) => {
       ToastError(error);
       Redirect();
+      loadingChange("logOutLoader", false);
     });
 };
 

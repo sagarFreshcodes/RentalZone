@@ -10,6 +10,7 @@ import {
 import {
   Log_Out,
   POST_API,
+  POST_FORMDATA_API,
   ReactIcon,
   ToastError,
   ToastSuccess,
@@ -17,9 +18,10 @@ import {
 import {
   API_ROOT_URL,
   CHECK_OTP,
+  DELETE_PRODUCT_API,
+  UPDATE_PASSWORD_API,
   UPDATE_PROFILE,
 } from "../../../Constant/api_constant";
-import { RentalUserAuthToken } from "../../../Constant/general_constant";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router";
 import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
@@ -28,30 +30,55 @@ import { AddListing } from "./AddListing/AddListing";
 import { AllPoduct } from "./AllPoduct/AllPoduct";
 import { AddPoduct } from "./AddPoduct/AddPoduct";
 import { AllListing } from "./AllListing/AllListing";
+import { ApiLoader } from "../../Common/Component/DesignElement";
+import ChangePassword from "../Models/ChangePassword/ChangePassword";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
   const [navbarShow, setNavbarShow] = useState(false);
   const [editing, setEditing] = useState(false);
   const [page, setPage] = useState(1);
+  const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
+    localStorage.getItem("rentalUserAuthToken")
+  );
+  const [changePwd, setChangePwd] = useState({
+    password: "",
+    confirm_password: "",
+  });
   const [modal, setModel] = useState(false);
+  const [profileLoader, setProfileLoader] = useState(false);
+  const [cp_modal, setCp_Model] = useState(false);
+  const [loader, setLoader] = useState({
+    profileLoader: false,
+    logOutLoader: false,
+    changePwd: false,
+  });
+
   const [editRecordData, setEditRecordData] = useState({});
   const user_details = useSelector((state) => state.UserReducer.user_details);
   const userStateData = useSelector((state) => state.UserReducer);
-  const { token, AllList, AllProduct } = userStateData || {
-    AllList: [],
-    AllProduct: [],
+  const loadingChange = (name, type) => {
+    setLoader({ ...profileLoader, [name]: type });
   };
+  const cp_toggle = () => {
+    setCp_Model(!cp_modal);
+  };
+
+  const { token, AllList, AllProduct, isProductLoading, isListingLoading } =
+    userStateData || {
+      AllList: [],
+      AllProduct: [],
+    };
   const dispatch = useDispatch();
   const RowData = {
-    profile_banner: user_details && user_details?.profile_pic,
-    profile_pic: user_details && user_details?.profile_banner,
+    profile_banner: user_details?.profile_banner,
+    profile_pic: user_details && user_details?.profile_pic,
     name: user_details && user_details?.name,
     email: user_details && user_details?.email,
     phone_number: user_details && user_details?.phone_number,
     user_website: user_details && user_details?.user_website,
     token: token,
-    profile_banner_URL: user_details && user_details?.profile_pic,
-    profile_pic_URL: user_details && user_details?.profile_banner,
+    profile_banner_URL: user_details && user_details?.profile_banner,
+    profile_pic_URL: user_details && user_details?.profile_pic,
   };
 
   const [formData, setFormData] = useState(RowData);
@@ -60,21 +87,12 @@ const UserProfilePage = ({}) => {
     setModel(!modal);
   };
   const history = useNavigate();
-  const readUrl = (event) => {
-    if (event.target.files.length === 0) return;
-    var mimeType = event.target.files[0].type;
 
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (_event) => {
-      setUrl(reader.result);
-    };
-  };
   const Logout = () => {
-    Log_Out({ Redirect: () => history(LIST_BUSINESS_ROUTE) });
+    Log_Out({
+      Redirect: () => history(LIST_BUSINESS_ROUTE),
+      loadingChange: loadingChange,
+    });
   };
   const ButtonClick = ({ i, index }) => {
     Toggle();
@@ -95,6 +113,9 @@ const UserProfilePage = ({}) => {
       case 5:
         setPage(5);
         break;
+      case 8:
+        cp_toggle();
+        break;
       case 9:
         Logout();
         break;
@@ -111,6 +132,7 @@ const UserProfilePage = ({}) => {
     setNavbarShow(!navbarShow);
   };
   const OnSubmitForm = () => {
+    loadingChange("profileLoader", true);
     const bodyFormData = new FormData();
     Object.keys(formData).map((i) => {
       bodyFormData.append(i, formData[i]);
@@ -122,6 +144,7 @@ const UserProfilePage = ({}) => {
     })
       .then((response) => {
         console.log("data123654", response);
+        loadingChange("profileLoader", false);
         SetUserProfile({
           profileData: response?.data?.data[0],
         });
@@ -134,10 +157,28 @@ const UserProfilePage = ({}) => {
         setModel(!modal);
       })
       .catch((error) => {
+        loadingChange("profileLoader", false);
         ToastError(error);
       });
   };
-
+  const OnPwdChange = () => {
+    loadingChange("changePwd", true);
+    console.log("TestData 25025", editRecordData);
+    POST_FORMDATA_API({
+      endPoint: `${API_ROOT_URL}/${UPDATE_PASSWORD_API}`,
+      body: { password: changePwd.password, token: RentalUserAuthToken },
+    })
+      .then((responce) => {
+        ToastSuccess(responce);
+        cp_toggle();
+        loadingChange("changePwd", false);
+      })
+      .catch((error) => {
+        ToastError(error);
+        cp_toggle();
+        loadingChange("changePwd", false);
+      });
+  };
   useEffect(() => {
     setFormData(RowData);
   }, [user_details]);
@@ -160,8 +201,11 @@ const UserProfilePage = ({}) => {
       console.log("28524", page);
       dispatch(AllProductApi({ Token: RentalUserAuthToken }));
     }
-  }, [page, editing]);
 
+    setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
+  }, [page, editing, editRecordData]);
+  console.log("loader.logOutLoader", loader.logOutLoader);
+  useEffect(() => {}, [loader]);
   return (
     <Fragment>
       <div className="user-profile ProfileComponent">
@@ -190,10 +234,20 @@ const UserProfilePage = ({}) => {
                 editing == "editProduct" ? "Update Product" : "Add Product",
               btnType: "danger",
             },
-            { title: "Reviews", btnType: "success" },
-            { title: "Bookings", btnType: "secondary" },
-            { title: "Change Password", btnType: "primary" },
-            { title: "Logout", btnType: "dark" },
+            // { title: "Reviews", btnType: "success" },
+            // { title: "Bookings", btnType: "secondary" },
+            {
+              title: "Change Password",
+              btnType: "primary",
+              isloader: true,
+              loderCondition: loader.changePwd,
+            },
+            {
+              title: "Logout",
+              btnType: "dark",
+              isloader: true,
+              loderCondition: loader.logOutLoader,
+            },
           ].map((i, index) => (
             <button
               type="button"
@@ -201,7 +255,7 @@ const UserProfilePage = ({}) => {
               class={`btn btn-outline-dark navbarButton1`}
               onClick={() => ButtonClick({ i: i, index: index })}
             >
-              {i.title}
+              {i.title} {i.isloader && i.loderCondition ? <ApiLoader /> : ""}
             </button>
           ))}
 
@@ -222,10 +276,20 @@ const UserProfilePage = ({}) => {
               btnType: "warning",
             },
             { title: "Add Product", btnType: "danger" },
-            { title: "Reviews", btnType: "success" },
-            { title: "Bookings", btnType: "secondary" },
-            { title: "Change Password", btnType: "primary" },
-            { title: "Logout", btnType: "dark" },
+            // { title: "Reviews", btnType: "success" },
+            // { title: "Bookings", btnType: "secondary" },
+            {
+              title: "Change Password",
+              btnType: "primary",
+              isloader: true,
+              loderCondition: loader.changePwd,
+            },
+            {
+              title: "Logout",
+              btnType: "dark",
+              isloader: true,
+              loderCondition: loader.logOutLoader,
+            },
           ].map((i, index) => (
             <button
               key={index}
@@ -235,7 +299,7 @@ const UserProfilePage = ({}) => {
               }`}
               onClick={() => ButtonClick({ i: i, index: index })}
             >
-              {i.title}
+              {i.title} {i.isloader && i.loderCondition ? <ApiLoader /> : ""}
             </button>
           ))}
         </div>
@@ -247,6 +311,7 @@ const UserProfilePage = ({}) => {
             formData={formData}
             page={page}
             navbarShow={navbarShow}
+            profileLoader={profileLoader}
           />
         ) : page == 2 ? (
           <AllListing
@@ -256,6 +321,7 @@ const UserProfilePage = ({}) => {
             ChangePage={ChangePage}
             setEditRecordData={setEditRecordData}
             editRecordData={editRecordData}
+            isListingLoading={isListingLoading}
           />
         ) : page == 3 ? (
           <AddListing
@@ -273,6 +339,7 @@ const UserProfilePage = ({}) => {
             ChangePage={ChangePage}
             setEditRecordData={setEditRecordData}
             editRecordData={editRecordData}
+            isProductLoading={isProductLoading}
           />
         ) : (
           <AddPoduct
@@ -291,8 +358,17 @@ const UserProfilePage = ({}) => {
         formData={formData}
         setFormData={setFormData}
         OnSubmitForm={OnSubmitForm}
+        loader={loader.profileLoader}
       />
       <ToastContainer />
+      <ChangePassword
+        toggler={cp_toggle}
+        isOpen={cp_modal}
+        OnPwdChange={OnPwdChange}
+        changePwd={changePwd}
+        setChangePwd={setChangePwd}
+        loader={loader.changePwd}
+      />
     </Fragment>
   );
 };

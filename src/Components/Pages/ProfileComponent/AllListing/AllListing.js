@@ -16,6 +16,13 @@ import {
 } from "../../../../Constant/api_constant";
 import { ToastContainer } from "react-toastify";
 import DeleteModel from "../../Models/DeleteModel/DeleteModel";
+import {
+  MyListingSkelaton,
+  SC_CardSkelaton,
+  TableSkelaton,
+} from "../../../Common/Component/Sleleton/Skelaton";
+import PaginationBar from "../../PrivateComponent/ServiceCenter/Pagination";
+import { PageContentManager } from "../../../Common/Component/DesignElement";
 
 const AllListing = ({
   AllList,
@@ -24,6 +31,7 @@ const AllListing = ({
   ChangePage,
   setEditRecordData,
   editRecordData,
+  isListingLoading,
 }) => {
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
@@ -141,10 +149,26 @@ const AllListing = ({
       <ContentBox>
         <br />
         <br />
-        <ListingTable
-          tableData={tableData}
-          ClickOnEditIcon={ClickOnEditIcon}
-          ClickOnDeleteIcon={ClickOnDeleteIcon}
+
+        <PageContentManager
+          isLoading={isListingLoading}
+          loader={<TableSkelaton />}
+          contentArray={tableData}
+          ContentBody={
+            <ListingTable
+              tableData={tableData}
+              ClickOnEditIcon={ClickOnEditIcon}
+              ClickOnDeleteIcon={ClickOnDeleteIcon}
+              isListingLoading={isListingLoading}
+            />
+          }
+          // pagination={
+          //   <PaginationBar
+          //     last_page={5}
+          //     current_page={1}
+          //     setCurrentPage={(setCurrentPage) => console.log("first")}
+          //   />
+          // }
         />
       </ContentBox>
       <ListingUpdate
