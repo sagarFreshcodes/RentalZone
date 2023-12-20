@@ -47,6 +47,7 @@ const AllPoduct = ({
       category: 8,
     };
     const RowData = {
+      product_id: item.id,
       product_name: item?.product_name,
       rent: item?.rent,
       description: item?.description,
@@ -61,7 +62,7 @@ const AllPoduct = ({
     // console.log("TestData 25025", TestData);
 
     // console.log("RowData 25025", RowData);
-    // console.log("item 25025", item);
+    console.log("item 25025", item);
     // setFormData(item);
     setEditing("editProduct");
     ChangePage({ pagenumber: 5, data: RowData });

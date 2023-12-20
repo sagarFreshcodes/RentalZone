@@ -132,6 +132,7 @@ const AddPoduct = ({
   };
 
   const [formData, setFormData] = useState(RowData);
+  const [pageRenderd, setPageRenderd] = useState(false);
 
   const OnSubmit = () => {
     const Apiurl =
@@ -144,6 +145,7 @@ const AddPoduct = ({
         ToastSuccess(responce);
         setEditRecordData({});
         setEditing(false);
+        ChangePage({ pagenumber: 4, data: {} });
       })
       .catch((error) => {
         ToastError(error);
@@ -153,9 +155,7 @@ const AddPoduct = ({
     OnSubmit();
   };
   const OnSelect = (e) => {
-    console.log("fs25", e);
     setFormData({ ...formData, [e.fieldName]: e.id });
-    // setFormData({ ...formData, [`${e.fieldName}_object`]: e });
   };
 
   const formik = useFormik({
@@ -187,31 +187,8 @@ const AddPoduct = ({
   };
 
   useEffect(() => {
-    setFormData({
-      ...formData,
-      product_name: formik.values["product_name"],
-      rent: formik.values["rent"],
-      description: formik.values["description"],
-      brand: formik.values["brand"],
-      model: formik.values["model"],
-      meta_title: formik.values["meta_title"],
-      meta_desc: formik.values["meta_desc"],
-    });
-  }, [formik.values]);
-
-  useEffect(() => {
     console.log(`formik.errors===>`, formik.errors);
-    setFormData({
-      ...formData,
-      product_name: formik.values["product_name"],
-      rent: formik.values["rent"],
-      description: formik.values["description"],
-      brand: formik.values["brand"],
-      model: formik.values["model"],
-      meta_title: formik.values["meta_title"],
-      meta_desc: formik.values["meta_desc"],
-    });
-
+    setPageRenderd(true);
     formik.setValues({
       product_name: formData?.product_name,
       rent: formData?.rent,
@@ -221,7 +198,38 @@ const AddPoduct = ({
       meta_title: formData?.meta_title,
       meta_desc: formData?.meta_desc,
     });
+  }, [pageRenderd]);
+
+  useEffect(() => {
+    if (pageRenderd) {
+      setFormData({
+        ...formData,
+        product_name: formik.values["product_name"],
+        rent: formik.values["rent"],
+        description: formik.values["description"],
+        brand: formik.values["brand"],
+        model: formik.values["model"],
+        meta_title: formik.values["meta_title"],
+        meta_desc: formik.values["meta_desc"],
+      });
+    }
+  }, [formik.values]);
+
+  useEffect(() => {
+    if (editing == "editProduct") {
+      setFormData(editRecordData);
+    }
+    // console.log("editRecordData 2852", editRecordData);
+    // console.log("RowData 2852", RowData);
+    // console.log("formData 2852", formData);
   }, []);
+
+  const test = () => {
+    console.log("editRecordData 2852", editRecordData);
+    console.log("RowData 2852", RowData);
+    console.log("formData 2852", formData);
+    console.log("formic 2852", formik.values);
+  };
   return (
     <ContentBox>
       <br />
@@ -231,7 +239,7 @@ const AddPoduct = ({
         <ContentBox>
           <Row>
             <Col lg="6" md="12" sm="12">
-              <div className="FormHeader">
+              <div className="FormHeader" onClick={test}>
                 {" "}
                 <FS5 attr={{ className: "mb-0" }}>
                   {editing == "editProduct" ? "Update Product" : "Add Product"}

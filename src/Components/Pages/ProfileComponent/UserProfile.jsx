@@ -152,9 +152,15 @@ const UserProfilePage = ({}) => {
 
   useEffect(() => {
     const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
-    dispatch(MyListApi({ Token: RentalUserAuthToken }));
-    dispatch(AllProductApi({ Token: RentalUserAuthToken }));
-  }, []);
+    console.log("2852", page);
+    if (page == 2) {
+      console.log("28524", page);
+      dispatch(MyListApi({ Token: RentalUserAuthToken }));
+    } else if (page == 4) {
+      console.log("28524", page);
+      dispatch(AllProductApi({ Token: RentalUserAuthToken }));
+    }
+  }, [page]);
 
   return (
     <Fragment>
@@ -205,8 +211,16 @@ const UserProfilePage = ({}) => {
               btnType: "dark",
             },
             { title: "All Listing", btnType: "light" },
-            { title: "Add Listing", btnType: "info" },
-            { title: "All Product", btnType: "warning" },
+            {
+              title:
+                editing == "editListing" ? "Update Listing" : "Add Listing",
+              btnType: "info",
+            },
+            {
+              title:
+                editing == "editProduct" ? "Update Product" : "Add Product",
+              btnType: "warning",
+            },
             { title: "Add Product", btnType: "danger" },
             { title: "Reviews", btnType: "success" },
             { title: "Bookings", btnType: "secondary" },
