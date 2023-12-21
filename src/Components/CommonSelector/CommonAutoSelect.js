@@ -89,6 +89,16 @@ const CommonAutoSelect = ({
     return () => clearTimeout(timeout);
   }, [optionShow]);
   // }, [serchKeyword, optionShow]);
+  useEffect(() => {
+    const condition = optionList.some((i) => i?.id == state[fieldName]);
+    if (condition) {
+      optionList && optionList?.length > 0
+        ? setSerchKeyword(
+            optionList?.filter((i) => i?.id == state[fieldName])[0][labelName]
+          )
+        : console.log("first");
+    }
+  }, [optionList]);
   return (
     <div
       className={`${style || "CommonSelect form-control d-flex commonInput"} ${

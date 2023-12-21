@@ -304,7 +304,7 @@ const AddPoduct = ({
                         className: "Next",
                       }}
                     >
-                      Next
+                      Submit
                     </CommonButton>
                   </div>
                 </form>

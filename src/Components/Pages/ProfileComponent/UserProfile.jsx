@@ -270,12 +270,12 @@ const UserProfilePage = ({}) => {
                 editing == "editListing" ? "Update Listing" : "Add Listing",
               btnType: "info",
             },
+            { title: "All Product", btnType: "warning" },
             {
               title:
                 editing == "editProduct" ? "Update Product" : "Add Product",
-              btnType: "warning",
+              btnType: "danger",
             },
-            { title: "Add Product", btnType: "danger" },
             // { title: "Reviews", btnType: "success" },
             // { title: "Bookings", btnType: "secondary" },
             {

@@ -66,8 +66,8 @@ const AllPoduct = ({
       model: item?.model,
       meta_title: item?.meta_title,
       meta_desc: item?.meta_desc,
-      listing: item?.listing_id,
-      category: item?.category_id,
+      listing: +`${item?.listing_id}`.split(",")[0],
+      category: +item?.category_id,
       token: RentalUserAuthToken,
     };
     // console.log("TestData 25025", TestData);

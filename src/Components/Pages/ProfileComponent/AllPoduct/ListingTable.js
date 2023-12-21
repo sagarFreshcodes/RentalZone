@@ -18,7 +18,7 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
       <Col sm="12">
         <Card>
           <CardHeader>
-            <h5 onClick={test}>My Listings</h5>
+            <h5 onClick={test}>All Products</h5>
           </CardHeader>
           <div className="table-responsive MyListing" onClick={test}>
             <Table>
@@ -50,7 +50,7 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
                         )}
                       </td>
                       <td>{item?.is_approved}</td>
-                      <td>
+                      <td onClick={() => console.log(item)}>
                         {["Yes"].includes(item?.is_active) ? (
                           <div className="active">Active</div>
                         ) : (

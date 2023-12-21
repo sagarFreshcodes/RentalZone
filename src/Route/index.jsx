@@ -10,6 +10,7 @@ import { classes } from "../Data/Layouts";
 import { HOME_ROUTE } from "./RouthPath";
 import { useDispatch, useSelector } from "react-redux";
 import { SetToken } from "../Redux_Store/Actions/userActions";
+import RedirectExternal from "./RedirectExternal";
 // setup fake backend
 
 const Routers = () => {
@@ -61,6 +62,11 @@ const Routers = () => {
             exact
             path={`${process.env.PUBLIC_URL}/login`}
             element={<Signin />}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/admin`}
+            element={<RedirectExternal />}
           />
           {authRoutes.map(({ path, Component }, i) => (
             <Route path={path} element={Component} key={i} />
