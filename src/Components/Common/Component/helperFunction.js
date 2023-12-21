@@ -1,5 +1,9 @@
 import axios from "axios";
-import { API_ROOT_URL, LOG_OUT } from "../../../Constant/api_constant";
+import {
+  API_ROOT_URL,
+  GET_CATEGORY_DROPDOWN_API,
+  LOG_OUT,
+} from "../../../Constant/api_constant";
 import { toast } from "react-toastify";
 import { BASE_ROUTE } from "../../../Route/RouthPath";
 import { FS3, FS4, FS6 } from "../../../CommonElements/Font/FS";
@@ -440,3 +444,18 @@ export function ChangeKeyNameOfObject({ obj, currentKeyName, newKeyName }) {
   }
   return newObj;
 }
+
+export const CategoryList = ({ setLoading, setState }) => {
+  axios
+    .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+    .then((response) => {
+      setState(response?.data?.data || []);
+      console.log("response1236", response);
+      setLoading(false);
+    })
+    .catch((error) => {
+      ToastError(error);
+      console.log("response1236", error);
+      setLoading(false);
+    });
+};

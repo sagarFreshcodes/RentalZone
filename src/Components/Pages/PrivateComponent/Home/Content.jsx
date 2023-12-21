@@ -106,7 +106,7 @@ const Content = ({ props }) => {
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
   const test = () => {
-    console.log("HomPageData2512", banner_image);
+    console.log("HomPageData2512", HomPageData);
     // console.log("banner_path", banner_path);
   };
   return (

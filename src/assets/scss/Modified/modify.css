@@ -70,10 +70,6 @@
   display: contents !important;
 }
 
-.ContentBox {
-  width: 100% !important ;
-  padding: 0.5rem !important;
-}
 .page-body {
   background-color: white !important;
 }
@@ -217,7 +213,7 @@
   background-color: #025d85 !important;
 }
 .sc_fixedButton img {
-  width: 20px !important;
+  width: 15px !important;
 }
 .MediaContainer {
   display: flex;
@@ -1129,6 +1125,13 @@
   justify-content: center;
   align-items: center;
 }
+.CMN_InputBox {
+  position: relative;
+}
+.CMN_InputBox .FormicError {
+  bottom: 0.2rem !important;
+  right: 6px !important;
+}
 .gq-formKey .rightInput,
 .CMN_InputBox .quoteInput {
   font-size: 12px !important;
@@ -1479,11 +1482,15 @@
     width: 26%;
     height: max-content;
     padding: 5px 9px;
+    margin: 0 2px;
     /* border-radius: 7px;
       border: solid 2px #dddddd  !important;  */
   }
   .sp_button_box .btn:hover {
     /* border: solid 2px #8d8d8d8d  !important;   */
+  }
+  .sc_fixedButton .sp_button_box {
+    width: 100%;
   }
   .sp_button_box .star {
     background-color: #0085be !important;
@@ -1694,10 +1701,6 @@
 
   .pd_price_box #FS6 {
     font-size: 10px !important;
-  }
-  .ContentBox {
-    width: 100% !important ;
-    padding: 1rem 0rem !important;
   }
 
   .sc_cardBoxRight {

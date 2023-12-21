@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 const Form2 = ({ AllProps }) => {
   const { NextPage } = AllProps;
+  const [formData, setFormData] = useState({});
   const ClickOnNext = () => {
     NextPage();
   };
@@ -43,6 +44,16 @@ const Form2 = ({ AllProps }) => {
       type: "password",
     },
   ];
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      rates_per: formik.values["rates_per"],
+      pincode: formik.values["pincode"],
+      address: formik.values["address"],
+      rates: formik.values["rates"],
+    });
+  }, [formik.values]);
   return (
     <div>
       <Card>

@@ -43,7 +43,7 @@ const ProductDetails = () => {
           </ContentBox>
         </Container>
       </Fragment>{" "}
-      <HanggingBar />
+      {/* <HanggingBar /> */}
     </>
   );
 };

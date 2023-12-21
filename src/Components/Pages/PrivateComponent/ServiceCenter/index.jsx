@@ -19,7 +19,9 @@ import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListAct
 import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
 import Skeleton from "react-loading-skeleton";
 import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
+import call_w from "../../../../assets/images/Essential/call_w.png";
 import {
+  CategoryList,
   HanggingBar,
   ScrollUp,
   UpdateSEO,
@@ -44,11 +46,9 @@ const ServiceCenter = () => {
     meta_description,
     meta_keywords,
   } = BusinesssPageData || { top_five_listings: [{}, {}], all_listing: {} };
-  const featuredRecord =
-    top_five_listings &&
-    top_five_listings?.map((i) => {
-      return { ...i, featured: true };
-    });
+  const featuredRecord = top_five_listings?.map((i) => {
+    return { ...i, featured: true };
+  });
   const BusinesssListing =
     all_listing?.data && top_five_listings
       ? [...featuredRecord, ...all_listing?.data]
@@ -57,6 +57,8 @@ const ServiceCenter = () => {
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
+  const [allCategoryList, setAllCategoryList] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [serviceData, setServiceData] = useState({});
   const BreadcrumData = [
@@ -154,6 +156,7 @@ const ServiceCenter = () => {
   }, [QueryParams]);
 
   useEffect(() => {
+    CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
     UpdateSEO({
       page_title: page_title,
       meta_title: meta_title,
@@ -186,7 +189,7 @@ const ServiceCenter = () => {
           <br />
           <br />
           <div className="sc_fixedButton">
-            <button className="btn btn-light" onClick={toggle2}>
+            {/* <button className="btn btn-light" onClick={toggle2}>
               <FS6>
                 {" "}
                 <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
@@ -198,13 +201,41 @@ const ServiceCenter = () => {
                 <Image attrImage={{ src: getquot, alt: "message" }} /> Get Quote
                 Now{" "}
               </FS6>
-            </button>{" "}
+            </button>{" "} */}
+            <div
+              className="sp_button_box
+"
+            >
+              {" "}
+              <button
+                className="btn btn-success "
+                onClick={(OnDial) => console.log("object")}
+              >
+                {" "}
+                <FS3>
+                  {" "}
+                  <Image attrImage={{ src: call_w, alt: "message" }} /> Call Now{" "}
+                </FS3>
+              </button>{" "}
+              <button className="btn btn-light" onClick={toggle2}>
+                <FS3>
+                  {" "}
+                  <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
+                </FS3>
+              </button>{" "}
+              <button className="btn btn-primary star" onClick={toggle}>
+                {" "}
+                <FS3>Get Quote Now </FS3>
+              </button>{" "}
+            </div>
           </div>
         </Container>
         <GetQuotesModel
           serviceData={serviceData}
           toggler={toggle}
           isOpen={modal}
+          loading={loading}
+          allCategoryList={allCategoryList}
         />
 
         <ChatModel
