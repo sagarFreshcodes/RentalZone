@@ -19,7 +19,7 @@ import ProductUpdate from "../../Models/AllPoduct/ProductUpdate";
 import DeleteModel from "../../Models/DeleteModel/DeleteModel";
 import { TableSkelaton } from "../../../Common/Component/Sleleton/Skelaton";
 import { PageContentManager } from "../../../Common/Component/DesignElement";
-import PaginationBar from "../../PrivateComponent/ServiceCenter/Pagination";
+import { PaginationBar } from "../../../Common/Component/PaginationBar/PaginationBar";
 
 const AllPoduct = ({
   AllProduct,
@@ -42,6 +42,7 @@ const AllPoduct = ({
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
+
   const toggle = () => {
     setModel(!modal);
   };
@@ -150,9 +151,9 @@ const AllPoduct = ({
           }
           pagination={
             <PaginationBar
+              onChange={setProductCurrentPage}
               last_page={last_page}
               current_page={ProductCurrent_page}
-              setCurrentPage={setProductCurrentPage}
             />
           }
         />

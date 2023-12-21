@@ -17,7 +17,9 @@ const Form5 = ({ AllProps }) => {
             </div>
             <CardBody>
               {Object.keys(formData).map((i) => {
-                return (
+                return i == "token2" ? (
+                  ""
+                ) : (
                   <div className="listngName">
                     <FS5 attr={{ className: "BoldText" }}>
                       {`${i}`.toUpperCase()}

@@ -21,8 +21,8 @@ import {
   SC_CardSkelaton,
   TableSkelaton,
 } from "../../../Common/Component/Sleleton/Skelaton";
-import PaginationBar from "../../PrivateComponent/ServiceCenter/Pagination";
 import { PageContentManager } from "../../../Common/Component/DesignElement";
+import { PaginationBar } from "../../../Common/Component/PaginationBar/PaginationBar";
 
 const AllListing = ({
   AllList,
@@ -169,10 +169,15 @@ const AllListing = ({
             />
           }
           pagination={
+            // <PaginationBar
+            //   last_page={last_page}
+            //   current_page={listingCurrent_page}
+            //   setCurrentPage={setListingCurrentPage}
+            // />
             <PaginationBar
+              onChange={setListingCurrentPage}
               last_page={last_page}
               current_page={listingCurrent_page}
-              setCurrentPage={setListingCurrentPage}
             />
           }
         />
