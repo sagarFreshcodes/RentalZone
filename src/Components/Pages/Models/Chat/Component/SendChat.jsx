@@ -7,7 +7,9 @@ import emoje from "../../../../../assets/images/Essential/Models/emoje.png";
 import Attcachment from "../../../../../assets/images/Essential/Models/Attcachment.png";
 import search from "../../../../../assets/images/Essential/Models/search.png";
 import send from "../../../../../assets/images/Essential/Models/send.png";
-const SendChat = () => {
+import { ApiLoader } from "../../../../Common/Component/DesignElement";
+const SendChat = ({ allProps }) => {
+  const { OnChat, setChatMessage, loading, chatMessage } = allProps;
   const [messageInput, setMessageInput] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const toggleEmojiPicker = () => {
@@ -68,14 +70,23 @@ const SendChat = () => {
         <div className="chatmessegeColumn">
           <InputGroup className="text-box">
             <div className="emogyBox">
-              <img src={emoje} alt=""   />
+              <img src={emoje} alt="" />
             </div>
-            <input type="text" placeholder="Type a message..." />
-            <img className="clipImg" src={Attcachment} alt=""   />
-          </InputGroup> 
-            <div className="sendArroBox">
-              <img src={send} alt=""   />
-            </div>
+            <input
+              type="text"
+              onChange={(e) => setChatMessage(e.target.value)}
+              value={chatMessage}
+              placeholder="Type a message..."
+            />
+            <img className="clipImg" src={Attcachment} alt="" />
+          </InputGroup>
+          <div
+            className="sendArroBox"
+            onClick={OnChat}
+            style={{ filter: loading ? "blur(4px)" : "" }}
+          >
+            <img src={send} alt="" />
+          </div>
         </div>
       </Row>
     </div>

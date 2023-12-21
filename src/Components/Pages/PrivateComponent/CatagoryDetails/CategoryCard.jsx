@@ -1,5 +1,5 @@
-import React from "react"; 
-import { H4, P, Btn, Image } from "../../../../AbstractElements"; 
+import React from "react";
+import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { FS2, FS3, FS4, FS8 } from "../../../../CommonElements/Font/FS";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 
@@ -16,17 +16,22 @@ import shareFill from "../../../../assets/images/Essential/share-fill.png";
 import halfStart from "../../../../assets/images/Essential/halfStart.png";
 import claim from "../../../../assets/images/Essential/claim.png";
 import phone from "../../../../assets/images/Essential/phon.png";
-const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
+const CategoryCard = ({
+  chatToggle,
+  title,
+  address,
+  categoryList,
+  picture,
+  is_approved,
+}) => {
   return (
     <div className="sc_cardBox">
       <div className="cd-serviceImgBox">
-        <Image
-          attrImage={{src: picture, alt: "vector women with leptop" }}
-        />
+        <Image attrImage={{ src: picture, alt: "vector women with leptop" }} />
       </div>
       <div className="cat_details_Body">
         <div className="cd_cardBoxLeft ">
-        <FS8 attr={{ className: "f-w-600 lh-1" }}>{title}</FS8>
+          <FS8 attr={{ className: "f-w-600 lh-1" }}>{title}</FS8>
           <div className="sc-number">
             <div className="greenRateBox">4.6</div>
             <div className="d-flex rStar">
@@ -36,7 +41,7 @@ const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
               ))}
             </div>
             <div>1110 Rating</div>
-            <div className={`verrify un ${is_approved?"":"d-none"}`}>
+            <div className={`verrify un ${is_approved ? "" : "d-none"}`}>
               {" "}
               <Image attrImage={{ src: verrify, alt: "verrify" }} />
             </div>
@@ -55,9 +60,10 @@ const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
             ))}
           </div>
           <div className="cd-address">
-            <FS3 attr={{className:"lh-1"}}>
+            <FS3 attr={{ className: "lh-1" }}>
               {" "}
-              <Image attrImage={{ src: location, alt: "location" }} /> {address} &nbsp;&nbsp;
+              <Image attrImage={{ src: location, alt: "location" }} /> {address}{" "}
+              &nbsp;&nbsp;
             </FS3>
 
             <FS2 attr={{ className: "BoldText d-flex un" }}>
@@ -91,9 +97,18 @@ const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
           <div className="cd_card_box cd_button_box">
             <button className="btn btn-light callNow buttonShadow">
               {" "}
-              <FS3><Image attrImage={{ style:{width:"25px !important"},src: phone, alt: "message" }} /> Call Now</FS3>
+              <FS3>
+                <Image
+                  attrImage={{
+                    style: { width: "25px !important" },
+                    src: phone,
+                    alt: "message",
+                  }}
+                />{" "}
+                Call Now
+              </FS3>
             </button>{" "}
-            <button className="btn btn-light buttonShadow">
+            <button className="btn btn-light buttonShadow" onClick={chatToggle}>
               <FS3>
                 {" "}
                 <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
@@ -130,16 +145,15 @@ const CategoryCard = ({ title,address,categoryList,picture,is_approved }) => {
             </div>
           </div>
           <div className="right_bottom">
-          <div className="d-flex jointButton">
-          <button className="btn btn-light ">
-              <FS3> Project On Rent </FS3>
-            </button>{" "} &nbsp;
-
-            <button className="btn btn-light">
-              <FS3>Top Rated Hotel </FS3>
-            </button>{" "}
-          </div>
-        
+            <div className="d-flex jointButton">
+              <button className="btn btn-light ">
+                <FS3> Project On Rent </FS3>
+              </button>{" "}
+              &nbsp;
+              <button className="btn btn-light">
+                <FS3>Top Rated Hotel </FS3>
+              </button>{" "}
+            </div>
             <button className="btn btn-light bestDeal">
               <FS3>Best Deal </FS3>
               <FS3>Get free details instantly via SMS</FS3>

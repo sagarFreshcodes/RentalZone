@@ -77,7 +77,7 @@ export function BreadCrum(array) {
 export const GET_API = (endPoint) => {
   return new Promise((Response, Reject) => {
     axios
-      .get(`http://laptops.rent/api/get-homepage`)
+      .get(endPoint)
       // .get(`${API_ROOT_URL}${endPoint}`)
       .then((res) => {
         Response(res);
@@ -458,4 +458,29 @@ export const CategoryList = ({ setLoading, setState }) => {
       console.log("response1236", error);
       setLoading(false);
     });
+};
+
+export const GetCurrentChatTime = () => {
+  // Get the current date/time
+
+  const now = new Date();
+
+  // Extract hours, minutes, and seconds
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  // Convert hours to AM/PM format
+  const amOrPm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12 || 12; // Convert hours to 12-hour format
+
+  // Add leading zeros if needed
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  // Construct the formatted time string
+  const formattedTime = `${hours}:${minutes}:${seconds} ${amOrPm}`;
+
+  return formattedTime;
 };

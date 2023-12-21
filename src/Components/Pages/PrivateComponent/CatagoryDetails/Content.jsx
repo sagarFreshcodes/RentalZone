@@ -26,7 +26,7 @@ const Content = ({ allProps }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { ListDetails,BreadcrumData } = allProps || {};
+  const { ListDetails, BreadcrumData, chatToggle } = allProps || {};
 
   const {
     // canonical,
@@ -70,8 +70,7 @@ const Content = ({ allProps }) => {
       picture: profile_pic || burncastle,
     },
   ];
-  const test = () => { 
-  };
+  const test = () => {};
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
@@ -106,6 +105,7 @@ const Content = ({ allProps }) => {
                 picture={item.picture}
                 is_approved={is_approved == "Yes"}
                 categoryList={item?.categoryList}
+                chatToggle={chatToggle}
               />
             );
           })}

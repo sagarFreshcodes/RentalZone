@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { Card, Col, Container, Row } from "reactstrap";
 import Content from "./Content";
@@ -17,7 +17,12 @@ import {
   ScrollUp,
   UpdateSEO,
 } from "../../../Common/Component/helperFunction";
+import ChatModel from "../../Models/Chat/Chat";
 const CatagoryDetails = () => {
+  const [chatModal, setChatModal] = useState(false);
+  const chatToggle = () => {
+    setChatModal(!chatModal);
+  };
   const QueryParams = useLocation();
   const Parameter = `${QueryParams?.pathname}`.split("-");
   const slug = Parameter.slice(0, -1).join("-");
@@ -58,6 +63,7 @@ const CatagoryDetails = () => {
   const allProps = {
     ListDetails: ListDetails,
     BreadcrumData: BreadcrumData,
+    chatToggle: chatToggle,
   };
 
   useEffect(() => {
@@ -101,6 +107,7 @@ const CatagoryDetails = () => {
         </Container>
       </Fragment>{" "}
       <HanggingBar />
+      <ChatModel toggler={chatToggle} isOpen={chatModal} />
     </>
   );
 };
