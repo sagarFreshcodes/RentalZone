@@ -32,10 +32,15 @@ const AllListing = ({
   setEditRecordData,
   editRecordData,
   isListingLoading,
+  listingCurrent_page,
+  setListingCurrentPage,
+  listingLast_page,
+  setListingLastPage,
 }) => {
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
   const [formData, setFormData] = useState({});
+  const [current_page, setCurrentPage] = useState(1);
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
@@ -142,6 +147,7 @@ const AllListing = ({
   useEffect(() => {
     setTableData(data);
     setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
+    setListingLastPage(+last_page);
   }, [AllList]);
 
   return (
@@ -162,13 +168,13 @@ const AllListing = ({
               isListingLoading={isListingLoading}
             />
           }
-          // pagination={
-          //   <PaginationBar
-          //     last_page={5}
-          //     current_page={1}
-          //     setCurrentPage={(setCurrentPage) => console.log("first")}
-          //   />
-          // }
+          pagination={
+            <PaginationBar
+              last_page={last_page}
+              current_page={listingCurrent_page}
+              setCurrentPage={setListingCurrentPage}
+            />
+          }
         />
       </ContentBox>
       <ListingUpdate

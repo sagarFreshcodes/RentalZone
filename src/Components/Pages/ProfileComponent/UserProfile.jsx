@@ -37,6 +37,10 @@ const UserProfilePage = ({}) => {
   const [navbarShow, setNavbarShow] = useState(false);
   const [editing, setEditing] = useState(false);
   const [page, setPage] = useState(1);
+  const [listingCurrent_page, setListingCurrentPage] = useState(1);
+  const [ProductCurrent_page, setProductCurrentPage] = useState(1);
+  const [ProductLast_page, setProductLastPage] = useState(1);
+  const [listingLast_page, setListingLastPage] = useState(1);
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
@@ -196,14 +200,18 @@ const UserProfilePage = ({}) => {
     console.log("2852", page);
     if (page == 2) {
       console.log("28524", page);
-      dispatch(MyListApi({ Token: RentalUserAuthToken }));
+      dispatch(
+        MyListApi({ Token: RentalUserAuthToken, page: listingCurrent_page })
+      );
     } else if (page == 4) {
       console.log("28524", page);
-      dispatch(AllProductApi({ Token: RentalUserAuthToken }));
+      dispatch(
+        AllProductApi({ Token: RentalUserAuthToken, page: ProductCurrent_page })
+      );
     }
 
     setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
-  }, [page, editing, editRecordData]);
+  }, [page, editing, editRecordData, listingCurrent_page, ProductCurrent_page]);
   console.log("loader.logOutLoader", loader.logOutLoader);
   useEffect(() => {}, [loader]);
   return (
@@ -322,6 +330,10 @@ const UserProfilePage = ({}) => {
             setEditRecordData={setEditRecordData}
             editRecordData={editRecordData}
             isListingLoading={isListingLoading}
+            listingCurrent_page={listingCurrent_page}
+            setListingCurrentPage={setListingCurrentPage}
+            listingLast_page={listingLast_page}
+            setListingLastPage={setListingLastPage}
           />
         ) : page == 3 ? (
           <AddListing
@@ -340,6 +352,10 @@ const UserProfilePage = ({}) => {
             setEditRecordData={setEditRecordData}
             editRecordData={editRecordData}
             isProductLoading={isProductLoading}
+            ProductCurrent_page={ProductCurrent_page}
+            setProductCurrentPage={setProductCurrentPage}
+            ProductLast_page={ProductLast_page}
+            setProductLastPage={setProductLastPage}
           />
         ) : (
           <AddPoduct

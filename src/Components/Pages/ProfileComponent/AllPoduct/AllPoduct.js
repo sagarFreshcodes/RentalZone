@@ -19,6 +19,7 @@ import ProductUpdate from "../../Models/AllPoduct/ProductUpdate";
 import DeleteModel from "../../Models/DeleteModel/DeleteModel";
 import { TableSkelaton } from "../../../Common/Component/Sleleton/Skelaton";
 import { PageContentManager } from "../../../Common/Component/DesignElement";
+import PaginationBar from "../../PrivateComponent/ServiceCenter/Pagination";
 
 const AllPoduct = ({
   AllProduct,
@@ -28,6 +29,10 @@ const AllPoduct = ({
   setEditRecordData,
   editRecordData,
   isProductLoading,
+  ProductCurrent_page,
+  setProductCurrentPage,
+  ProductLast_page,
+  setProductLastPage,
 }) => {
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
@@ -143,13 +148,13 @@ const AllPoduct = ({
               ClickOnDeleteIcon={ClickOnDeleteIcon}
             />
           }
-          // pagination={
-          //   <PaginationBar
-          //     last_page={5}
-          //     current_page={1}
-          //     setCurrentPage={(setCurrentPage) => console.log("first")}
-          //   />
-          // }
+          pagination={
+            <PaginationBar
+              last_page={last_page}
+              current_page={ProductCurrent_page}
+              setCurrentPage={setProductCurrentPage}
+            />
+          }
         />
       </ContentBox>
       <ProductUpdate

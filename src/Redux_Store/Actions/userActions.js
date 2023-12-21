@@ -55,13 +55,14 @@ export const SetToken = ({ Token }) => {
   };
 };
 
-export const MyListApi = ({ Token }) => {
+export const MyListApi = ({ Token, page }) => {
   return async (dispatch) => {
     try {
       dispatch({ type: ActionType.ON_FAILURE_MY_LIST_API });
 
       const response = await PostApiForRedux(`${API_ROOT_URL}/${MY_LIST_API}`, {
         token: Token,
+        page: page,
       });
       dispatch({
         type: ActionType.ON_SUCCESS_MY_LIST_API,
