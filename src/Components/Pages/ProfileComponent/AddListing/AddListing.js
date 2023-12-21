@@ -80,24 +80,45 @@ const AddListing = ({
   };
 
   const OnSubmit = () => {
-    const submitData = {
-      listing_name: formData.listing_name,
-      address: formData.address,
-      country: formData.country,
-      state: formData.state,
-      city: formData.city,
-      area: formData.area,
-      pincode: formData.pincode,
-      phone_number: formData.phone_number,
-      email: formData.email,
-      website: formData.website,
-      contact_person: formData.contact_person,
-      description: formData.description,
-      rates_per: formData.rates_per,
-      rates: formData.rates,
-      [`listing_category[]`]: formData.listing_category,
-      token: RentalUserAuthToken,
-    };
+    const submitData =
+      editing == "editListing"
+        ? {
+            listing_id: formData.listing_id,
+            listing_name: formData.listing_name,
+            address: formData.address,
+            country: formData.country,
+            state: formData.state,
+            city: formData.city,
+            area: formData.area,
+            pincode: formData.pincode,
+            phone_number: formData.phone_number,
+            email: formData.email,
+            website: formData.website,
+            contact_person: formData.contact_person,
+            description: formData.description,
+            rates_per: formData.rates_per,
+            rates: formData.rates,
+            [`listing_category[]`]: formData.listing_category,
+            token: RentalUserAuthToken,
+          }
+        : {
+            listing_name: formData.listing_name,
+            address: formData.address,
+            country: formData.country,
+            state: formData.state,
+            city: formData.city,
+            area: formData.area,
+            pincode: formData.pincode,
+            phone_number: formData.phone_number,
+            email: formData.email,
+            website: formData.website,
+            contact_person: formData.contact_person,
+            description: formData.description,
+            rates_per: formData.rates_per,
+            rates: formData.rates,
+            [`listing_category[]`]: formData.listing_category,
+            token: RentalUserAuthToken,
+          };
     const Apiurl = editing == "editListing" ? UPDATE_LISTING_API : ADD_LIST_API;
     POST_FORMDATA_API({
       endPoint: `${API_ROOT_URL}/${Apiurl}`,
@@ -107,6 +128,7 @@ const AddListing = ({
         ToastSuccess(responce);
         setEditRecordData({});
         setEditing(false);
+        ChangePage({ pagenumber: 2, data: {} });
       })
       .catch((error) => {
         ToastError(error);
@@ -117,6 +139,7 @@ const AddListing = ({
     formData: formData,
     setFormData: setFormData,
     OnSubmit: OnSubmit,
+    ChangePage: ChangePage,
   };
   const selectOn = (index) => {
     setFormIndex(index);

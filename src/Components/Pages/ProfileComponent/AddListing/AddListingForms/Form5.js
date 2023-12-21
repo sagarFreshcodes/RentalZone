@@ -3,7 +3,7 @@ import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
 const Form5 = ({ AllProps }) => {
-  const { NextPage, formData, setFormData, OnSubmit } = AllProps;
+  const { NextPage, formData, setFormData, OnSubmit, ChangePage } = AllProps;
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Form5 = ({ AllProps }) => {
             </div>
             <CardBody>
               {Object.keys(formData).map((i) => {
-                return i == "token2" ? (
+                return i == "token" ? (
                   ""
                 ) : (
                   <div className="listngName">
