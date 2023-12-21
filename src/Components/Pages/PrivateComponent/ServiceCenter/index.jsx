@@ -44,9 +44,14 @@ const ServiceCenter = () => {
     meta_description,
     meta_keywords,
   } = BusinesssPageData || { top_five_listings: [{}, {}], all_listing: {} };
+  const featuredRecord =
+    top_five_listings &&
+    top_five_listings?.map((i) => {
+      return { ...i, featured: true };
+    });
   const BusinesssListing =
     all_listing?.data && top_five_listings
-      ? [...top_five_listings, ...all_listing?.data]
+      ? [...featuredRecord, ...all_listing?.data]
       : all_listing?.data;
   const PopularArea = BusinessState?.service_data?.data?.popular_areas;
   const { isServiceLoading } = BusinessState;
@@ -101,7 +106,7 @@ const ServiceCenter = () => {
 
   const test = () => {
     let BusinesssListing2 = [...top_five_listings, ...BusinesssListing];
-    console.log(`BusinessState2512=>`, BusinesssPageData);
+    console.log(`featuredRecord2512=>`, featuredRecord);
     console.log(`top_five_listings=>`, BusinesssListing2);
   };
   useEffect(() => {

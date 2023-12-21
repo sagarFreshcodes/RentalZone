@@ -107,6 +107,7 @@ const Content = ({ AllProps }) => {
                   state={item?.state}
                   user_id={item?.user_id}
                   website={item?.website}
+                  featured={item.featured || false}
                   AllProps={AllProps}
                   BreadcrumData={BreadcrumData}
                   item={item}

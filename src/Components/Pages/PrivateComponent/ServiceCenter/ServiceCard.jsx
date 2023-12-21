@@ -95,8 +95,8 @@ const ServiceCard = ({
               attrImage={{ src: burncastle, alt: "vector women with leptop" }}
             /> */}
             <Image attrImage={{ src: RandomImg, alt: "leptop image" }} />
-            {/* {featured?} */}
-            <div className="Featured">Featured</div>
+            {featured ? <div className="Featured">Featured</div> : ""}
+
             <div className="price_box">
               <div className="startFrom">
                 <FS3>Start From</FS3>
