@@ -5,8 +5,9 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { GeneralActions } from "../../Redux_Store/Actions/generalActions";
-import { BASE_ROUTE } from "../../Route/RouthPath";
+import { BASE_ROUTE, FAQ_ROUTE } from "../../Route/RouthPath";
 import { slugConvertor } from "../../Components/Common/Component/helperFunction";
+import { Link } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -51,11 +52,11 @@ const Footer = () => {
         <FooterLinkBox
           title={"Support & Help"}
           linkTitleArray={[
-            "About Us",
-            "FAQ",
-            "Contact Us",
-            "Seller Register",
-            "Privacy Policy",
+            { title: "About Us", link: "about-us" },
+            { title: "FAQ", link: FAQ_ROUTE },
+            { title: "Contact Us", link: "contact-us" },
+            { title: "Seller Register", link: "seller-register" },
+            { title: "Privacy Policy", link: "privacy-policy" },
           ]}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
@@ -63,10 +64,10 @@ const Footer = () => {
         <FooterLinkBox
           title={"Popular Services"}
           linkTitleArray={[
-            "Computer Rental",
-            "IPad Rental",
-            "Printer Rental",
-            "Laptop Rental",
+            { title: "Computer Rental", link: "computer-rental" },
+            { title: "IPad Rental", link: "ipad-rental" },
+            { title: "Printer Rental", link: "printer-rental" },
+            { title: "Laptop Rental", link: "laptop-rental" },
           ]}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
@@ -74,18 +75,21 @@ const Footer = () => {
         <FooterLinkBox
           title={"Cities Covered"}
           linkTitleArray={[
-            "AC Rental",
-            "Audio Rental",
-            "Badge Printing Kiosk",
-            "Badge Printing Kiosk",
-            "Car Rental",
-            "Display Rental",
-            "Digital Signage Standee",
-            "Furniture Rental",
-            "MacBook Rental",
-            "Projector Rental",
-            "Server Rental",
-            "UPS Rental",
+            { title: "AC Rental", link: "ac-rental" },
+            { title: "Audio Rental", link: "audio-rental" },
+            { title: "Badge Printing Kiosk", link: "badge-printing-kiosk" },
+            { title: "Badge Printing Kiosk", link: "badge-printing-kiosk" },
+            { title: "Car Rental", link: "car-rental" },
+            { title: "Display Rental", link: "display-rental" },
+            {
+              title: "Digital Signage Standee",
+              link: "digital-signage-standee",
+            },
+            { title: "Furniture Rental", link: "furniture-rental" },
+            { title: "MacBook Rental", link: "macbook-rental" },
+            { title: "Projector Rental", link: "projector-rental" },
+            { title: "Server Rental", link: "server-rental" },
+            { title: "UPS Rental", link: "ups-rental" },
           ]}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
@@ -149,11 +153,13 @@ const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
       <div className="linksContainer">
         {linkTitleArray?.map((i) => {
           return (
-            <div className="linkBox">
-              <FS3>
-                <span className="cursorPointer"> {i}</span>
-              </FS3>
-            </div>
+            <Link to={i.link}>
+              <div className="linkBox">
+                <FS3>
+                  <span className="cursorPointer"> {i.title}</span>
+                </FS3>
+              </div>
+            </Link>
           );
         })}
       </div>
