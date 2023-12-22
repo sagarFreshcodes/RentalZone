@@ -108,6 +108,7 @@ const Content = ({ allProps }) => {
                 categoryList={item?.categoryList}
                 chatToggle={chatToggle}
                 EditContactInfoModeltoggle={EditContactInfoModeltoggle}
+                phone_number={item?.phone_number}
               />
             );
           })}

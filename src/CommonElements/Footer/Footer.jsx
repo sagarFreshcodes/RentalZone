@@ -17,14 +17,22 @@ const Footer = () => {
   const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
   const area_location = GeneralData?.area_location || [];
   const city_location = GeneralData?.city_location || [];
+  const top_cities = GeneralData?.top_cities || [];
   const area_location_empty = area_location?.length == 0;
   const city_location_empty = city_location?.length == 0;
-  const test = () => { 
+  const top_cities_empty = top_cities?.length == 0;
+  const test = () => {};
+
+  const onCategorySelect = (data) => {
+    const placeSlug = slugConvertor(data?.area_name);
+    navigate(
+      `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${placeSlug}/${SelectedCategory?.category_id}`,
+      { state: { location: placeSlug } }
+    );
   };
 
-
-  const onCategorySelect = (data) => { 
-    const placeSlug = slugConvertor(data?.area_name);
+  const onCitySelect = (data) => {
+    const placeSlug = slugConvertor(data?.city);
     navigate(
       `${BASE_ROUTE}/${SelectedCategory?.category_slug}-${placeSlug}/${SelectedCategory?.category_id}`,
       { state: { location: placeSlug } }
@@ -113,6 +121,20 @@ const Footer = () => {
       ) : (
         ""
       )}
+      <br />
+      {top_cities.length > 2 ? (
+        <div>
+          <FooterLinkBox3
+            title={"Top cities"}
+            linkTitleArray={top_cities}
+            boxWidth={"100%"}
+            linkBoxWidth={`20%`}
+            onCategorySelect={onCitySelect}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
@@ -121,15 +143,13 @@ export default Footer;
 
 const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
   return (
-    <div className="footerLinkBox"  >
+    <div className="footerLinkBox">
       <FS6> {title}</FS6>
       <br />
       <div className="linksContainer">
         {linkTitleArray?.map((i) => {
           return (
-            <div
-              className="linkBox" 
-            >
+            <div className="linkBox">
               <FS3>
                 <span className="cursorPointer"> {i}</span>
               </FS3>
@@ -149,16 +169,13 @@ const FooterLinkBox2 = ({
   onCategorySelect,
 }) => {
   return (
-    <div className="footerLinkBox"  >
+    <div className="footerLinkBox">
       <FS6> {title}</FS6>
       <br />
       <div className="linksContainer2">
         {linkTitleArray?.map((i) => {
           return (
-            <div
-              onClick={() => onCategorySelect(i)}
-              className="linkBox" 
-            >
+            <div onClick={() => onCategorySelect(i)} className="linkBox">
               <FS3>
                 <span className="cursorPointer"> {i?.area_name}</span>
               </FS3>
@@ -170,152 +187,28 @@ const FooterLinkBox2 = ({
   );
 };
 
-const bombayAreas = [
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Chembur",
-  "Colaba",
-  "Dadar",
-  "Dharavi",
-  "Goregaon",
-  "Juhu",
-  "Kandivali",
-  "Kurla",
-  "Malad",
-  "Matunga",
-  "Mulund",
-  "Parel",
-  "Santacruz",
-  "Versova",
-  "Vile Parle",
-  "Wadala",
-  "Worli",
-  "Byculla",
-  "Khar",
-  "Mahim",
-  "Sion",
-  "Ghatkopar",
-  "Powai",
-  "Vikhroli",
-  "Kanjurmarg",
-  "Mahalaxmi",
-  "Marine Lines",
-  "Tardeo",
-  "Grant Road",
-  "Mazgaon",
-  "Walkeshwar",
-  "Bhuleshwar",
-  "Kamathipura",
-  "Pydhonie",
-  "Cuffe Parade",
-  "Nariman Point",
-  "Fort",
-  "Ballard Estate",
-  "Churchgate",
-  "Mantralaya",
-  "Tardeo",
-  "Malabar Hill",
-  "Girgaon",
-  "Kalbadevi",
-  "Charni Road",
-  "Opera House",
-];
+const FooterLinkBox3 = ({
+  title,
+  linkTitleArray,
+  boxWidth,
+  linkBoxWidth,
+  onCategorySelect,
+}) => {
+  return (
+    <div className="footerLinkBox">
+      <FS6> {title}</FS6>
+      <br />
+      <div className="linksContainer2">
+        {linkTitleArray?.map((i) => {
+          return (
+            <div onClick={() => onCategorySelect(i)} className="linkBox">
+              <FS3>
+                <span className="cursorPointer"> {i?.city}</span>
+              </FS3>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

@@ -51,7 +51,7 @@ const Leftbar = () => {
         toggleSidebar(!toggle);
         document.querySelector(".sidebar-wrapper").className =
           "sidebar-wrapper close_icon ";
-      } else { 
+      } else {
         toggleSidebar(!toggle);
         document.querySelector(".sidebar-wrapper").className =
           "sidebar-wrapper ";
@@ -71,45 +71,47 @@ const Leftbar = () => {
     }
   });
   return (
-    <Fragment> 
-        <div className="headerLogoSearchBox" >
-          <div
-            className="logo-wrapper"
-          
+    <Fragment>
+      <div className="headerLogoSearchBox">
+        <div className="logo-wrapper">
+          {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
+          <Link
+            to={
+              developerOption
+                ? `${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`
+                : HOME_ROUTE
+            }
           >
-            {/* <Link to={`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`}> */}
-            <Link
-              to={developerOption?`${process.env.PUBLIC_URL}/dashboard/default/${layoutURL}`:HOME_ROUTE}
-            >
-              <Image
-                attrImage={{
-                  className: "logoImageClass",
-                  src: `${require("../../../assets/images/logo/pconrent.png")}`,
-                  alt: "",
-                }}
-              />
-              <Image
-                attrImage={{
-                  className: "img-fluid for-dark",
-                  src: `${require("../../../assets/images/logo/logo_dark.png")}`,
-                  alt: "",
-                }}
-              />
-            </Link>
-          </div>
-
-          {searchBarShow || !location.pathname.includes(`home`) ? (
-            <div className="leftSearchbar">
-              <SearchBar />
-            </div>
-          ) : (
-            ""
-          )}
+            <Image
+              attrImage={{
+                className: "logoImageClass",
+                src: `${require("../../../assets/images/logo/pconrent.png")}`,
+                alt: "",
+                style: { width: "15rem !important" },
+              }}
+            />
+            <Image
+              attrImage={{
+                className: "img-fluid for-dark",
+                src: `${require("../../../assets/images/logo/logo_dark.png")}`,
+                alt: "",
+              }}
+            />
+          </Link>
         </div>
 
-        <div className="UserHeaderBox"  >
-          <UserHeader />
-        </div> 
+        {searchBarShow || !location.pathname.includes(`home`) ? (
+          <div className="leftSearchbar">
+            <SearchBar />
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+
+      <div className="UserHeaderBox">
+        <UserHeader />
+      </div>
     </Fragment>
   );
 };

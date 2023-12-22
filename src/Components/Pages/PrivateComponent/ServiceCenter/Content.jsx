@@ -124,7 +124,7 @@ const Content = ({ AllProps }) => {
                     <div className="bannerImage">
                       <img
                         src={
-                          // banner_image ||
+                          banner_image ||
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
                         }
                         alt={"banner_image"}

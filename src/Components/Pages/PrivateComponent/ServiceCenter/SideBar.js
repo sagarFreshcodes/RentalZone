@@ -17,6 +17,9 @@ const SideBar = ({ AllProps }) => {
     .slice(0, 2)
     .join("-");
   const CurrentUrlcity = CurrentUrlPath.split("/")[1].split("-").slice(2, 3);
+  const CurrentUrlCategory = CurrentUrlPath.split("/")[1]
+    .split("-")
+    .slice(0, 1);
   const GeneralState = useSelector((state) => state?.GeneralState);
   const CurrentLocation = GeneralState?.location;
   const SelectedCategory = GeneralState?.selectedCategory;
@@ -78,7 +81,10 @@ const SideBar = ({ AllProps }) => {
       <div className="cat-container">
         <div className="s_form">
           <FS4 attr={{ className: "BoldText" }}>
-            Get the list of best <span className="green_text">"Hotels"</span>
+            Get the list of best{" "}
+            <span className="green_text">
+              "{`${CurrentUrlCategory}`.toUpperCase()}"
+            </span>
           </FS4>
           <div className="input">
             <input type="text" placeholder="Name*" />

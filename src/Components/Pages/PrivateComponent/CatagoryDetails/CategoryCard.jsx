@@ -24,7 +24,11 @@ const CategoryCard = ({
   picture,
   is_approved,
   EditContactInfoModeltoggle,
+  phone_number,
 }) => {
+  const OnDial = () => {
+    document.location.href = `tel:${phone_number}`;
+  };
   return (
     <div className="sc_cardBox">
       <div className="cd-serviceImgBox">
@@ -96,7 +100,10 @@ const CategoryCard = ({
             </div>
           </div>
           <div className="cd_card_box cd_button_box">
-            <button className="btn btn-light callNow buttonShadow">
+            <button
+              className="btn btn-light callNow buttonShadow"
+              onClick={OnDial}
+            >
               {" "}
               <FS3>
                 <Image
