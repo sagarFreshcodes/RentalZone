@@ -94,9 +94,20 @@ const CatagoryDetails = () => {
               <Content allProps={allProps} />
             </div>
           </div>
+          <div className="bannerImage">
+            <img
+              className="w-100"
+              src={
+                // banner_image ||
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
+              }
+              alt={"banner_image"}
+            />
+          </div>
           <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
             <div className="s_content ">
               <CategoryProduct />
+
               <CategoryMedia />
             </div>
 

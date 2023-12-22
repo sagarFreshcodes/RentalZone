@@ -13,6 +13,16 @@ const Chatting = ({ allProps }) => {
       <Row className="chat-box">
         <div className="chat">
           <ChatHeader allProps={allProps} />
+          <div className="bannerImage">
+            <img
+              className="w-100"
+              src={
+                // banner_image ||
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
+              }
+              alt={"banner_image"}
+            />
+          </div>
           <br />
           <br />
           <ChatMessage allProps={allProps} />

@@ -16,6 +16,7 @@ import { RentalUserAuthToken } from "../../../Constant/general_constant";
 import { useEffect, useState } from "react";
 import ChatModel from "../../Pages/Models/Chat/Chat";
 import GetQuotesModel from "../../Pages/Models/GetQuotes/GetQuotes";
+import { useSelector } from "react-redux";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -508,6 +509,8 @@ export function UpdateSEO({
 }
 
 export const HanggingBar = () => {
+  const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
+  const contact_button = GeneralData?.contact_button || 0;
   const [allCategoryList, setAllCategoryList] = useState([]);
   const [loading, setLoading] = useState([]);
   const [modal, setModel] = useState(false);
@@ -519,15 +522,21 @@ export const HanggingBar = () => {
   const toggle2 = () => {
     setChatModal(!chatModal);
   };
+  const OnDial = () => {
+    document.location.href = `tel:${11111111111}`;
+  };
   useEffect(() => {
     CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
   }, []);
   return (
     <>
       <div className="HanggingBar">
-        <div className="ChatAction" onClick={toggle2}>
+        <div
+          className="ChatAction"
+          onClick={contact_button == 1 ? toggle2 : OnDial}
+        >
           <FS6 attr={{ className: "text-light ChatHover" }}>Chat </FS6>
-          <img src={Chat} alt="" />
+          <img src={contact_button == 1 ? Chat : Message} alt="" />
         </div>
         <div className="MessagAction" onClick={toggle}>
           <FS6 attr={{ className: "text-light MessagHover" }}>

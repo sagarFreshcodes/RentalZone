@@ -32,6 +32,7 @@ const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
   const GeneralData = useSelector((state) => state?.GeneralState);
+  const contact_button = GeneralData?.data?.data?.contact_button || 0;
   const CurrentLocation = GeneralData?.location?.city_slug;
   const ParamsList = `${QueryParams.pathname}`.split("/");
   const BusinessState = useSelector((state) => state.BusinessState);
@@ -207,22 +208,28 @@ const ServiceCenter = () => {
 "
             >
               {" "}
-              <button
-                className="btn btn-success "
-                onClick={(OnDial) => console.log("object")}
-              >
-                {" "}
-                <FS3>
+              {contact_button == 1 ? (
+                <button className="btn btn-light" onClick={toggle2}>
+                  <FS3>
+                    {" "}
+                    <Image
+                      attrImage={{ src: wapp, alt: "message" }}
+                    /> Chat{" "}
+                  </FS3>
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success "
+                  onClick={(OnDial) => console.log("object")}
+                >
                   {" "}
-                  <Image attrImage={{ src: call_w, alt: "message" }} /> Call Now{" "}
-                </FS3>
-              </button>{" "}
-              <button className="btn btn-light" onClick={toggle2}>
-                <FS3>
-                  {" "}
-                  <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
-                </FS3>
-              </button>{" "}
+                  <FS3>
+                    {" "}
+                    <Image attrImage={{ src: call_w, alt: "message" }} /> Call
+                    Now{" "}
+                  </FS3>
+                </button>
+              )}
               <button className="btn btn-primary star" onClick={toggle}>
                 {" "}
                 <FS3>Get Quote Now </FS3>
