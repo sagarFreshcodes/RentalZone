@@ -72,7 +72,7 @@ const Content = ({ AllProps }) => {
       </div>
       <div className="spaceForSearchbar" />
       <ContentBox className="">{BreadCrum(BreadcrumData)}</ContentBox>
-      <ContentBox className="">
+      <ContentBox attr={{ id: "Top_Trendings" }}>
         <FS10 attr={{ className: "lh-1", onClick: test }}>
           Top Trendings For Your City{" "}
         </FS10>

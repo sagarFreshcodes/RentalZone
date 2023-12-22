@@ -18,18 +18,7 @@ import {
 
 const ChatModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
-  const [allMassges, setAllMessages] = useState([
-    {
-      sender: 0,
-      time: "10:20 am",
-      text: "Actually everything was fine. I'm very excited to show this to our team.",
-    },
-    {
-      sender: 1,
-      time: "10:14 am",
-      text: "Well I am not sure. The rest of the team.",
-    },
-  ]);
+  const [allMassges, setAllMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [chatMessage, setChatMessage] = useState("");
   const OnChat = () => {

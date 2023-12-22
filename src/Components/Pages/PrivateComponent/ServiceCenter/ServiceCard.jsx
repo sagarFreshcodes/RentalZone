@@ -249,11 +249,6 @@ const ServiceCard = ({
             </div>
           </div>
         </div>
-
-        <div
-          className="sp_button_box locationBox
-"
-        ></div>
         <div
           className="sp_button_box
 "

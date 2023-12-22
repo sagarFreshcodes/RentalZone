@@ -1466,8 +1466,11 @@
     word-break: break-all !important;
     white-space: break-spaces !important;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+  }
+  .servicePage #Top_Trendings {
+    display: none;
   }
   .sp_category2 {
     display: inline !important;

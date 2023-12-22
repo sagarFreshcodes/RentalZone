@@ -11,6 +11,8 @@ import { HOME_ROUTE } from "./RouthPath";
 import { useDispatch, useSelector } from "react-redux";
 import { SetToken } from "../Redux_Store/Actions/userActions";
 import RedirectExternal from "./RedirectExternal";
+import { MetaTagsArray } from "../Constant/metaTags";
+import { AddMetaTagsToHead } from "../Components/Common/Component/helperFunction";
 // setup fake backend
 
 const Routers = () => {
@@ -33,11 +35,15 @@ const Routers = () => {
     setAuthenticated(JSON.parse(localStorage.getItem("authenticated")));
     console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
     console.disableYellowBox = true;
+
     return () => {
       abortController.abort();
     };
   }, []);
 
+  useEffect(() => {
+    AddMetaTagsToHead(MetaTagsArray);
+  }, []);
   return (
     <BrowserRouter basename={"/"}>
       <Suspense fallback={<Loader />}>
