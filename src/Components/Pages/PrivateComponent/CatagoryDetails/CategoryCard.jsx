@@ -23,6 +23,7 @@ const CategoryCard = ({
   categoryList,
   picture,
   is_approved,
+  EditContactInfoModeltoggle,
 }) => {
   return (
     <div className="sc_cardBox">
@@ -129,7 +130,10 @@ const CategoryCard = ({
                 /> Share{" "}
               </FS3>
             </button>{" "}
-            <button className="btn btn-light buttonShadow">
+            <button
+              className="btn btn-light buttonShadow"
+              onClick={EditContactInfoModeltoggle}
+            >
               <FS3>
                 {" "}
                 <Image attrImage={{ src: edit, alt: "message" }} /> Edit{" "}

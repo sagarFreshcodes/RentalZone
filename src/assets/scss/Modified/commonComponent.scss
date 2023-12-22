@@ -18,6 +18,7 @@
   flex-direction: column;
   justify-content: end;
   align-items: flex-end;
+
   // @media screen and (max-width: 1200px) {
   //   top: 45vw;
   // }
@@ -30,14 +31,15 @@
   // @media screen and (max-width: 500px) {
   //   top: 110vw;
   // }
-  @media screen and (max-width: 400px) {
-    top: 150vw;
+  @media screen and (max-width: 800px) {
+    display: none;
   }
   .ChatAction {
     // position: absolute;
     top: 0;
     margin: 1rem;
-    background-color: #ff7d18;
+    // background-color: #ff7d18;
+    background-color: #803c08;
     border-radius: 6px;
     // fasfa
     width: fit-content;
@@ -45,58 +47,67 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    .ChatHover {
-      display: none;
-    }
+    // .ChatHover {
+    //   display: none;
+    // }
     img {
       width: 4rem;
       aspect-ratio: 1;
+      padding: 1rem !important;
+    }
+    #FS6 {
+      padding: 0 1rem !important;
     }
 
     // }
   }
 
-  .ChatAction:hover {
-    background-color: #803c08;
-    img {
-      padding: 1rem !important;
-    }
-    #FS6 {
-      padding: 0 1rem !important;
-    }
-    .ChatHover {
-      display: inline;
-    }
-  }
-  .MessagAction:hover {
-    background-color: #015173;
-    #FS6 {
-      padding: 0 1rem !important;
-    }
-    img {
-      padding: 1rem !important;
-    }
-    .MessagHover {
-      display: inline;
-    }
-  }
+  // .ChatAction:hover {
+  //   background-color: #803c08;
+  //   img {
+  //     padding: 1rem !important;
+  //   }
+  //   #FS6 {
+  //     padding: 0 1rem !important;
+  //   }
+  //   .ChatHover {
+  //     display: inline;
+  //   }
+  // }
+  // .MessagAction:hover {
+  //   background-color: #015173;
+  //   #FS6 {
+  //     padding: 0 1rem !important;
+  //   }
+  //   img {
+  //     padding: 1rem !important;
+  //   }
+  //   .MessagHover {
+  //     display: inline;
+  //   }
+  // }
   .MessagAction {
     // position: absolute;
     width: fit-content;
     bottom: 0;
     margin: 1rem;
-    background-color: #0085be;
+    // background-color: #0085be;
+    background-color: #015173;
     border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    .MessagHover {
-      display: none;
+    // .MessagHover {
+    //   display: none;
+    // }
+    #FS6 {
+      padding: 0 1rem !important;
     }
     img {
       width: 4rem;
       aspect-ratio: 1;
+      padding: 1rem !important;
     }
   }
 }

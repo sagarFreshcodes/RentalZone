@@ -22,7 +22,7 @@ const SideBar = ({ AllProps }) => {
   const SelectedCategory = GeneralState?.selectedCategory;
   const { category_id, category_slug } = SelectedCategory;
   const { city_slug } = CurrentLocation;
-  const { PopularArea, EditContactInfoModeltoggle } = AllProps;
+  const { PopularArea } = AllProps;
 
   const onCategorySelect = (link) => {
     const rightLink = `${link}`.split("/")[3];
@@ -75,10 +75,7 @@ const SideBar = ({ AllProps }) => {
 
   return (
     <ContentBox className="">
-      <div
-        className="cat-container"
-        onClick={() => EditContactInfoModeltoggle()}
-      >
+      <div className="cat-container">
         <div className="s_form">
           <FS4 attr={{ className: "BoldText" }}>
             Get the list of best <span className="green_text">"Hotels"</span>

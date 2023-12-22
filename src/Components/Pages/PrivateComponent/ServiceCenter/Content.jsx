@@ -50,7 +50,10 @@ const Content = ({ AllProps }) => {
     setCurrentPage,
     currentPage,
   } = AllProps;
-
+  const { banner_image } = (BusinesssPageData?.listing_ads_banner &&
+    BusinesssPageData?.listing_ads_banner[0]) || {
+    banner_image: "",
+  };
   const { page_title } = BusinesssPageData || {};
   const { total, per_page, last_page, current_page } = all_listing || {};
   useEffect(() => {
@@ -58,7 +61,9 @@ const Content = ({ AllProps }) => {
       setMyFile(response.data);
     });
   }, []);
-  const test = () => {};
+  const test = () => {
+    console.log(banner_image);
+  };
 
   return (
     <Fragment>
@@ -78,40 +83,57 @@ const Content = ({ AllProps }) => {
             isLoading={isServiceLoading}
             loader={<SC_CardSkelaton />}
             contentArray={BusinesssListing}
-            ContentBody={BusinesssListing?.map((item) => {
+            ContentBody={BusinesssListing?.map((item, index) => {
               return (
-                <ServiceCard
-                  address={item?.address}
-                  area={item?.area}
-                  area_name={item?.area_name}
-                  category={`${item?.email}`.split(`,`)}
-                  city={[item?.city]}
-                  city_name={item?.city_name}
-                  contact_person={item?.contact_person}
-                  country={item?.country}
-                  description={item?.description}
-                  email={item?.email}
-                  id={item?.id}
-                  is_approved={item?.is_approved}
-                  listing_type={item?.listing_type}
-                  main_listing_id={item?.main_listing_id}
-                  name={item?.name}
-                  phone_number={item?.phone_number}
-                  pincode={item?.pincode}
-                  rates={item?.rates}
-                  rates_per={item?.rates_per}
-                  show_mobile={item?.show_mobile}
-                  show_on_area_page={item?.show_on_area_page}
-                  show_website={item?.show_website}
-                  slug={item?.slug}
-                  state={item?.state}
-                  user_id={item?.user_id}
-                  website={item?.website}
-                  featured={item.featured || false}
-                  AllProps={AllProps}
-                  BreadcrumData={BreadcrumData}
-                  item={item}
-                />
+                <>
+                  <ServiceCard
+                    address={item?.address}
+                    area={item?.area}
+                    area_name={item?.area_name}
+                    category={`${item?.email}`.split(`,`)}
+                    city={[item?.city]}
+                    city_name={item?.city_name}
+                    contact_person={item?.contact_person}
+                    country={item?.country}
+                    description={item?.description}
+                    email={item?.email}
+                    id={item?.id}
+                    is_approved={item?.is_approved}
+                    listing_type={item?.listing_type}
+                    main_listing_id={item?.main_listing_id}
+                    name={item?.name}
+                    phone_number={item?.phone_number}
+                    pincode={item?.pincode}
+                    rates={item?.rates}
+                    rates_per={item?.rates_per}
+                    show_mobile={item?.show_mobile}
+                    show_on_area_page={item?.show_on_area_page}
+                    show_website={item?.show_website}
+                    slug={item?.slug}
+                    state={item?.state}
+                    user_id={item?.user_id}
+                    website={item?.website}
+                    featured={item.featured || false}
+                    AllProps={AllProps}
+                    BreadcrumData={BreadcrumData}
+                    item={item}
+                    banner_image={banner_image}
+                    index={index}
+                  />
+                  {(index + 1) % 4 == 0 ? (
+                    <div className="bannerImage">
+                      <img
+                        src={
+                          // banner_image ||
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
+                        }
+                        alt={"banner_image"}
+                      />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </>
               );
             })}
             pagination={

@@ -55,6 +55,7 @@ const ServiceCard = ({
   BreadcrumData,
   item,
   featured,
+  banner_image,
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();

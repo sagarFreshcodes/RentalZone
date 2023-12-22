@@ -26,7 +26,8 @@ const Content = ({ allProps }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { ListDetails, BreadcrumData, chatToggle } = allProps || {};
+  const { ListDetails, BreadcrumData, chatToggle, EditContactInfoModeltoggle } =
+    allProps || {};
 
   const {
     // canonical,
@@ -106,6 +107,7 @@ const Content = ({ allProps }) => {
                 is_approved={is_approved == "Yes"}
                 categoryList={item?.categoryList}
                 chatToggle={chatToggle}
+                EditContactInfoModeltoggle={EditContactInfoModeltoggle}
               />
             );
           })}

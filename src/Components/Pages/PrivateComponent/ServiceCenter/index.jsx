@@ -58,7 +58,7 @@ const ServiceCenter = () => {
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
-  const [editContactInfoModel, setEditContactInfoModel] = useState(false);
+
   const [allCategoryList, setAllCategoryList] = useState([]);
   const [loading, setLoading] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -89,13 +89,10 @@ const ServiceCenter = () => {
       setChatModal(true);
     }
   };
-  const EditContactInfoModeltoggle = () => {
-    setEditContactInfoModel(!editContactInfoModel);
-  };
+
   const AllProps = {
     toggle: toggle,
     toggle2: toggle2,
-    EditContactInfoModeltoggle: EditContactInfoModeltoggle,
     setServiceData: setServiceData,
     serviceData: serviceData,
     BusinessState: BusinessState,
@@ -240,11 +237,7 @@ const ServiceCenter = () => {
           loading={loading}
           allCategoryList={allCategoryList}
         />
-        <EditContactInfoModel
-          toggler={EditContactInfoModeltoggle}
-          isOpen={editContactInfoModel}
-          loading={loading}
-        />
+
         <ChatModel
           serviceData={serviceData}
           toggler={toggle2}

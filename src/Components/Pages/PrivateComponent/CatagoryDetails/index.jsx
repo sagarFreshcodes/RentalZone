@@ -18,10 +18,15 @@ import {
   UpdateSEO,
 } from "../../../Common/Component/helperFunction";
 import ChatModel from "../../Models/Chat/Chat";
+import EditContactInfoModel from "../../Models/EditContactInfo/EditContactInfo";
 const CatagoryDetails = () => {
   const [chatModal, setChatModal] = useState(false);
+  const [editContactInfoModel, setEditContactInfoModel] = useState(false);
   const chatToggle = () => {
     setChatModal(!chatModal);
+  };
+  const EditContactInfoModeltoggle = () => {
+    setEditContactInfoModel(!editContactInfoModel);
   };
   const QueryParams = useLocation();
   const Parameter = `${QueryParams?.pathname}`.split("-");
@@ -63,6 +68,7 @@ const CatagoryDetails = () => {
   const allProps = {
     ListDetails: ListDetails,
     BreadcrumData: BreadcrumData,
+    EditContactInfoModeltoggle: EditContactInfoModeltoggle,
     chatToggle: chatToggle,
   };
 
@@ -108,6 +114,11 @@ const CatagoryDetails = () => {
       </Fragment>{" "}
       <HanggingBar />
       <ChatModel toggler={chatToggle} isOpen={chatModal} />
+      <EditContactInfoModel
+        toggler={EditContactInfoModeltoggle}
+        isOpen={editContactInfoModel}
+        loading={`loading`}
+      />
     </>
   );
 };

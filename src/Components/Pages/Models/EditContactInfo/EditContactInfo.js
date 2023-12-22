@@ -114,7 +114,7 @@ const EditContactInfoModel = (props) => {
       className="gq-model-content"
     >
       <div className="modal-header" onClick={() => console.log(formData)}>
-        <H5 attrH5={{ className: "modal-title" }}>{"Edit Conatact"}</H5>
+        <H5 attrH5={{ className: "modal-title" }}>{"Edit Contact"}</H5>
         <CloseButton
           attr={{ className: "reg_React_Icon", onClick: props.toggler }}
         />

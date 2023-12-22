@@ -13,6 +13,9 @@ import Chat from "../../../assets/images/Essential/Chat.png";
 import Message from "../../../assets/images/Essential/Message.png";
 import * as ReactIcons from "react-icons/ai";
 import { RentalUserAuthToken } from "../../../Constant/general_constant";
+import { useEffect, useState } from "react";
+import ChatModel from "../../Pages/Models/Chat/Chat";
+import GetQuotesModel from "../../Pages/Models/GetQuotes/GetQuotes";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -375,18 +378,41 @@ export function UpdateSEO({
 }
 
 export const HanggingBar = () => {
+  const [allCategoryList, setAllCategoryList] = useState([]);
+  const [loading, setLoading] = useState([]);
+  const [modal, setModel] = useState(false);
+  const [chatModal, setChatModal] = useState(false);
+
+  const toggle = () => {
+    setModel(!modal);
+  };
+  const toggle2 = () => {
+    setChatModal(!chatModal);
+  };
+  useEffect(() => {
+    CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
+  }, []);
   return (
     <>
       <div className="HanggingBar">
-        <div className="ChatAction">
-          <FS6 attr={{ className: "text-light ChatHover" }}>Chat...</FS6>
+        <div className="ChatAction" onClick={toggle2}>
+          <FS6 attr={{ className: "text-light ChatHover" }}>Chat </FS6>
           <img src={Chat} alt="" />
         </div>
-        <div className="MessagAction">
-          <FS6 attr={{ className: "text-light MessagHover" }}>Message...</FS6>
+        <div className="MessagAction" onClick={toggle}>
+          <FS6 attr={{ className: "text-light MessagHover" }}>
+            Get Quotes Now
+          </FS6>
           <img src={Message} alt="" />
         </div>
       </div>
+      <GetQuotesModel
+        toggler={toggle}
+        isOpen={modal}
+        loading={loading}
+        allCategoryList={allCategoryList}
+      />
+      <ChatModel toggler={toggle2} isOpen={chatModal} />
     </>
   );
 };
