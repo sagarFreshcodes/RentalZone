@@ -8,17 +8,23 @@ import CustomizerContext from "../../../_helper/Customizer";
 import { Account, Admin, Inbox, LogOut, Taskboard } from "../../../Constant";
 import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE } from "../../../Route/RouthPath";
 import { Log_Out } from "../../../Components/Common/Component/helperFunction";
+import { ApiLoader } from "../../../Components/Common/Component/DesignElement";
 
 const UserHeader = () => {
   const history = useNavigate();
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("Emay Walter");
   const [mouseOn, setMouseOn] = useState(false);
+  const [loader, setLoader] = useState({
+    logOutLoader: false,
+  });
   const [show, setShow] = useState(false);
   const { layoutURL } = useContext(CustomizerContext);
   const authenticated = JSON.parse(localStorage.getItem("authenticated"));
   const auth0_profile = JSON.parse(localStorage.getItem("auth0_profile"));
-
+  const loadingChange = (name, type) => {
+    setLoader({ ...loader, [name]: type });
+  };
   useEffect(() => {
     setProfile(localStorage.getItem("profileURL") || man);
     setName(localStorage.getItem("Name") ? localStorage.getItem("Name") : name);
@@ -27,7 +33,7 @@ const UserHeader = () => {
   const Logout = () => {
     Log_Out({
       Redirect: () => history(LIST_BUSINESS_ROUTE),
-      loadingChange: () => console.log("first"),
+      loadingChange: loadingChange,
     });
   };
 
@@ -130,7 +136,9 @@ const UserHeader = () => {
         </LI>
         <LI attrLI={{ onClick: Logout, className: login ? "" : "d-none" }}>
           <LogIn />
-          <span>{LogOut}</span>
+          <span>
+            {LogOut} {loader.logOutLoader ? <ApiLoader /> : ""}
+          </span>
         </LI>
       </UL>
     </ul>

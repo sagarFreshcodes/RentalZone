@@ -27,6 +27,7 @@ import {
   UpdateSEO,
   slugConvertor,
 } from "../../../Common/Component/helperFunction";
+import EditContactInfoModel from "../../Models/EditContactInfo/EditContactInfo";
 const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const ServiceCenter = () => {
     meta_title,
     meta_description,
     meta_keywords,
-  } = BusinesssPageData || { top_five_listings: [{}, {}], all_listing: {} };
+  } = BusinesssPageData || { top_five_listings: [], all_listing: {} };
   const featuredRecord = top_five_listings?.map((i) => {
     return { ...i, featured: true };
   });
@@ -57,6 +58,7 @@ const ServiceCenter = () => {
   const { isServiceLoading } = BusinessState;
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
+  const [editContactInfoModel, setEditContactInfoModel] = useState(false);
   const [allCategoryList, setAllCategoryList] = useState([]);
   const [loading, setLoading] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -87,10 +89,13 @@ const ServiceCenter = () => {
       setChatModal(true);
     }
   };
-
+  const EditContactInfoModeltoggle = () => {
+    setEditContactInfoModel(!editContactInfoModel);
+  };
   const AllProps = {
     toggle: toggle,
     toggle2: toggle2,
+    EditContactInfoModeltoggle: EditContactInfoModeltoggle,
     setServiceData: setServiceData,
     serviceData: serviceData,
     BusinessState: BusinessState,
@@ -107,9 +112,7 @@ const ServiceCenter = () => {
   };
 
   const test = () => {
-    let BusinesssListing2 = [...top_five_listings, ...BusinesssListing];
-    console.log(`featuredRecord2512=>`, featuredRecord);
-    console.log(`top_five_listings=>`, BusinesssListing2);
+    console.log(`BusinesssPageData=>`, BusinesssPageData);
   };
   useEffect(() => {
     const GetBusinessList = ({
@@ -237,7 +240,11 @@ const ServiceCenter = () => {
           loading={loading}
           allCategoryList={allCategoryList}
         />
-
+        <EditContactInfoModel
+          toggler={EditContactInfoModeltoggle}
+          isOpen={editContactInfoModel}
+          loading={loading}
+        />
         <ChatModel
           serviceData={serviceData}
           toggler={toggle2}

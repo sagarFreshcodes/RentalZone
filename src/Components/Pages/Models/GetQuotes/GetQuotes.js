@@ -20,6 +20,7 @@ import {
 } from "../../../Common/Component/helperFunction";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { CommonButton } from "../../../../CommonElements/Button";
 const GetQuotesModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
   const [loading, setLoading] = useState(false);
@@ -287,16 +288,15 @@ const GetQuotesModel = (props) => {
               </div>
 
               <div className="gq-model-bbox">
-                <button type="submit">Submit</button>
-                {/* <Btn
-                  attrBtn={{
+                {/* <button type="submit">Submit</button> */}
+                <CommonButton
+                  attr={{
                     type: "submit",
-                    color: "primary",
                     // onClick: OnSubmit,
                   }}
                 >
                   {"Submit"} {loading ? <ApiLoader /> : ""}
-                </Btn> */}
+                </CommonButton>
               </div>
             </form>
           </div>

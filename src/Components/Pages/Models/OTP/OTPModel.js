@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn, H5 } from "../../../../AbstractElements";
 import { FS2, FS3, FS4, FS5 } from "../../../../CommonElements/Font/FS";
-import { CloseButton } from "../../../Common/Component/DesignElement";
+import {
+  ApiLoader,
+  CloseButton,
+} from "../../../Common/Component/DesignElement";
 import { CommonButton } from "../../../../CommonElements/Button";
 import PhoneInput from "../../../Common/Component/PhoneInput/PhoneInput";
 import OtpInput from "react-otp-input";
@@ -16,6 +19,8 @@ const OTPModel = (props) => {
     LoginWithOTPPayload,
     LoginWithGooglePayload,
     Redirect,
+    loader,
+    googleLoad,
   } = props;
   const onChange = (e) => {
     console.log("test2512", e);
@@ -70,7 +75,7 @@ const OTPModel = (props) => {
               onClick: () => LoginWithOTP(LoginWithOTPPayload),
             }}
           >
-            Login with OTP
+            Login with OTP {loader ? <ApiLoader /> : ""}
           </CommonButton>
           <br />
           <br />
@@ -80,7 +85,7 @@ const OTPModel = (props) => {
               onClick: () => LoginWithGoogle(LoginWithGooglePayload),
             }}
           >
-            Login with Google
+            Login with Google {googleLoad ? <ApiLoader /> : ""}
           </CommonButton>
           <br />
           <br />

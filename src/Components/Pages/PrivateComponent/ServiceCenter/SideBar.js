@@ -22,11 +22,11 @@ const SideBar = ({ AllProps }) => {
   const SelectedCategory = GeneralState?.selectedCategory;
   const { category_id, category_slug } = SelectedCategory;
   const { city_slug } = CurrentLocation;
-  const { PopularArea } = AllProps;
+  const { PopularArea, EditContactInfoModeltoggle } = AllProps;
 
-  const onCategorySelect = (link) => { 
+  const onCategorySelect = (link) => {
     const rightLink = `${link}`.split("/")[3];
-    navigate(`${BASE_ROUTE}/${rightLink}/${category_id}`); 
+    navigate(`${BASE_ROUTE}/${rightLink}/${category_id}`);
   };
 
   const FixedArea = [
@@ -66,20 +66,18 @@ const SideBar = ({ AllProps }) => {
     dispatch(
       SetLocation({
         locationData: {
-          city_slug: CurrentUrlcity, 
+          city_slug: CurrentUrlcity,
           name: CurrentUrlcity,
         },
       })
     );
   }, [CurrentUrlPath]);
 
-  const Test = () =>{ 
-  }
   return (
     <ContentBox className="">
       <div
         className="cat-container"
-        onClick={Test}
+        onClick={() => EditContactInfoModeltoggle()}
       >
         <div className="s_form">
           <FS4 attr={{ className: "BoldText" }}>

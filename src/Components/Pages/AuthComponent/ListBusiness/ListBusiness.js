@@ -18,6 +18,15 @@ const ListBusiness = () => {
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [loader, setLoader] = useState({
+    startNow: false,
+    otpCheck: false,
+    googleLoad: false,
+  });
+  const LoadingChange = (name, type) => {
+    setLoader({ ...loader, [name]: type });
+    return null;
+  };
   const navigate = useNavigate();
   const toggle = () => {
     if (modal) {
@@ -40,11 +49,14 @@ const ListBusiness = () => {
     Payload: { mobile: mobile, toggle: toggle },
     Redirect: Redirect,
     dispatch: dispatch,
+    loader: loader.startNow,
+    LoadingChange: LoadingChange,
   };
 
   useEffect(() => {
     dispatch(UserActions({ status: "fail", profileData: "response" }));
   }, []);
+  console.log("LoadingChange=======>", loader.otpCheck);
   return (
     <>
       <div className="ListBusiness">
@@ -95,7 +107,10 @@ const ListBusiness = () => {
           toggle: toggle,
           Redirect: Redirect,
           dispatch: dispatch,
+          LoadingChange: LoadingChange,
         }}
+        loader={loader.otpCheck}
+        googleLoad={loader.googleLoad}
         LoginWithGoogle={LoginWithGoogle}
         LoginWithGooglePayload={{
           setToken: setToken,
@@ -105,6 +120,7 @@ const ListBusiness = () => {
           toggle: toggle,
           Redirect: Redirect,
           dispatch: dispatch,
+          LoadingChange: LoadingChange,
         }}
         Redirect={Redirect}
       />

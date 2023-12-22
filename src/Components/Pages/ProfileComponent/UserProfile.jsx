@@ -61,7 +61,7 @@ const UserProfilePage = ({}) => {
   const user_details = useSelector((state) => state.UserReducer.user_details);
   const userStateData = useSelector((state) => state.UserReducer);
   const loadingChange = (name, type) => {
-    setLoader({ ...profileLoader, [name]: type });
+    setLoader({ ...loader, [name]: type });
   };
   const cp_toggle = () => {
     setCp_Model(!cp_modal);

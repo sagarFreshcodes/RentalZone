@@ -16,7 +16,8 @@ const SaveUserAuthToken = ({ token, user_details }) => {
   localStorage.setItem("rentalUserAuthToken", token);
   localStorage.setItem("user_details", user_details);
 };
-export const GenerateOtp = ({ mobile, toggle }) => {
+export const GenerateOtp = ({ mobile, toggle, LoadingChange }) => {
+  LoadingChange("startNow", true);
   const bodyFormData = new FormData();
   bodyFormData.append("phone_number", mobile);
 
@@ -27,13 +28,23 @@ export const GenerateOtp = ({ mobile, toggle }) => {
     .then((response) => {
       ToastSuccess(response);
       toggle();
+      LoadingChange("startNow", false);
     })
     .catch((error) => {
       ToastError(error);
+      LoadingChange("startNow", false);
     });
 };
 
-export const LoginWithOTP = ({ otp, mobile, toggle, Redirect, dispatch }) => {
+export const LoginWithOTP = ({
+  otp,
+  mobile,
+  toggle,
+  Redirect,
+  dispatch,
+  LoadingChange,
+}) => {
+  LoadingChange("otpCheck", true);
   const bodyFormData = new FormData();
   bodyFormData.append("phone_number", mobile);
   bodyFormData.append("otp", otp);
@@ -56,9 +67,11 @@ export const LoginWithOTP = ({ otp, mobile, toggle, Redirect, dispatch }) => {
       );
       toggle();
       Redirect();
+      LoadingChange("otpCheck", false);
     })
     .catch((error) => {
       ToastError(error);
+      LoadingChange("otpCheck", false);
     });
 };
 export const SubmitGoogleLoginCred = ({
@@ -115,7 +128,9 @@ export const LoginWithGoogle = ({
   toggle,
   Redirect,
   dispatch,
+  LoadingChange,
 }) => {
+  LoadingChange("googleLoad", true);
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -135,9 +150,11 @@ export const LoginWithGoogle = ({
         Redirect: Redirect,
         dispatch: dispatch,
       });
+      LoadingChange("googleLoad", false);
     })
     .catch((error) => {
       ToastError(error);
+      LoadingChange("googleLoad", false);
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;

@@ -6,14 +6,22 @@ import {
   ToastError,
   convertStringToIntegerOrString,
 } from "../../../Common/Component/helperFunction";
-import { CloseButton } from "../DesignElement";
+import { ApiLoader, CloseButton } from "../DesignElement";
 export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
   const [show, setShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [search, setSearch] = useState(defaultCountry?.name);
-  const { toggle, GenerateOtp, Payload, mobile, dispatch } = AllProps;
+  const {
+    toggle,
+    GenerateOtp,
+    Payload,
+    mobile,
+    dispatch,
+    loader,
+    LoadingChange,
+  } = AllProps;
   const Toggle = () => {
     setShow(!show);
   };
@@ -34,12 +42,17 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
     setShow(false);
     setSelectedCountry(e);
   };
+
   const onHandleChange = (e) => {
     onChange(convertStringToIntegerOrString(`${e.target.value}`));
   };
 
   const HandleClick = () => {
-    GenerateOtp(Payload, dispatch);
+    GenerateOtp({
+      mobile: mobile,
+      toggle: toggle,
+      LoadingChange: LoadingChange,
+    });
   };
   return (
     <div className="PhoneInput">
@@ -107,7 +120,8 @@ export const PhoneInput = ({ onChange, AllProps, onlyInput }) => {
         ""
       ) : (
         <CommonButton attr={{ onClick: () => HandleClick() }}>
-          Start Now <span className="StartArraow">{`>`}</span>
+          Start Now{" "}
+          {loader ? <ApiLoader /> : <span className="StartArraow">{`>`}</span>}
         </CommonButton>
       )}
     </div>
