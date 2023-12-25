@@ -5,32 +5,8 @@ import slide3 from "../../../../assets/images/Essential/ProductDetail/slide3.png
 import slide4 from "../../../../assets/images/Essential/ProductDetail/slide4.png";
 import slide5 from "../../../../assets/images/Essential/ProductDetail/slide5.png";
 import { FS4, FS6 } from "../../../../CommonElements/Font/FS";
-import {
-  CheckValidImage,
-  CheckValidValue,
-} from "../../../Common/Component/helperFunction";
 const ProductDetail = ({ AllProps }) => {
-  const {
-    id,
-    category_id,
-    listing_id,
-    user_id,
-    site_id,
-    product_name,
-    product_slug,
-    price,
-    description,
-    product_image,
-    brand,
-    model,
-    is_approved,
-    is_active,
-    locations,
-    meta_title,
-    meta_desc,
-    created_at,
-    updated_at,
-  } = AllProps?.ProductDetails || {};
+  const { ProductDetails } = AllProps;
   const [fullscreenImg, setFullscreenImg] = useState(slide1);
   const [imgList, setImgList] = useState([
     slide1,
@@ -42,12 +18,15 @@ const ProductDetail = ({ AllProps }) => {
 
   return (
     <>
-      <div className="pd_ProductDetail" onClick={() => console.log()}>
+      <div
+        className="pd_ProductDetail"
+        onClick={() => console.log(ProductDetails)}
+      >
         <div className="gallary">
           <div className="fullscreenImg">
-            <img src={CheckValidImage(product_image, fullscreenImg)} alt="" />
+            <img src={fullscreenImg} alt="" />
           </div>
-          {/* <div className="ImagList">
+          <div className="ImagList">
             {imgList
               .filter((i) => i != fullscreenImg)
               .map((i) => {
@@ -58,7 +37,7 @@ const ProductDetail = ({ AllProps }) => {
                   </>
                 );
               })}
-          </div> */}
+          </div>
         </div>
         <div className="Description">
           <div className="title">
@@ -66,7 +45,14 @@ const ProductDetail = ({ AllProps }) => {
             <br />
           </div>
           <div className="content">
-            {[description].map((i) => {
+            {[
+              "Intel Core i7 10 Gen",
+              "RAM 16GB",
+              "1TB SSD",
+              "RTX 2060 6GB Graphics",
+              "15.6",
+              "FHD 240Hz Display",
+            ].map((i) => {
               return (
                 <>
                   {" "}
@@ -85,18 +71,11 @@ const ProductDetail = ({ AllProps }) => {
           </div>
           <div className="content">
             {[
-              {
-                title: "Approved :",
-                value: CheckValidValue(is_approved, "null", true),
-              },
-              {
-                title: "Active :",
-                value: CheckValidValue(is_active, "null", true),
-              },
-              {
-                title: "Site Id :",
-                value: CheckValidValue(site_id, "null", true),
-              },
+              { title: "Processor :", value: "Intel Core i7-10750H 10th Gen" },
+              { title: "RAM :", value: "16 GB" },
+              { title: "HDD :", value: "1 TB SSD" },
+              { title: "Display :", value: `15.6" FHD 240Hz Display` },
+              { title: "OS :", value: "Windows 10" },
             ].map((i) => {
               return (
                 <>

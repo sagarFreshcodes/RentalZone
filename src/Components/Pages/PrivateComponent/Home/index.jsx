@@ -27,6 +27,8 @@ const Home = () => {
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
   const StateData = useSelector((state) => state);
+  const ProductList =
+    StateData?.Home?.data?.PRODUCT_LIST?.data?.data?.data || [];
 
   const { page_title, meta_title, meta_description, meta_keywords } =
     HomPageData || {};
@@ -36,6 +38,7 @@ const Home = () => {
     GeneralData: GeneralData,
     StateData: StateData,
     location: CurrentLocation,
+    ProductList: ProductList,
   };
   useEffect(() => {
     dispatch(

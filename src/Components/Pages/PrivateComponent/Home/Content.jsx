@@ -26,8 +26,14 @@ import {
 } from "../../../../Redux_Store/Actions/generalActions";
 import { useDispatch, useSelector } from "react-redux";
 const Content = ({ props }) => {
-  const { homepage_category, HomPageData, StateData, location, GeneralData } =
-    props;
+  const {
+    homepage_category,
+    HomPageData,
+    StateData,
+    location,
+    GeneralData,
+    ProductList,
+  } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -204,7 +210,33 @@ const Content = ({ props }) => {
           <FS10>Top Trendings For Your City</FS10>
         </div>
         <div className="TrendingsContainer">
-          {TrandingList.map((item) => {
+          {ProductList?.map((item) => {
+            return (
+              <TrandingCard
+                title={item?.product_name}
+                price={item?.price}
+                address1={item?.address1}
+                address2={item?.address2}
+                like={item?.like}
+                statics={item?.static}
+                view={item?.view}
+                share={item?.share}
+                picture={
+                  `${item?.product_image}`.includes("/")
+                    ? item?.product_image
+                    : lptopImg4
+                }
+                d1={item?.d1}
+                d2={item?.d2}
+                d3={item?.d3}
+                d4={item?.d4}
+                specification={[item?.description]}
+                id={item.id}
+                item={item}
+              />
+            );
+          })}
+          {/* {TrandingList.map((item) => {
             return (
               <TrandingCard
                 title={item.title}
@@ -222,7 +254,7 @@ const Content = ({ props }) => {
                 specification={item.specification}
               />
             );
-          })}
+          })} */}
         </div>
       </ContentBox>
 

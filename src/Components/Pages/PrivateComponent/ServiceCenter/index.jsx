@@ -108,7 +108,9 @@ const ServiceCenter = () => {
     currentPage,
     setCurrentPage,
   };
-
+  const OnDial = () => {
+    document.location.href = `tel:1111111111`;
+  };
   const test = () => {
     console.log(`BusinesssPageData=>`, BusinesssPageData);
   };
@@ -218,10 +220,7 @@ const ServiceCenter = () => {
                   </FS4>
                 </button>
               ) : (
-                <button
-                  className="btn btn-success "
-                  onClick={(OnDial) => console.log("object")}
-                >
+                <button className="btn btn-success " onClick={OnDial}>
                   {" "}
                   <FS4>
                     {" "}
@@ -230,7 +229,7 @@ const ServiceCenter = () => {
                   </FS4>
                 </button>
               )}
-              <button className="btn btn-primary  " onClick={toggle}>
+              <button className="btn btn-primary " onClick={toggle}>
                 {" "}
                 <FS4>Get Quote Now </FS4>
               </button>{" "}

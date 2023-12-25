@@ -649,3 +649,23 @@ export const GetCurrentChatTime = () => {
 
   return formattedTime;
 };
+
+export const CheckValidValue = (value, defaultValue, notCheck) => {
+  if (["null", null, undefined, "undefined", ""].includes(value)) {
+    return defaultValue ? defaultValue : false;
+  } else {
+    return notCheck ? value : true;
+  }
+};
+
+export const CheckValidImage = (value, defaultValue) => {
+  if (["null", null, undefined, "undefined", ""].includes(value)) {
+    return defaultValue ? defaultValue : false;
+  } else {
+    if (value.includes("/")) {
+      return value;
+    } else {
+      return defaultValue;
+    }
+  }
+};

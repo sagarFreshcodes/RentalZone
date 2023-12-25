@@ -26,27 +26,33 @@ const Content = ({ propsObject }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-  const { BreadcrumData } = propsObject;
+
+  const { BreadcrumData, props, ProductDetails } = propsObject;
+
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
     });
   }, []);
 
+  const AllProps = { ProductDetails: ProductDetails };
+  const test = () => {
+    console.log("props======>", ProductDetails);
+  };
   return (
     <Fragment>
-      <ContentBox className="">
-        <FS4 attr={{ className: "lh-1" }}>{BreadCrum(BreadcrumData)}</FS4>
+      <ContentBox attr={{ onClick: test }}>
+        <FS4 attr={{ className: "lh-1", onClick: test }}>
+          {BreadCrum(BreadcrumData)}
+        </FS4>
       </ContentBox>
       <ContentBox className="">
         <div className="productContent">
-          <ProductDetail/>
-          <SideBar/>
+          <ProductDetail AllProps={AllProps} />
+          <SideBar AllProps={AllProps} />
         </div>
       </ContentBox>
     </Fragment>
   );
 };
 export default Content;
-
- 

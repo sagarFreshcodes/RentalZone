@@ -10,22 +10,30 @@ import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import { PRODUCT_DETAILS_ROUTE } from "../../../../Route/RouthPath";
 const TrandingCard = ({
   title,
+  price,
+  id,
+  item,
+  picture,
+  specification,
   address1,
   address2,
   like,
   view,
   share,
-  picture,
   statics,
   d1,
   d2,
   d3,
   d4,
-  specification,
 }) => {
   const Navigate = useNavigate();
   const handleCatClick = () => {
-    Navigate(`${PRODUCT_DETAILS_ROUTE}`);
+    // Navigate(`${PRODUCT_DETAILS_ROUTE}`);
+    // Navigate({
+    //   pathname: `${PRODUCT_DETAILS_ROUTE}`,
+    //   state: { item: item, id: id },
+    // });
+    Navigate(`${PRODUCT_DETAILS_ROUTE}`, { state: { item: item, id: id } });
   };
   return (
     <div className="trandCardBox shadowEffect" onClick={handleCatClick}>
@@ -41,7 +49,7 @@ const TrandingCard = ({
               </div>
               <div className="priceContent">
                 <span className="priceNm">
-                  <FS6>₹ 2,00,000/</FS6>
+                  <FS6>₹ {price}/</FS6>
                 </span>{" "}
                 <span className="interval">
                   <FS3>Day</FS3>
@@ -51,8 +59,7 @@ const TrandingCard = ({
             <FS6 attr={{ className: "f-w-600" }}>{title}</FS6>
             <div className="propertyList">
               <FS3> {specification?.join("  |  ")}</FS3>
-            </div> 
-          
+            </div>
           </div>
         </Media>
         <div>

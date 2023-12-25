@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FS2, FS3, FS4, FS6, FS8 } from "../../../../CommonElements/Font/FS";
 import share from "../../../../assets/images/Essential/ProductDetail/share.png";
 import stars from "../../../../assets/images/Essential/ProductDetail/stars.png";
@@ -8,14 +8,45 @@ import CallButton from "../../../../assets/images/Essential/ProductDetail/CallBu
 import arrow from "../../../../assets/images/Essential/ProductDetail/arrow.png";
 import location from "../../../../assets/images/Essential/ProductDetail/location.png";
 import { CommonButton } from "../../../../CommonElements/Button";
-const SideBar = () => {
+import { CheckValidValue } from "../../../Common/Component/helperFunction";
+import ChatModel from "../../Models/Chat/Chat";
+const SideBar = ({ AllProps }) => {
+  const {
+    id,
+    category_id,
+    listing_id,
+    user_id,
+    site_id,
+    product_name,
+    product_slug,
+    price,
+    description,
+    product_image,
+    brand,
+    model,
+    is_approved,
+    is_active,
+    locations,
+    meta_title,
+    meta_desc,
+    created_at,
+    updated_at,
+  } = AllProps?.ProductDetails || {};
+  const [chatModal, setChatModal] = useState(false);
+  const toggle = () => {
+    setChatModal(!chatModal);
+  };
+  const OnDial = () => {
+    document.location.href = `tel:1111111111`;
+  };
+
   return (
     <div className="pd_SideBar">
       <div className="p_description">
         <div className="startFrom">
           <div className="price">
             <FS2>Rent From</FS2>{" "}
-            <FS8 attr={{ style: { color: "#FF7D18" } }}>₹ 10,000/</FS8>{" "}
+            <FS8 attr={{ style: { color: "#FF7D18" } }}>₹ {price}/</FS8>{" "}
             <FS2>Day</FS2>
           </div>
           <div className="action">
@@ -24,18 +55,11 @@ const SideBar = () => {
         </div>
         <div className="Description">
           <div className="title">
-            <FS6>ASUS ROG Zephyrus M15 Gaming Laptop</FS6>
+            <FS6>{product_name}</FS6>
             <br />
           </div>
           <div className="content">
-            {[
-              "Intel Core i7 10 Gen",
-              "RAM 16GB",
-              "1TB SSD",
-              "RTX 2060 6GB Graphics",
-              "15.6",
-              "FHD 240Hz Display",
-            ].map((i) => {
+            {[description].map((i) => {
               return (
                 <>
                   {" "}
@@ -47,9 +71,9 @@ const SideBar = () => {
             })}
           </div>
           <br />
-          <FS3>
+          {/* <FS3>
             <img src={location} alt="" /> By Pass Road Tutikandi, Shimla
-          </FS3>
+          </FS3> */}
         </div>
 
         <div className="contectAndPost">
@@ -58,14 +82,14 @@ const SideBar = () => {
               <FS6>Contact Details</FS6> <img src={arrow} alt="arrow" />
             </div>
             <div className="name">
-              <img src={Profile} alt="Profile" /> <FS4>Vincent Porter</FS4>
+              <img src={Profile} alt="Profile" /> <FS4>Contect us</FS4>
             </div>
             <div className="dial">
-              <div className="commonbtn">
+              <div className="commonbtn" onClick={toggle}>
                 {" "}
                 <CommonButton>Chat</CommonButton>{" "}
               </div>
-              <div className="image">
+              <div className="image" onClick={OnDial}>
                 {" "}
                 <img src={CallButton} alt="CallButton" />
               </div>
@@ -78,7 +102,10 @@ const SideBar = () => {
             </div>
             <div className="address">
               <img src={location} alt="location" />
-              <FS3>&nbsp; By Pass Road Tutikandi, Shimla, India</FS3>
+              <FS3>
+                &nbsp;{" "}
+                {CheckValidValue(locations) ? locations : "Not mentioned"}
+              </FS3>
             </div>
             <br />
             <div className="link">Google Map</div>
@@ -92,8 +119,8 @@ const SideBar = () => {
           </div>
           <div className="content">
             {[
-              { title: "Model Number :", value: "ZephyrusM15" },
-              { title: "Brand :", value: "ASUS" },
+              { title: "Model Number :", value: model },
+              { title: "Brand :", value: brand },
             ].map((i) => {
               return (
                 <>
@@ -108,7 +135,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="review">
+        {/* <div className="review">
           <FS6>Review ~ The Product</FS6>
           <div className="productrate">
             <span className="d-flex">
@@ -146,12 +173,13 @@ const SideBar = () => {
               <div className="inputBox">
                 <textarea type="text" />
               </div>
-            </div> 
+            </div>
             <br />
             <CommonButton> Submit Review </CommonButton>
           </div>
-        </div>
+        </div> */}
       </div>
+      <ChatModel toggler={toggle} isOpen={chatModal} />
     </div>
   );
 };

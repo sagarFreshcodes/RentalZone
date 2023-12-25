@@ -5,12 +5,16 @@ import {
   GET_BUSINESS_LIST_API,
   GET_HOMEPAGE_API,
   HOME_API,
+  PRODUCT_LIST_API,
 } from "../../Constant/api_constant";
 import { ActionType } from "../ReduxConstant";
 import {
   GetApi,
+  POST_FORMDATA_API,
   ToastError,
 } from "../../Components/Common/Component/helperFunction";
+
+export const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
 export const HomePageApi = ({ Location }) => {
   return async (dispatch) => {
     try {
@@ -18,11 +22,17 @@ export const HomePageApi = ({ Location }) => {
 
       const response = await GetApi(
         `${API_ROOT_URL}/${GET_HOMEPAGE_API}?current_location=${Location}`
-        // `${API_ROOT_URL}/${GET_HOMEPAGE_API}?category_slug=computer-rental-mumbai&category_id=2&page=1&user_local_city=Navimumbai&user_local_city_slug=navimumbai&user_local_area=Best Staff Colony&user_local_area_slug=best-staff-colony`
       );
+
+      const PRODUCT_LIST = await POST_FORMDATA_API({
+        endPoint: `${API_ROOT_URL}/${PRODUCT_LIST_API}`,
+        body: { token: RentalUserAuthToken },
+      });
+
+      console.log("response25456", response);
       dispatch({
         type: ActionType.ON_SUCCESS,
-        payload: response.data,
+        payload: { ...response.data, PRODUCT_LIST: PRODUCT_LIST },
       });
     } catch (error) {
       ToastError(error);

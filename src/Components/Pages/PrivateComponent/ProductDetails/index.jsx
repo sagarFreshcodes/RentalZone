@@ -12,17 +12,22 @@ import {
   ScrollUp,
 } from "../../../Common/Component/helperFunction";
 import { HOME_ROUTE } from "../../../../Route/RouthPath";
-const ProductDetails = () => {
+import { useLocation } from "react-router-dom";
+const ProductDetails = (props) => {
+  let location = useLocation();
+  const ProductDetails = location?.state?.item;
   const BreadcrumData = [
     { title: "home", link: `${HOME_ROUTE}` },
     {
-      title: `Product`,
+      title: `${ProductDetails?.product_name}`.toUpperCase(),
       link: `Product`,
     },
   ];
 
   const propsObject = {
     BreadcrumData: BreadcrumData,
+    props: props,
+    ProductDetails: ProductDetails,
   };
 
   useEffect(() => {
