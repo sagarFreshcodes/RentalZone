@@ -22,13 +22,15 @@ import ComingBgVideo from "../Components/Pages/ComingSoon/ComingBgVideo";
 import Error500 from "../Components/Pages/ErrorPages/ErrorPage500";
 import Error503 from "../Components/Pages/ErrorPages/ErrorPage503";
 import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
-import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE } from "./RouthPath";
+import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE, SITEMAP } from "./RouthPath";
 import UserProfilePage from "../Components/Pages/ProfileComponent/UserProfile";
+import SiteMapping from "../Components/Pages/ProfileComponent/SiteMapping/SiteMapping";
 
 export const authRoutes = [
   { path: `${process.env.PUBLIC_URL}/login`, Component: <Logins /> },
   { path: `${LIST_BUSINESS_ROUTE}`, Component: <ListBusiness /> },
   { path: `${PROFILE_ROUTE}`, Component: <UserProfilePage /> },
+  { path: `${SITEMAP}`, Component: <SiteMapping /> },
   {
     path: `${process.env.PUBLIC_URL}/pages/authentication/login-simple/:layout`,
     Component: <LoginForm />,

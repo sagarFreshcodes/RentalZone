@@ -1,5 +1,4 @@
 import React from "react";
-import { FS3, FS4, FS6, FS8 } from "../Font/FS";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
@@ -7,11 +6,12 @@ import { useMemo } from "react";
 import {
   FAQActions,
   GeneralActions,
-} from "../../Redux_Store/Actions/generalActions";
-import { BASE_ROUTE, FAQ_ROUTE, SITEMAP } from "../../Route/RouthPath";
-import { slugConvertor } from "../../Components/Common/Component/helperFunction";
+} from "../../../../Redux_Store/Actions/generalActions";
+import { BASE_ROUTE, FAQ_ROUTE } from "../../../../Route/RouthPath";
+import { slugConvertor } from "../../../../Components/Common/Component/helperFunction";
 import { Link } from "react-router-dom";
-const Footer = () => {
+import { FS3, FS4, FS6, FS8 } from "../../../../CommonElements/Font/FS";
+const SiteMapping = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state?.GeneralState);
@@ -61,7 +61,6 @@ const Footer = () => {
             { title: "Contact Us", link: "contact-us" },
             { title: "Seller Register", link: "seller-register" },
             { title: "Privacy Policy", link: "privacy-policy" },
-            { title: "Site map", link: SITEMAP },
           ]}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
@@ -103,7 +102,7 @@ const Footer = () => {
       <br />
       <br />
 
-      {city_location.length > 2 ? (
+      {/* {city_location.length > 2 ? (
         <div>
           <FooterLinkBox2
             title={"Mumbai Locations"}
@@ -143,12 +142,12 @@ const Footer = () => {
         </div>
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };
 
-export default Footer;
+export default SiteMapping;
 
 const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
   return (
