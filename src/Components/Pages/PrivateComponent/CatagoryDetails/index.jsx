@@ -37,7 +37,9 @@ const CatagoryDetails = () => {
     useSelector((state) => state?.ListDetailsState) || {};
   const { isLoading, data } = ListDetailsState || {};
   const ListDetails = data?.data || {};
-
+  const GeneralData = useSelector((state) => state?.GeneralState);
+  const { ads_banners } = GeneralData.data.data || {};
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   const { page_title, meta_title, meta_description, meta_keywords } =
     ListDetails || {};
 
@@ -70,6 +72,7 @@ const CatagoryDetails = () => {
     BreadcrumData: BreadcrumData,
     EditContactInfoModeltoggle: EditContactInfoModeltoggle,
     chatToggle: chatToggle,
+    banner_image: banner_image,
   };
 
   useEffect(() => {
@@ -95,14 +98,7 @@ const CatagoryDetails = () => {
             </div>
           </div>
           <div className="bannerImage">
-            <img
-              className="w-100"
-              src={
-                // banner_image ||
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
-              }
-              alt={"banner_image"}
-            />
+            <img className="w-100" src={banner_image} alt={"banner_image"} />
           </div>
           <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
             <div className="s_content ">
@@ -129,6 +125,7 @@ const CatagoryDetails = () => {
         toggler={EditContactInfoModeltoggle}
         isOpen={editContactInfoModel}
         loading={`loading`}
+        listing_id={listing_id}
       />
     </>
   );

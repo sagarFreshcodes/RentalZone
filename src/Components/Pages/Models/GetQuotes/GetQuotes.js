@@ -21,8 +21,12 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CommonButton } from "../../../../CommonElements/Button";
+import { useDispatch, useSelector } from "react-redux";
 const GetQuotesModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
+  const GeneralData = useSelector((state) => state?.GeneralState);
+  const { ads_banners } = GeneralData.data.data || {};
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",

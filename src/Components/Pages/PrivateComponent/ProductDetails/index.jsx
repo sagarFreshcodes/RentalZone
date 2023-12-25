@@ -13,7 +13,11 @@ import {
 } from "../../../Common/Component/helperFunction";
 import { HOME_ROUTE } from "../../../../Route/RouthPath";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const ProductDetails = (props) => {
+  const GeneralData = useSelector((state) => state?.GeneralState);
+  const { ads_banners } = GeneralData.data.data || {};
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   let location = useLocation();
   const ProductDetails = location?.state?.item;
   const BreadcrumData = [
@@ -28,6 +32,7 @@ const ProductDetails = (props) => {
     BreadcrumData: BreadcrumData,
     props: props,
     ProductDetails: ProductDetails,
+    banner_image: banner_image,
   };
 
   useEffect(() => {

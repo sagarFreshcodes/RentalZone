@@ -185,10 +185,10 @@
   border-radius: 1rem;
   gap: 1rem;
 }
-.SeviceContainer .bannerImage {
+.bannerImage {
   width: 100%;
 }
-.SeviceContainer .bannerImage img {
+.bannerImage img {
   aspect-ratio: 8.6 !important;
   width: 100% !important;
   border-radius: 11px !important;

@@ -43,8 +43,8 @@ const Content = ({ props }) => {
     single_banner_four,
     banner_path,
     homepage_banners,
-    ads_banners,
   } = HomPageData || {};
+  const { ads_banners } = GeneralData.data.data || {};
   const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   const image_urls = homepage_banners ? homepage_banners : [];
   const bannerList = [

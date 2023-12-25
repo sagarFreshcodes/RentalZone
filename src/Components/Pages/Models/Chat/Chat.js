@@ -1,8 +1,6 @@
 import React from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { Btn, H5 } from "../../../../AbstractElements";
-import { Close, SaveChanges } from "../../../../Constant";
-import CommonAutoSearch from "../../../CommonSelector/CommonAutoSearch";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Chatting from "./Component/Chatting";
 import {
@@ -18,6 +16,9 @@ import {
 
 const ChatModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
+  const GeneralData = useSelector((state) => state?.GeneralState);
+  const { ads_banners } = GeneralData.data.data || {};
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   const [allMassges, setAllMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [chatMessage, setChatMessage] = useState("");
@@ -58,6 +59,7 @@ const ChatModel = (props) => {
     setChatMessage: setChatMessage,
     allMassges: allMassges,
     setAllMessages: setAllMessages,
+    ads_banners: banner_image,
   };
   return (
     <Modal

@@ -13,12 +13,14 @@ import {
   GetApi,
   ToastError,
 } from "../../Components/Common/Component/helperFunction";
-export const GeneralActions = () => {
+export const GeneralActions = ({ current_location }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
       dispatch({ type: ActionType.ON_REQUEST_COMMON_API });
-      const response = await GetApi(`${API_ROOT_URL}/${COMMONPAGE_API}`);
+      const response = await GetApi(
+        `${API_ROOT_URL}/${COMMONPAGE_API}?current_location=mumbai`
+      );
       dispatch({
         type: ActionType.ON_SUCCESS_COMMON_API,
         payload: response.data,

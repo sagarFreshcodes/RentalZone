@@ -27,7 +27,7 @@ const Content = ({ propsObject }) => {
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
 
-  const { BreadcrumData, props, ProductDetails } = propsObject;
+  const { BreadcrumData, props, ProductDetails, banner_image } = propsObject;
 
   useEffect(() => {
     axios.get(FileApi).then((response) => {
@@ -35,7 +35,10 @@ const Content = ({ propsObject }) => {
     });
   }, []);
 
-  const AllProps = { ProductDetails: ProductDetails };
+  const AllProps = {
+    ProductDetails: ProductDetails,
+    banner_image: banner_image,
+  };
   const test = () => {
     console.log("props======>", ProductDetails);
   };

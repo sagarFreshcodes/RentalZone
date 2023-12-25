@@ -31,6 +31,7 @@ const ProductDetail = ({ AllProps }) => {
     created_at,
     updated_at,
   } = AllProps?.ProductDetails || {};
+  const { banner_image } = AllProps;
   const [fullscreenImg, setFullscreenImg] = useState(slide1);
   const [imgList, setImgList] = useState([
     slide1,
@@ -59,6 +60,9 @@ const ProductDetail = ({ AllProps }) => {
                 );
               })}
           </div> */}
+          <div className="bannerImage">
+            <img className="w-100" src={banner_image} alt={"banner_image"} />
+          </div>
         </div>
         <div className="Description">
           <div className="title">

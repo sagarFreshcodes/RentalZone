@@ -49,11 +49,9 @@ const Content = ({ AllProps }) => {
     all_listing,
     setCurrentPage,
     currentPage,
+    banner_image,
   } = AllProps;
-  const { banner_image } = (BusinesssPageData?.listing_ads_banner &&
-    BusinesssPageData?.listing_ads_banner[0]) || {
-    banner_image: "",
-  };
+
   const { page_title } = BusinesssPageData || {};
   const { total, per_page, last_page, current_page } = all_listing || {};
   useEffect(() => {

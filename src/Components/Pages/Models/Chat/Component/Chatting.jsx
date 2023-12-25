@@ -7,21 +7,14 @@ import ChatAppContext from "../../../../../_helper/Chat";
 
 const Chatting = ({ allProps }) => {
   const { menuToggle } = useContext(ChatAppContext);
-
+  const { ads_banners } = allProps;
   return (
     <Fragment>
       <Row className="chat-box">
         <div className="chat">
           <ChatHeader allProps={allProps} />
           <div className="bannerImage">
-            <img
-              className="w-100"
-              src={
-                // banner_image ||
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TsGYd5vsIlCTurNFuPT61L6lOakpsnAMezf283p6aw&s"
-              }
-              alt={"banner_image"}
-            />
+            <img className="w-100" src={ads_banners} alt={"banner_image"} />
           </div>
           <br />
           <br />

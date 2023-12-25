@@ -37,6 +37,8 @@ const ServiceCenter = () => {
   const ParamsList = `${QueryParams.pathname}`.split("/");
   const BusinessState = useSelector((state) => state.BusinessState);
   const BusinesssPageData = BusinessState?.service_data?.data || {};
+  const { ads_banners } = GeneralData.data.data || {};
+  const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
   const {
     category_name,
     user_city,
@@ -105,6 +107,7 @@ const ServiceCenter = () => {
     user_city: user_city,
     page_top_keyword: page_top_keyword,
     all_listing: all_listing,
+    banner_image: banner_image,
     currentPage,
     setCurrentPage,
   };

@@ -44,6 +44,13 @@ const AddPoduct = ({
   });
   const FormFields = [
     {
+      title: "Pruct Image",
+      id: "product_image",
+      name: "product_image",
+      type: "file",
+      lable: "product_image",
+    },
+    {
       title: "Category",
       id: "category",
       name: "category",

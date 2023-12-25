@@ -10,6 +10,7 @@ import {
   CloseButton,
 } from "../../../Common/Component/DesignElement";
 import {
+  ADD_LISTING_DETAILS_API,
   API_ROOT_URL,
   STORE_QUOTES_API,
 } from "../../../../Constant/api_constant";
@@ -23,12 +24,15 @@ import * as Yup from "yup";
 import { CommonButton } from "../../../../CommonElements/Button";
 const EditContactInfoModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
+  const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
+    localStorage.getItem("rentalUserAuthToken")
+  );
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone_number: "",
   });
-  const { allCategoryList } = props;
+  const { allCategoryList, listing_id } = props;
   const formFields = [
     {
       title: "Name",
@@ -65,11 +69,13 @@ const EditContactInfoModel = (props) => {
   const OnSubmitForm = () => {
     setLoading(true);
     const submitData = {
+      token: RentalUserAuthToken,
+      listing_id: listing_id,
       name: formData?.name,
-      phone_number: formData?.phone_number,
+      phone: formData?.phone_number,
     };
     POST_FORMDATA_API({
-      endPoint: `${API_ROOT_URL}/${STORE_QUOTES_API}`,
+      endPoint: `${API_ROOT_URL}/${ADD_LISTING_DETAILS_API}`,
       body: submitData,
     })
       .then((response) => {
@@ -99,12 +105,14 @@ const EditContactInfoModel = (props) => {
   });
 
   useEffect(() => {
+    setRentalUserAuthToken(localStorage.getItem("rentalUserAuthToken"));
     setFormData({
       ...formData,
       name: formik.values["name"],
       phone_number: formik.values["phone_number"],
     });
   }, [formik.values]);
+
   return (
     <Modal
       isOpen={props.isOpen}
