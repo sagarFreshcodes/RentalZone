@@ -228,8 +228,8 @@ const GetQuotesModel = (props) => {
                                   id=""
                                   onChange={onHandleChange}
                                 >
-                                  <option value="adasd">Option 1</option>
-                                  <option value="adaseed">Option 2</option>
+                                  <option value="Individual">Individual</option>
+                                  <option value="Company">Company</option>
                                 </select>
                               </>
                             ) : (

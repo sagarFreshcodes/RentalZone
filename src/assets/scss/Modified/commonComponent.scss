@@ -233,3 +233,12 @@
 .BlurElement {
   filter: blur(2px);
 }
+.faq_PAGE {
+  .cardHeader {
+    padding: 10px 1rem !important;
+    cursor: pointer;
+  }
+  .faq_que_icon {
+    margin-right: 1rem !important;
+  }
+}

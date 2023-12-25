@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardBody, Col, Media } from "reactstrap";
 import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
@@ -59,7 +59,7 @@ const ServiceCard = ({
 }) => {
   const { serviceData, setServiceData, toggle, toggle2 } = AllProps;
   const Navigate = useNavigate();
-
+  const [hoverCategory, setHoverCategory] = useState("");
   const handleCatClick = () => {
     Navigate(`${BASE_ROUTE}/${slug}-${main_listing_id}`, {
       state: { BreadcrumData: BreadcrumData },
@@ -148,9 +148,23 @@ const ServiceCard = ({
                   </div>
                 ))}
 
-                <div className="sp_category2">
+                <div
+                  className={`sp_category2 ${
+                    hoverCategory == id ? `sp_categoryHover` : ""
+                  }`}
+                  // onMouseEnter={() => }
+                  // onMouseLeave={() => setHoverCategory("")}
+                >
                   {" "}
-                  <FS3>{[category].join(", ")}</FS3>
+                  <FS3>{[category].join(", ")}</FS3>{" "}
+                  <div
+                    className="BoldText"
+                    onClick={() =>
+                      setHoverCategory(hoverCategory == id ? "" : id)
+                    }
+                  >
+                    {hoverCategory == id ? "Less" : "More"}
+                  </div>
                 </div>
                 <FS3 attr={{ className: "areaName" }}>
                   {area_name ? `${area_name},` : ""}

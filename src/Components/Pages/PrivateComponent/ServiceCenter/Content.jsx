@@ -120,7 +120,7 @@ const Content = ({ AllProps }) => {
                     banner_image={banner_image}
                     index={index}
                   />
-                  {(index + 1) % 4 == 0 ? (
+                  {(index + 1) % 5 == 0 ? (
                     <div className="bannerImage">
                       <img
                         src={

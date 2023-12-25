@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import { Row, Col, Card, CardBody, CardHeader, Collapse } from "reactstrap";
-import { Btn, H5, P } from "../../../AbstractElements";
+import { Btn, H4, H5, P } from "../../../AbstractElements";
 import { HelpCircle } from "react-feather";
 import FaqRightsidebae from "./FaqRightside";
 import FaqContext from "../../../_helper/Faq";
@@ -26,7 +26,7 @@ const Questionss = ({ AllProps }) => {
           <H5 attrH5={{ className: "mb-0" }}>Quick Questions are answered</H5>
         </div>
         <Row
-          className="row default-according style-1 faq-accordion"
+          className="row default-according style-1 faq-accordion faq_PAGE"
           id="accordionoc"
         >
           <Col xl="8" lg="6" md="7" className="box-col-8 xl-60">
@@ -35,22 +35,24 @@ const Questionss = ({ AllProps }) => {
                 FaqData?.map((item, id) => {
                   return (
                     <Card key={id}>
-                      <CardHeader>
-                        <H5 attrH5={{ className: "mb-0" }}>
-                          <Btn
-                            attrBtn={{
-                              color: "link ps-0",
-                              onClick: () => handelChange(id),
-                            }}
+                      <div className="cardHeader">
+                        <H4 attrH5={{ className: "mb-0" }}>
+                          <div
+                            className="link ps-0"
+                            onClick={() => handelChange(id)}
+                            // attrBtn={{
+                            //   color: "link ps-0",
+                            //   ,
+                            // }}
                           >
                             <ReactIcon
                               iconName={"AiOutlineQuestionCircle"}
-                              attr={{ className: "w-10" }}
+                              attr={{ className: "faq_que_icon" }}
                             />
                             {item.question}
-                          </Btn>
-                        </H5>
-                      </CardHeader>
+                          </div>
+                        </H4>
+                      </div>
                       <Collapse isOpen={isActivity[id]}>
                         <CardBody>
                           <P> {item.answer}</P>
@@ -61,7 +63,7 @@ const Questionss = ({ AllProps }) => {
                 })}
             </Fragment>
           </Col>
-          <FaqRightsidebae />
+          {/* <FaqRightsidebae /> */}
         </Row>
       </Col>
     </Fragment>

@@ -12,7 +12,7 @@ import ChatModel from "../../Models/Chat/Chat";
 import getquot from "../../../../assets/images/Essential/getquot.png";
 import wapp from "../../../../assets/images/Essential/wapp.png";
 import { Image } from "../../../../AbstractElements";
-import { FS3, FS6 } from "../../../../CommonElements/Font/FS";
+import { FS3, FS4, FS6 } from "../../../../CommonElements/Font/FS";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
@@ -210,12 +210,12 @@ const ServiceCenter = () => {
               {" "}
               {contact_button == 1 ? (
                 <button className="btn btn-light" onClick={toggle2}>
-                  <FS3>
+                  <FS4>
                     {" "}
                     <Image
                       attrImage={{ src: wapp, alt: "message" }}
                     /> Chat{" "}
-                  </FS3>
+                  </FS4>
                 </button>
               ) : (
                 <button
@@ -223,16 +223,16 @@ const ServiceCenter = () => {
                   onClick={(OnDial) => console.log("object")}
                 >
                   {" "}
-                  <FS3>
+                  <FS4>
                     {" "}
                     <Image attrImage={{ src: call_w, alt: "message" }} /> Call
                     Now{" "}
-                  </FS3>
+                  </FS4>
                 </button>
               )}
-              <button className="btn btn-primary star" onClick={toggle}>
+              <button className="btn btn-primary  " onClick={toggle}>
                 {" "}
-                <FS3>Get Quote Now </FS3>
+                <FS4>Get Quote Now </FS4>
               </button>{" "}
             </div>
           </div>
