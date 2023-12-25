@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../CommonElements/Button";
@@ -37,6 +37,7 @@ const AddPoduct = ({
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
+  const [imgData, setImgData] = useState();
   const mayListBody = { token: RentalUserAuthToken };
   const mayListbodyFormData = new FormData();
   Object.keys(mayListBody).map((i) => {
@@ -44,7 +45,7 @@ const AddPoduct = ({
   });
   const FormFields = [
     {
-      title: "Pruct Image",
+      title: "Product Image",
       id: "product_image",
       name: "product_image",
       type: "file",
@@ -233,6 +234,9 @@ const AddPoduct = ({
     // console.log("formData 2852", formData);
   }, []);
 
+  useMemo(() => {
+    setFormData({ ...formData, product_image: imgData });
+  }, [imgData]);
   const test = () => {
     console.log("editRecordData 2852", editRecordData);
     console.log("RowData 2852", RowData);
@@ -277,6 +281,21 @@ const AddPoduct = ({
                               OnSelect={OnSelect}
                               fieldName={i.name}
                               state={formData}
+                            />
+                          </div>
+                        ) : i.type == "file" ? (
+                          <div className="inputFieldBox">
+                            <FS5 attr={{ className: "BoldText" }}>
+                              {i.title}
+                            </FS5>
+                            <Input
+                              className="form-control commonInput"
+                              id={i.name}
+                              name={i.name}
+                              type={i.type}
+                              onChange={(e) => setImgData(e.target.files[0])}
+                              onBlur={formik.handleBlur}
+                              value={formik.values[i.name]}
                             />
                           </div>
                         ) : (
