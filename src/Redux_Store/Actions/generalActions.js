@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   API_ROOT_URL,
   COMMONPAGE_API,
+  FAQ_API,
   GET_SEARCH_DATA_API,
   HOME_API,
   SEARCH_CITY_AREA_API,
@@ -101,6 +102,26 @@ export const CategoryActions = ({ serchKeyword, location }) => {
       dispatch({
         type: ActionType.ON_FAILURE_CATEGORY_API,
         payload: error?.message,
+      });
+    }
+  };
+};
+
+export const FAQActions = () => {
+  return async (dispatch) => {
+    try {
+      // Dispatch an action to signify the start of the request
+      dispatch({ type: ActionType.ON_REQUEST_FAQ_API });
+      const response = await GetApi(`${API_ROOT_URL}/${FAQ_API}`);
+      dispatch({
+        type: ActionType.ON_SUCCESS_FAQ_API,
+        payload: response.data,
+      });
+    } catch (error) {
+      // Dispatch failure action if there's an error
+      dispatch({
+        type: ActionType.ON_FAILURE_FAQ_API,
+        payload: error.message,
       });
     }
   };

@@ -10,10 +10,12 @@ const initialState = {
   isLoading: false,
   isLocationLoading: false,
   isCategoryLoading: false,
+  isFAQLoading: false,
   error: null,
   category: CATEGORY_DATA,
   selectedCategory: { category_id: 2, category_slug: "computer-rental" },
   location: LOCATION_DATA,
+  faqData: {},
 };
 
 const GeneralReducer = (state = initialState, action) => {
@@ -92,6 +94,25 @@ const GeneralReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedCategory: action.payload,
+      };
+
+    case ActionType.ON_REQUEST_FAQ_API:
+      return {
+        ...state,
+        isFAQLoading: true,
+        error: null,
+      };
+    case ActionType.ON_SUCCESS_FAQ_API:
+      return {
+        ...state,
+        isFAQLoading: false,
+        faqData: action.payload,
+      };
+    case ActionType.ON_FAILURE_FAQ_API:
+      return {
+        ...state,
+        isFAQLoading: false,
+        error: action.payload,
       };
     default:
       return state;

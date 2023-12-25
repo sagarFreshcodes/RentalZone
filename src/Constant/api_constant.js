@@ -29,3 +29,4 @@ export const GET_AREA_DROPDOWN_API = `get-area`;
 export const GET_LOCATION_DROPDOWN_API = `get-location`;
 export const GET_CATEGORY_DROPDOWN_API = `get-category`;
 export const UPDATE_PASSWORD_API = `update-password`;
+export const FAQ_API = `faq-list`;

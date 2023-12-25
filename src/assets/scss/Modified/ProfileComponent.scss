@@ -116,6 +116,7 @@
       flex-wrap: wrap;
       .checkbox {
         width: 12rem;
+        display: flex;
         @media screen and (max-width: 700px) {
           width: 100%;
         }

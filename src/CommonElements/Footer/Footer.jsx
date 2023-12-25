@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useMemo } from "react";
-import { GeneralActions } from "../../Redux_Store/Actions/generalActions";
+import {
+  FAQActions,
+  GeneralActions,
+} from "../../Redux_Store/Actions/generalActions";
 import { BASE_ROUTE, FAQ_ROUTE } from "../../Route/RouthPath";
 import { slugConvertor } from "../../Components/Common/Component/helperFunction";
 import { Link } from "react-router-dom";
@@ -44,7 +47,8 @@ const Footer = () => {
     if (area_location_empty || city_location_empty) {
       dispatch(GeneralActions());
     }
-  }, [dispatch]);
+    dispatch(FAQActions());
+  }, []);
   return (
     <div className="footerContainer">
       <div className="footerComponentBox" onClick={test}>

@@ -4,7 +4,6 @@ import { Btn, H5, P } from "../../../AbstractElements";
 import { HelpCircle } from "react-feather";
 import FaqRightsidebae from "./FaqRightside";
 import FaqContext from "../../../_helper/Faq";
-import { ReactIcon } from "../../Common/Component/helperFunction";
 
 const Questionss = ({ AllProps }) => {
   const { FaqData } = AllProps;
@@ -30,36 +29,40 @@ const Questionss = ({ AllProps }) => {
           id="accordionoc"
         >
           <Col xl="8" lg="6" md="7" className="box-col-8 xl-60">
-            <Fragment>
-              {FaqData &&
-                FaqData?.map((item, id) => {
-                  return (
-                    <Card key={id}>
-                      <CardHeader>
-                        <H5 attrH5={{ className: "mb-0" }}>
-                          <Btn
-                            attrBtn={{
-                              color: "link ps-0",
-                              onClick: () => handelChange(id),
-                            }}
-                          >
-                            <ReactIcon
-                              iconName={"AiOutlineQuestionCircle"}
-                              attr={{ className: "w-10" }}
-                            />
-                            {item.question}
-                          </Btn>
-                        </H5>
-                      </CardHeader>
-                      <Collapse isOpen={isActivity[id]}>
-                        <CardBody>
-                          <P> {item.answer}</P>
-                        </CardBody>
-                      </Collapse>
-                    </Card>
-                  );
-                })}
-            </Fragment>
+            {faq &&
+              faq.map((item, i) => {
+                return (
+                  <Fragment key={i}>
+                    <div className={`${i !== 0 ? "faq-title" : ""}`}>
+                      <h6>{item.subTitle}</h6>
+                    </div>
+                    {faq[i].titless.map((item, id) => {
+                      return (
+                        <Card key={id}>
+                          <CardHeader>
+                            <H5 attrH5={{ className: "mb-0" }}>
+                              <Btn
+                                attrBtn={{
+                                  color: "link ps-0",
+                                  onClick: () => handelChange(id),
+                                }}
+                              >
+                                <HelpCircle />
+                                {item.title}
+                              </Btn>
+                            </H5>
+                          </CardHeader>
+                          <Collapse isOpen={isActivity[id]}>
+                            <CardBody>
+                              <P>{para}</P>
+                            </CardBody>
+                          </Collapse>
+                        </Card>
+                      );
+                    })}
+                  </Fragment>
+                );
+              })}
           </Col>
           <FaqRightsidebae />
         </Row>
