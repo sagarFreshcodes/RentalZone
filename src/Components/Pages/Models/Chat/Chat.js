@@ -23,32 +23,34 @@ const ChatModel = (props) => {
   const [loading, setLoading] = useState(false);
   const [chatMessage, setChatMessage] = useState("");
   const OnChat = () => {
-    setLoading(true);
-    setAllMessages([
-      {
-        sender: 0,
-        time: GetCurrentChatTime(),
-        text: chatMessage,
-      },
-    ]);
-    GET_API(`${API_ROOT_URL}/${GET_CHATBOAT_API}`)
-      .then((response) => {
-        setLoading(false);
-        setChatMessage("");
-        setAllMessages((prev) => [
-          ...prev,
-          {
-            sender: 1,
-            time: GetCurrentChatTime(),
-            text: response?.data?.message,
-          },
-        ]);
-      })
-      .catch((error) => {
-        ToastError(error);
-        setLoading(false);
-        console.log("=======>", error);
-      });
+    if (chatMessage.trim() != "") {
+      setLoading(true);
+      setAllMessages([
+        {
+          sender: 0,
+          time: GetCurrentChatTime(),
+          text: chatMessage,
+        },
+      ]);
+      GET_API(`${API_ROOT_URL}/${GET_CHATBOAT_API}`)
+        .then((response) => {
+          setLoading(false);
+          setChatMessage("");
+          setAllMessages((prev) => [
+            ...prev,
+            {
+              sender: 1,
+              time: GetCurrentChatTime(),
+              text: response?.data?.message,
+            },
+          ]);
+        })
+        .catch((error) => {
+          ToastError(error);
+          setLoading(false);
+          console.log("=======>", error);
+        });
+    }
   };
 
   const allProps = {

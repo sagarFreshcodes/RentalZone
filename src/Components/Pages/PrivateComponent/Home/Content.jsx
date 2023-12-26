@@ -25,6 +25,12 @@ import {
   SetCategory,
 } from "../../../../Redux_Store/Actions/generalActions";
 import { useDispatch, useSelector } from "react-redux";
+import gsap from "gsap";
+import {
+  CallFunctionOnScroll,
+  ScrollHeight,
+  SimpleAnimation,
+} from "../../../Common/Component/helperFunction";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -115,6 +121,22 @@ const Content = ({ props }) => {
     console.log("HomPageData2512", HomPageData);
     // console.log("banner_path", banner_path);
   };
+
+  useEffect(() => {
+    SimpleAnimation({ className: ".cateIcon" });
+  }, []);
+
+  window.addEventListener("scroll", function () {
+    CallFunctionOnScroll({
+      between: [500, 600],
+      Call: () => SimpleAnimation({ className: ".cateIcon" }),
+    });
+
+    CallFunctionOnScroll({
+      between: [100, 110],
+      Call: () => SimpleAnimation({ className: ".trandImgBox" }),
+    });
+  });
   return (
     <Fragment className="searchHeadFragment">
       <div className="searchHeadBx">

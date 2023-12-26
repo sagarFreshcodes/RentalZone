@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import ChatModel from "../../Pages/Models/Chat/Chat";
 import GetQuotesModel from "../../Pages/Models/GetQuotes/GetQuotes";
 import { useSelector } from "react-redux";
+import gsap from "gsap";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -666,6 +667,78 @@ export const CheckValidImage = (value, defaultValue) => {
       return value;
     } else {
       return defaultValue;
+    }
+  }
+};
+
+export const SimpleAnimation = ({
+  edition,
+  className,
+  duration1,
+  duration2,
+  scale1,
+  scale2,
+}) => {
+  if (edition) {
+    gsap.to(className, {
+      duration: duration1 || 0.5,
+      scale: scale1 || 0.5,
+    });
+    gsap.to(className, {
+      scale: scale2 || 1,
+      duration: duration2 || 3,
+    });
+  } else {
+    gsap.to(className, {
+      duration: 0.5,
+      scale: 0.5,
+    });
+    gsap.to(className, {
+      scale: 1,
+      duration: 3,
+    });
+  }
+};
+
+export const ScrollHeight = (direction) => {
+  window.addEventListener("scroll", function () {
+    // Get the current scroll position in the y-direction
+    var scrollY = window.scrollY || window.pageYOffset;
+    var scrollX = window.scrollX || window.pageYOffset;
+    // Use scrollY for whatever measurement or action you need
+    if (direction == "x") {
+      return scrollX;
+    } else {
+      return scrollY;
+    }
+  });
+};
+
+export const CallFunctionOnScroll = ({
+  upSide,
+  downSide,
+  equalTo,
+  between,
+  Call,
+}) => {
+  // Get the current scroll position in the y-direction
+  var scrollY = window.scrollY || window.pageYOffset;
+  // Use scrollY for whatever measurement or action you need
+  if (upSide) {
+    if (scrollY <= upSide) {
+      Call();
+    }
+  } else if (downSide) {
+    if (scrollY >= downSide) {
+      Call();
+    }
+  } else if (equalTo && equalTo.length > 0) {
+    if (equalTo.includes(scrollY)) {
+      Call();
+    }
+  } else if (between && between.length == 2) {
+    if (scrollY >= between[0] && scrollY <= between[1]) {
+      Call();
     }
   }
 };

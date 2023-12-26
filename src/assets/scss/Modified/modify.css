@@ -314,6 +314,7 @@
   width: 100%;
   min-width: 15rem !important;
   border-radius: 1rem;
+  aspect-ratio: 1.45;
 }
 
 .cd_productImgBox img {

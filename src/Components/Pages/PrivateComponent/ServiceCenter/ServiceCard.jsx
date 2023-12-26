@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardBody, Col, Media } from "reactstrap";
 import { H4, P, Btn, Image } from "../../../../AbstractElements";
 import { WelcomeMessage, WelcomeToCuba, WhatsNew } from "../../../../Constant";
@@ -22,6 +22,7 @@ import {
   BASE_ROUTE,
   CATEGORY_DETAILS_ROUTE,
 } from "../../../../Route/RouthPath";
+import { SimpleAnimation } from "../../../Common/Component/helperFunction";
 
 const ServiceCard = ({
   title,
@@ -87,6 +88,10 @@ const ServiceCard = ({
   const OnDial = () => {
     document.location.href = `tel:${phone_number}`;
   };
+
+  useEffect(() => {
+    SimpleAnimation({ className: "#serviceImg" });
+  }, []);
   return (
     <>
       <div className="sc_cardBoxPerent shadowEffect">
@@ -95,7 +100,13 @@ const ServiceCard = ({
             {/* <Image
               attrImage={{ src: burncastle, alt: "vector women with leptop" }}
             /> */}
-            <Image attrImage={{ src: RandomImg, alt: "leptop image" }} />
+            <Image
+              attrImage={{
+                src: RandomImg,
+                alt: "leptop image",
+                id: "serviceImg",
+              }}
+            />
             {featured ? <div className="Featured">Featured</div> : ""}
 
             <div className="price_box">

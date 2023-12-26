@@ -59,6 +59,12 @@ const SendChat = ({ allProps }) => {
       }
     }
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      OnChat();
+    }
+  };
   return (
     <div className="chat-message clearfix">
       <Row>
@@ -77,6 +83,7 @@ const SendChat = ({ allProps }) => {
               onChange={(e) => setChatMessage(e.target.value)}
               value={chatMessage}
               placeholder="Type a message..."
+              onKeyDown={handleKeyDown}
             />
             <img className="clipImg" src={Attcachment} alt="" />
           </InputGroup>
