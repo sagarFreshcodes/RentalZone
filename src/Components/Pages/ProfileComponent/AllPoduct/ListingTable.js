@@ -36,10 +36,12 @@ const ListingTable = ({ tableData, ClickOnEditIcon, ClickOnDeleteIcon }) => {
                 {tableData &&
                   tableData?.map((item, index) => (
                     <tr key={index}>
-                      <td className="userName">
-                        {[""].includes(item?.product_name)
-                          ? "-"
-                          : item?.product_name}
+                      <td>
+                        <div className="userName">
+                          {[""].includes(item?.product_name)
+                            ? "-"
+                            : item?.product_name}
+                        </div>
                       </td>
                       <td>{formatDate1(item?.created_at)}</td>
                       <td>

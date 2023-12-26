@@ -1,12 +1,19 @@
 .ProfileComponent {
   position: relative !important;
+  .card {
+    // background: linear-gradient(to right, #ffffff, #7366ff);
+    background: linear-gradient(to right, #ffffff, #97c1e6);
+  }
+  .card-header {
+    background-color: #0d8aa600;
+  }
   .ProfileNavbar {
     position: absolute;
     z-index: 1;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background-color: #f0ffff78;
+    background: linear-gradient(to right, #ffffff, #97c1e6);
     padding: 10px;
     .navbarButton2 {
       display: none !important;
@@ -14,7 +21,7 @@
 
     @media screen and (max-width: 1000px) {
       flex-direction: column;
-      background-color: rgb(122 122 122 / 77%);
+      background: linear-gradient(to right, #ffffff, #97c1e6);
       width: fit-content !important;
 
       .navbarButton1 {
@@ -44,6 +51,7 @@
   }
 
   .MyListing {
+    // background: linear-gradient(to right, #25c481, #25b7c4);
     .tableBody {
       // tr {
       //   max-height: 2rem;
@@ -57,13 +65,17 @@
         display: -webkit-box;
         -webkit-line-clamp: 1; /* Set to the number of lines you want */
         -webkit-box-orient: vertical;
+        max-width: 15rem;
+      }
+      .userName:hover {
+        -webkit-line-clamp: 2;
       }
       .active {
         // border: solid #002700;
         display: flex;
         justify-content: center;
         background-color: #267926;
-        border-radius: 6px;
+        border-radius: 4px;
         color: white;
       }
       .de-active {
@@ -71,14 +83,14 @@
         display: flex;
         justify-content: center;
         background-color: #ab0a27;
-        border-radius: 6px;
+        border-radius: 4px;
         color: white;
       }
       .rating {
         display: flex;
         justify-content: center;
         background-color: #0d8aa6;
-        border-radius: 6px;
+        border-radius: 4px;
         color: white;
         width: fit-content;
         padding: 0 1rem;
@@ -93,8 +105,19 @@
       // }
     }
     table {
+      // background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+
+      background-color: rgba(74, 25, 25, 0);
       min-width: 46rem !important;
       overflow-y: scroll !important;
+
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        background-color: rgba(255, 0, 0, 0);
+      }
     }
     .TableAction {
       display: flex;
