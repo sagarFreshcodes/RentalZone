@@ -27,10 +27,13 @@ const AddListing = ({
   editRecordData,
 }) => {
   const [formIndex, setFormIndex] = useState(1);
+  const [loader, setLoader] = useState({ submitLoader: false });
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
-
+  const ChangeLoader = (loaderName, type) => {
+    setLoader({ ...loader, [loaderName]: type });
+  };
   const RowData =
     editing == "editListing"
       ? editRecordData
@@ -80,6 +83,7 @@ const AddListing = ({
   };
 
   const OnSubmit = () => {
+    ChangeLoader("submitLoader", true);
     const submitData =
       editing == "editListing"
         ? {
@@ -129,9 +133,11 @@ const AddListing = ({
         setEditRecordData({});
         setEditing(false);
         ChangePage({ pagenumber: 2, data: {} });
+        ChangeLoader("submitLoader", false);
       })
       .catch((error) => {
         ToastError(error);
+        ChangeLoader("submitLoader", false);
       });
   };
   const AllProps = {
@@ -140,6 +146,7 @@ const AddListing = ({
     setFormData: setFormData,
     OnSubmit: OnSubmit,
     ChangePage: ChangePage,
+    loader: loader.submitLoader,
   };
   const selectOn = (index) => {
     setFormIndex(index);

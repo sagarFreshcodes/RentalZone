@@ -5,55 +5,13 @@ import { Close, SaveChanges } from "../../../../Constant";
 import CommonAutoSearch from "../../../CommonSelector/CommonAutoSearch";
 import { useState } from "react";
 import { FS2, FS3, FS4, FS9 } from "../../../../CommonElements/Font/FS";
-import { CloseButton } from "../../../Common/Component/DesignElement";
+import {
+  ApiLoader,
+  CloseButton,
+} from "../../../Common/Component/DesignElement";
 
 const DeleteModel = (props) => {
-  const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
-  const formFields = [
-    {
-      title: "Individual or Comapny",
-      placeHolder: "--Select--",
-      type: "select",
-      name: "selection",
-    },
-    {
-      title: "Quantity",
-      placeHolder: "Quantity",
-      type: "text",
-      name: "quantity",
-    },
-    {
-      title: "Name",
-      placeHolder: "Name",
-      name: "name",
-    },
-    {
-      title: "Phone Number",
-      placeHolder: "Phone Number",
-      type: "number",
-      name: "phoneNumber",
-    },
-    {
-      title: "Email",
-      placeHolder: "Email",
-      type: "text",
-      name: "email",
-    },
-    {
-      title: "Location",
-      placeHolder: "Location",
-      type: "text",
-      name: "location",
-    },
-    {
-      title: "Message",
-      placeHolder: "Message",
-      type: "textarea",
-      name: "message",
-    },
-  ];
-
-  const { editRecordData, OnDelete, lablename } = props;
+  const { editRecordData, OnDelete, lablename, loader } = props;
 
   const categ = [
     "Laptop Rental",
@@ -92,7 +50,9 @@ const DeleteModel = (props) => {
           className="gq-model-bbox"
           onClick={() => console.log(editRecordData)}
         >
-          <Btn attrBtn={{ color: "primary", onClick: OnDelete }}>{"Yes"}</Btn>
+          <Btn attrBtn={{ color: "primary", onClick: OnDelete }}>
+            {"Yes"} {loader ? <ApiLoader /> : ""}
+          </Btn>{" "}
         </div>
       </ModalBody>
     </Modal>

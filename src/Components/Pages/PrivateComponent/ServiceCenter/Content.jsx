@@ -7,6 +7,7 @@ import { H4, H6, LI, P, UL, Image, H1, H3 } from "../../../../AbstractElements";
 import { CardHeader, Form, Input, Media } from "reactstrap";
 import { FileApi } from "../../../../api";
 import { FaBeer } from "react-icons/fa";
+import { PaginationBar } from "../../../Common/Component/PaginationBar/PaginationBar";
 import { Link } from "react-router-dom";
 import {
   FS10,
@@ -20,7 +21,6 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import Footer from "../../../../CommonElements/Footer/Footer";
 import ServiceCard from "./ServiceCard";
 import { BreadCrum } from "../../../Common/Component/helperFunction";
-import PaginationBar from "./Pagination";
 import SearchBar from "../Home/SearchBar";
 import { Skeleton } from "antd";
 import {
@@ -31,6 +31,7 @@ import {
   NoRecords,
   PageContentManager,
 } from "../../../Common/Component/DesignElement";
+import PaginationBar2 from "./Pagination";
 const Content = ({ AllProps }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -135,11 +136,18 @@ const Content = ({ AllProps }) => {
               );
             })}
             pagination={
-              <PaginationBar
-                last_page={last_page}
-                current_page={current_page}
-                setCurrentPage={setCurrentPage}
-              />
+              <>
+                <PaginationBar
+                  onChange={setCurrentPage}
+                  last_page={last_page * 10}
+                  current_page={current_page}
+                />
+                {/* <PaginationBar2
+                  last_page={last_page}
+                  current_page={current_page}
+                  setCurrentPage={setCurrentPage}
+                /> */}
+              </>
             }
           />
         </div>

@@ -36,13 +36,16 @@ const AllPoduct = ({
 }) => {
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
+  const [loader, setLoader] = useState({ deleteLoader: false });
   const [formData, setFormData] = useState({});
   const { data, last_page, links } = AllProduct;
   const [tableData, setTableData] = useState(data);
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
-
+  const ChangeLoader = (loaderName, type) => {
+    setLoader({ ...loader, [loaderName]: type });
+  };
   const toggle = () => {
     setModel(!modal);
   };
@@ -89,6 +92,7 @@ const AllPoduct = ({
     d_toggle();
   };
   const OnDelete = () => {
+    ChangeLoader("deleteLoader", true);
     console.log("TestData 25025", editRecordData);
     POST_FORMDATA_API({
       endPoint: `${API_ROOT_URL}/${DELETE_PRODUCT_API}`,
@@ -99,10 +103,12 @@ const AllPoduct = ({
         setEditRecordData({});
         setEditing(false);
         d_toggle();
+        ChangeLoader("deleteLoader", false);
       })
       .catch((error) => {
         ToastError(error);
         d_toggle();
+        ChangeLoader("deleteLoader", false);
       });
   };
   const OnSubmitForm = () => {
@@ -171,6 +177,7 @@ const AllPoduct = ({
         isOpen={d_modal}
         OnDelete={OnDelete}
         lablename={editRecordData["name"]}
+        loader={loader.deleteLoader}
       />
     </>
   );

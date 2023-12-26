@@ -40,12 +40,16 @@ const AllListing = ({
   const [modal, setModel] = useState(false);
   const [d_modal, setD_Model] = useState(false);
   const [formData, setFormData] = useState({});
+  const [loader, setLoader] = useState({ deleteLoader: false });
   const [current_page, setCurrentPage] = useState(1);
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
   );
   const { data, last_page, links } = AllList;
   const [tableData, setTableData] = useState(data);
+  const ChangeLoader = (loaderName, type) => {
+    setLoader({ ...loader, [loaderName]: type });
+  };
   const toggle = () => {
     setModel(!modal);
   };
@@ -105,6 +109,7 @@ const AllListing = ({
     d_toggle();
   };
   const OnDelete = () => {
+    ChangeLoader("deleteLoader", true);
     console.log("TestData 25025", editRecordData);
     POST_FORMDATA_API({
       endPoint: `${API_ROOT_URL}/${DELETE_LIST_API}`,
@@ -115,10 +120,12 @@ const AllListing = ({
         setEditRecordData({});
         setEditing(false);
         d_toggle();
+        ChangeLoader("deleteLoader", false);
       })
       .catch((error) => {
         ToastError(error);
         d_toggle();
+        ChangeLoader("deleteLoader", false);
       });
   };
   const OnSubmitForm = () => {
@@ -195,6 +202,7 @@ const AllListing = ({
         isOpen={d_modal}
         OnDelete={OnDelete}
         lablename={editRecordData["name"]}
+        loader={loader.deleteLoader}
       />
     </>
   );

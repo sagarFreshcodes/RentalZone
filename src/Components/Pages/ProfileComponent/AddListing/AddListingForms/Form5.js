@@ -2,8 +2,10 @@ import React from "react";
 import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
+import { ApiLoader } from "../../../../Common/Component/DesignElement";
 const Form5 = ({ AllProps }) => {
-  const { NextPage, formData, setFormData, OnSubmit, ChangePage } = AllProps;
+  const { NextPage, formData, setFormData, OnSubmit, ChangePage, loader } =
+    AllProps;
 
   return (
     <div>
@@ -36,7 +38,7 @@ const Form5 = ({ AllProps }) => {
 
               <div className="next">
                 <CommonButton attr={{ className: "Next", onClick: OnSubmit }}>
-                  Submit
+                  Submit {loader ? <ApiLoader /> : ""}
                 </CommonButton>
               </div>
             </CardBody>

@@ -25,6 +25,7 @@ import {
   ToastSuccess,
 } from "../../../Common/Component/helperFunction";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import { ApiLoader } from "../../../Common/Component/DesignElement";
 
 const AddPoduct = ({
   AllProps,
@@ -38,6 +39,10 @@ const AddPoduct = ({
     localStorage.getItem("rentalUserAuthToken")
   );
   const [imgData, setImgData] = useState();
+  const [loader, setLoader] = useState({ submitLoader: false });
+  const ChangeLoader = (loaderName, type) => {
+    setLoader({ ...loader, [loaderName]: type });
+  };
   const mayListBody = { token: RentalUserAuthToken };
   const mayListbodyFormData = new FormData();
   Object.keys(mayListBody).map((i) => {
@@ -144,6 +149,7 @@ const AddPoduct = ({
   const [pageRenderd, setPageRenderd] = useState(false);
 
   const OnSubmit = () => {
+    ChangeLoader("submitLoader", true);
     const Apiurl =
       editing == "editProduct" ? UPDATE_PRODUCT_API : ADD_PRODUCT_API;
     POST_FORMDATA_API({
@@ -155,9 +161,11 @@ const AddPoduct = ({
         setEditRecordData({});
         setEditing(false);
         ChangePage({ pagenumber: 4, data: {} });
+        ChangeLoader("submitLoader", false);
       })
       .catch((error) => {
         ToastError(error);
+        ChangeLoader("submitLoader", false);
       });
   };
   const ClickOnNext = () => {
@@ -330,7 +338,7 @@ const AddPoduct = ({
                         className: "Next",
                       }}
                     >
-                      Submit
+                      Submit {loader.submitLoader ? <ApiLoader /> : ""}
                     </CommonButton>
                   </div>
                 </form>
