@@ -28,9 +28,12 @@ import { useDispatch, useSelector } from "react-redux";
 import gsap from "gsap";
 import {
   CallFunctionOnScroll,
+  GET_API,
+  GetApi,
   ScrollHeight,
   SimpleAnimation,
 } from "../../../Common/Component/helperFunction";
+import { API_ROOT_URL, SITE_MAP_API } from "../../../../Constant/api_constant";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -117,9 +120,36 @@ const Content = ({ props }) => {
     );
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
-  const test = () => {
-    console.log("HomPageData2512", HomPageData);
-    // console.log("banner_path", banner_path);
+  const test = async () => {
+    // console.log("HomPageData2512", HomPageData);
+    // const response = await fetch(`${API_ROOT_URL}/${SITE_MAP_API}/area`, {
+    //   headers: {
+    //     // Add your headers here
+    //     Authorization: "Bearer YOUR_ACCESS_TOKEN",
+    //     "Content-Type": "application/xml", // Adjust content type if needed
+    //     // ... other headers
+    //   },
+    // });
+
+    // GET_API(`${API_ROOT_URL}/${SITE_MAP_API}/area`)
+    //   .then((respose) => {
+    //     console.log("response123654", respose);
+    //   })
+    //   .catch((error) => {
+    //     console.log("response123654", error);
+    //   });
+
+    // console.log("banner_path1254", response);
+
+    const linkElement = document.querySelector("link.changeable-xml-link");
+
+    if (linkElement) {
+      // Change the href attribute of the found <link> tag
+      linkElement.href =
+        `https://laptops.rent/areas1.xml` || "../src/assets/XmlFile/demo.xml"; // Set the new href value here
+    } else {
+      console.error('Link element with class "changeable-link" not found');
+    }
   };
 
   useEffect(() => {
@@ -128,15 +158,16 @@ const Content = ({ props }) => {
 
   window.addEventListener("scroll", function () {
     CallFunctionOnScroll({
-      between: [500, 600],
+      between: [500, 550],
       Call: () => SimpleAnimation({ className: ".cateIcon" }),
     });
 
     CallFunctionOnScroll({
-      between: [100, 110],
+      between: [150, 200],
       Call: () => SimpleAnimation({ className: ".trandImgBox" }),
     });
   });
+
   return (
     <Fragment className="searchHeadFragment">
       <div className="searchHeadBx">

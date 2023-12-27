@@ -80,9 +80,17 @@ export function BreadCrum(array) {
 }
 
 export const GET_API = (endPoint) => {
+  const HEADERS = {
+    headers: {
+      "Content-Type": "application/xml",
+      // "Accept": "application/json",
+      // 'Authorization': "AuthStr================="
+      // Include any other required headers
+    },
+  };
   return new Promise((Response, Reject) => {
     axios
-      .get(endPoint)
+      .get(endPoint, HEADERS)
       // .get(`${API_ROOT_URL}${endPoint}`)
       .then((res) => {
         Response(res);
@@ -96,7 +104,7 @@ export const GET_API = (endPoint) => {
 export const GetApi = async (endPoint) => {
   const HEADERS = {
     headers: {
-      // "Content-Type": "application/json",
+      "Content-Type": "application/json",
       // "Accept": "application/json",
       // 'Authorization': "AuthStr================="
       // Include any other required headers
