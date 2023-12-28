@@ -22,7 +22,10 @@ import {
   BASE_ROUTE,
   CATEGORY_DETAILS_ROUTE,
 } from "../../../../Route/RouthPath";
-import { SimpleAnimation } from "../../../Common/Component/helperFunction";
+import {
+  ReactIcon,
+  SimpleAnimation,
+} from "../../../Common/Component/helperFunction";
 
 const ServiceCard = ({
   title,
@@ -108,7 +111,13 @@ const ServiceCard = ({
               }}
             />
             {featured ? <div className="Featured">Featured</div> : ""}
-
+            {featured ? (
+              <div className="FeaturedIcon">
+                <ReactIcon iconName={`AiFillFire`} />
+              </div>
+            ) : (
+              ""
+            )}
             <div className="price_box">
               <div className="startFrom">
                 <FS3>Start From</FS3>
@@ -174,7 +183,11 @@ const ServiceCard = ({
                       setHoverCategory(hoverCategory == id ? "" : id)
                     }
                   >
-                    {hoverCategory == id ? "Less" : "More"}
+                    {[category].join(", ").length > 32 ? (
+                      <FS4> {hoverCategory == id ? "Less" : "More"}</FS4>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
                 <FS3 attr={{ className: "areaName" }}>
