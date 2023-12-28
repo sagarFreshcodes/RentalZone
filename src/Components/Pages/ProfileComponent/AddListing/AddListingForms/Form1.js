@@ -72,6 +72,7 @@ const Form1 = ({ AllProps }) => {
       : setSelectedCate((prev) => [...prev, id]);
   };
   useEffect(() => {
+    console.log("251254AddListForm");
     CategoryList();
   }, []);
   useEffect(() => {

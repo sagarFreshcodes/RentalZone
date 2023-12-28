@@ -55,11 +55,7 @@ const Content = ({ AllProps }) => {
 
   const { page_title } = BusinesssPageData || {};
   const { total, per_page, last_page, current_page } = all_listing || {};
-  useEffect(() => {
-    axios.get(FileApi).then((response) => {
-      setMyFile(response.data);
-    });
-  }, []);
+
   const test = () => {
     console.log(banner_image);
   };

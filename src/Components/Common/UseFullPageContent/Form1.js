@@ -3,10 +3,7 @@ import { Row, Col, Card, CardBody, FormGroup, Label, Input } from "reactstrap";
 import { FS5, FS8 } from "../../../../../CommonElements/Font/FS";
 import { CommonButton } from "../../../../../CommonElements/Button";
 import axios from "axios";
-import {
-  API_ROOT_URL,
-  GET_CATEGORY_DROPDOWN_API,
-} from "../../../Constant/api_constant";
+import { API_ROOT_URL } from "../../../Constant/api_constant";
 import { ToastError } from "../Component/helperFunction";
 const Form1 = () => {
   const [allCategoryList, setAllCategoryList] = useState([]);

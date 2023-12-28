@@ -517,13 +517,14 @@ export function UpdateSEO({
   });
 }
 
-export const HanggingBar = () => {
+export const HanggingBar = ({ allCategoryListFromParent, ListOfCategory }) => {
   const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
   const contact_button = GeneralData?.contact_button || 0;
   const [allCategoryList, setAllCategoryList] = useState([]);
   const [loading, setLoading] = useState([]);
   const [modal, setModel] = useState(false);
   const [chatModal, setChatModal] = useState(false);
+  const [render, setRender] = useState(false);
 
   const toggle = () => {
     setModel(!modal);
@@ -534,9 +535,19 @@ export const HanggingBar = () => {
   const OnDial = () => {
     document.location.href = `tel:${11111111111}`;
   };
+
   useEffect(() => {
-    CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
+    if (allCategoryListFromParent) {
+      setAllCategoryList(ListOfCategory);
+    } else {
+      console.log("251254HanggingBar", allCategoryListFromParent);
+      CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
+    }
   }, []);
+
+  useEffect(() => {
+    setAllCategoryList(ListOfCategory);
+  }, [modal]);
   return (
     <>
       <div className="HanggingBar">
@@ -624,12 +635,10 @@ export const CategoryList = ({ setLoading, setState }) => {
     .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
     .then((response) => {
       setState(response?.data?.data || []);
-      console.log("response1236", response);
       setLoading(false);
     })
     .catch((error) => {
       ToastError(error);
-      console.log("response1236", error);
       setLoading(false);
     });
 };

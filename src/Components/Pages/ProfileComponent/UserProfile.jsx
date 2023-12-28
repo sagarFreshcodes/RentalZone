@@ -147,7 +147,7 @@ const UserProfilePage = ({}) => {
       body: bodyFormData,
     })
       .then((response) => {
-        console.log("data123654", response);
+        console.log("data123654", response?.data?.data[0]);
         loadingChange("profileLoader", false);
         SetUserProfile({
           profileData: response?.data?.data[0],
@@ -156,7 +156,11 @@ const UserProfilePage = ({}) => {
         dispatch(SetUserProfile({ profileData: response?.data?.data[0] }));
         localStorage.setItem(
           "user_details",
-          JSON.stringify(response?.data?.data[0])
+          JSON.stringify({
+            ...response?.data?.data[0],
+            //   profile_pic:
+            //     "https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp",
+          })
         );
         setModel(!modal);
       })

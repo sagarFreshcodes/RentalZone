@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useLayoutEffect, useState } from "react";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { Card, Col, Container, Row } from "reactstrap";
 import { useLocation } from "react-router";
@@ -162,7 +162,6 @@ const ServiceCenter = () => {
   }, [QueryParams]);
 
   useEffect(() => {
-    CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
     UpdateSEO({
       page_title: page_title,
       meta_title: meta_title,
@@ -170,6 +169,9 @@ const ServiceCenter = () => {
       meta_keywords: meta_keywords,
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
+  useLayoutEffect(() => {
+    CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
+  }, []);
   return (
     <>
       <Fragment>
@@ -244,7 +246,7 @@ const ServiceCenter = () => {
           toggler={toggle}
           isOpen={modal}
           loading={loading}
-          allCategoryList={allCategoryList}
+          // allCategoryList={allCategoryList}
         />
 
         <ChatModel
@@ -253,7 +255,10 @@ const ServiceCenter = () => {
           isOpen={chatModal}
         />
       </Fragment>{" "}
-      <HanggingBar />
+      <HanggingBar
+        allCategoryListFromParent={true}
+        ListOfCategory={allCategoryList}
+      />
     </>
   );
 };

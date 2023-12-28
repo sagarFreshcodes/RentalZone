@@ -7,7 +7,10 @@ import { LI, UL, Image, P } from "../../../AbstractElements";
 import CustomizerContext from "../../../_helper/Customizer";
 import { Account, Admin, Inbox, LogOut, Taskboard } from "../../../Constant";
 import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE } from "../../../Route/RouthPath";
-import { Log_Out } from "../../../Components/Common/Component/helperFunction";
+import {
+  CheckValidValue,
+  Log_Out,
+} from "../../../Components/Common/Component/helperFunction";
 import { ApiLoader } from "../../../Components/Common/Component/DesignElement";
 
 const UserHeader = () => {
@@ -57,6 +60,10 @@ const UserHeader = () => {
       localStorage.getItem("rentalUserAuthToken")
     );
   };
+  const IsAutehticated = CheckValidValue(localStorage.getItem("user_details"));
+  const userDetails = IsAutehticated
+    ? JSON.parse(localStorage.getItem("user_details"))
+    : { userDetails: "" };
   return (
     <ul
       className="profile-nav onhover-dropdown pe-0 py-0"
@@ -66,15 +73,20 @@ const UserHeader = () => {
       <div className="media profile-media">
         <Image
           attrImage={{
-            className: "b-r-10 m-0",
-            src: `${authenticated ? auth0_profile.picture : profile}`,
+            className: "b-r-10 m-0 headerProfileImg",
+            src: IsAutehticated
+              ? userDetails?.profile_pic
+              : `${authenticated ? auth0_profile.picture : profile}`,
             alt: "",
           }}
-        />
+        />{" "}
+        &nbsp;
         <div className="media-body">
-          <span>{authenticated ? auth0_profile.name : name}</span>
+          <span>
+            {IsAutehticated ? `${userDetails?.name}`.toUpperCase() : `User`}
+          </span>
           <P attrPara={{ className: "mb-0 font-roboto" }}>
-            {Admin} <i className="middle fa fa-angle-down"></i>
+            {`Setting`} <i className="middle fa fa-angle-down"></i>
           </P>
         </div>
       </div>
@@ -83,7 +95,7 @@ const UserHeader = () => {
           className: `simple-list profile-dropdown ${show ? "" : "d-none"}`,
         }}
       >
-        <LI
+        {/* <LI
           attrLI={{
             onClick: () =>
               UserMenuRedirect(
@@ -93,7 +105,7 @@ const UserHeader = () => {
         >
           <User />
           <span>{Account} </span>
-        </LI>
+        </LI> */}
         <LI
           attrLI={{
             onClick: clickOnFreeListing,
@@ -112,7 +124,7 @@ const UserHeader = () => {
           <Activity />
           <span>{`Profile`} </span>
         </LI>
-        <LI
+        {/* <LI
           attrLI={{
             onClick: () =>
               UserMenuRedirect(
@@ -122,8 +134,8 @@ const UserHeader = () => {
         >
           <Mail />
           <span>{Inbox}</span>
-        </LI>
-        <LI
+        </LI> */}
+        {/* <LI
           attrLI={{
             onClick: () =>
               UserMenuRedirect(
@@ -133,7 +145,7 @@ const UserHeader = () => {
         >
           <FileText />
           <span>{Taskboard}</span>
-        </LI>
+        </LI> */}
         <LI attrLI={{ onClick: Logout, className: login ? "" : "d-none" }}>
           <LogIn />
           <span>

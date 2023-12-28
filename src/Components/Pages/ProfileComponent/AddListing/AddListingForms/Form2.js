@@ -13,7 +13,6 @@ import {
   GET_STATE_DROPDOWN_API,
   GET_AREA_DROPDOWN_API,
   GET_LOCATION_DROPDOWN_API,
-  GET_CATEGORY_DROPDOWN_API,
 } from "../../../../../Constant/api_constant";
 
 const FormFields = [

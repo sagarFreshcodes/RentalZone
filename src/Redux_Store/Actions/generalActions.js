@@ -110,6 +110,7 @@ export const CategoryActions = ({ serchKeyword, location }) => {
 };
 
 export const FAQActions = () => {
+  console.log("test2545FAQActions");
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request

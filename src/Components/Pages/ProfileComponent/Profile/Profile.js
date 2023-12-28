@@ -33,11 +33,11 @@ const Profile = ({
         attrImage={{
           onClick: () => console.log("user_details", user_details),
           className: "img-fluid rounded  profile_banner",
-          src:
-            `${formData?.profile_banner_URL}`.length != 0
-              ? formData?.profile_banner_URL
-              : formData.profile_banner,
-          // src: formData.profile_banner,
+          // src:
+          //   `${formData?.profile_banner_URL}`.length != 0
+          //     ? formData?.profile_banner_URL
+          //     : formData.profile_banner,
+          src: formData.profile_banner,
           alt: "gallery",
         }}
       />
@@ -46,12 +46,12 @@ const Profile = ({
         <div className="avatar">
           <img
             className="step1"
-            src={
-              `${formData?.profile_pic_URL}`.length != 0
-                ? formData?.profile_pic_URL
-                : formData.profile_pic
-            }
-            // src={formData.profile_pic}
+            // src={
+            //   `${formData?.profile_pic_URL}`.length != 0
+            //     ? formData?.profile_pic_URL
+            //     : formData.profile_pic
+            // }
+            src={formData.profile_pic}
             alt=""
           />
         </div>

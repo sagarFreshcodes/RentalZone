@@ -44,6 +44,7 @@ const Footer = () => {
   };
 
   useMemo(() => {
+    console.log("test2545");
     if (area_location_empty || city_location_empty) {
       dispatch(GeneralActions({ current_location: "mumbai" }));
     }
