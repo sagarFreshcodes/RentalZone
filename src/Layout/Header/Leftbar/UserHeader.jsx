@@ -77,6 +77,10 @@ const UserHeader = () => {
             src: IsAutehticated
               ? userDetails?.profile_pic
               : `${authenticated ? auth0_profile.picture : profile}`,
+
+            // src:
+            //   `https://cdn.icon-icons.com/icons2/1381/PNG/512/applicationsfeatured_93757.png` ||
+            //   `https://laptops.rent/public/user-profile/1/profile-pic.png`,
             alt: "",
           }}
         />{" "}

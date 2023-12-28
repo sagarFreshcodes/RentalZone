@@ -33,11 +33,13 @@ const Profile = ({
         attrImage={{
           onClick: () => console.log("user_details", user_details),
           className: "img-fluid rounded  profile_banner",
-          // src:
-          //   `${formData?.profile_banner_URL}`.length != 0
-          //     ? formData?.profile_banner_URL
-          //     : formData.profile_banner,
+          src:
+            `${formData?.profile_banner_URL}`.length != 0
+              ? formData?.profile_banner_URL
+              : formData.profile_banner,
           src: formData.profile_banner,
+          // src: `https://laptops.rent/public/user-profile/1/profile-banner.png`,
+          // src: `https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=sph`,
           alt: "gallery",
         }}
       />
@@ -46,12 +48,14 @@ const Profile = ({
         <div className="avatar">
           <img
             className="step1"
-            // src={
-            //   `${formData?.profile_pic_URL}`.length != 0
-            //     ? formData?.profile_pic_URL
-            //     : formData.profile_pic
-            // }
-            src={formData.profile_pic}
+            src={
+              `${formData?.profile_pic_URL}`.length != 0
+                ? formData?.profile_pic_URL
+                : formData.profile_pic
+            }
+            // src={formData.profile_pic}
+            // src={`https://laptops.rent/public/user-profile/1/profile-pic.png`}
+            // src={`https://cdn.icon-icons.com/icons2/1381/PNG/512/applicationsfeatured_93757.png`}
             alt=""
           />
         </div>
