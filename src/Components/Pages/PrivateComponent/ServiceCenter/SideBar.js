@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FS4, FS5 } from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import { useLocation, useNavigate } from "react-router";
@@ -6,8 +6,13 @@ import { BASE_ROUTE } from "../../../../Route/RouthPath";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SetLocation } from "../../../../Redux_Store/Actions/generalActions";
+import { Submit_quotes } from "../../Models/GetQuotes/get_quotes_helper";
+import { ApiLoader } from "../../../Common/Component/DesignElement";
+import { ToastError } from "../../../Common/Component/helperFunction";
 
 const SideBar = ({ AllProps }) => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({ name: "", number: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -32,6 +37,39 @@ const SideBar = ({ AllProps }) => {
     navigate(`${BASE_ROUTE}/${rightLink}/${category_id}`);
   };
 
+  const onHandleChange = ({ target }) => {
+    const name = target.name;
+    const value = target.value;
+    setFormData({ ...formData, [name]: value });
+  };
+  const OnSubmitForm = () => {
+    setLoading(true);
+    const submitData = {
+      [`listing_category[]`]: category_id,
+      // individual_company: formData?.individual_company,
+      // quantity: formData?.quantity,
+      name: formData?.name,
+      phone_number: formData?.number,
+      // email: formData?.email,
+      // location: formData?.location,
+      // message: formData?.message,
+    };
+    if ([formData?.number, formData?.name].includes("")) {
+      ToastError("Please fill data");
+      setLoading(false);
+    } else {
+      if (formData?.number.length < 10) {
+        ToastError("Please fill valid 10 digit mobile number");
+        setLoading(false);
+      } else {
+        Submit_quotes({
+          submitData: submitData,
+          setLoading: setLoading,
+          toggle: () => console.log(""),
+        });
+      }
+    }
+  };
   const FixedArea = [
     {
       title: `${`${CurrentUrlSlug.split("-")[0]}`} Rental in Mumbai`,
@@ -83,16 +121,28 @@ const SideBar = ({ AllProps }) => {
           <FS4 attr={{ className: "BoldText" }}>
             Get the list of best{" "}
             <span className="green_text">
-              "{`${CurrentUrlCategory}`.toUpperCase()}"
+              "{`${CurrentUrlSlug}`.toUpperCase()}"
             </span>
           </FS4>
           <div className="input">
-            <input type="text" placeholder="Name*" />
+            <input
+              name="name"
+              type="text"
+              onChange={onHandleChange}
+              placeholder="Name*"
+            />
           </div>
           <div className="input">
-            <input type="text" placeholder="Mobile Number*" />
+            <input
+              name="number"
+              type="number"
+              onChange={onHandleChange}
+              placeholder="Mobile Number*"
+            />
           </div>
-          <button className="btn btn-success">Get Quotes Now</button>{" "}
+          <button className="btn btn-success" onClick={OnSubmitForm}>
+            Get Quotes Now {loading ? <ApiLoader /> : ""}
+          </button>{" "}
         </div>
 
         <div className="sc_linkBox">

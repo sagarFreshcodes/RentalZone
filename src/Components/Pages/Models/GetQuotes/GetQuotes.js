@@ -22,6 +22,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CommonButton } from "../../../../CommonElements/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { Submit_quotes } from "./get_quotes_helper";
 const GetQuotesModel = (props) => {
   const [selectedOption, setSelectedOption] = useState({ lable: `--Select--` });
   const GeneralData = useSelector((state) => state?.GeneralState);
@@ -114,19 +115,24 @@ const GetQuotesModel = (props) => {
       location: formData?.location,
       message: formData?.message,
     };
-    POST_FORMDATA_API({
-      endPoint: `${API_ROOT_URL}/${STORE_QUOTES_API}`,
-      body: submitData,
-    })
-      .then((response) => {
-        ToastSuccess(response);
-        setLoading(false);
-        props.toggler();
-      })
-      .catch((error) => {
-        ToastError(error);
-        setLoading(false);
-      });
+    Submit_quotes({
+      submitData: submitData,
+      setLoading: setLoading,
+      toggle: props.toggler,
+    });
+    // POST_FORMDATA_API({
+    //   endPoint: `${API_ROOT_URL}/${STORE_QUOTES_API}`,
+    //   body: submitData,
+    // })
+    //   .then((response) => {
+    //     ToastSuccess(response);
+    //     setLoading(false);
+    //     props.toggler();
+    //   })
+    //   .catch((error) => {
+    //     ToastError(error);
+    //     setLoading(false);
+    //   });
   };
 
   const formik = useFormik({
