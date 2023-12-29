@@ -37,7 +37,7 @@ const Profile = ({
             `${formData?.profile_banner_URL}`.length != 0
               ? formData?.profile_banner_URL
               : formData.profile_banner,
-          src: formData.profile_banner,
+          // src: formData.profile_banner,
           // src: `https://laptops.rent/public/user-profile/1/profile-banner.png`,
           // src: `https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=sph`,
           alt: "gallery",

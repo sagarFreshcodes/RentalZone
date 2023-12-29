@@ -29,7 +29,7 @@
   gap: 1rem;
   z-index: 20;
   position: absolute;
-  top: 7rem;
+  top: 4rem;
   right: 7px;
   border: solid whitesmoke;
   border-radius: 0;
@@ -1405,6 +1405,9 @@
   }
 }
 @media screen and (max-width: 800px) {
+  .UserHeaderBox ul.list-group {
+    top: 7rem !important;
+  }
   .spaceForSearchbar {
     display: block;
   }
