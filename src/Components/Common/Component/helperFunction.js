@@ -79,6 +79,26 @@ export function BreadCrum(array) {
   }
 }
 
+export const CheckValidValue = (value, defaultValue, notCheck) => {
+  if (["null", null, undefined, "undefined", ""].includes(value)) {
+    return defaultValue ? defaultValue : false;
+  } else {
+    return notCheck ? value : true;
+  }
+};
+
+export const CheckValidImage = (value, defaultValue) => {
+  if (["null", null, undefined, "undefined", ""].includes(value)) {
+    return defaultValue ? defaultValue : false;
+  } else {
+    if (value.includes("/")) {
+      return value;
+    } else {
+      return defaultValue;
+    }
+  }
+};
+
 export const GET_API = (endPoint) => {
   const HEADERS = {
     headers: {
@@ -516,6 +536,18 @@ export function UpdateSEO({
     meta_keywords: meta_keywords || defaultMetaKeywords,
   });
 }
+export const CategoryList = ({ setLoading, setState }) => {
+  axios
+    .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
+    .then((response) => {
+      setState(response?.data?.data || []);
+      setLoading(false);
+    })
+    .catch((error) => {
+      ToastError(error);
+      setLoading(false);
+    });
+};
 
 export const HanggingBar = ({ allCategoryListFromParent, ListOfCategory }) => {
   const GeneralData = useSelector((state) => state?.GeneralState?.data?.data);
@@ -537,16 +569,17 @@ export const HanggingBar = ({ allCategoryListFromParent, ListOfCategory }) => {
   };
 
   useEffect(() => {
-    if (allCategoryListFromParent) {
+    if (CheckValidValue(allCategoryListFromParent)) {
       setAllCategoryList(ListOfCategory);
     } else {
-      console.log("251254HanggingBar", allCategoryListFromParent);
       CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
     }
   }, []);
 
   useEffect(() => {
-    setAllCategoryList(ListOfCategory);
+    CheckValidValue(allCategoryListFromParent)
+      ? setAllCategoryList(ListOfCategory)
+      : console.log("");
   }, [modal]);
   return (
     <>
@@ -630,19 +663,6 @@ export function ChangeKeyNameOfObject({ obj, currentKeyName, newKeyName }) {
   return newObj;
 }
 
-export const CategoryList = ({ setLoading, setState }) => {
-  axios
-    .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
-    .then((response) => {
-      setState(response?.data?.data || []);
-      setLoading(false);
-    })
-    .catch((error) => {
-      ToastError(error);
-      setLoading(false);
-    });
-};
-
 export const GetCurrentChatTime = () => {
   // Get the current date/time
 
@@ -666,26 +686,6 @@ export const GetCurrentChatTime = () => {
   const formattedTime = `${hours}:${minutes}:${seconds} ${amOrPm}`;
 
   return formattedTime;
-};
-
-export const CheckValidValue = (value, defaultValue, notCheck) => {
-  if (["null", null, undefined, "undefined", ""].includes(value)) {
-    return defaultValue ? defaultValue : false;
-  } else {
-    return notCheck ? value : true;
-  }
-};
-
-export const CheckValidImage = (value, defaultValue) => {
-  if (["null", null, undefined, "undefined", ""].includes(value)) {
-    return defaultValue ? defaultValue : false;
-  } else {
-    if (value.includes("/")) {
-      return value;
-    } else {
-      return defaultValue;
-    }
-  }
 };
 
 export const SimpleAnimation = ({
