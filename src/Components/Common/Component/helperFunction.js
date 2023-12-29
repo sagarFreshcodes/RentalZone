@@ -695,15 +695,29 @@ export const SimpleAnimation = ({
   duration2,
   scale1,
   scale2,
+  delay1,
+  delay2,
 }) => {
   if (edition) {
     gsap.to(className, {
       duration: duration1 || 0.5,
       scale: scale1 || 0.5,
+      delay: delay1 || 0,
     });
     gsap.to(className, {
       scale: scale2 || 1,
       duration: duration2 || 3,
+      delay: delay2 || 0.5,
+    });
+
+    gsap.to(className, {
+      duration: 0.5,
+      scale: 0.5,
+    });
+    gsap.to(className, {
+      delay: 0.5,
+      scale: 1,
+      duration: 3,
     });
   } else {
     gsap.to(className, {
@@ -711,6 +725,7 @@ export const SimpleAnimation = ({
       scale: 0.5,
     });
     gsap.to(className, {
+      delay: 0.5,
       scale: 1,
       duration: 3,
     });
@@ -758,4 +773,32 @@ export const CallFunctionOnScroll = ({
       Call();
     }
   }
+};
+
+export const CallEventOnDisplay = ({ targetRef, Call }) => {
+  const options = {
+    root: null, // Use the viewport as the root
+    rootMargin: "0px", // Margin around the root
+    threshold: 0.5, // When 50% of the target is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Call your event or function when the target is visible
+        Call();
+      }
+    });
+  }, options);
+
+  if (targetRef.current) {
+    observer.observe(targetRef.current);
+  }
+
+  // Cleanup: disconnect the observer when component unmounts
+  return () => {
+    if (targetRef.current) {
+      observer.unobserve(targetRef.current);
+    }
+  };
 };

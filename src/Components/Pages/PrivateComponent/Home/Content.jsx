@@ -27,6 +27,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import gsap from "gsap";
 import {
+  CallEventOnDisplay,
   CallFunctionOnScroll,
   GET_API,
   GetApi,
@@ -34,6 +35,7 @@ import {
   SimpleAnimation,
 } from "../../../Common/Component/helperFunction";
 import { API_ROOT_URL, SITE_MAP_API } from "../../../../Constant/api_constant";
+import { useRef } from "react";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -44,6 +46,8 @@ const Content = ({ props }) => {
     ProductList,
   } = props;
   const dispatch = useDispatch();
+  const productRef = useRef(null);
+  const cateListRef = useRef(null);
   const navigate = useNavigate();
   const {
     single_banner_one,
@@ -120,54 +124,43 @@ const Content = ({ props }) => {
     );
     navigate(`${BASE_ROUTE}/${category_slug}-${location}/${category_id}`);
   };
-  const test = async () => {
-    // console.log("HomPageData2512", HomPageData);
-    // const response = await fetch(`${API_ROOT_URL}/${SITE_MAP_API}/area`, {
-    //   headers: {
-    //     // Add your headers here
-    //     Authorization: "Bearer YOUR_ACCESS_TOKEN",
-    //     "Content-Type": "application/xml", // Adjust content type if needed
-    //     // ... other headers
-    //   },
-    // });
+  const test = async () => {};
 
-    // GET_API(`${API_ROOT_URL}/${SITE_MAP_API}/area`)
-    //   .then((respose) => {
-    //     console.log("response123654", respose);
-    //   })
-    //   .catch((error) => {
-    //     console.log("response123654", error);
-    //   });
-
-    // console.log("banner_path1254", response);
-
-    const linkElement = document.querySelector("link.changeable-xml-link");
-
-    if (linkElement) {
-      // Change the href attribute of the found <link> tag
-      linkElement.href =
-        `https://laptops.rent/areas1.xml` || "../src/assets/XmlFile/demo.xml"; // Set the new href value here
-    } else {
-      console.error('Link element with class "changeable-link" not found');
-    }
-  };
+  // window.addEventListener("scroll", function () {
+  //   CallFunctionOnScroll({
+  //     between: [500, 550],
+  //     Call: () => SimpleAnimation({ className: ".cateIcon" }),
+  //   });
+  // });
 
   useEffect(() => {
     SimpleAnimation({ className: ".cateIcon" });
+    CallEventOnDisplay({
+      targetRef: productRef,
+      Call: () =>
+        SimpleAnimation({
+          className: ".trandImgBox",
+          scale1: 0.1,
+          scale2: 1,
+          edition: true,
+          duration1: 1.5,
+          duration2: 3,
+        }),
+    });
+
+    CallEventOnDisplay({
+      targetRef: cateListRef,
+      Call: () =>
+        SimpleAnimation({
+          className: ".cateIcon",
+          scale1: 0.1,
+          scale2: 1,
+          edition: true,
+          duration1: 1.5,
+          duration2: 3,
+        }),
+    });
   }, []);
-
-  window.addEventListener("scroll", function () {
-    CallFunctionOnScroll({
-      between: [500, 550],
-      Call: () => SimpleAnimation({ className: ".cateIcon" }),
-    });
-
-    CallFunctionOnScroll({
-      between: [150, 200],
-      Call: () => SimpleAnimation({ className: ".trandImgBox" }),
-    });
-  });
-
   return (
     <Fragment className="searchHeadFragment">
       <div className="searchHeadBx">
@@ -218,7 +211,7 @@ const Content = ({ props }) => {
       </ContentBox>
       <ContentBox className="">
         {/* <H4 attrH4={{ className: "mb-3" }}>Rentalzone.in</H4> */}
-        <div className="catContainer">
+        <div className="catContainer" ref={cateListRef}>
           {homepage_category?.map((item) => {
             return (
               <div className="catBox" key={item.id}>
@@ -262,7 +255,7 @@ const Content = ({ props }) => {
         <div className="ContentCenter">
           <FS10>Top Trendings For Your City</FS10>
         </div>
-        <div className="TrendingsContainer">
+        <div className="TrendingsContainer" ref={productRef}>
           {ProductList?.map((item) => {
             return (
               <TrandingCard

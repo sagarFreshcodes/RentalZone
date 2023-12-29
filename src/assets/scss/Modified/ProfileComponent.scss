@@ -2,7 +2,7 @@
   position: relative !important;
   .card {
     // background: linear-gradient(to right, #ffffff, #7366ff);
-    background: linear-gradient(to right, #ffffff, #97c1e6);
+    background: linear-gradient(to right, #ffffff, #ffffff);
   }
   .card-header {
     background-color: #0d8aa600;
@@ -13,7 +13,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: linear-gradient(to right, #ffffff, #97c1e6);
+    background: linear-gradient(to right, #ffffff, #ffffff);
     padding: 10px;
     .navbarButton2 {
       display: none !important;
@@ -21,7 +21,7 @@
 
     @media screen and (max-width: 1000px) {
       flex-direction: column;
-      background: linear-gradient(to right, #ffffff, #97c1e6);
+      background: linear-gradient(to right, #ffffff, #ffffff);
       width: fit-content !important;
 
       .navbarButton1 {
@@ -60,7 +60,7 @@
       .userName {
         overflow: hidden;
         /* text-overflow: ellipsis; */
-        word-break: break-all !important;
+        // word-break: break-all !important;
         white-space: break-spaces !important;
         display: -webkit-box;
         -webkit-line-clamp: 1; /* Set to the number of lines you want */
