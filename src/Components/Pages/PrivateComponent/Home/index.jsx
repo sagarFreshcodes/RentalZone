@@ -38,7 +38,7 @@ const Home = () => {
     GeneralData: GeneralData,
     StateData: StateData,
     location: CurrentLocation,
-    ProductList: ProductList,
+    ProductList: ProductList || [],
   };
   useEffect(() => {
     dispatch(

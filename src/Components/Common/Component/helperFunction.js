@@ -702,7 +702,7 @@ export const SimpleAnimation = ({
     gsap.to(className, {
       duration: duration1 || 0.5,
       scale: scale1 || 0.5,
-      delay: delay1 || 0,
+      delay: delay1 || duration1,
     });
     gsap.to(className, {
       scale: scale2 || 1,

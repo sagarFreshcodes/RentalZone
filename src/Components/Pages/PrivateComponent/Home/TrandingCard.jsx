@@ -25,6 +25,7 @@ const TrandingCard = ({
   d2,
   d3,
   d4,
+  className,
 }) => {
   const Navigate = useNavigate();
   const handleCatClick = () => {
@@ -36,7 +37,10 @@ const TrandingCard = ({
     Navigate(`${PRODUCT_DETAILS_ROUTE}`, { state: { item: item, id: id } });
   };
   return (
-    <div className="trandCardBox shadowEffect" onClick={handleCatClick}>
+    <div
+      className={`trandCardBox shadowEffect ${className}`}
+      onClick={handleCatClick}
+    >
       <div className="trandImgBox">
         <Image attrImage={{ src: picture, alt: "vector women with leptop" }} />
       </div>

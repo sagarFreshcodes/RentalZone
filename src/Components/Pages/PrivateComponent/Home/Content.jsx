@@ -36,6 +36,8 @@ import {
 } from "../../../Common/Component/helperFunction";
 import { API_ROOT_URL, SITE_MAP_API } from "../../../../Constant/api_constant";
 import { useRef } from "react";
+import TrandigCardSlider from "./TrandigCardSlider";
+import Example from "./AnimatedSlider";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -135,18 +137,18 @@ const Content = ({ props }) => {
 
   useEffect(() => {
     SimpleAnimation({ className: ".cateIcon" });
-    CallEventOnDisplay({
-      targetRef: productRef,
-      Call: () =>
-        SimpleAnimation({
-          className: ".trandImgBox",
-          scale1: 0.1,
-          scale2: 1,
-          edition: true,
-          duration1: 1.5,
-          duration2: 3,
-        }),
-    });
+    // CallEventOnDisplay({
+    //   targetRef: productRef,
+    //   Call: () =>
+    //     SimpleAnimation({
+    //       className: ".trandImgBox",
+    //       scale1: 0.1,
+    //       scale2: 1,
+    //       edition: true,
+    //       duration1: 1.5,
+    //       duration2: 3,
+    //     }),
+    // });
 
     CallEventOnDisplay({
       targetRef: cateListRef,
@@ -251,58 +253,11 @@ const Content = ({ props }) => {
         </FS4>
       </ContentBox>
 
-      <ContentBox className="">
-        <div className="ContentCenter">
-          <FS10>Top Trendings For Your City</FS10>
-        </div>
-        <div className="TrendingsContainer" ref={productRef}>
-          {ProductList?.map((item) => {
-            return (
-              <TrandingCard
-                title={item?.product_name}
-                price={item?.price}
-                address1={item?.address1}
-                address2={item?.address2}
-                like={item?.like}
-                statics={item?.static}
-                view={item?.view}
-                share={item?.share}
-                picture={
-                  `${item?.product_image}`.includes("/")
-                    ? item?.product_image
-                    : lptopImg4
-                }
-                d1={item?.d1}
-                d2={item?.d2}
-                d3={item?.d3}
-                d4={item?.d4}
-                specification={[item?.description]}
-                id={item.id}
-                item={item}
-              />
-            );
-          })}
-          {/* {TrandingList.map((item) => {
-            return (
-              <TrandingCard
-                title={item.title}
-                address1={item.address1}
-                address2={item.address2}
-                like={item.like}
-                statics={item.static}
-                view={item.view}
-                share={item.share}
-                picture={item.picture}
-                d1={item.d1}
-                d2={item.d2}
-                d3={item.d3}
-                d4={item.d4}
-                specification={item.specification}
-              />
-            );
-          })} */}
-        </div>
-      </ContentBox>
+      <TrandigCardSlider
+        ProductList={ProductList || []}
+        produ
+        ctRef={productRef}
+      />
 
       <ContentBox className="">
         <Footer />
