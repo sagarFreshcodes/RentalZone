@@ -63,6 +63,7 @@ const Footer = ({ allCategoryList }) => {
         <FS8 attr={{ className: "RentalzoneIn" }}>Rentalzone.in</FS8>
         <FooterLinkBox
           title={"Support & Help"}
+          navigate={navigate}
           linkTitleArray={[
             { title: "About Us", link: "about-us" },
             { title: "FAQ", link: FAQ_ROUTE },
@@ -83,8 +84,9 @@ const Footer = ({ allCategoryList }) => {
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
         />
-        <FooterLinkBox
+        {/* <FooterLinkBox
           title={"Cities Covered"}
+          navigate={navigate}
           linkTitleArray={[
             { title: "AC Rental", link: "ac-rental" },
             { title: "Audio Rental", link: "audio-rental" },
@@ -104,7 +106,7 @@ const Footer = ({ allCategoryList }) => {
           ]}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
-        />
+        /> */}
       </div>
       <br />
       <br />
