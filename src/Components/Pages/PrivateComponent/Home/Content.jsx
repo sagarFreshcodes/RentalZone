@@ -37,7 +37,8 @@ import {
 import { API_ROOT_URL, SITE_MAP_API } from "../../../../Constant/api_constant";
 import { useRef } from "react";
 import TrandigCardSlider from "./TrandigCardSlider";
-import Example from "./AnimatedSlider";
+import { SwipeCarousel } from "./AnimatedSlider";
+import StaggeredDropDown from "./DropDown";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -258,6 +259,9 @@ const Content = ({ props }) => {
         produ
         ctRef={productRef}
       />
+      {/* <div className="animatedSlider">
+        <SwipeCarousel />
+      </div> */}
 
       <ContentBox className="">
         <Footer />

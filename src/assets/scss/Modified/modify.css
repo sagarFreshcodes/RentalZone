@@ -308,6 +308,12 @@
   padding: 1rem;
   background-color: #f8f8f8 !important;
 }
+.moreTrading {
+  display: flex;
+  justify-content: end;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 .productCardBox {
   display: flex;

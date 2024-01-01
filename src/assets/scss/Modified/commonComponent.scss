@@ -257,41 +257,172 @@
 }
 
 // slider
-// .TrendingsSlider {
-//   .commonSliderBox {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//   }
-//   .sliderNext,
-//   .sliderPrev {
-//     font-size: 40px;
-//     line-height: 1;
-//     font-weight: 500;
-//   }
-//   .TrendingsContainer {
-//     display: flex;
+.TrendingsSlider {
+  .commonSliderBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sliderNext,
+  .sliderPrev {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 500;
+  }
+  .TrendingsContainer {
+    display: flex;
 
-//     flex-wrap: nowrap !important;
-//     justify-content: space-between;
-//     align-items: center;
-//     overflow-x: scroll;
-//     gap: 1rem;
-//   }
-//   .trandCardBox {
-//     width: 17rem !important;
-//     display: flex;
-//     flex-direction: column;
-//     border-radius: 1rem;
-//     padding: 1rem;
-//     background-color: #f8f8f8 !important;
-//   }
-//   .scrollUp,
-//   .scrollDown {
-//     height: 10rem;
-//   }
-//   .sliderScroll {
-//     height: 25rem;
-//     overflow-y: scroll;
-//   }
-// }
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: scroll;
+    gap: 1rem;
+  }
+  .trandCardBox {
+    width: 17rem !important;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #f8f8f8 !important;
+  }
+  .scrollUp,
+  .scrollDown {
+    height: 10rem;
+  }
+  .sliderScroll {
+    height: 25rem;
+    overflow-y: scroll;
+  }
+}
+//AnimatedSlider
+
+.animatedSlider {
+  /* Replace this color with your actual neutral-800 color */
+  .bg-neutral-800 {
+    background-color: #374151;
+  }
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* For the other classes, follow the translations below */
+  .h-48 {
+    height: 12rem;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .bg-neutral-900 {
+    background-color: #1f2937;
+    /* Replace this color with your actual neutral-900 color */
+  }
+
+  .sticky {
+    position: sticky;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .top-0 {
+    top: 0;
+  }
+
+  .gap-4 {
+    gap: 1rem; /* Adjust as needed */
+  }
+
+  .Cardgroup {
+    position: relative;
+    height: 450px;
+    width: 450px;
+  }
+
+  .h-450px {
+    height: 450px;
+  }
+
+  .w-450px {
+    width: 450px;
+  }
+
+  .h-300vh {
+    width: 300vh;
+  }
+
+  .bg-neutral-200 {
+    background-color: #edf2f7;
+    /* Replace this color with your actual neutral-200 color */
+  }
+
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .z-0 {
+    z-index: 0;
+  }
+
+  .transition-transform {
+    transition-property: transform;
+  }
+
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  .bg-gradient-to-br {
+    /* Replace these colors with your gradient values */
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  .from-white\/20 {
+    /* Replace this opacity value */
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .to-white\/0 {
+    /* Replace this opacity value */
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .p-8 {
+    padding: 2rem; /* Adjust as needed */
+  }
+
+  .text-6xl {
+    font-size: 4rem; /* Adjust as needed */
+  }
+
+  .font-black {
+    font-weight: 900;
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px); /* Adjust as needed */
+  }
+}
