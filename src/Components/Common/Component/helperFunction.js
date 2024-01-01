@@ -18,6 +18,7 @@ import ChatModel from "../../Pages/Models/Chat/Chat";
 import GetQuotesModel from "../../Pages/Models/GetQuotes/GetQuotes";
 import { useSelector } from "react-redux";
 import gsap from "gsap";
+import { Spinner } from "../../../AbstractElements";
 export function BreadCrum(array) {
   if (!Array.isArray(array)) {
     return "Please provide an array as input.";
@@ -115,7 +116,15 @@ export const ValidParamsForProductDetail = (
     return validParams;
   }
 };
-
+export const ApiGeneralLoader = ({ loaderName }) => {
+  return (
+    <div className="loader-box ">
+      <Spinner
+        attrSpinner={{ className: loaderName || `loader-17 spinnerElement` }}
+      />
+    </div>
+  );
+};
 export const GET_API = (endPoint) => {
   const HEADERS = {
     headers: {

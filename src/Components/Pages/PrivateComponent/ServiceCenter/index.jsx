@@ -28,6 +28,7 @@ import {
   slugConvertor,
 } from "../../../Common/Component/helperFunction";
 import EditContactInfoModel from "../../Models/EditContactInfo/EditContactInfo";
+import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 const ServiceCenter = () => {
   const QueryParams = useLocation();
   const dispatch = useDispatch();
@@ -175,29 +176,30 @@ const ServiceCenter = () => {
   return (
     <>
       <Fragment>
-        {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-        <Container fluid={true}>
-          <div className="servicePage" onClick={test}>
-            {/* {isServiceLoading ? (
+        <LoaderBox isLoading={isServiceLoading}>
+          {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
+          <Container fluid={true}>
+            <div className="servicePage" onClick={test}>
+              {/* {isServiceLoading ? (
             <Skeleton height={1000} />
           ) : ( */}
-            <div className="s_content">
-              <Content AllProps={AllProps} />
-            </div>
-            {/* )} */}
+              <div className="s_content">
+                <Content AllProps={AllProps} />
+              </div>
+              {/* )} */}
 
-            <div className="s_sidebar">
-              <SideBar AllProps={AllProps} />
+              <div className="s_sidebar">
+                <SideBar AllProps={AllProps} />
+              </div>
             </div>
-          </div>
 
-          <ContentBox className="">
-            <Footer />
-          </ContentBox>
-          <br />
-          <br />
-          <div className="sc_fixedButton">
-            {/* <button className="btn btn-light" onClick={toggle2}>
+            <ContentBox className="">
+              <Footer />
+            </ContentBox>
+            <br />
+            <br />
+            <div className="sc_fixedButton">
+              {/* <button className="btn btn-light" onClick={toggle2}>
               <FS6>
                 {" "}
                 <Image attrImage={{ src: wapp, alt: "message" }} /> Chat{" "}
@@ -210,37 +212,39 @@ const ServiceCenter = () => {
                 Now{" "}
               </FS6>
             </button>{" "} */}
-            <div
-              className="sp_button_box
+              <div
+                className="sp_button_box
 "
-            >
-              {" "}
-              {contact_button == 1 ? (
-                <button className="btn btn-light" onClick={toggle2}>
-                  <FS4>
-                    {" "}
-                    <Image
-                      attrImage={{ src: wapp, alt: "message" }}
-                    /> Chat{" "}
-                  </FS4>
-                </button>
-              ) : (
-                <button className="btn btn-success " onClick={OnDial}>
-                  {" "}
-                  <FS4>
-                    {" "}
-                    <Image attrImage={{ src: call_w, alt: "message" }} /> Call
-                    Now{" "}
-                  </FS4>
-                </button>
-              )}
-              <button className="btn btn-primary " onClick={toggle}>
+              >
                 {" "}
-                <FS4>Get Quote Now </FS4>
-              </button>{" "}
+                {contact_button == 1 ? (
+                  <button className="btn btn-light" onClick={toggle2}>
+                    <FS4>
+                      {" "}
+                      <Image
+                        attrImage={{ src: wapp, alt: "message" }}
+                      /> Chat{" "}
+                    </FS4>
+                  </button>
+                ) : (
+                  <button className="btn btn-success " onClick={OnDial}>
+                    {" "}
+                    <FS4>
+                      {" "}
+                      <Image attrImage={{ src: call_w, alt: "message" }} /> Call
+                      Now{" "}
+                    </FS4>
+                  </button>
+                )}
+                <button className="btn btn-primary " onClick={toggle}>
+                  {" "}
+                  <FS4>Get Quote Now </FS4>
+                </button>{" "}
+              </div>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </LoaderBox>
+
         <GetQuotesModel
           serviceData={serviceData}
           toggler={toggle}

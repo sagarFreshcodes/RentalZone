@@ -19,6 +19,7 @@ import {
 } from "../../../Common/Component/helperFunction";
 import { LOCATION_DATA } from "../../../../Constant/general_constant";
 import { toast } from "react-toastify";
+import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ const Home = () => {
   const [loading, setLoading] = useState({ categoryListLoader: false });
 
   const HomPageData = useSelector((state) => state?.Home?.data?.data);
+
   const GeneralData = useSelector((state) => state?.GeneralState);
+  const { isLoading } = useSelector((state) => state?.Home?.data);
   const CurrentLocation = `${GeneralData?.location?.city_slug}`;
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
@@ -96,16 +99,18 @@ const Home = () => {
       <Fragment>
         {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
         <Container fluid={true}>
-          <Row>
-            {/* <FileSideBar /> */}
-            <Col xl="12" md="12" className="box-col-9">
-              <div className="file-content">
-                <Card>
-                  <Content props={props} />
-                </Card>
-              </div>
-            </Col>
-          </Row>
+          <LoaderBox isLoading={isLoading}>
+            <Row>
+              {/* <FileSideBar /> */}
+              <Col xl="12" md="12" className="box-col-9">
+                <div className="file-content">
+                  <Card>
+                    <Content props={props} />
+                  </Card>
+                </div>
+              </Col>
+            </Row>
+          </LoaderBox>
         </Container>
       </Fragment>
       <HanggingBar

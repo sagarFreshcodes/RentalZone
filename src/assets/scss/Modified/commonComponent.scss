@@ -433,3 +433,10 @@
   text-decoration: none;
   color: black;
 }
+// LoaderBox
+.LoaderBox {
+  .spinnerElement {
+    position: absolute !important;
+    top: 45% !important;
+  }
+}

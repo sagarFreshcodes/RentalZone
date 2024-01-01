@@ -19,6 +19,7 @@ import {
 } from "../../../Common/Component/helperFunction";
 import ChatModel from "../../Models/Chat/Chat";
 import EditContactInfoModel from "../../Models/EditContactInfo/EditContactInfo";
+import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 const CatagoryDetails = () => {
   const [chatModal, setChatModal] = useState(false);
   const [editContactInfoModel, setEditContactInfoModel] = useState(false);
@@ -96,36 +97,44 @@ const CatagoryDetails = () => {
   return (
     <>
       <Fragment>
-        {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
-        <Container fluid={true}>
-          <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
-            <div className="cds_content">
-              <Content allProps={allProps} />
+        <LoaderBox isLoading={isLoading}>
+          {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
+          <Container fluid={true}>
+            <div
+              className={isLoading ? "d-none" : "servicePage"}
+              onClick={test}
+            >
+              <div className="cds_content">
+                <Content allProps={allProps} />
+              </div>
             </div>
-          </div>
-          <div className="bannerImage">
-            <img className="w-100" src={banner_image} alt={"banner_image"} />
-          </div>
-          <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
-            <div className="s_content ">
-              {product_list && product_list?.length > 0 && (
-                <CategoryProduct allProps={allProps} />
-              )}
+            <div className="bannerImage">
+              <img className="w-100" src={banner_image} alt={"banner_image"} />
+            </div>
+            <div
+              className={isLoading ? "d-none" : "servicePage"}
+              onClick={test}
+            >
+              <div className="s_content ">
+                {product_list && product_list?.length > 0 && (
+                  <CategoryProduct allProps={allProps} />
+                )}
 
-              <CategoryMedia />
-            </div>
+                <CategoryMedia />
+              </div>
 
-            <div className="s_sidebar">
-              <ContentBox className="">
-                {" "}
-                <SideBar />
-              </ContentBox>
+              <div className="s_sidebar">
+                <ContentBox className="">
+                  {" "}
+                  <SideBar />
+                </ContentBox>
+              </div>
             </div>
-          </div>
-          <ContentBox className="">
-            <Footer />
-          </ContentBox>
-        </Container>
+            <ContentBox className="">
+              <Footer />
+            </ContentBox>
+          </Container>
+        </LoaderBox>
       </Fragment>{" "}
       <HanggingBar />
       <ChatModel toggler={chatToggle} isOpen={chatModal} />
