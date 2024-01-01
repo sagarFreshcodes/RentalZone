@@ -3,10 +3,14 @@ import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import { FS10, FS6 } from "../../../../CommonElements/Font/FS";
 import TrandingCard from "./TrandingCard";
 import lptopImg4 from "../../../../assets/images/Essential/lptopImg4.png";
-import { SimpleAnimation } from "../../../Common/Component/helperFunction";
+import {
+  ReactIcon,
+  SimpleAnimation,
+} from "../../../Common/Component/helperFunction";
 import { motion, useTransform, useScroll } from "framer-motion";
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import { More } from "../../../../Constant";
+import { CommonButton } from "../../../../CommonElements/Button";
 const TrandigCardSlider = ({ ProductList, productRef }) => {
   const [sliderItem, setSliderItem] = useState([1, 2, 3]);
   const [totleItem, setTotleItem] = useState(3);
@@ -112,7 +116,14 @@ const TrandigCardSlider = ({ ProductList, productRef }) => {
         })}
       </div>
       <div className="moreTrading" onClick={MoreLess}>
-        <FS6> {isMore ? "More" : "Less"}</FS6>
+        <CommonButton>
+          {isMore ? "More" : "Less"}{" "}
+          {ReactIcon({
+            iconName: isMore ? "AiOutlineCaretDown" : "AiOutlineCaretUp",
+            attr: {},
+          })}
+        </CommonButton>
+        {/* <FS6> </FS6> */}
       </div>
       {/* <div className="scrollUp"></div>
       </div>{" "} */}
