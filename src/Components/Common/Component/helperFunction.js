@@ -369,6 +369,31 @@ export function generateAscendingNumbers(n) {
     return [1];
   }
 }
+export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
+  const defaultScriptData = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    name: "RentalZone",
+    url: "https://rentalzone-1d306.web.app/home",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "{search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+  const defaultScriptType = "application/ld+json";
+
+  const script = document.createElement("script");
+  script.type = scriptType || defaultScriptType;
+  script.innerHTML = JSON.stringify(scriptData || defaultScriptData);
+
+  document.head.appendChild(script);
+
+  return () => {
+    // Clean up the script when the component unmounts
+    document.head.removeChild(script);
+  };
+};
 export function AddMetaTagsToHead({
   page_title,
   meta_title,
@@ -498,6 +523,7 @@ export function UpdateSEO({
   meta_title,
   meta_description,
   meta_keywords,
+  schemaData,
 }) {
   // Update Page Title
   const defaultPageTitle = "Computer On Rent | RentalZone.in";
@@ -561,6 +587,15 @@ export function UpdateSEO({
     meta_description: meta_description || defaultMetaDescription,
     meta_keywords: meta_keywords || defaultMetaKeywords,
   });
+
+  if (schemaData) {
+    AddJsonLdScriptForSchema({
+      scriptData: schemaData.scriptData,
+      scriptType: schemaData.scriptType,
+    });
+  } else {
+    AddJsonLdScriptForSchema();
+  }
 }
 export const CategoryList = ({ setLoading, setState }) => {
   axios

@@ -17,9 +17,8 @@ import {
 export const RentalUserAuthToken = localStorage.getItem("rentalUserAuthToken");
 export const HomePageApi = ({ Location }) => {
   return async (dispatch) => {
+    dispatch({ type: ActionType.ON_REQUEST });
     try {
-      dispatch({ type: ActionType.ON_REQUEST });
-
       const response = await GetApi(
         `${API_ROOT_URL}/${GET_HOMEPAGE_API}?current_location=${Location}`
       );
@@ -28,8 +27,6 @@ export const HomePageApi = ({ Location }) => {
         endPoint: `${API_ROOT_URL}/${PRODUCT_LIST_API}`,
         body: { token: RentalUserAuthToken },
       });
-
-      console.log("response25456", response);
       dispatch({
         type: ActionType.ON_SUCCESS,
         payload: { ...response.data, PRODUCT_LIST: PRODUCT_LIST },
