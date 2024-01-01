@@ -588,13 +588,13 @@ export function UpdateSEO({
     meta_keywords: meta_keywords || defaultMetaKeywords,
   });
 
-  if (schemaData) {
+  if (CheckValidValue(schemaData)) {
     AddJsonLdScriptForSchema({
-      scriptData: schemaData.scriptData,
-      scriptType: schemaData.scriptType,
+      scriptData: schemaData?.scriptData,
+      scriptType: schemaData?.scriptType,
     });
   } else {
-    AddJsonLdScriptForSchema();
+    AddJsonLdScriptForSchema({});
   }
 }
 export const CategoryList = ({ setLoading, setState }) => {
