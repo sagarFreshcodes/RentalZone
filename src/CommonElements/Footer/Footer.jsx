@@ -8,10 +8,15 @@ import {
   FAQActions,
   GeneralActions,
 } from "../../Redux_Store/Actions/generalActions";
-import { BASE_ROUTE, FAQ_ROUTE, SITEMAP } from "../../Route/RouthPath";
+import {
+  BASE_ROUTE,
+  FAQ_ROUTE,
+  PRODUCT_LIST_ROUTE,
+  SITEMAP,
+} from "../../Route/RouthPath";
 import { slugConvertor } from "../../Components/Common/Component/helperFunction";
 import { Link } from "react-router-dom";
-const Footer = () => {
+const Footer = ({ allCategoryList }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state?.GeneralState);
@@ -24,8 +29,11 @@ const Footer = () => {
   const top_cities = GeneralData?.top_cities || [];
   const area_location_empty = area_location?.length == 0;
   const city_location_empty = city_location?.length == 0;
+  const { city_slug, area_slug } = GeneralState?.location || {};
   const top_cities_empty = top_cities?.length == 0;
-  const test = () => {};
+  const test = () => {
+    console.log(`GeneralState`, GeneralState);
+  };
 
   const onCategorySelect = (data) => {
     const placeSlug = slugConvertor(data?.area_name);
@@ -44,7 +52,6 @@ const Footer = () => {
   };
 
   useMemo(() => {
-    console.log("test2545");
     if (area_location_empty || city_location_empty) {
       dispatch(GeneralActions({ current_location: "mumbai" }));
     }
@@ -68,13 +75,11 @@ const Footer = () => {
           linkBoxWidth={`50%`}
         />
         <FooterLinkBox
+          type={"category"}
+          navigate={navigate}
+          city_slug={city_slug || area_slug}
           title={"Popular Services"}
-          linkTitleArray={[
-            { title: "Computer Rental", link: "computer-rental" },
-            { title: "IPad Rental", link: "ipad-rental" },
-            { title: "Printer Rental", link: "printer-rental" },
-            { title: "Laptop Rental", link: "laptop-rental" },
-          ]}
+          linkTitleArray={allCategoryList || categoryListing}
           boxWidth={"20rem"}
           linkBoxWidth={`50%`}
         />
@@ -151,7 +156,19 @@ const Footer = () => {
 
 export default Footer;
 
-const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
+const FooterLinkBox = ({
+  navigate,
+  type,
+  title,
+  linkTitleArray,
+  boxWidth,
+  linkBoxWidth,
+  city_slug,
+}) => {
+  const onHandleSelect = (url) => {
+    console.log("url2512", url);
+    navigate(url);
+  };
   return (
     <div className="footerLinkBox">
       <FS6> {title}</FS6>
@@ -159,13 +176,29 @@ const FooterLinkBox = ({ title, linkTitleArray, boxWidth, linkBoxWidth }) => {
       <div className="linksContainer">
         {linkTitleArray?.map((i) => {
           return (
-            <Link to={i.link}>
-              <div className="linkBox">
-                <FS3>
-                  <span className="cursorPointer"> {i.title}</span>
-                </FS3>
-              </div>
-            </Link>
+            // <Link
+            //   to={
+
+            //   }
+            // >
+            <div
+              className="linkBox"
+              onClick={() =>
+                onHandleSelect(
+                  type == "category"
+                    ? `${PRODUCT_LIST_ROUTE}?category_id=${i.id}&user_local_city:${city_slug}`
+                    : i.link
+                )
+              }
+            >
+              <FS3>
+                <span className="cursorPointer">
+                  {" "}
+                  {type == "category" ? i.category_name : i.title}
+                </span>
+              </FS3>
+            </div>
+            // {/* </Link> */}
           );
         })}
       </div>
@@ -224,3 +257,86 @@ const FooterLinkBox3 = ({
     </div>
   );
 };
+
+const categoryListing = [
+  {
+    id: 1,
+    category_name: "Rental Services",
+    link: "rental-services",
+  },
+  {
+    id: 2,
+    category_name: "Computer Rental",
+    link: "computer-rental",
+  },
+  {
+    id: 3,
+    category_name: "Laptop Rental",
+    link: "laptop-rental",
+  },
+  {
+    id: 14,
+    category_name: "Furniture Rental",
+    link: "furniture-rental",
+  },
+  {
+    id: 4,
+    category_name: "Printer Rental",
+    link: "printer-rental",
+  },
+  {
+    id: 5,
+    category_name: "IPad Rental",
+    link: "ipad-rental",
+  },
+  {
+    id: 6,
+    category_name: "Server Rental",
+    link: "server-rental",
+  },
+  {
+    id: 7,
+    category_name: "MacBook Rental",
+    link: "macbook-on-rent",
+  },
+  {
+    id: 8,
+    category_name: "Projector Rental",
+    link: "projector-rental",
+  },
+  {
+    id: 9,
+    category_name: "Display Rental",
+    link: "display-rental",
+  },
+  {
+    id: 10,
+    category_name: "Audio Rental",
+    link: "audio-rental",
+  },
+  {
+    id: 11,
+    category_name: "Car Rental",
+    link: "car-rental",
+  },
+  {
+    id: 12,
+    category_name: "AC Rental",
+    link: "ac-rental",
+  },
+  {
+    id: 13,
+    category_name: "UPS Rental",
+    link: "ups-rental",
+  },
+  {
+    id: 74,
+    category_name: "Badge Printing Kiosk",
+    link: "badge-printing-kiosk",
+  },
+  {
+    id: 78,
+    category_name: "Digital Signage Standee",
+    link: "digital-signage-standee",
+  },
+];

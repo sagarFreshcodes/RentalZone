@@ -6,10 +6,12 @@ const initialState = {
   // Define your initial state here
   data: [],
   locationsList: [],
+  ProductListData: {},
   categoryList: [],
   isLoading: false,
   isLocationLoading: false,
   isCategoryLoading: false,
+  isProductListingLoading: false,
   isFAQLoading: false,
   error: null,
   category: CATEGORY_DATA,
@@ -114,6 +116,26 @@ const GeneralReducer = (state = initialState, action) => {
         isFAQLoading: false,
         error: action.payload,
       };
+    case ActionType.ON_REQUEST_PRODUCT_LIST:
+      return {
+        ...state,
+        isProductListingLoading: true,
+        error: action.payload,
+      };
+
+    case ActionType.ON_SUCCESS_PRODUCT_LIST:
+      return {
+        ...state,
+        isProductListingLoading: false,
+        ProductListData: action.payload,
+      };
+    case ActionType.ON_FAILURE_PRODUCT_LIST:
+      return {
+        ...state,
+        isProductListingLoading: false,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

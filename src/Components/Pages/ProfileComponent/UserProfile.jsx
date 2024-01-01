@@ -23,8 +23,8 @@ import {
   UPDATE_PROFILE,
 } from "../../../Constant/api_constant";
 import { ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router";
-import { LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
+import { useNavigate, useNavigation } from "react-router";
+import { HOME_ROUTE, LIST_BUSINESS_ROUTE } from "../../../Route/RouthPath";
 import Profile from "./Profile/Profile";
 import { AddListing } from "./AddListing/AddListing";
 import { AllPoduct } from "./AllPoduct/AllPoduct";
@@ -84,7 +84,6 @@ const UserProfilePage = ({}) => {
     profile_banner_URL: user_details && user_details?.profile_banner,
     profile_pic_URL: user_details && user_details?.profile_pic,
   };
-
   const [formData, setFormData] = useState(RowData);
 
   const toggle = () => {
@@ -100,7 +99,10 @@ const UserProfilePage = ({}) => {
   };
   const ButtonClick = ({ i, index }) => {
     Toggle();
-    switch (index + 1) {
+    switch (index) {
+      case 0:
+        window.location.href = HOME_ROUTE;
+        break;
       case 1:
         i.title == "Edit Profile" ? setModel(true) : console.log("");
         setPage(1);
@@ -231,6 +233,10 @@ const UserProfilePage = ({}) => {
           />
           {[
             {
+              title: "Home",
+              btnType: "dark",
+            },
+            {
               title: page == 1 ? "Edit Profile" : "My Profile",
               btnType: "dark",
             },
@@ -272,6 +278,10 @@ const UserProfilePage = ({}) => {
           ))}
 
           {[
+            {
+              title: "Home",
+              btnType: "dark",
+            },
             {
               title: page == 1 ? "Edit Profile" : "My Profile",
               btnType: "dark",

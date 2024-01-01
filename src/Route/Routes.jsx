@@ -186,6 +186,7 @@ import {
   HOME_ROUTE,
   LIST_BUSINESS_ROUTE,
   PRODUCT_DETAILS_ROUTE,
+  PRODUCT_LIST_ROUTE,
   SERVICE_CENTER_ROUTE,
 } from "./RouthPath";
 import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
@@ -193,6 +194,7 @@ import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetail
 import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails";
 import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
 import FAQ_Page from "../Components/Pages/FAQ";
+import ProductList from "../Components/Pages/PrivateComponent/ProductList";
 
 export const routes = [
   // Private component
@@ -201,6 +203,7 @@ export const routes = [
   { path: `${CATEGORY_DETAILS_ROUTE}`, Component: <CatagoryDetails /> },
   { path: `${PRODUCT_DETAILS_ROUTE}`, Component: <ProductDetails /> },
   { path: `${FAQ_ROUTE}`, Component: <FAQ_Page /> },
+  { path: `${PRODUCT_LIST_ROUTE}`, Component: <ProductList /> },
 
   // dev options
   {

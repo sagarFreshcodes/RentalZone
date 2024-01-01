@@ -4,6 +4,7 @@ import {
   API_ROOT_URL,
   COMMONPAGE_API,
   FAQ_API,
+  GET_PRODUCT_API,
   GET_SEARCH_DATA_API,
   HOME_API,
   SEARCH_CITY_AREA_API,
@@ -124,6 +125,29 @@ export const FAQActions = () => {
       // Dispatch failure action if there's an error
       dispatch({
         type: ActionType.ON_FAILURE_FAQ_API,
+        payload: error.message,
+      });
+    }
+  };
+};
+
+export const ProductListActions = ({ category_id, local_city }) => {
+  return async (dispatch) => {
+    try {
+      // Dispatch an action to signify the start of the request
+      dispatch({ type: ActionType.ON_REQUEST_PRODUCT_LIST });
+      // {{laptop_url}}api/get-product?category_id=8&user_local_city=mumbai
+      const response = await GetApi(
+        `${API_ROOT_URL}/${GET_PRODUCT_API}?category_id=${category_id}&user_local_city=${local_city}`
+      );
+      dispatch({
+        type: ActionType.ON_SUCCESS_PRODUCT_LIST,
+        payload: response.data,
+      });
+    } catch (error) {
+      // Dispatch failure action if there's an error
+      dispatch({
+        type: ActionType.ON_FAILURE_PRODUCT_LIST,
         payload: error.message,
       });
     }

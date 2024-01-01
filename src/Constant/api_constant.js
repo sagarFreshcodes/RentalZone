@@ -33,3 +33,4 @@ export const UPDATE_PASSWORD_API = `update-password`;
 export const FAQ_API = `faq-list`;
 export const ADD_LISTING_DETAILS_API = `add-listing-details`;
 export const SITE_MAP_API = `sitemap`;
+export const GET_PRODUCT_API = `get-product`;

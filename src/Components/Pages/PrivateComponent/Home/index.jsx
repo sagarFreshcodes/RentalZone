@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { Card, Col, Container, Row } from "reactstrap";
 import Content from "./Content";
@@ -12,6 +12,7 @@ import {
 } from "../../../../Redux_Store/Actions/generalActions";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
 import {
+  CategoryList,
   HanggingBar,
   ScrollUp,
   UpdateSEO,
@@ -21,6 +22,9 @@ import { toast } from "react-toastify";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [allCategoryList, setAllCategoryList] = useState([]);
+  const [loading, setLoading] = useState({ categoryListLoader: false });
+
   const HomPageData = useSelector((state) => state?.Home?.data?.data);
   const GeneralData = useSelector((state) => state?.GeneralState);
   const CurrentLocation = `${GeneralData?.location?.city_slug}`;
@@ -32,6 +36,13 @@ const Home = () => {
 
   const { page_title, meta_title, meta_description, meta_keywords } =
     HomPageData || {};
+  const cateLoadingChange = (type) => {
+    setLoading({ ...loading, categoryListLoader: type });
+  };
+  const loadingChange = (name, type) => {
+    setLoading({ ...loading, [name]: type });
+  };
+
   const props = {
     homepage_category: Homepage_category,
     HomPageData: HomPageData,
@@ -39,6 +50,7 @@ const Home = () => {
     StateData: StateData,
     location: CurrentLocation,
     ProductList: ProductList || [],
+    allCategoryList: allCategoryList,
   };
   useEffect(() => {
     dispatch(
@@ -46,6 +58,11 @@ const Home = () => {
         locationData: LOCATION_DATA,
       })
     );
+
+    CategoryList({
+      setLoading: cateLoadingChange,
+      setState: setAllCategoryList,
+    });
   }, []);
 
   useEffect(() => {
@@ -91,7 +108,10 @@ const Home = () => {
           </Row>
         </Container>
       </Fragment>
-      <HanggingBar />
+      <HanggingBar
+        allCategoryListFromParent={true}
+        ListOfCategory={allCategoryList}
+      />
     </>
   );
 };

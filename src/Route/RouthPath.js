@@ -7,3 +7,4 @@ export const LIST_BUSINESS_ROUTE = `${process.env.PUBLIC_URL}/list_business`;
 export const PROFILE_ROUTE = `${process.env.PUBLIC_URL}/profile`;
 export const FAQ_ROUTE = `${process.env.PUBLIC_URL}/faq`;
 export const SITEMAP = `${process.env.PUBLIC_URL}/sitemap`;
+export const PRODUCT_LIST_ROUTE = `${process.env.PUBLIC_URL}/productlist`;

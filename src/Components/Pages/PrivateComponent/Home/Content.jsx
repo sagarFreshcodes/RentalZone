@@ -34,11 +34,8 @@ import {
   ScrollHeight,
   SimpleAnimation,
 } from "../../../Common/Component/helperFunction";
-import { API_ROOT_URL, SITE_MAP_API } from "../../../../Constant/api_constant";
 import { useRef } from "react";
 import TrandigCardSlider from "./TrandigCardSlider";
-import { SwipeCarousel } from "./AnimatedSlider";
-import StaggeredDropDown from "./DropDown";
 const Content = ({ props }) => {
   const {
     homepage_category,
@@ -47,6 +44,7 @@ const Content = ({ props }) => {
     location,
     GeneralData,
     ProductList,
+    allCategoryList,
   } = props;
   const dispatch = useDispatch();
   const productRef = useRef(null);
@@ -105,17 +103,17 @@ const Content = ({ props }) => {
   const onCategorySelect = ({ category_data }) => {
     const { category_name, category_id, subdomain_slug, category_slug } =
       category_data || {};
-    dispatch(
-      SetCategory({
-        categoryData: {
-          name: category_name,
-          type: "category",
-          category_slug: category_slug,
-          category_id: category_id,
-          subdomain_slug: subdomain_slug,
-        },
-      })
-    );
+    // dispatch(
+    //   SetCategory({
+    //     categoryData: {
+    //       name: category_name,
+    //       type: "category",
+    //       category_slug: category_slug,
+    //       category_id: category_id,
+    //       subdomain_slug: subdomain_slug,
+    //     },
+    //   })
+    // );
 
     dispatch(
       SelectCategory({
@@ -264,7 +262,7 @@ const Content = ({ props }) => {
       </div> */}
 
       <ContentBox className="">
-        <Footer />
+        <Footer allCategoryList={allCategoryList} />
       </ContentBox>
     </Fragment>
   );
