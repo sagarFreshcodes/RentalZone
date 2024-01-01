@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { Fragment, useState, useEffect } from "react"; 
-import { FileApi } from "../../../../api"; 
+import React, { Fragment, useState, useEffect } from "react";
+import { FileApi } from "../../../../api";
 import lptopImg from "../../../../assets/images/Essential/lptopImg.png";
 import lptopImg3 from "../../../../assets/images/Essential/lptopImg3.png";
 import lptopImg2 from "../../../../assets/images/Essential/lptopImg2.png";
@@ -13,29 +13,36 @@ import {
   FS8,
   FS9,
 } from "../../../../CommonElements/Font/FS";
-import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox"; 
+import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import ProductCard from "./ProductCard";
-const CategoryProduct = () => {
+import {
+  CheckValidValue,
+  formatDate1,
+} from "../../../Common/Component/helperFunction";
+const CategoryProduct = ({ allProps }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
   const [searchBarShow, setSearchBarShow] = useState(true);
-
+  const { product_list } = allProps;
   useEffect(() => {
     axios.get(FileApi).then((response) => {
       setMyFile(response.data);
     });
   }, []);
 
+  const test = () => {
+    console.log("test2512", product_list);
+  };
   return (
     <Fragment>
-      <div className="cm_Box">
+      <div className="cm_Box" onClick={test}>
         <ContentBox className="">
           <FS10 attr={{ className: "lh-1" }}>Product </FS10>
         </ContentBox>
         <ContentBox className="">
           <div className="ProductContainer">
-            {ProductList.map((item) => {
+            {/* {ProductList.map((item) => {
               return (
                 <ProductCard
                   title={item.title}
@@ -53,7 +60,37 @@ const CategoryProduct = () => {
                   specification={item.specification}
                 />
               );
-            })}
+            })} */}
+            {product_list &&
+              product_list?.map((item) => {
+                return (
+                  <ProductCard
+                    title={item?.product_name}
+                    price={item?.price}
+                    picture={
+                      CheckValidValue(item.product_image)
+                        ? item.product_image
+                        : lptopImg
+                    }
+                    specification={[
+                      `Brand: ${item.brand}`,
+                      `Last Update: ${formatDate1(item?.updated_at)}`,
+                      `Description: ${item.description}`,
+                    ]}
+                    id={item.id}
+                    address1={item.address1}
+                    address2={item.address2}
+                    like={item.like}
+                    statics={item.static}
+                    view={item.view}
+                    share={item.share}
+                    d1={item.d1}
+                    d2={item.d2}
+                    d3={item.d3}
+                    d4={item.d4}
+                  />
+                );
+              })}
           </div>
         </ContentBox>
       </div>

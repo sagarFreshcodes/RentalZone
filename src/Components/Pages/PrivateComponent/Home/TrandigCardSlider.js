@@ -14,7 +14,7 @@ import { CommonButton } from "../../../../CommonElements/Button";
 const TrandigCardSlider = ({ ProductList, productRef }) => {
   const [sliderItem, setSliderItem] = useState([1, 2, 3]);
   const [totleItem, setTotleItem] = useState(3);
-  const [isMore, setIsMore] = useState(false);
+  const [isMore, setIsMore] = useState(true);
   const [trandingListSize, setTrandingListSize] = useState(4);
   const [MouseOn, setMouseOn] = useState(false);
   const productSliderRef = useRef(null);

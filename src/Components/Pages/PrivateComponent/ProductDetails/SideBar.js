@@ -27,6 +27,8 @@ const SideBar = ({ AllProps }) => {
     is_approved,
     is_active,
     locations,
+    user_phone_number,
+    user_name,
     meta_title,
     meta_desc,
     created_at,
@@ -37,7 +39,7 @@ const SideBar = ({ AllProps }) => {
     setChatModal(!chatModal);
   };
   const OnDial = () => {
-    document.location.href = `tel:1111111111`;
+    document.location.href = `tel:${user_phone_number}`;
   };
 
   return (
@@ -47,7 +49,7 @@ const SideBar = ({ AllProps }) => {
           <div className="price">
             <FS2>Rent From</FS2>{" "}
             <FS8 attr={{ style: { color: "#FF7D18" } }}>₹ {price}/</FS8>{" "}
-            <FS2>Day</FS2>
+            {/* <FS2>Day</FS2> */}
           </div>
           <div className="action">
             <img src={share} alt="" /> <img src={like} alt="" />
@@ -82,7 +84,7 @@ const SideBar = ({ AllProps }) => {
               <FS6>Contact Details</FS6> <img src={arrow} alt="arrow" />
             </div>
             <div className="name">
-              <img src={Profile} alt="Profile" /> <FS4>Contect us</FS4>
+              <img src={Profile} alt="Profile" /> <FS4>{user_name}</FS4>
             </div>
             <div className="dial">
               <div className="commonbtn" onClick={toggle}>

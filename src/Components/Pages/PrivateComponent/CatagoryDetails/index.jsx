@@ -40,8 +40,13 @@ const CatagoryDetails = () => {
   const GeneralData = useSelector((state) => state?.GeneralState);
   const { ads_banners } = GeneralData.data.data || {};
   const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
-  const { page_title, meta_title, meta_description, meta_keywords } =
-    ListDetails || {};
+  const {
+    product_list,
+    page_title,
+    meta_title,
+    meta_description,
+    meta_keywords,
+  } = ListDetails || {};
 
   const { listing_name } = ListDetails || {};
 
@@ -73,6 +78,7 @@ const CatagoryDetails = () => {
     EditContactInfoModeltoggle: EditContactInfoModeltoggle,
     chatToggle: chatToggle,
     banner_image: banner_image,
+    product_list: product_list,
   };
 
   useEffect(() => {
@@ -102,7 +108,9 @@ const CatagoryDetails = () => {
           </div>
           <div className={isLoading ? "d-none" : "servicePage"} onClick={test}>
             <div className="s_content ">
-              <CategoryProduct />
+              {product_list && product_list?.length > 0 && (
+                <CategoryProduct allProps={allProps} />
+              )}
 
               <CategoryMedia />
             </div>

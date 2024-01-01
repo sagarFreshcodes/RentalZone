@@ -21,6 +21,7 @@ export const ADD_PRODUCT_API = `add-product`;
 export const UPDATE_LISTING_API = `update-listing`;
 export const DELETE_PRODUCT_API = `delete-product`;
 export const PRODUCT_LIST_API = `product-list`;
+export const GET_SINGLE_PRODUCT_API = `get-single-product`;
 export const UPDATE_PRODUCT_API = `update-product`;
 export const GET_CITY_DROPDOWN_API = `get-city`;
 export const GET_COUNTRY_DROPDOWN_API = `get-country`;

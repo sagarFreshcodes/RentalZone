@@ -34,7 +34,7 @@ const TrandingCard = ({
     //   pathname: `${PRODUCT_DETAILS_ROUTE}`,
     //   state: { item: item, id: id },
     // });
-    Navigate(`${PRODUCT_DETAILS_ROUTE}`, { state: { item: item, id: id } });
+    Navigate(`${PRODUCT_DETAILS_ROUTE}?id=${id}`);
   };
   return (
     <div

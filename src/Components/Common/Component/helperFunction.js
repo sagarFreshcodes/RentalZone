@@ -99,6 +99,23 @@ export const CheckValidImage = (value, defaultValue) => {
   }
 };
 
+export const ValidParamsForProductDetail = (
+  location,
+  defaultValue,
+  notCheck
+) => {
+  if (
+    ["null", null, undefined, "undefined", "", "NaN"].includes(
+      +location.search.split("?")[1].split("=")[1]
+    )
+  ) {
+    return defaultValue ? defaultValue : "invalid";
+  } else {
+    const validParams = +location.search.split("?")[1].split("=")[1];
+    return validParams;
+  }
+};
+
 export const GET_API = (endPoint) => {
   const HEADERS = {
     headers: {

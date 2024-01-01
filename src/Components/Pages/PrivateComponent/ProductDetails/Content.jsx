@@ -22,19 +22,7 @@ import ProductDetail from "./ProductDetail";
 import SideBar from "./SideBar";
 
 const Content = ({ propsObject }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [myfile, setMyFile] = useState([]);
-  const [searchBarShow, setSearchBarShow] = useState(true);
-
   const { BreadcrumData, props, ProductDetails, banner_image } = propsObject;
-
-  useEffect(() => {
-    axios.get(FileApi).then((response) => {
-      setMyFile(response.data);
-    });
-  }, []);
-
   const AllProps = {
     ProductDetails: ProductDetails,
     banner_image: banner_image,
