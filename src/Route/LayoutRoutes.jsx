@@ -1,17 +1,17 @@
-import React, { Fragment } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { routes } from './Routes';
-import AppLayout from '../Layout/Layout';
+import React, { Fragment } from "react";
+import { Route, Routes } from "react-router-dom";
+import { routes } from "./Routes";
+import AppLayout from "../Layout/Layout";
 
-const LayoutRoutes = () => { 
+const LayoutRoutes = () => {
   return (
     <>
       <Routes>
-        {routes.map(({ path, Component }, i) => (
+        {routes.map(({ path, Component, lazy }, i) => (
           <Fragment key={i}>
-          <Route element={<AppLayout />} key={i}>
-            <Route path={path} element={Component} /> 
-          </Route>
+            <Route element={<AppLayout />} key={i}>
+              <Route path={path} element={Component} />
+            </Route>
           </Fragment>
         ))}
       </Routes>

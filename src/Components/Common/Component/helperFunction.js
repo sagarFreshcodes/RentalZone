@@ -370,7 +370,7 @@ export function generateAscendingNumbers(n) {
   }
 }
 export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
-  const defaultScriptData = {
+  const defaultScriptData = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
     name: "RentalZone",
@@ -380,12 +380,12 @@ export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
       target: "{search_term_string}",
       "query-input": "required name=search_term_string",
     },
-  };
+  });
   const defaultScriptType = "application/ld+json";
 
   const script = document.createElement("script");
   script.type = scriptType || defaultScriptType;
-  script.innerHTML = JSON.stringify(scriptData || defaultScriptData);
+  script.innerHTML = scriptData || defaultScriptData;
 
   document.head.appendChild(script);
 

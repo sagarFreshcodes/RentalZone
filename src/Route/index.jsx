@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "../Layout/Loader";
@@ -7,7 +7,7 @@ import LayoutRoutes from "../Route/LayoutRoutes";
 import Signin from "../Auth/Signin";
 import PrivateRoute from "./PrivateRoute";
 import { classes } from "../Data/Layouts";
-import { HOME_ROUTE } from "./RouthPath";
+import { HOME_ROUTE, SERVICE_CENTER_ROUTE } from "./RouthPath";
 import { useDispatch, useSelector } from "react-redux";
 import { SetToken } from "../Redux_Store/Actions/userActions";
 import RedirectExternal from "./RedirectExternal";
@@ -17,7 +17,11 @@ import {
   ApiGeneralLoader,
 } from "../Components/Common/Component/helperFunction";
 // setup fake backend
-
+// lazy(() =>
+// import("../Components/Pages/PrivateComponent/ServiceCenter")
+const Contact = lazy(() =>
+  import("../Components/Pages/PrivateComponent/ServiceCenter")
+);
 const Routers = () => {
   const dispatch = useDispatch();
 
@@ -49,8 +53,9 @@ const Routers = () => {
   }, []);
   return (
     <BrowserRouter basename={"/"}>
-      <Suspense fallback={<ApiGeneralLoader />}>
+      <Suspense fallback={<ApiGeneralLoader loaderName={`loader-14`} />}>
         <Routes>
+          {/* <Route path={SERVICE_CENTER_ROUTE} element={<Contact />} /> */}
           <Route path={"/"} element={<PrivateRoute />}>
             {login || authenticated ? (
               <>

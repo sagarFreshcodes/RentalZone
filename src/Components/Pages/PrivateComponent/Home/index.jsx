@@ -37,7 +37,7 @@ const Home = () => {
   const ProductList =
     StateData?.Home?.data?.PRODUCT_LIST?.data?.data?.data || [];
 
-  const { page_title, meta_title, meta_description, meta_keywords } =
+  const { page_title, meta_title, meta_description, meta_keywords, schema } =
     HomPageData || {};
   const cateLoadingChange = (type) => {
     setLoading({ ...loading, categoryListLoader: type });
@@ -91,20 +91,10 @@ const Home = () => {
       meta_title: meta_title,
       meta_description: meta_description,
       meta_keywords: meta_keywords,
-      // schemaData: {
-      //   scriptData: {
-      //     "@context": "https://schema.org/",
-      //     "@type": "WebSite",
-      //     name: "RentalZone",
-      //     url: "https://rentalzone-1d306.web.app/home",
-      //     potentialAction: {
-      //       "@type": "SearchAction",
-      //       target: "{search_term_string}",
-      //       "query-input": "required name=search_term_string",
-      //     },
-      //   },
-      //   scriptType: "application/ld+json",
-      // },
+      schemaData: {
+        scriptData: schema,
+        scriptType: "application/ld+json",
+      },
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
   return (

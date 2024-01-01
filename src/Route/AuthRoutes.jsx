@@ -15,17 +15,28 @@ import ErrorPage1 from "../Components/Pages/ErrorPages/ErrorPage400";
 import ErrorPage2 from "../Components/Pages/ErrorPages/ErrorPage401";
 import ErrorPage3 from "../Components/Pages/ErrorPages/ErrorPage403";
 import ErrorPage4 from "../Components/Pages/ErrorPages/ErrorPage404";
-import Logins from "../Auth/Signin";
+// import Logins from "../Auth/Signin";
 import LoginForm from "../Components/Pages/Auth/LoginForm";
 import ComingBgImg from "../Components/Pages/ComingSoon/ComingBgImg";
 import ComingBgVideo from "../Components/Pages/ComingSoon/ComingBgVideo";
 import Error500 from "../Components/Pages/ErrorPages/ErrorPage500";
 import Error503 from "../Components/Pages/ErrorPages/ErrorPage503";
-import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
+// import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
 import { LIST_BUSINESS_ROUTE, PROFILE_ROUTE, SITEMAP } from "./RouthPath";
-import UserProfilePage from "../Components/Pages/ProfileComponent/UserProfile";
-import SiteMapping from "../Components/Pages/ProfileComponent/SiteMapping/SiteMapping";
+import { lazy } from "react";
+// import UserProfilePage from "../Components/Pages/ProfileComponent/UserProfile";
+// import SiteMapping from "../Components/Pages/ProfileComponent/SiteMapping/SiteMapping";
 
+const Logins = lazy(() => import("../Auth/Signin"));
+const ListBusiness = lazy(() =>
+  import("../Components/Pages/AuthComponent/ListBusiness/ListBusiness")
+);
+const UserProfilePage = lazy(() =>
+  import("../Components/Pages/ProfileComponent/UserProfile")
+);
+const SiteMapping = lazy(() =>
+  import("../Components/Pages/ProfileComponent/SiteMapping/SiteMapping")
+);
 export const authRoutes = [
   { path: `${process.env.PUBLIC_URL}/login`, Component: <Logins /> },
   { path: `${LIST_BUSINESS_ROUTE}`, Component: <ListBusiness /> },
