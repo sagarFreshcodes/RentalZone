@@ -29,7 +29,7 @@ const Home = () => {
   const HomPageData = useSelector((state) => state?.Home?.data?.data);
 
   const GeneralData = useSelector((state) => state?.GeneralState);
-  const { isLoading } = useSelector((state) => state?.Home?.data);
+  const { isLoading } = useSelector((state) => state?.Home);
   const CurrentLocation = `${GeneralData?.location?.city_slug}`;
   const Homepage_category = HomPageData?.homepage_category;
   const pageTitle = HomPageData?.page_title || "RentalZone.in";
@@ -107,7 +107,6 @@ const Home = () => {
       // },
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
-
   return (
     <>
       <Fragment>

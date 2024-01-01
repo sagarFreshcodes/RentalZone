@@ -12,7 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { SetToken } from "../Redux_Store/Actions/userActions";
 import RedirectExternal from "./RedirectExternal";
 import { MetaTagsArray } from "../Constant/metaTags";
-import { AddMetaTagsToHead } from "../Components/Common/Component/helperFunction";
+import {
+  AddMetaTagsToHead,
+  ApiGeneralLoader,
+} from "../Components/Common/Component/helperFunction";
 // setup fake backend
 
 const Routers = () => {
@@ -46,7 +49,7 @@ const Routers = () => {
   }, []);
   return (
     <BrowserRouter basename={"/"}>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<ApiGeneralLoader />}>
         <Routes>
           <Route path={"/"} element={<PrivateRoute />}>
             {login || authenticated ? (
