@@ -171,6 +171,7 @@ const ServiceCenter = () => {
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
   useLayoutEffect(() => {
+    console.log("first78965 useLayoutEffect");
     CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
   }, []);
   return (

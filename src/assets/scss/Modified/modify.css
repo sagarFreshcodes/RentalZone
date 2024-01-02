@@ -300,7 +300,9 @@
 .sliderImg {
   width: 100%;
 }
-
+.ProductSliderBox {
+  position: relative;
+}
 .trandCardBox {
   display: flex;
   flex-direction: column;
@@ -314,6 +316,9 @@
   font-weight: 700;
   padding: 1rem 0;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .productCardBox {

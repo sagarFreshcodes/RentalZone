@@ -179,7 +179,6 @@
 // import FormTouchspinContain from "../Components/Forms/FormWidget/FormTouchspin";
 // import FormClipboardContain from "../Components/Forms/FormWidget/FormClipboard";
 // import FAQContent from "../Components/FAQ";
-// // import Home from "../Components/Pages/PrivateComponent/Home";
 import {
   CATEGORY_DETAILS_ROUTE,
   FAQ_ROUTE,
@@ -189,27 +188,27 @@ import {
   PRODUCT_LIST_ROUTE,
   SERVICE_CENTER_ROUTE,
 } from "./RouthPath";
-// import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
-// import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetails";
-// import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails";
-// import ListBusiness from "../Components/Pages/AuthComponent/ListBusiness/ListBusiness";
-// import FAQ_Page from "../Components/Pages/FAQ";
-// import ProductList from "../Components/Pages/PrivateComponent/ProductList";
+import Home from "../Components/Pages/PrivateComponent/Home";
+import ServiceCenter from "../Components/Pages/PrivateComponent/ServiceCenter";
+import CatagoryDetails from "../Components/Pages/PrivateComponent/CatagoryDetails";
+import ProductDetails from "../Components/Pages/PrivateComponent/ProductDetails";
+import FAQ_Page from "../Components/Pages/FAQ";
+import ProductList from "../Components/Pages/PrivateComponent/ProductList";
 import { lazy } from "react";
-const Home = lazy(() => import("../Components/Pages/PrivateComponent/Home"));
-const ServiceCenter = lazy(() =>
-  import("../Components/Pages/PrivateComponent/ServiceCenter")
-);
-const CatagoryDetails = lazy(() =>
-  import("../Components/Pages/PrivateComponent/CatagoryDetails")
-);
-const ProductDetails = lazy(() =>
-  import("../Components/Pages/PrivateComponent/ProductDetails")
-);
-const FAQ_Page = lazy(() => import("../Components/Pages/FAQ"));
-const ProductList = lazy(() =>
-  import("../Components/Pages/PrivateComponent/ProductList")
-);
+// const Home = lazy(() => import("../Components/Pages/PrivateComponent/Home"));
+// const ServiceCenter = lazy(() =>
+//   import("../Components/Pages/PrivateComponent/ServiceCenter")
+// );
+// const CatagoryDetails = lazy(() =>
+//   import("../Components/Pages/PrivateComponent/CatagoryDetails")
+// );
+// const ProductDetails = lazy(() =>
+//   import("../Components/Pages/PrivateComponent/ProductDetails")
+// );
+// const FAQ_Page = lazy(() => import("../Components/Pages/FAQ"));
+// const ProductList = lazy(() =>
+//   import("../Components/Pages/PrivateComponent/ProductList")
+// );
 export const routes = [
   // Private component
   { path: `${HOME_ROUTE}`, Component: <Home /> },

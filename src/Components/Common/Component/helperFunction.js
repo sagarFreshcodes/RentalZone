@@ -633,6 +633,7 @@ export const HanggingBar = ({ allCategoryListFromParent, ListOfCategory }) => {
     if (CheckValidValue(allCategoryListFromParent)) {
       setAllCategoryList(ListOfCategory);
     } else {
+      console.log("first78965", CheckValidValue(allCategoryListFromParent));
       CategoryList({ setLoading: setLoading, setState: setAllCategoryList });
     }
   }, []);

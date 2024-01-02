@@ -73,7 +73,7 @@ const TrandigCardSlider = ({ ProductList, productRef }) => {
       : setTrandingListSize(4);
   };
   return (
-    <ContentBox attr={{ className: "TrendingsSlider2" }}>
+    <ContentBox attr={{ className: "ProductSliderBox" }}>
       <div className="ContentCenter" onClick={test}>
         <FS10>Top Trendings For Your City</FS10>
       </div>
