@@ -45,9 +45,9 @@ const SiteMapping = () => {
 
   useMemo(() => {
     if (area_location_empty || city_location_empty) {
-      dispatch(GeneralActions({ current_location: "mumbai" }));
+      // dispatch(GeneralActions({ current_location: "mumbai" }));
     }
-    dispatch(FAQActions());
+    // dispatch(FAQActions());
   }, []);
   return (
     <div className="footerContainer">

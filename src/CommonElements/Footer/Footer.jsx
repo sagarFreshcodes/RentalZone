@@ -55,7 +55,6 @@ const Footer = ({ allCategoryList }) => {
     if (area_location_empty || city_location_empty) {
       dispatch(GeneralActions({ current_location: "mumbai" }));
     }
-    dispatch(FAQActions());
   }, []);
   return (
     <div className="footerContainer">
