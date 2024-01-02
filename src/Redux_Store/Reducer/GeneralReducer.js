@@ -1,7 +1,12 @@
 // reducers/exampleReducer.js
+import { CheckValidValue } from "../../Components/Common/Component/helperFunction";
 import { CATEGORY_DATA, LOCATION_DATA } from "../../Constant/general_constant";
 import { ActionType } from "../ReduxConstant";
-
+const storedLocationData = JSON.parse(localStorage.getItem("locationData"));
+const LocationOption = CheckValidValue(storedLocationData)
+  ? storedLocationData
+  : LOCATION_DATA;
+console.log("LocationOption5845", LocationOption);
 const initialState = {
   // Define your initial state here
   data: [],
@@ -16,7 +21,7 @@ const initialState = {
   error: null,
   category: CATEGORY_DATA,
   selectedCategory: { category_id: 2, category_slug: "computer-rental" },
-  location: LOCATION_DATA,
+  location: LocationOption,
   faqData: {},
 };
 

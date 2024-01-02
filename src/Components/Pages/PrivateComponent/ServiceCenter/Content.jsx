@@ -83,6 +83,7 @@ const Content = ({ AllProps }) => {
                 <>
                   <ServiceCard
                     address={item?.address}
+                    user_image={item?.user_image}
                     area={item?.area}
                     area_name={item?.area_name}
                     category={`${item?.email}`.split(`,`)}

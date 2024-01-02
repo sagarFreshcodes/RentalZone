@@ -56,11 +56,11 @@ const Home = () => {
     allCategoryList: allCategoryList,
   };
   useEffect(() => {
-    dispatch(
-      SetLocation({
-        locationData: LOCATION_DATA,
-      })
-    );
+    // dispatch(
+    //   SetLocation({
+    //     locationData: LOCATION_DATA,
+    //   })
+    // );
 
     CategoryList({
       setLoading: cateLoadingChange,

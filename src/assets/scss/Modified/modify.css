@@ -1397,6 +1397,27 @@
 }
 
 @media screen and (max-width: 900px) {
+  .left-header .SearchBar {
+    display: none !important;
+  }
+  .searchHeadBx {
+    position: fixed !important;
+    width: -webkit-fill-available;
+    z-index: 10;
+  }
+  .leftSearchbar {
+    display: none !important;
+  }
+  .searchHeadBx {
+    padding: 0 2rem !important;
+  }
+
+  .searchHeadBx .location {
+    width: 30% !important;
+  }
+  .searchHeadBx .categoryAS {
+    width: 70% !important;
+  }
   .s_sidebar {
     width: 100% !important;
   }
@@ -1429,9 +1450,7 @@
   .sc_fixedButton {
     display: flex;
   }
-  .leftSearchbar {
-    display: none !important;
-  }
+
   .hideSearchbarOnDesktop {
     display: flex !important;
     justify-content: space-between;
@@ -1439,9 +1458,7 @@
   .hideSearchbarOnDesktop .AutoCompleteBox {
     width: 45% !important;
   }
-  .searchHeadBx {
-    padding: 0 2rem !important;
-  }
+
   .catContainer {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 4vw;
@@ -1452,18 +1469,6 @@
   }
   .card {
     position: relative;
-  }
-  .searchHeadBx {
-    position: fixed !important;
-    width: -webkit-fill-available;
-    z-index: 10;
-  }
-
-  .searchHeadBx .location {
-    width: 30% !important;
-  }
-  .searchHeadBx .categoryAS {
-    width: 70% !important;
   }
 
   .sc_cardBoxRight {
@@ -1644,9 +1649,6 @@
     display: flex !important;
   }
   .rStar .media {
-  }
-  .left-header .SearchBar {
-    display: none !important;
   }
 
   .locationBox #FS3 {

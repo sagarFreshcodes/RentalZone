@@ -23,6 +23,7 @@ import {
   CATEGORY_DETAILS_ROUTE,
 } from "../../../../Route/RouthPath";
 import {
+  CheckValidImage,
   ReactIcon,
   SimpleAnimation,
 } from "../../../Common/Component/helperFunction";
@@ -34,6 +35,7 @@ const ServiceCard = ({
   area,
   area_name,
   category,
+  user_image,
   city,
   city_name,
   contact_person,
@@ -105,7 +107,8 @@ const ServiceCard = ({
             /> */}
             <Image
               attrImage={{
-                src: RandomImg,
+                src:
+                  CheckValidImage(user_image) != false ? user_image : RandomImg,
                 alt: "leptop image",
                 id: "serviceImg",
               }}

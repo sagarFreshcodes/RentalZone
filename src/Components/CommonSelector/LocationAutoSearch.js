@@ -24,15 +24,15 @@ const LocationAutoSearch = ({
   const dispatch = useDispatch();
   const GeneralState = useSelector((state) => state.GeneralState);
   const { isLocationLoading, location, locationsList } = GeneralState;
-  const { city_slug } = GeneralState?.location;
-  const [serchKeyword, setSerchKeyword] = useState(city_slug);
+  const { city_slug, name } = GeneralState?.location;
+  const [serchKeyword, setSerchKeyword] = useState(name);
   const [optionShow, setOptionShow] = useState(false);
   const [mouseOn, setMouseOn] = useState(false);
   const width = `${boxWidth}` || "";
   const onHandleChange = (e) => {
     setSerchKeyword(e.target.value);
   };
-  const onInputClick = (e) => { 
+  const onInputClick = (e) => {
     setOptionShow(true);
   };
   const onHandleClick = (e) => {
@@ -40,6 +40,7 @@ const LocationAutoSearch = ({
     setOptionShow(false);
     OnSearchLocation({ locationData: e });
     dispatch(SetLocation({ locationData: e }));
+    localStorage.setItem("locationData", JSON.stringify(e));
   };
 
   useEffect(() => {
@@ -56,8 +57,8 @@ const LocationAutoSearch = ({
   }, [serchKeyword, optionShow]);
 
   useEffect(() => {
-    setSerchKeyword(city_slug);
-  }, [city_slug]);
+    setSerchKeyword(name);
+  }, [name]);
 
   return (
     <div

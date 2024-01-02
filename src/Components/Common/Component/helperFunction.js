@@ -387,11 +387,11 @@ export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
   script.type = scriptType || defaultScriptType;
   script.innerHTML = scriptData || defaultScriptData;
 
-  document.head.appendChild(script);
+  document.body.appendChild(script);
 
   return () => {
     // Clean up the script when the component unmounts
-    document.head.removeChild(script);
+    document.body.removeChild(script);
   };
 };
 export function AddMetaTagsToHead({
