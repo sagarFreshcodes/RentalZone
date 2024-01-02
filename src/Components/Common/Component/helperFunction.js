@@ -601,7 +601,7 @@ export const CategoryList = ({ setLoading, setState }) => {
   axios
     .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
     .then((response) => {
-      setState(response?.data?.data || []);
+      setState(response?.data?.data?.category || []);
       setLoading(false);
     })
     .catch((error) => {

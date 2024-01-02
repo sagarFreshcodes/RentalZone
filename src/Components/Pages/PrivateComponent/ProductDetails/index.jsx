@@ -12,6 +12,7 @@ import {
   GetApi,
   HanggingBar,
   ScrollUp,
+  ToastError,
   ValidParamsForProductDetail,
 } from "../../../Common/Component/helperFunction";
 import { HOME_ROUTE } from "../../../../Route/RouthPath";
@@ -21,10 +22,17 @@ import {
   API_ROOT_URL,
   GET_SINGLE_PRODUCT_API,
 } from "../../../../Constant/api_constant";
+import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 const ProductDetails = (props) => {
   let location = useLocation();
   const product_id = ValidParamsForProductDetail(location);
   const [productDetails, setProductDetails] = useState({});
+  const [loading, setLoading] = useState({
+    productDetailLoader: false,
+  });
+  const ChangeLoader = (key, value) => {
+    setLoading({ ...loading, [key]: value });
+  };
   const GeneralData = useSelector((state) => state?.GeneralState);
   const { ads_banners } = GeneralData.data.data || {};
   const { banner_image } = ads_banners ? ads_banners[0] || {} : {};
@@ -45,32 +53,39 @@ const ProductDetails = (props) => {
   };
 
   useEffect(() => {
+    ChangeLoader("productDetailLoader", true);
     GET_API(
       `${API_ROOT_URL}/${GET_SINGLE_PRODUCT_API}?product_id=${product_id}`
     )
       .then((response) => {
-        console.log("test2512", response);
         setProductDetails(response?.data?.data);
+        ChangeLoader("productDetailLoader", false);
       })
       .catch((error) => {
-        console.log("test2512", error);
+        ToastError(error);
+        ChangeLoader("productDetailLoader", false);
       });
     ScrollUp();
   }, []);
   return (
     <>
       <Fragment>
-        <Container fluid={true}>
-          <div className="ProductPage" onClick={() => console.log(product_id)}>
-            <div className="content">
-              <Content propsObject={propsObject} />
+        <LoaderBox isLoading={loading?.productDetailLoader}>
+          <Container fluid={true}>
+            <div
+              className="ProductPage"
+              onClick={() => console.log(product_id)}
+            >
+              <div className="content">
+                <Content propsObject={propsObject} />
+              </div>
             </div>
-          </div>
 
-          <ContentBox className="">
-            <Footer />
-          </ContentBox>
-        </Container>
+            <ContentBox className="">
+              <Footer />
+            </ContentBox>
+          </Container>
+        </LoaderBox>
       </Fragment>{" "}
       {/* <HanggingBar /> */}
     </>

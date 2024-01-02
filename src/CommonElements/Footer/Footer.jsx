@@ -167,7 +167,6 @@ const FooterLinkBox = ({
   city_slug,
 }) => {
   const onHandleSelect = (url) => {
-    console.log("url2512", url);
     navigate(url);
   };
   return (

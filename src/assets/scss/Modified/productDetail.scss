@@ -182,7 +182,7 @@
 
             .inputBox {
               width: fit-content;
-              background-color: #f0f0f0; 
+              background-color: #f0f0f0;
               padding: 0.2rem;
             }
 
@@ -194,12 +194,10 @@
                 min-width: 13rem;
               }
               textarea {
-
                 border: none !important;
                 background-color: rgba(121, 121, 121, 0);
                 outline: none !important;
                 min-width: 13rem;
-               
               }
             }
             // .inputBox{
@@ -262,5 +260,11 @@
         }
       }
     }
+  }
+}
+
+.ProductList {
+  .breadcrumb {
+    display: none !important;
   }
 }

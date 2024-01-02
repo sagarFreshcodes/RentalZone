@@ -51,6 +51,10 @@
   }
 
   .MyListing {
+    // border: solid #dddddd;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    border-radius: 6px;
+    padding: 6px;
     // background: linear-gradient(to right, #25c481, #25b7c4);
     .tableBody {
       // tr {
