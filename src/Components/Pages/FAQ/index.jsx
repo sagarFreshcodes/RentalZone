@@ -7,9 +7,12 @@ import FAQFeaturesTutorial from "./FeaturesTutorial";
 import Questionss from "./Questions";
 import { useDispatch, useSelector } from "react-redux";
 import { FAQActions } from "../../../Redux_Store/Actions/generalActions";
+import { LoaderBox } from "../../../CommonElements/LoaderBox/LoaderBox";
+import { ContentBox } from "../../../CommonElements/ContentBox/ContentBox";
 const FAQ_Page = () => {
   const GeneralState = useSelector((state) => state?.GeneralState);
   const FaqData = GeneralState.faqData.data;
+  const { isFAQLoading } = GeneralState;
   const dispatch = useDispatch();
   console.log("FaqData===>", FaqData);
   // const area_location = GeneralData?.area_location || [];
@@ -22,17 +25,20 @@ const FAQ_Page = () => {
   }, []);
   return (
     <Fragment>
-      <Breadcrumbs mainTitle="FAQ" parent="Apps" title="FAQ" />
-      <Container fluid={true}>
-        <div className="faq-wrap">
-          <Row>
-            {/* <Articals /> */}
-            <Questionss AllProps={AllProps} />
-            {/* <FAQFeaturesTutorial />
+      <ContentBox attr={{ className: "FAQPage" }}>
+        <LoaderBox isLoading={isFAQLoading}>
+          <Container fluid={true}>
+            <div className="faq-wrap">
+              <Row>
+                {/* <Articals /> */}
+                <Questionss AllProps={AllProps} />
+                {/* <FAQFeaturesTutorial />
             <ArticeVideo /> */}
-          </Row>
-        </div>
-      </Container>
+              </Row>
+            </div>
+          </Container>{" "}
+        </LoaderBox>
+      </ContentBox>
     </Fragment>
   );
 };

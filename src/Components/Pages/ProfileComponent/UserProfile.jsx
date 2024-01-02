@@ -32,6 +32,7 @@ import { AddPoduct } from "./AddPoduct/AddPoduct";
 import { AllListing } from "./AllListing/AllListing";
 import { ApiLoader } from "../../Common/Component/DesignElement";
 import ChangePassword from "../Models/ChangePassword/ChangePassword";
+import { Row, Col, Card, CardBody } from "reactstrap";
 const UserProfilePage = ({}) => {
   const [url, setUrl] = useState("");
   const [navbarShow, setNavbarShow] = useState(false);
@@ -325,61 +326,66 @@ const UserProfilePage = ({}) => {
             </button>
           ))}
         </div>
-        {page == 1 ? (
-          <Profile
-            Toggle={Toggle}
-            ButtonClick={ButtonClick}
-            user_details={user_details}
-            formData={formData}
-            page={page}
-            navbarShow={navbarShow}
-            profileLoader={profileLoader}
-          />
-        ) : page == 2 ? (
-          <AllListing
-            AllList={AllList}
-            editing={editing}
-            setEditing={setEditing}
-            ChangePage={ChangePage}
-            setEditRecordData={setEditRecordData}
-            editRecordData={editRecordData}
-            isListingLoading={isListingLoading}
-            listingCurrent_page={listingCurrent_page}
-            setListingCurrentPage={setListingCurrentPage}
-            listingLast_page={listingLast_page}
-            setListingLastPage={setListingLastPage}
-          />
-        ) : page == 3 ? (
-          <AddListing
-            editing={editing}
-            setEditing={setEditing}
-            ChangePage={ChangePage}
-            setEditRecordData={setEditRecordData}
-            editRecordData={editRecordData}
-          />
-        ) : page == 4 ? (
-          <AllPoduct
-            AllProduct={AllProduct}
-            editing={editing}
-            setEditing={setEditing}
-            ChangePage={ChangePage}
-            setEditRecordData={setEditRecordData}
-            editRecordData={editRecordData}
-            isProductLoading={isProductLoading}
-            ProductCurrent_page={ProductCurrent_page}
-            setProductCurrentPage={setProductCurrentPage}
-            ProductLast_page={ProductLast_page}
-            setProductLastPage={setProductLastPage}
-          />
-        ) : (
-          <AddPoduct
-            editing={editing}
-            setEditing={setEditing}
-            ChangePage={ChangePage}
-            setEditRecordData={setEditRecordData}
-            editRecordData={editRecordData}
-          />
-        )}
+        <Card>
+          {" "}
+          <CardBody>
+            {page == 1 ? (
+              <Profile
+                Toggle={Toggle}
+                ButtonClick={ButtonClick}
+                user_details={user_details}
+                formData={formData}
+                page={page}
+                navbarShow={navbarShow}
+                profileLoader={profileLoader}
+              />
+            ) : page == 2 ? (
+              <AllListing
+                AllList={AllList}
+                editing={editing}
+                setEditing={setEditing}
+                ChangePage={ChangePage}
+                setEditRecordData={setEditRecordData}
+                editRecordData={editRecordData}
+                isListingLoading={isListingLoading}
+                listingCurrent_page={listingCurrent_page}
+                setListingCurrentPage={setListingCurrentPage}
+                listingLast_page={listingLast_page}
+                setListingLastPage={setListingLastPage}
+              />
+            ) : page == 3 ? (
+              <AddListing
+                editing={editing}
+                setEditing={setEditing}
+                ChangePage={ChangePage}
+                setEditRecordData={setEditRecordData}
+                editRecordData={editRecordData}
+              />
+            ) : page == 4 ? (
+              <AllPoduct
+                AllProduct={AllProduct}
+                editing={editing}
+                setEditing={setEditing}
+                ChangePage={ChangePage}
+                setEditRecordData={setEditRecordData}
+                editRecordData={editRecordData}
+                isProductLoading={isProductLoading}
+                ProductCurrent_page={ProductCurrent_page}
+                setProductCurrentPage={setProductCurrentPage}
+                ProductLast_page={ProductLast_page}
+                setProductLastPage={setProductLastPage}
+              />
+            ) : (
+              <AddPoduct
+                editing={editing}
+                setEditing={setEditing}
+                ChangePage={ChangePage}
+                setEditRecordData={setEditRecordData}
+                editRecordData={editRecordData}
+              />
+            )}
+          </CardBody>
+        </Card>
       </div>
       <ProfileModel
         toggler={toggle}

@@ -144,24 +144,15 @@ const AllPoduct = ({
       <ContentBox>
         <br />
         <br />
-        <PageContentManager
-          isLoading={isProductLoading}
-          loader={<TableSkelaton />}
-          contentArray={tableData}
-          ContentBody={
-            <ListingTable
-              tableData={tableData}
-              ClickOnEditIcon={ClickOnEditIcon}
-              ClickOnDeleteIcon={ClickOnDeleteIcon}
-            />
-          }
-          pagination={
-            <PaginationBar
-              onChange={setProductCurrentPage}
-              last_page={last_page}
-              current_page={ProductCurrent_page}
-            />
-          }
+
+        <ListingTable
+          tableData={tableData}
+          ClickOnEditIcon={ClickOnEditIcon}
+          ClickOnDeleteIcon={ClickOnDeleteIcon}
+          setProductCurrentPage={setProductCurrentPage}
+          last_page={last_page}
+          ProductCurrent_page={ProductCurrent_page}
+          isProductLoading={isProductLoading}
         />
       </ContentBox>
       <ProductUpdate

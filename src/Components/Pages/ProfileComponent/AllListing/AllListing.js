@@ -3,6 +3,7 @@ import ListingTable from "./ListingTable";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import ListingUpdate from "../../Models/AllListing/ListingUpdate";
 import {
+  ApiGeneralLoader,
   ChangeKeyNameOfObject,
   POST_API,
   POST_FORMDATA_API,
@@ -163,30 +164,14 @@ const AllListing = ({
         <br />
         <br />
 
-        <PageContentManager
-          isLoading={isListingLoading}
-          loader={<TableSkelaton />}
-          contentArray={tableData}
-          ContentBody={
-            <ListingTable
-              tableData={tableData}
-              ClickOnEditIcon={ClickOnEditIcon}
-              ClickOnDeleteIcon={ClickOnDeleteIcon}
-              isListingLoading={isListingLoading}
-            />
-          }
-          pagination={
-            // <PaginationBar
-            //   last_page={last_page}
-            //   current_page={listingCurrent_page}
-            //   setCurrentPage={setListingCurrentPage}
-            // />
-            <PaginationBar
-              onChange={setListingCurrentPage}
-              last_page={last_page}
-              current_page={listingCurrent_page}
-            />
-          }
+        <ListingTable
+          tableData={tableData}
+          ClickOnEditIcon={ClickOnEditIcon}
+          ClickOnDeleteIcon={ClickOnDeleteIcon}
+          isListingLoading={isListingLoading}
+          setListingCurrentPage={setListingCurrentPage}
+          last_page={last_page}
+          listingCurrent_page={listingCurrent_page}
         />
       </ContentBox>
       <ListingUpdate

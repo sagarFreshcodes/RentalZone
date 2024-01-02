@@ -47,6 +47,7 @@ const CatagoryDetails = () => {
     meta_title,
     meta_description,
     meta_keywords,
+    schema,
   } = ListDetails || {};
 
   const { listing_name } = ListDetails || {};
@@ -88,6 +89,10 @@ const CatagoryDetails = () => {
       meta_title: meta_title,
       meta_description: meta_description,
       meta_keywords: meta_keywords,
+      schemaData: {
+        scriptData: schema,
+        scriptType: "application/ld+json",
+      },
     });
   }, [page_title, meta_title, meta_description, meta_keywords]);
 

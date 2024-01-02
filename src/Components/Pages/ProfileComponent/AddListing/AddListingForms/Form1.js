@@ -54,7 +54,7 @@ const Form1 = ({ AllProps }) => {
     axios
       .post(`${API_ROOT_URL}/${GET_CATEGORY_DROPDOWN_API}`, {})
       .then((response) => {
-        setAllCategoryList(response?.data?.data || []);
+        setAllCategoryList(response?.data?.data?.category || []);
         console.log("response1236", response);
         setLoading(false);
       })

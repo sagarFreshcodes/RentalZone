@@ -1,10 +1,11 @@
 import React, { Fragment, useContext, useState } from "react";
 import { Row, Col, Card, CardBody, CardHeader, Collapse } from "reactstrap";
-import { Btn, H4, H5, P } from "../../../AbstractElements";
+import { Btn, H4, H5, H6, P } from "../../../AbstractElements";
 import { HelpCircle } from "react-feather";
 import FaqRightsidebae from "./FaqRightside";
 import FaqContext from "../../../_helper/Faq";
 import { ReactIcon } from "../../Common/Component/helperFunction";
+import { FS10, FS8 } from "../../../CommonElements/Font/FS";
 
 const Questionss = ({ AllProps }) => {
   const { FaqData } = AllProps;
@@ -23,7 +24,10 @@ const Questionss = ({ AllProps }) => {
     <Fragment>
       <Col lg="12">
         <div className="header-faq">
-          <H5 attrH5={{ className: "mb-0" }}>Quick Questions are answered</H5>
+          <H5 attrH5={{ className: "mb-0" }}>FAQ</H5>
+        </div>
+        <div className="header-faq">
+          <H6 attrH6={{ className: "mb-0" }}>Quick Questions are answered</H6>
         </div>
         <Row
           className="row default-according style-1 faq-accordion faq_PAGE"
@@ -36,7 +40,7 @@ const Questionss = ({ AllProps }) => {
                   return (
                     <Card key={id}>
                       <div className="cardHeader">
-                        <H4 attrH5={{ className: "mb-0" }}>
+                        <FS8 attr={{ className: "mb-0 BoldText" }}>
                           <div
                             className="link ps-0"
                             onClick={() => handelChange(id)}
@@ -51,7 +55,7 @@ const Questionss = ({ AllProps }) => {
                             />
                             {item.question}
                           </div>
-                        </H4>
+                        </FS8>
                       </div>
                       <Collapse isOpen={isActivity[id]}>
                         <CardBody>

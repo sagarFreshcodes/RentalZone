@@ -4,16 +4,22 @@ import { Col, Card, CardHeader, Table } from "reactstrap";
 import { H5, Image } from "../../../../AbstractElements";
 import TableContext from "../../../../_helper/Table";
 import {
+  ApiGeneralLoader,
   ReactIcon,
   formatDate1,
 } from "../../../Common/Component/helperFunction";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import { PageContentManager } from "../../../Common/Component/DesignElement";
+import { PaginationBar } from "../../../Common/Component/PaginationBar/PaginationBar";
 
 const ListingTable = ({
   tableData,
   ClickOnEditIcon,
   ClickOnDeleteIcon,
   isListingLoading,
+  setListingCurrentPage,
+  last_page,
+  listingCurrent_page,
 }) => {
   const test = () => {
     console.log("tableData11254", tableData);
@@ -29,75 +35,95 @@ const ListingTable = ({
           <ContentBox>
             <ContentBox>
               <div className="table-responsive MyListing" onClick={test}>
-                <Table>
-                  <thead className="tableHead">
-                    <tr className="border-bottom-primary">
-                      <th scope="col nameHeader">{"Listing Name"}</th>
-                      <th scope="col">{"Date"}</th>
-                      <th scope="col">{"Rating"}</th>
-                      <th scope="col">{"Is Approved	"}</th>
-                      <th scope="col">{"Status"}</th>
-                      <th scope="col">{"Action"}</th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    className={`tableBody ${
-                      isListingLoading ? "BlurElement" : ""
-                    }`}
-                  >
-                    {tableData &&
-                      tableData?.map((item, index) => (
-                        <tr key={index}>
-                          <td>
-                            <div className="userName">
-                              {[""].includes(item?.name) ? "-" : item?.name}
-                            </div>
-                          </td>
-                          <td>{formatDate1(item?.created_at)}</td>
-                          <td>
-                            {["null", "", null].includes(item?.rating) ? (
-                              <div className="rating">0.0</div>
-                            ) : (
-                              <div className="rating">{item?.rating}</div>
-                            )}
-                          </td>
-                          <td>{item?.is_approved}</td>
-                          <td>
-                            {["Yes"].includes(item?.is_active) ? (
-                              <div className="active">Active</div>
-                            ) : (
-                              <div className="de-active">Deactive</div>
-                            )}
-                          </td>
-                          <td>
-                            <div className="TableAction">
-                              {/* <ReactIcon
-                            iconName={"AiFillEye"}
-                            attr={{ className: "AiFillEye" }}
-                          /> */}
-
-                              <ReactIcon
-                                iconName={"AiFillEdit"}
-                                attr={{
-                                  className: "AiFillEdit",
-                                  onClick: () =>
-                                    ClickOnEditIcon({ item: item }),
-                                }}
-                              />
-                              <ReactIcon
-                                iconName={"AiFillDelete"}
-                                attr={{
-                                  className: "AiFillDelete",
-                                  onClick: () =>
-                                    ClickOnDeleteIcon({ item: item }),
-                                }}
-                              />
-                            </div>
-                          </td>
+                <PageContentManager
+                  isLoading={isListingLoading}
+                  // loader={<TableSkelaton />}
+                  loader={<ApiGeneralLoader loaderName={"loader-30"} />}
+                  contentArray={tableData}
+                  ContentBody={
+                    <Table>
+                      <thead className="tableHead">
+                        <tr className="border-bottom-primary">
+                          <th scope="col nameHeader">{"Listing Name"}</th>
+                          <th scope="col">{"Date"}</th>
+                          <th scope="col">{"Rating"}</th>
+                          <th scope="col">{"Is Approved	"}</th>
+                          <th scope="col">{"Status"}</th>
+                          <th scope="col">{"Action"}</th>
                         </tr>
-                      ))}
-                  </tbody>
-                </Table>
+                      </thead>
+                      <tbody
+                        className={`tableBody ${
+                          isListingLoading ? "BlurElement" : ""
+                        }`}
+                      >
+                        {tableData &&
+                          tableData?.map((item, index) => (
+                            <tr key={index}>
+                              <td>
+                                <div className="userName">
+                                  {[""].includes(item?.name) ? "-" : item?.name}
+                                </div>
+                              </td>
+                              <td>{formatDate1(item?.created_at)}</td>
+                              <td>
+                                {["null", "", null].includes(item?.rating) ? (
+                                  <div className="rating">0.0</div>
+                                ) : (
+                                  <div className="rating">{item?.rating}</div>
+                                )}
+                              </td>
+                              <td>{item?.is_approved}</td>
+                              <td>
+                                {["Yes"].includes(item?.is_active) ? (
+                                  <div className="active">Active</div>
+                                ) : (
+                                  <div className="de-active">Deactive</div>
+                                )}
+                              </td>
+                              <td>
+                                <div className="TableAction">
+                                  {/* <ReactIcon
+                      iconName={"AiFillEye"}
+                      attr={{ className: "AiFillEye" }}
+                    /> */}
+
+                                  <ReactIcon
+                                    iconName={"AiFillEdit"}
+                                    attr={{
+                                      className: "AiFillEdit",
+                                      onClick: () =>
+                                        ClickOnEditIcon({ item: item }),
+                                    }}
+                                  />
+                                  <ReactIcon
+                                    iconName={"AiFillDelete"}
+                                    attr={{
+                                      className: "AiFillDelete",
+                                      onClick: () =>
+                                        ClickOnDeleteIcon({ item: item }),
+                                    }}
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </Table>
+                  }
+                  pagination={
+                    // <PaginationBar
+                    //   last_page={last_page}
+                    //   current_page={listingCurrent_page}
+                    //   setCurrentPage={setListingCurrentPage}
+                    // />
+                    <PaginationBar
+                      onChange={setListingCurrentPage}
+                      last_page={last_page}
+                      current_page={listingCurrent_page}
+                    />
+                  }
+                />
               </div>{" "}
             </ContentBox>
           </ContentBox>
