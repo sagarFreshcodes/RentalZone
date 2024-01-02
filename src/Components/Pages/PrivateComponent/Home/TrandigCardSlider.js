@@ -115,7 +115,10 @@ const TrandigCardSlider = ({ ProductList, productRef }) => {
           );
         })}
       </div>
-      <div className="moreTrading" onClick={MoreLess}>
+      <div
+        className={`moreTrading ${ProductList.length > 4 ? "" : "d-none"}`}
+        onClick={MoreLess}
+      >
         <CommonButton>
           {isMore ? "More" : "Less"}{" "}
           {ReactIcon({

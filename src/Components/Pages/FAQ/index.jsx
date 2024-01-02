@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { FAQActions } from "../../../Redux_Store/Actions/generalActions";
 import { LoaderBox } from "../../../CommonElements/LoaderBox/LoaderBox";
 import { ContentBox } from "../../../CommonElements/ContentBox/ContentBox";
+import { UpdateSEO } from "../../Common/Component/helperFunction";
+import { FAQ_ROUTE } from "../../../Route/RouthPath";
 const FAQ_Page = () => {
   const GeneralState = useSelector((state) => state?.GeneralState);
-  const FaqData = GeneralState.faqData.data;
+  const FaqData = GeneralState.faqData.data || [];
   const { isFAQLoading } = GeneralState;
   const dispatch = useDispatch();
   console.log("FaqData===>", FaqData);
@@ -23,6 +25,19 @@ const FAQ_Page = () => {
   useMemo(() => {
     dispatch(FAQActions());
   }, []);
+
+  useMemo(() => {
+    if (`${window.location.href}`.includes(FAQ_ROUTE)) {
+      FaqData?.map((i) => {
+        UpdateSEO({
+          schemaData: {
+            scriptData: i?.schema,
+            scriptType: "application/ld+json",
+          },
+        });
+      });
+    }
+  }, [FaqData]);
   return (
     <Fragment>
       <ContentBox attr={{ className: "FAQPage" }}>

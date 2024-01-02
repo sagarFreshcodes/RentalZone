@@ -5,10 +5,14 @@ import { ProductListActions } from "../../../../Redux_Store/Actions/generalActio
 import LaptopPics from "../../../../assets/images/Essential/laptop.png";
 import ProductCard from "./ProductCard";
 import BackNavigation from "../../../Common/Component/BackNavigation";
-import { ApiGeneralLoader } from "../../../Common/Component/helperFunction";
+import {
+  ApiGeneralLoader,
+  UpdateSEO,
+} from "../../../Common/Component/helperFunction";
 import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
+import { PRODUCT_LIST_ROUTE } from "../../../../Route/RouthPath";
 const ProductList = () => {
   const GeneralData = useSelector((state) => state?.GeneralState);
   const { isProductListingLoading } = GeneralData;
@@ -18,6 +22,7 @@ const ProductList = () => {
     product_meta_title,
     product_meta_keywords,
     product_meta_description,
+    schema,
   } = GeneralData?.ProductListData?.data || {};
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,6 +31,26 @@ const ProductList = () => {
   const test = () => {
     console.log("object2512", product_list);
   };
+
+  useEffect(() => {
+    if (`${window.location.href}`.includes(PRODUCT_LIST_ROUTE)) {
+      UpdateSEO({
+        page_title: page_title,
+        meta_title: product_meta_title,
+        meta_keywords: product_meta_keywords,
+        meta_description: product_meta_description,
+        schemaData: {
+          scriptData: schema[0],
+          scriptType: "application/ld+json",
+        },
+      });
+    }
+  }, [
+    page_title,
+    product_meta_title,
+    product_meta_keywords,
+    product_meta_description,
+  ]);
   return (
     <Fragment>
       <BackNavigation />

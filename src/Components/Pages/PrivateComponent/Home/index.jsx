@@ -20,6 +20,7 @@ import {
 import { LOCATION_DATA } from "../../../../Constant/general_constant";
 import { toast } from "react-toastify";
 import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
+import { HOME_ROUTE } from "../../../../Route/RouthPath";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -37,8 +38,14 @@ const Home = () => {
   const ProductList =
     StateData?.Home?.data?.PRODUCT_LIST?.data?.data?.data || [];
 
-  const { page_title, meta_title, meta_description, meta_keywords, schema } =
-    HomPageData || {};
+  const {
+    page_title,
+    meta_title,
+    meta_description,
+    meta_keywords,
+    schema,
+    product_list,
+  } = HomPageData || { product_list: [] };
   const cateLoadingChange = (type) => {
     setLoading({ ...loading, categoryListLoader: type });
   };
@@ -52,7 +59,7 @@ const Home = () => {
     GeneralData: GeneralData,
     StateData: StateData,
     location: CurrentLocation,
-    ProductList: ProductList || [],
+    ProductList: product_list || [],
     allCategoryList: allCategoryList,
   };
   useEffect(() => {
@@ -86,16 +93,18 @@ const Home = () => {
   }, [pageTitle]);
 
   useEffect(() => {
-    UpdateSEO({
-      page_title: page_title,
-      meta_title: meta_title,
-      meta_description: meta_description,
-      meta_keywords: meta_keywords,
-      schemaData: {
-        scriptData: schema,
-        scriptType: "application/ld+json",
-      },
-    });
+    if (`${window.location.href}`.includes(HOME_ROUTE)) {
+      UpdateSEO({
+        page_title: page_title,
+        meta_title: meta_title,
+        meta_description: meta_description,
+        meta_keywords: meta_keywords,
+        schemaData: {
+          scriptData: schema,
+          scriptType: "application/ld+json",
+        },
+      });
+    }
   }, [page_title, meta_title, meta_description, meta_keywords]);
   return (
     <>

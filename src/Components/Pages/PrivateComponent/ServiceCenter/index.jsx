@@ -16,7 +16,11 @@ import { FS3, FS4, FS6 } from "../../../../CommonElements/Font/FS";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BusinessListApi } from "../../../../Redux_Store/Actions/businessListActions";
-import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
+import {
+  BASE_ROUTE,
+  HOME_ROUTE,
+  SERVICE_CENTER_ROUTE,
+} from "../../../../Route/RouthPath";
 import Skeleton from "react-loading-skeleton";
 import { SelectCategory } from "../../../../Redux_Store/Actions/generalActions";
 import call_w from "../../../../assets/images/Essential/call_w.png";
@@ -50,6 +54,7 @@ const ServiceCenter = () => {
     meta_title,
     meta_description,
     meta_keywords,
+    schema,
   } = BusinesssPageData || { top_five_listings: [], all_listing: {} };
   const featuredRecord = top_five_listings?.map((i) => {
     return { ...i, featured: true };
@@ -163,12 +168,18 @@ const ServiceCenter = () => {
   }, [QueryParams]);
 
   useEffect(() => {
-    UpdateSEO({
-      page_title: page_title,
-      meta_title: meta_title,
-      meta_description: meta_description,
-      meta_keywords: meta_keywords,
-    });
+    if (`${window.location.href}`.includes(SERVICE_CENTER_ROUTE)) {
+      UpdateSEO({
+        page_title: page_title,
+        meta_title: meta_title,
+        meta_description: meta_description,
+        meta_keywords: meta_keywords,
+        schemaData: {
+          scriptData: schema,
+          scriptType: "application/ld+json",
+        },
+      });
+    }
   }, [page_title, meta_title, meta_description, meta_keywords]);
   useLayoutEffect(() => {
     console.log("first78965 useLayoutEffect");

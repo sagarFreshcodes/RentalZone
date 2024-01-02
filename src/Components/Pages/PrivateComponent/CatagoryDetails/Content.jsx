@@ -1,31 +1,13 @@
 import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
-import { PlusSquare, Upload } from "react-feather";
-import errorImg from "../../../../assets/images/search-not-found.png";
-import { toast } from "react-toastify";
-import { H4, H6, LI, P, UL, Image, H1, H3 } from "../../../../AbstractElements";
-import { CardHeader, Form, Input, Media } from "reactstrap";
 import { FileApi } from "../../../../api";
-import { FaBeer } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import {
-  FS10,
-  FS3,
-  FS4,
-  FS6,
-  FS8,
-  FS9,
-} from "../../../../CommonElements/Font/FS";
+import { FS10 } from "../../../../CommonElements/Font/FS";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
-import { BreadCrum } from "../../../Common/Component/helperFunction";
 import CategoryCard from "./CategoryCard";
 import SearchBar from "../Home/SearchBar";
 import burncastle from "../../../../assets/images/Essential/burncastle.png";
 const Content = ({ allProps }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
   const [myfile, setMyFile] = useState([]);
-  const [searchBarShow, setSearchBarShow] = useState(true);
   const { ListDetails, BreadcrumData, chatToggle, EditContactInfoModeltoggle } =
     allProps || {};
 

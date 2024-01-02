@@ -312,15 +312,26 @@
 }
 .moreTrading {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   font-weight: 700;
   padding: 1rem 0;
   cursor: pointer;
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
-
+.moreTrading #commonButton {
+  font-size: 1.35rem;
+  color: black;
+  padding: 1rem 12rem;
+  background-color: #f8f8f8 !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}
+.moreTrading #commonButton:focus {
+  font-size: 1.35rem;
+  color: black;
+  padding: 1rem 12rem;
+  background-color: #f8f8f8 !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  border: none;
+}
 .productCardBox {
   display: flex;
   border-radius: 1rem;

@@ -11,7 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { ListDetailsApi } from "../../../../Redux_Store/Actions/listDetailsActions";
-import { BASE_ROUTE, HOME_ROUTE } from "../../../../Route/RouthPath";
+import {
+  BASE_ROUTE,
+  CATEGORY_DETAILS_ROUTE,
+  HOME_ROUTE,
+} from "../../../../Route/RouthPath";
 import {
   HanggingBar,
   ScrollUp,
@@ -84,16 +88,18 @@ const CatagoryDetails = () => {
   };
 
   useEffect(() => {
-    UpdateSEO({
-      page_title: page_title,
-      meta_title: meta_title,
-      meta_description: meta_description,
-      meta_keywords: meta_keywords,
-      schemaData: {
-        scriptData: schema,
-        scriptType: "application/ld+json",
-      },
-    });
+    if (`${window.location.href}`.includes(CATEGORY_DETAILS_ROUTE)) {
+      UpdateSEO({
+        page_title: page_title,
+        meta_title: meta_title,
+        meta_description: meta_description,
+        meta_keywords: meta_keywords,
+        schemaData: {
+          scriptData: schema,
+          scriptType: "application/ld+json",
+        },
+      });
+    }
   }, [page_title, meta_title, meta_description, meta_keywords]);
 
   const test = () => {
