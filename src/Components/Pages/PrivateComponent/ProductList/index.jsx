@@ -23,7 +23,7 @@ const ProductList = () => {
     product_meta_keywords,
     product_meta_description,
     schema,
-  } = GeneralData?.ProductListData?.data || {};
+  } = GeneralData?.ProductListData?.data || { schema: [] };
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProductListActions({ category_id: 8, local_city: "mumbai" }));
