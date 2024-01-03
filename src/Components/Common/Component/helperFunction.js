@@ -369,6 +369,24 @@ export function generateAscendingNumbers(n) {
     return [1];
   }
 }
+export const RemoveAllScriptFromBody = () => {
+  const isScript = document.body.getElementsByTagName("script").length;
+
+  if (isScript !== 0) {
+    // Get all script elements in the body
+    var scripts = document.body.getElementsByTagName("script");
+
+    // Convert the HTMLCollection to an array to safely iterate and remove elements
+    var scriptsArray = Array.from(scripts);
+
+    // Iterate through the array and remove each script element
+    scriptsArray.forEach(function (script) {
+      script.parentNode.removeChild(script);
+    });
+  } else {
+    console.log("isScript25456else", isScript);
+  }
+};
 export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
   const defaultScriptData = JSON.stringify({
     "@context": "https://schema.org/",
@@ -387,8 +405,9 @@ export const AddJsonLdScriptForSchema = ({ scriptData, scriptType }) => {
   script.type = scriptType || defaultScriptType;
   script.innerHTML = scriptData || defaultScriptData;
 
-  document.body.appendChild(script);
-
+  setTimeout(() => {
+    document.body.appendChild(script);
+  }, 2000);
   return () => {
     // Clean up the script when the component unmounts
     document.body.removeChild(script);
@@ -580,7 +599,7 @@ export function UpdateSEO({
     );
     document.head.appendChild(newMetaKeywordsTag);
   }
-
+  RemoveAllScriptFromBody();
   AddMetaTagsToHead({
     page_title: page_title || defaultPageTitle,
     meta_title: meta_title || defaultMetaTitle,

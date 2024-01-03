@@ -106,6 +106,19 @@ const Home = () => {
       });
     }
   }, [page_title, meta_title, meta_description, meta_keywords]);
+  const test = () => {
+    console.log("isScript25456 object");
+    UpdateSEO({
+      page_title: page_title,
+      meta_title: meta_title,
+      meta_description: meta_description,
+      meta_keywords: meta_keywords,
+      schemaData: {
+        scriptData: schema,
+        scriptType: "application/ld+json",
+      },
+    });
+  };
   return (
     <>
       <Fragment>
@@ -115,7 +128,7 @@ const Home = () => {
             <Row>
               {/* <FileSideBar /> */}
               <Col xl="12" md="12" className="box-col-9">
-                <div className="file-content">
+                <div className="file-content" onClick={test}>
                   <Card>
                     <Content props={props} />
                   </Card>

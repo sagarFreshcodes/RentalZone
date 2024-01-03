@@ -39,10 +39,10 @@ const ProductList = () => {
         meta_title: product_meta_title,
         meta_keywords: product_meta_keywords,
         meta_description: product_meta_description,
-        schemaData: {
-          scriptData: schema[0],
-          scriptType: "application/ld+json",
-        },
+        // schemaData: {
+        //   scriptData: schema[0],
+        //   scriptType: "application/ld+json",
+        // },
       });
     }
   }, [
