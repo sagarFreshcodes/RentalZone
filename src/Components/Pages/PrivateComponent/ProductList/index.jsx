@@ -29,20 +29,22 @@ const ProductList = () => {
     dispatch(ProductListActions({ category_id: 8, local_city: "mumbai" }));
   }, []);
   const test = () => {
-    console.log("object2512", product_list);
+    console.log("object2512", schema);
   };
 
   useEffect(() => {
-    if (`${window.location.href}`.includes(PRODUCT_LIST_ROUTE)) {
-      UpdateSEO({
-        page_title: page_title,
-        meta_title: product_meta_title,
-        meta_keywords: product_meta_keywords,
-        meta_description: product_meta_description,
-        // schemaData: {
-        //   scriptData: schema[0],
-        //   scriptType: "application/ld+json",
-        // },
+    if (`${window.location.href}`.includes(PRODUCT_LIST_ROUTE) && schema[0]) {
+      schema?.map((i) => {
+        UpdateSEO({
+          page_title: page_title,
+          meta_title: product_meta_title,
+          meta_keywords: product_meta_keywords,
+          meta_description: product_meta_description,
+          schemaData: {
+            scriptData: JSON.stringify(i),
+            scriptType: "application/ld+json",
+          },
+        });
       });
     }
   }, [
