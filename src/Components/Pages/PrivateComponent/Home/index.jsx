@@ -21,6 +21,7 @@ import { LOCATION_DATA } from "../../../../Constant/general_constant";
 import { toast } from "react-toastify";
 import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 import { HOME_ROUTE } from "../../../../Route/RouthPath";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    ScrollUp();
+    // ScrollUp();
     document.title = pageTitle;
   }, [pageTitle]);
 
@@ -122,6 +123,10 @@ const Home = () => {
   return (
     <>
       <Fragment>
+        <Helmet>
+          <title>Shop</title>
+          <meta name="description" content="Shop our latest products now." />
+        </Helmet>
         {/* <Breadcrumbs parent='Apps' title='File Manager' mainTitle='File Manager' /> */}
         <Container fluid={true}>
           <LoaderBox isLoading={isLoading}>

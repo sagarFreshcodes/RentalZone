@@ -9,6 +9,7 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import store from "./Redux_Store/store";
 import { Provider } from "react-redux";
 import { UpdateSEO } from "./Components/Common/Component/helperFunction";
+import { HelmetProvider } from "react-helmet-async";
 const demoSchema = JSON.stringify([
   {
     "@context": "https://schema.org/",
@@ -89,7 +90,9 @@ const Root = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </Provider>
     </div>
   );

@@ -149,18 +149,18 @@ const Content = ({ props }) => {
     //     }),
     // });
 
-    CallEventOnDisplay({
-      targetRef: cateListRef,
-      Call: () =>
-        SimpleAnimation({
-          className: ".cateIcon",
-          scale1: 0.1,
-          scale2: 1,
-          edition: true,
-          duration1: 1.5,
-          duration2: 3,
-        }),
-    });
+    // CallEventOnDisplay({
+    //   targetRef: cateListRef,
+    //   Call: () =>
+    //     SimpleAnimation({
+    //       className: ".cateIcon",
+    //       scale1: 0.1,
+    //       scale2: 1,
+    //       edition: true,
+    //       duration1: 1.5,
+    //       duration2: 3,
+    //     }),
+    // });
   }, []);
   return (
     <Fragment className="searchHeadFragment">

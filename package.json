@@ -64,6 +64,7 @@
     "react-files": "^3.0.0",
     "react-google-charts": "^4.0.0",
     "react-gradient-timepicker": "^0.0.3",
+    "react-helmet-async": "^2.0.4",
     "react-hook-form": "^7.43.9",
     "react-i18next": "^12.2.0",
     "react-icons": "^4.12.0",
