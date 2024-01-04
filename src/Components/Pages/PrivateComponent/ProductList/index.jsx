@@ -13,8 +13,12 @@ import { LoaderBox } from "../../../../CommonElements/LoaderBox/LoaderBox";
 import { Breadcrumbs } from "../../../../AbstractElements";
 import { ContentBox } from "../../../../CommonElements/ContentBox/ContentBox";
 import { PRODUCT_LIST_ROUTE } from "../../../../Route/RouthPath";
+import { PaginationBar } from "../../../Common/Component/PaginationBar/PaginationBar";
+import { PageContentManager } from "../../../Common/Component/DesignElement";
+import { SC_CardSkelaton } from "../../../Common/Component/Sleleton/Skelaton";
 const ProductList = () => {
   const GeneralData = useSelector((state) => state?.GeneralState);
+  const [currentPage, setCurrentPage] = useState(1);
   const { isProductListingLoading } = GeneralData;
   const {
     product_list,
@@ -24,10 +28,22 @@ const ProductList = () => {
     product_meta_description,
     schema,
   } = GeneralData?.ProductListData?.data || { schema: [] };
+
+  const { last_page, data, current_page } = product_list || {
+    data: [],
+    current_page: 1,
+    last_page: 1,
+  };
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(ProductListActions({ category_id: 8, local_city: "mumbai" }));
-  }, []);
+    dispatch(
+      ProductListActions({
+        category_id: 8,
+        local_city: "mumbai",
+        page: currentPage,
+      })
+    );
+  }, [currentPage]);
   const test = () => {
     console.log("object2512", schema);
   };
@@ -69,36 +85,57 @@ const ProductList = () => {
               <Col sm="12" onClick={test}>
                 <Card>
                   <CardBody>
-                    <div className="TrendingsContainer">
-                      {product_list &&
-                        product_list?.map((item, index) => {
-                          return (
-                            <ProductCard
-                              className={""}
-                              title={item?.product_name}
-                              price={item?.price}
-                              address1={item?.address1}
-                              address2={item?.address2}
-                              like={item?.like}
-                              statics={item?.static}
-                              view={item?.view}
-                              share={item?.share}
-                              picture={
-                                `${item?.product_image}`.includes("/")
-                                  ? item?.product_image
-                                  : LaptopPics
-                              }
-                              d1={item?.d1}
-                              d2={item?.d2}
-                              d3={item?.d3}
-                              d4={item?.d4}
-                              specification={[item?.description]}
-                              id={item.id}
-                              item={item}
-                            />
-                          );
-                        })}
-                    </div>
+                    <PageContentManager
+                      isLoading={isProductListingLoading}
+                      loader={<SC_CardSkelaton />}
+                      contentArray={data}
+                      ContentBody={
+                        <div className="TrendingsContainer">
+                          {product_list &&
+                            data?.map((item, index) => {
+                              return (
+                                <ProductCard
+                                  className={""}
+                                  title={item?.product_name}
+                                  price={item?.price}
+                                  address1={item?.address1}
+                                  address2={item?.address2}
+                                  like={item?.like}
+                                  statics={item?.static}
+                                  view={item?.view}
+                                  share={item?.share}
+                                  picture={
+                                    `${item?.product_image}`.includes("/")
+                                      ? item?.product_image
+                                      : LaptopPics
+                                  }
+                                  d1={item?.d1}
+                                  d2={item?.d2}
+                                  d3={item?.d3}
+                                  d4={item?.d4}
+                                  specification={[item?.description]}
+                                  id={item.id}
+                                  item={item}
+                                />
+                              );
+                            })}{" "}
+                        </div>
+                      }
+                      pagination={
+                        <>
+                          <PaginationBar
+                            onChange={setCurrentPage}
+                            last_page={last_page * 10}
+                            current_page={currentPage}
+                          />
+                          {/* <PaginationBar2
+                  last_page={last_page}
+                  current_page={current_page}
+                  setCurrentPage={setCurrentPage}
+                /> */}
+                        </>
+                      }
+                    />
                   </CardBody>
                 </Card>
               </Col>

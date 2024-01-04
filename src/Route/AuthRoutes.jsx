@@ -41,7 +41,7 @@ export const authRoutes = [
   { path: `${process.env.PUBLIC_URL}/login`, Component: <Logins /> },
   { path: `${LIST_BUSINESS_ROUTE}`, Component: <ListBusiness /> },
   { path: `${PROFILE_ROUTE}`, Component: <UserProfilePage /> },
-  { path: `${SITEMAP}`, Component: <SiteMapping /> },
+  // { path: `${SITEMAP}`, Component: <SiteMapping /> },
   {
     path: `${process.env.PUBLIC_URL}/pages/authentication/login-simple/:layout`,
     Component: <LoginForm />,

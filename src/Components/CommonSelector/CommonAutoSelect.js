@@ -64,7 +64,10 @@ const CommonAutoSelect = ({
         axios
           .post(`${API_ROOT_URL}/${ApiEndPoint}`, APIBody || {})
           .then((response) => {
-            const ResponseData = response?.data?.data;
+            const ResponseData =
+              labelName == "category_name"
+                ? response?.data?.data?.category
+                : response?.data?.data;
             setOptionList(ResponseData);
             setSerchKeyword(
               chech
@@ -77,7 +80,7 @@ const CommonAutoSelect = ({
           })
           .catch((error) => {
             ToastError(error);
-            console.log("response1236", error);
+
             setLoading(false);
           });
       }

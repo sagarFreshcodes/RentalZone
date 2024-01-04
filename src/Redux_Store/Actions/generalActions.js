@@ -131,14 +131,14 @@ export const FAQActions = () => {
   };
 };
 
-export const ProductListActions = ({ category_id, local_city }) => {
+export const ProductListActions = ({ category_id, local_city, page }) => {
   return async (dispatch) => {
     try {
       // Dispatch an action to signify the start of the request
       dispatch({ type: ActionType.ON_REQUEST_PRODUCT_LIST });
       // {{laptop_url}}api/get-product?category_id=8&user_local_city=mumbai
       const response = await GetApi(
-        `${API_ROOT_URL}/${GET_PRODUCT_API}?category_id=${category_id}&user_local_city=${local_city}`
+        `${API_ROOT_URL}/${GET_PRODUCT_API}?category_id=${category_id}&user_local_city=${local_city}&page=${page}`
       );
       dispatch({
         type: ActionType.ON_SUCCESS_PRODUCT_LIST,

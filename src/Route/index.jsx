@@ -74,6 +74,7 @@ const Routers = () => {
 
           <Route
             exact
+            // path={`${process.env.PUBLIC_URL}/login`}
             path={`${process.env.PUBLIC_URL}/login`}
             element={<Signin />}
           />
