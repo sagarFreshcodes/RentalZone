@@ -38,7 +38,8 @@ const AllPoduct = ({
   const [d_modal, setD_Model] = useState(false);
   const [loader, setLoader] = useState({ deleteLoader: false });
   const [formData, setFormData] = useState({});
-  const { data, last_page, links } = AllProduct;
+  const { data, last_page, links } = AllProduct?.products||{last_page:1,data:[]};
+  
   const [tableData, setTableData] = useState(data);
   const [RentalUserAuthToken, setRentalUserAuthToken] = useState(
     localStorage.getItem("rentalUserAuthToken")
@@ -49,7 +50,6 @@ const AllPoduct = ({
   const toggle = () => {
     setModel(!modal);
   };
-
   const d_toggle = () => {
     setD_Model(!d_modal);
   };

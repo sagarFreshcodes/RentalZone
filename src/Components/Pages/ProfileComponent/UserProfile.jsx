@@ -221,9 +221,10 @@ const UserProfilePage = ({}) => {
   }, [page, editing, editRecordData, listingCurrent_page, ProductCurrent_page]);
   console.log("loader.logOutLoader", loader.logOutLoader);
   useEffect(() => {}, [loader]);
+  const Test = () =>console.log("object56",userStateData,"AllProduct====",AllProduct);
   return (
     <Fragment>
-      <div className="user-profile ProfileComponent">
+      <div className="user-profile ProfileComponent" onClick={Test}>
         <div className="ProfileNavbar">
           <ReactIcon
             iconName="AiOutlineMenu"
